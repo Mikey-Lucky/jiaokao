@@ -1,0 +1,3500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="yichuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="GoodsID" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="CartTime" Type="datetime" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Flag" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="TtypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Coat">
+          <Key>
+            <PropertyRef Name="CoatID" />
+          </Key>
+          <Property Name="CoatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="100" />
+          <Property Name="Season" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Design" Type="varchar" MaxLength="100" />
+          <Property Name="Material" Type="varchar" MaxLength="100" />
+          <Property Name="Image" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="WardrobeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Collect">
+          <Key>
+            <PropertyRef Name="CollectID" />
+          </Key>
+          <Property Name="CollectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="GoodsID" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorID" />
+          </Key>
+          <Property Name="ColorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Color" Type="char" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="ComReply">
+          <Key>
+            <PropertyRef Name="ComReplyID" />
+          </Key>
+          <Property Name="ComReplyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="GoodsCommentID" Type="int" />
+          <Property Name="RepContent" Type="varchar(max)" />
+          <Property Name="RepTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Coordinate">
+          <Key>
+            <PropertyRef Name="CoordinateID" />
+          </Key>
+          <Property Name="CoordinateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CoatID" Type="int" />
+          <Property Name="ShirtID" Type="int" />
+          <Property Name="NetherGarmentID" Type="int" />
+          <Property Name="SuitID" Type="int" />
+        </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="GoodsID" />
+          </Key>
+          <Property Name="GoodsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Sex" Type="char" MaxLength="2" />
+          <Property Name="Season" Type="char" MaxLength="2" />
+          <Property Name="Material" Type="char" MaxLength="50" />
+          <Property Name="Style" Type="char" MaxLength="50" />
+          <Property Name="GoodsImage" Type="varchar(max)" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Unitprice" Type="float" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="SizeImage" Type="varchar(max)" />
+          <Property Name="ShangjiaTime" Type="datetime" />
+          <Property Name="Pageview" Type="int" />
+          <Property Name="Size" Type="char" MaxLength="2" />
+          <Property Name="StorageAmount" Type="int" />
+        </EntityType>
+        <EntityType Name="GoodsComment">
+          <Key>
+            <PropertyRef Name="GoodsCommentID" />
+          </Key>
+          <Property Name="GoodsCommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComContent" Type="varchar(max)" />
+          <Property Name="ComImage" Type="varchar(max)" />
+          <Property Name="Video" Type="varchar(max)" />
+          <Property Name="ImageOrNot" Type="bit" />
+          <Property Name="VideoOrNot" Type="bit" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="GoodsID" Type="int" Nullable="false" />
+          <Property Name="ComTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GoodsCommentsLike">
+          <Key>
+            <PropertyRef Name="GoodsCommentsLikeID" />
+          </Key>
+          <Property Name="GoodsCommentsLikeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="GoodsCommentID" Type="int" Nullable="false" />
+          <Property Name="ThumbNum" Type="int" />
+          <Property Name="ThumbTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GoodsLike">
+          <Key>
+            <PropertyRef Name="GoodsLikeID" />
+          </Key>
+          <Property Name="GoodsLikeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="GoodsID" Type="int" Nullable="false" />
+          <Property Name="ThumbNum" Type="int" />
+          <Property Name="ThumbTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="GradeID" />
+          </Key>
+          <Property Name="GradeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="GoodsID" Type="int" Nullable="false" />
+          <Property Name="Grade" Type="int" />
+          <Property Name="GradeTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NetherGarment">
+          <Key>
+            <PropertyRef Name="NetherGarmentID" />
+          </Key>
+          <Property Name="NetherGarmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="100" />
+          <Property Name="Season" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Design" Type="varchar" MaxLength="100" />
+          <Property Name="Material" Type="varchar" MaxLength="100" />
+          <Property Name="Image" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="WardrobeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="NoteID" />
+          </Key>
+          <Property Name="NoteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Img" Type="varchar" MaxLength="500" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="NoteContent" Type="varchar" MaxLength="500" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NoteComment">
+          <Key>
+            <PropertyRef Name="NoteCommentID" />
+          </Key>
+          <Property Name="NoteCommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nccontent" Type="varchar" MaxLength="500" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="likenum" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="NoteID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NoteLike">
+          <Key>
+            <PropertyRef Name="NoteLikeID" />
+          </Key>
+          <Property Name="NoteLikeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="num" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="NoteID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NoteSelect">
+          <Key>
+            <PropertyRef Name="NoteSelectID" />
+          </Key>
+          <Property Name="NoteSelectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="NoteID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NoteTrasmit">
+          <Key>
+            <PropertyRef Name="NoteTrasmitID" />
+          </Key>
+          <Property Name="NoteTrasmitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddContent" Type="varchar" MaxLength="500" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="NoteID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailsID" />
+          </Key>
+          <Property Name="OrderDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GoodsID" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderTime" Type="datetime" />
+          <Property Name="TotalAmount" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" />
+          <Property Name="Tel" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Privatemessage">
+          <Key>
+            <PropertyRef Name="PrivatemessageID" />
+          </Key>
+          <Property Name="PrivatemessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Privatemessage_UserID" Type="int" Nullable="false" />
+          <Property Name="MessageContent" Type="varchar(max)" />
+          <Property Name="MessageTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Shirt">
+          <Key>
+            <PropertyRef Name="ShirtID" />
+          </Key>
+          <Property Name="ShirtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="100" />
+          <Property Name="Season" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Design" Type="varchar" MaxLength="100" />
+          <Property Name="Material" Type="varchar" MaxLength="100" />
+          <Property Name="Image" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="WardrobeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Suit">
+          <Key>
+            <PropertyRef Name="SuitID" />
+          </Key>
+          <Property Name="SuitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="100" />
+          <Property Name="Season" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Design" Type="varchar" MaxLength="100" />
+          <Property Name="Material" Type="varchar" MaxLength="100" />
+          <Property Name="Image" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="WardrobeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Ttype">
+          <Key>
+            <PropertyRef Name="TtypeID" />
+          </Key>
+          <Property Name="TtypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ttype" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="U_Attention_U">
+          <Key>
+            <PropertyRef Name="U_Attention_UID" />
+          </Key>
+          <Property Name="U_Attention_UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="User1ID" Type="int" Nullable="false" />
+          <Property Name="User2ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="U_Collect_Coordinate">
+          <Key>
+            <PropertyRef Name="U_Collect_CoordinateID" />
+          </Key>
+          <Property Name="U_Collect_CoordinateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CoordinateID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="U_Dislike_Coordinate">
+          <Key>
+            <PropertyRef Name="U_Dislike_CoordinateID" />
+          </Key>
+          <Property Name="U_Dislike_CoordinateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CoordinateID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="U_Reply_NoteComment">
+          <Key>
+            <PropertyRef Name="U_Reply_NoteCommentID" />
+          </Key>
+          <Property Name="U_Reply_NoteCommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="URNContent" Type="varchar" MaxLength="500" />
+          <Property Name="Likenum" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="NoteCommentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="U_Reply_VideoComment">
+          <Key>
+            <PropertyRef Name="U_Reply_VideoCommentID" />
+          </Key>
+          <Property Name="U_Reply_VideoCommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="VCContent" Type="varchar" MaxLength="500" />
+          <Property Name="Likenum" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="VideocommentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Password" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="Quanxian" Type="bit" />
+          <Property Name="Role" Type="bit" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" />
+          <Property Name="HeadImage" Type="varchar" MaxLength="100" />
+          <Property Name="Sex" Type="char" MaxLength="2" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="Wweight" Type="int" />
+          <Property Name="Waistline" Type="int" />
+          <Property Name="Tel" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Email" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="VideoID" />
+          </Key>
+          <Property Name="VideoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="500" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Intro" Type="varchar" MaxLength="500" />
+          <Property Name="Adress" Type="varchar" MaxLength="500" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VideoComment">
+          <Key>
+            <PropertyRef Name="VideoCommentID" />
+          </Key>
+          <Property Name="VideoCommentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Commentcotent" Type="varchar" MaxLength="500" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="likenum" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="VideoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VideoLike">
+          <Key>
+            <PropertyRef Name="VideoLIkeID" />
+          </Key>
+          <Property Name="VideoLIkeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="likenum" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="VideoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VideoSelect">
+          <Key>
+            <PropertyRef Name="VideoSelectID" />
+          </Key>
+          <Property Name="VideoSelectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="VideoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VideoTrasmit">
+          <Key>
+            <PropertyRef Name="VideoTrasmitID" />
+          </Key>
+          <Property Name="VideoTrasmitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddContent" Type="varchar" MaxLength="500" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="VideoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wardrobe">
+          <Key>
+            <PropertyRef Name="WardrobeID" />
+          </Key>
+          <Property Name="WardrobeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Userid" Type="int" Nullable="false" />
+          <Property Name="Lock" Type="bit" />
+        </EntityType>
+        <Association Name="FK__Cart__GoodsID__3F466844">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="GoodsID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="GoodsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__UserID__3E52440B">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Category__ColorI__1BFD2C07">
+          <End Role="Color" Type="Self.Color" Multiplicity="1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Category__TtypeI__1CF15040">
+          <End Role="Ttype" Type="Self.Ttype" Multiplicity="1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ttype">
+              <PropertyRef Name="TtypeID" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="TtypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coat__WardrobeID__5629CD9C">
+          <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
+          <End Role="Coat" Type="Self.Coat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wardrobe">
+              <PropertyRef Name="WardrobeID" />
+            </Principal>
+            <Dependent Role="Coat">
+              <PropertyRef Name="WardrobeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Collect__GoodsID__4316F928">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="Collect" Type="Self.Collect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="GoodsID" />
+            </Principal>
+            <Dependent Role="Collect">
+              <PropertyRef Name="GoodsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Collect__UserID__4222D4EF">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Collect" Type="Self.Collect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Collect">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ComReply__GoodsC__2D27B809">
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="0..1" />
+          <End Role="ComReply" Type="Self.ComReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsComment">
+              <PropertyRef Name="GoodsCommentID" />
+            </Principal>
+            <Dependent Role="ComReply">
+              <PropertyRef Name="GoodsCommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ComReply__UserID__2C3393D0">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ComReply" Type="Self.ComReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ComReply">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__CoatI__619B8048">
+          <End Role="Coat" Type="Self.Coat" Multiplicity="0..1" />
+          <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coat">
+              <PropertyRef Name="CoatID" />
+            </Principal>
+            <Dependent Role="Coordinate">
+              <PropertyRef Name="CoatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__Nethe__6383C8BA">
+          <End Role="NetherGarment" Type="Self.NetherGarment" Multiplicity="0..1" />
+          <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NetherGarment">
+              <PropertyRef Name="NetherGarmentID" />
+            </Principal>
+            <Dependent Role="Coordinate">
+              <PropertyRef Name="NetherGarmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__Shirt__628FA481">
+          <End Role="Shirt" Type="Self.Shirt" Multiplicity="0..1" />
+          <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shirt">
+              <PropertyRef Name="ShirtID" />
+            </Principal>
+            <Dependent Role="Coordinate">
+              <PropertyRef Name="ShirtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__SuitI__6477ECF3">
+          <End Role="Suit" Type="Self.Suit" Multiplicity="0..1" />
+          <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suit">
+              <PropertyRef Name="SuitID" />
+            </Principal>
+            <Dependent Role="Coordinate">
+              <PropertyRef Name="SuitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods__CategoryI__239E4DCF">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsComm__Goods__29572725">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="GoodsID" />
+            </Principal>
+            <Dependent Role="GoodsComment">
+              <PropertyRef Name="GoodsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsComm__Goods__31EC6D26">
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="1" />
+          <End Role="GoodsCommentsLike" Type="Self.GoodsCommentsLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsComment">
+              <PropertyRef Name="GoodsCommentID" />
+            </Principal>
+            <Dependent Role="GoodsCommentsLike">
+              <PropertyRef Name="GoodsCommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsComm__UserI__286302EC">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="GoodsComment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsComm__UserI__30F848ED">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="GoodsCommentsLike" Type="Self.GoodsCommentsLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="GoodsCommentsLike">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsLike__Goods__36B12243">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="GoodsLike" Type="Self.GoodsLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="GoodsID" />
+            </Principal>
+            <Dependent Role="GoodsLike">
+              <PropertyRef Name="GoodsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsLike__UserI__35BCFE0A">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="GoodsLike" Type="Self.GoodsLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="GoodsLike">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Grade__GoodsID__3A81B327">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="GoodsID" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="GoodsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Grade__UserID__398D8EEE">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NetherGar__Wardr__5BE2A6F2">
+          <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
+          <End Role="NetherGarment" Type="Self.NetherGarment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wardrobe">
+              <PropertyRef Name="WardrobeID" />
+            </Principal>
+            <Dependent Role="NetherGarment">
+              <PropertyRef Name="WardrobeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Note__UserID__08B54D69">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Note" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Note">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteComme__NoteI__0C85DE4D">
+          <End Role="Note" Type="Self.Note" Multiplicity="1" />
+          <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Note">
+              <PropertyRef Name="NoteID" />
+            </Principal>
+            <Dependent Role="NoteComment">
+              <PropertyRef Name="NoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteComme__UserI__0B91BA14">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="NoteComment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteLike__NoteID__10566F31">
+          <End Role="Note" Type="Self.Note" Multiplicity="1" />
+          <End Role="NoteLike" Type="Self.NoteLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Note">
+              <PropertyRef Name="NoteID" />
+            </Principal>
+            <Dependent Role="NoteLike">
+              <PropertyRef Name="NoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteLike__UserID__0F624AF8">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="NoteLike" Type="Self.NoteLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="NoteLike">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteSelec__NoteI__14270015">
+          <End Role="Note" Type="Self.Note" Multiplicity="1" />
+          <End Role="NoteSelect" Type="Self.NoteSelect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Note">
+              <PropertyRef Name="NoteID" />
+            </Principal>
+            <Dependent Role="NoteSelect">
+              <PropertyRef Name="NoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteSelec__UserI__1332DBDC">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="NoteSelect" Type="Self.NoteSelect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="NoteSelect">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteTrasm__NoteI__17F790F9">
+          <End Role="Note" Type="Self.Note" Multiplicity="1" />
+          <End Role="NoteTrasmit" Type="Self.NoteTrasmit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Note">
+              <PropertyRef Name="NoteID" />
+            </Principal>
+            <Dependent Role="NoteTrasmit">
+              <PropertyRef Name="NoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteTrasm__UserI__17036CC0">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="NoteTrasmit" Type="Self.NoteTrasmit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="NoteTrasmit">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Goods__49C3F6B7">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="GoodsID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="GoodsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Order__4AB81AF0">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__UserI__4BAC3F29">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__UserID__46E78A0C">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Privateme__Priva__4F7CD00D">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Privatemessage" Type="Self.Privatemessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Privatemessage">
+              <PropertyRef Name="Privatemessage_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Privateme__UserI__4E88ABD4">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Privatemessage" Type="Self.Privatemessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Privatemessage">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shirt__WardrobeI__59063A47">
+          <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
+          <End Role="Shirt" Type="Self.Shirt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wardrobe">
+              <PropertyRef Name="WardrobeID" />
+            </Principal>
+            <Dependent Role="Shirt">
+              <PropertyRef Name="WardrobeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Suit__WardrobeID__5EBF139D">
+          <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
+          <End Role="Suit" Type="Self.Suit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wardrobe">
+              <PropertyRef Name="WardrobeID" />
+            </Principal>
+            <Dependent Role="Suit">
+              <PropertyRef Name="WardrobeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Attenti__User1__6EF57B66">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="U_Attention_U" Type="Self.U_Attention_U" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="U_Attention_U">
+              <PropertyRef Name="User1ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Attenti__User2__6FE99F9F">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="U_Attention_U" Type="Self.U_Attention_U" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="U_Attention_U">
+              <PropertyRef Name="User2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Collect__Coord__68487DD7">
+          <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="1" />
+          <End Role="U_Collect_Coordinate" Type="Self.U_Collect_Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coordinate">
+              <PropertyRef Name="CoordinateID" />
+            </Principal>
+            <Dependent Role="U_Collect_Coordinate">
+              <PropertyRef Name="CoordinateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Collect__UserI__6754599E">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="U_Collect_Coordinate" Type="Self.U_Collect_Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="U_Collect_Coordinate">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Dislike__Coord__6C190EBB">
+          <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="1" />
+          <End Role="U_Dislike_Coordinate" Type="Self.U_Dislike_Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coordinate">
+              <PropertyRef Name="CoordinateID" />
+            </Principal>
+            <Dependent Role="U_Dislike_Coordinate">
+              <PropertyRef Name="CoordinateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Dislike__UserI__6B24EA82">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="U_Dislike_Coordinate" Type="Self.U_Dislike_Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="U_Dislike_Coordinate">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Reply_N__NoteC__1BC821DD">
+          <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="1" />
+          <End Role="U_Reply_NoteComment" Type="Self.U_Reply_NoteComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NoteComment">
+              <PropertyRef Name="NoteCommentID" />
+            </Principal>
+            <Dependent Role="U_Reply_NoteComment">
+              <PropertyRef Name="NoteCommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Reply_N__UserI__1AD3FDA4">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="U_Reply_NoteComment" Type="Self.U_Reply_NoteComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="U_Reply_NoteComment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Reply_V__UserI__04E4BC85">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="U_Reply_VideoComment" Type="Self.U_Reply_VideoComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="U_Reply_VideoComment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Reply_V__Video__05D8E0BE">
+          <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="1" />
+          <End Role="U_Reply_VideoComment" Type="Self.U_Reply_VideoComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoComment">
+              <PropertyRef Name="VideoCommentID" />
+            </Principal>
+            <Dependent Role="U_Reply_VideoComment">
+              <PropertyRef Name="VideocommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Video__UserID__72C60C4A">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Video" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoComm__UserI__75A278F5">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="VideoComment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoComm__Video__76969D2E">
+          <End Role="Video" Type="Self.Video" Multiplicity="1" />
+          <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="VideoID" />
+            </Principal>
+            <Dependent Role="VideoComment">
+              <PropertyRef Name="VideoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoLike__UserI__797309D9">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="VideoLike" Type="Self.VideoLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="VideoLike">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoLike__Video__7A672E12">
+          <End Role="Video" Type="Self.Video" Multiplicity="1" />
+          <End Role="VideoLike" Type="Self.VideoLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="VideoID" />
+            </Principal>
+            <Dependent Role="VideoLike">
+              <PropertyRef Name="VideoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoSele__UserI__7D439ABD">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="VideoSelect" Type="Self.VideoSelect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="VideoSelect">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoSele__Video__7E37BEF6">
+          <End Role="Video" Type="Self.Video" Multiplicity="1" />
+          <End Role="VideoSelect" Type="Self.VideoSelect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="VideoID" />
+            </Principal>
+            <Dependent Role="VideoSelect">
+              <PropertyRef Name="VideoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoTras__UserI__01142BA1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="VideoTrasmit" Type="Self.VideoTrasmit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="VideoTrasmit">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoTras__Video__02084FDA">
+          <End Role="Video" Type="Self.Video" Multiplicity="1" />
+          <End Role="VideoTrasmit" Type="Self.VideoTrasmit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="VideoID" />
+            </Principal>
+            <Dependent Role="VideoTrasmit">
+              <PropertyRef Name="VideoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wardrobe__Userid__534D60F1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Wardrobe">
+              <PropertyRef Name="Userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Cart_Orders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Tel" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="yichuModelStoreContainer">
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coat" EntityType="Self.Coat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Collect" EntityType="Self.Collect" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComReply" EntityType="Self.ComReply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coordinate" EntityType="Self.Coordinate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoodsComment" EntityType="Self.GoodsComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoodsCommentsLike" EntityType="Self.GoodsCommentsLike" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoodsLike" EntityType="Self.GoodsLike" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NetherGarment" EntityType="Self.NetherGarment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Note" EntityType="Self.Note" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NoteComment" EntityType="Self.NoteComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NoteLike" EntityType="Self.NoteLike" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NoteSelect" EntityType="Self.NoteSelect" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NoteTrasmit" EntityType="Self.NoteTrasmit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privatemessage" EntityType="Self.Privatemessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shirt" EntityType="Self.Shirt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suit" EntityType="Self.Suit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ttype" EntityType="Self.Ttype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="U_Attention_U" EntityType="Self.U_Attention_U" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="U_Collect_Coordinate" EntityType="Self.U_Collect_Coordinate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="U_Dislike_Coordinate" EntityType="Self.U_Dislike_Coordinate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="U_Reply_NoteComment" EntityType="Self.U_Reply_NoteComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="U_Reply_VideoComment" EntityType="Self.U_Reply_VideoComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoComment" EntityType="Self.VideoComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoLike" EntityType="Self.VideoLike" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoSelect" EntityType="Self.VideoSelect" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoTrasmit" EntityType="Self.VideoTrasmit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wardrobe" EntityType="Self.Wardrobe" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cart__GoodsID__3F466844" Association="Self.FK__Cart__GoodsID__3F466844">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__UserID__3E52440B" Association="Self.FK__Cart__UserID__3E52440B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Category__ColorI__1BFD2C07" Association="Self.FK__Category__ColorI__1BFD2C07">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Category__TtypeI__1CF15040" Association="Self.FK__Category__TtypeI__1CF15040">
+            <End Role="Ttype" EntitySet="Ttype" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coat__WardrobeID__5629CD9C" Association="Self.FK__Coat__WardrobeID__5629CD9C">
+            <End Role="Wardrobe" EntitySet="Wardrobe" />
+            <End Role="Coat" EntitySet="Coat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Collect__GoodsID__4316F928" Association="Self.FK__Collect__GoodsID__4316F928">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Collect" EntitySet="Collect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Collect__UserID__4222D4EF" Association="Self.FK__Collect__UserID__4222D4EF">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Collect" EntitySet="Collect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ComReply__GoodsC__2D27B809" Association="Self.FK__ComReply__GoodsC__2D27B809">
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+            <End Role="ComReply" EntitySet="ComReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ComReply__UserID__2C3393D0" Association="Self.FK__ComReply__UserID__2C3393D0">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ComReply" EntitySet="ComReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__CoatI__619B8048" Association="Self.FK__Coordinat__CoatI__619B8048">
+            <End Role="Coat" EntitySet="Coat" />
+            <End Role="Coordinate" EntitySet="Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__Nethe__6383C8BA" Association="Self.FK__Coordinat__Nethe__6383C8BA">
+            <End Role="NetherGarment" EntitySet="NetherGarment" />
+            <End Role="Coordinate" EntitySet="Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__Shirt__628FA481" Association="Self.FK__Coordinat__Shirt__628FA481">
+            <End Role="Shirt" EntitySet="Shirt" />
+            <End Role="Coordinate" EntitySet="Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__SuitI__6477ECF3" Association="Self.FK__Coordinat__SuitI__6477ECF3">
+            <End Role="Suit" EntitySet="Suit" />
+            <End Role="Coordinate" EntitySet="Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods__CategoryI__239E4DCF" Association="Self.FK__Goods__CategoryI__239E4DCF">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsComm__Goods__29572725" Association="Self.FK__GoodsComm__Goods__29572725">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsComm__Goods__31EC6D26" Association="Self.FK__GoodsComm__Goods__31EC6D26">
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+            <End Role="GoodsCommentsLike" EntitySet="GoodsCommentsLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsComm__UserI__286302EC" Association="Self.FK__GoodsComm__UserI__286302EC">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsComm__UserI__30F848ED" Association="Self.FK__GoodsComm__UserI__30F848ED">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GoodsCommentsLike" EntitySet="GoodsCommentsLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsLike__Goods__36B12243" Association="Self.FK__GoodsLike__Goods__36B12243">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="GoodsLike" EntitySet="GoodsLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsLike__UserI__35BCFE0A" Association="Self.FK__GoodsLike__UserI__35BCFE0A">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GoodsLike" EntitySet="GoodsLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Grade__GoodsID__3A81B327" Association="Self.FK__Grade__GoodsID__3A81B327">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Grade__UserID__398D8EEE" Association="Self.FK__Grade__UserID__398D8EEE">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NetherGar__Wardr__5BE2A6F2" Association="Self.FK__NetherGar__Wardr__5BE2A6F2">
+            <End Role="Wardrobe" EntitySet="Wardrobe" />
+            <End Role="NetherGarment" EntitySet="NetherGarment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Note__UserID__08B54D69" Association="Self.FK__Note__UserID__08B54D69">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Note" EntitySet="Note" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteComme__NoteI__0C85DE4D" Association="Self.FK__NoteComme__NoteI__0C85DE4D">
+            <End Role="Note" EntitySet="Note" />
+            <End Role="NoteComment" EntitySet="NoteComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteComme__UserI__0B91BA14" Association="Self.FK__NoteComme__UserI__0B91BA14">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="NoteComment" EntitySet="NoteComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteLike__NoteID__10566F31" Association="Self.FK__NoteLike__NoteID__10566F31">
+            <End Role="Note" EntitySet="Note" />
+            <End Role="NoteLike" EntitySet="NoteLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteLike__UserID__0F624AF8" Association="Self.FK__NoteLike__UserID__0F624AF8">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="NoteLike" EntitySet="NoteLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteSelec__NoteI__14270015" Association="Self.FK__NoteSelec__NoteI__14270015">
+            <End Role="Note" EntitySet="Note" />
+            <End Role="NoteSelect" EntitySet="NoteSelect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteSelec__UserI__1332DBDC" Association="Self.FK__NoteSelec__UserI__1332DBDC">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="NoteSelect" EntitySet="NoteSelect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteTrasm__NoteI__17F790F9" Association="Self.FK__NoteTrasm__NoteI__17F790F9">
+            <End Role="Note" EntitySet="Note" />
+            <End Role="NoteTrasmit" EntitySet="NoteTrasmit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteTrasm__UserI__17036CC0" Association="Self.FK__NoteTrasm__UserI__17036CC0">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="NoteTrasmit" EntitySet="NoteTrasmit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Goods__49C3F6B7" Association="Self.FK__OrderDeta__Goods__49C3F6B7">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Order__4AB81AF0" Association="Self.FK__OrderDeta__Order__4AB81AF0">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__UserI__4BAC3F29" Association="Self.FK__OrderDeta__UserI__4BAC3F29">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__UserID__46E78A0C" Association="Self.FK__Orders__UserID__46E78A0C">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Privateme__Priva__4F7CD00D" Association="Self.FK__Privateme__Priva__4F7CD00D">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Privatemessage" EntitySet="Privatemessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Privateme__UserI__4E88ABD4" Association="Self.FK__Privateme__UserI__4E88ABD4">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Privatemessage" EntitySet="Privatemessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shirt__WardrobeI__59063A47" Association="Self.FK__Shirt__WardrobeI__59063A47">
+            <End Role="Wardrobe" EntitySet="Wardrobe" />
+            <End Role="Shirt" EntitySet="Shirt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Suit__WardrobeID__5EBF139D" Association="Self.FK__Suit__WardrobeID__5EBF139D">
+            <End Role="Wardrobe" EntitySet="Wardrobe" />
+            <End Role="Suit" EntitySet="Suit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Attenti__User1__6EF57B66" Association="Self.FK__U_Attenti__User1__6EF57B66">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="U_Attention_U" EntitySet="U_Attention_U" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Attenti__User2__6FE99F9F" Association="Self.FK__U_Attenti__User2__6FE99F9F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="U_Attention_U" EntitySet="U_Attention_U" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Collect__Coord__68487DD7" Association="Self.FK__U_Collect__Coord__68487DD7">
+            <End Role="Coordinate" EntitySet="Coordinate" />
+            <End Role="U_Collect_Coordinate" EntitySet="U_Collect_Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Collect__UserI__6754599E" Association="Self.FK__U_Collect__UserI__6754599E">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="U_Collect_Coordinate" EntitySet="U_Collect_Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Dislike__Coord__6C190EBB" Association="Self.FK__U_Dislike__Coord__6C190EBB">
+            <End Role="Coordinate" EntitySet="Coordinate" />
+            <End Role="U_Dislike_Coordinate" EntitySet="U_Dislike_Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Dislike__UserI__6B24EA82" Association="Self.FK__U_Dislike__UserI__6B24EA82">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="U_Dislike_Coordinate" EntitySet="U_Dislike_Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Reply_N__NoteC__1BC821DD" Association="Self.FK__U_Reply_N__NoteC__1BC821DD">
+            <End Role="NoteComment" EntitySet="NoteComment" />
+            <End Role="U_Reply_NoteComment" EntitySet="U_Reply_NoteComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Reply_N__UserI__1AD3FDA4" Association="Self.FK__U_Reply_N__UserI__1AD3FDA4">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="U_Reply_NoteComment" EntitySet="U_Reply_NoteComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Reply_V__UserI__04E4BC85" Association="Self.FK__U_Reply_V__UserI__04E4BC85">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="U_Reply_VideoComment" EntitySet="U_Reply_VideoComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Reply_V__Video__05D8E0BE" Association="Self.FK__U_Reply_V__Video__05D8E0BE">
+            <End Role="VideoComment" EntitySet="VideoComment" />
+            <End Role="U_Reply_VideoComment" EntitySet="U_Reply_VideoComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Video__UserID__72C60C4A" Association="Self.FK__Video__UserID__72C60C4A">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Video" EntitySet="Video" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoComm__UserI__75A278F5" Association="Self.FK__VideoComm__UserI__75A278F5">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="VideoComment" EntitySet="VideoComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoComm__Video__76969D2E" Association="Self.FK__VideoComm__Video__76969D2E">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="VideoComment" EntitySet="VideoComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoLike__UserI__797309D9" Association="Self.FK__VideoLike__UserI__797309D9">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="VideoLike" EntitySet="VideoLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoLike__Video__7A672E12" Association="Self.FK__VideoLike__Video__7A672E12">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="VideoLike" EntitySet="VideoLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoSele__UserI__7D439ABD" Association="Self.FK__VideoSele__UserI__7D439ABD">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="VideoSelect" EntitySet="VideoSelect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoSele__Video__7E37BEF6" Association="Self.FK__VideoSele__Video__7E37BEF6">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="VideoSelect" EntitySet="VideoSelect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoTras__UserI__01142BA1" Association="Self.FK__VideoTras__UserI__01142BA1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="VideoTrasmit" EntitySet="VideoTrasmit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoTras__Video__02084FDA" Association="Self.FK__VideoTras__Video__02084FDA">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="VideoTrasmit" EntitySet="VideoTrasmit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wardrobe__Userid__534D60F1" Association="Self.FK__Wardrobe__Userid__534D60F1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Wardrobe" EntitySet="Wardrobe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="yichuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="GoodsID" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="CartTime" Type="DateTime" Precision="3" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Flag" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__Cart__GoodsID__3F466844" FromRole="Cart" ToRole="Goods" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Cart__UserID__3E52440B" FromRole="Cart" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="TtypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Color" Relationship="Self.FK__Category__ColorI__1BFD2C07" FromRole="Category" ToRole="Color" />
+          <NavigationProperty Name="Ttype" Relationship="Self.FK__Category__TtypeI__1CF15040" FromRole="Category" ToRole="Ttype" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__Goods__CategoryI__239E4DCF" FromRole="Category" ToRole="Goods" />
+        </EntityType>
+        <EntityType Name="Coat">
+          <Key>
+            <PropertyRef Name="CoatID" />
+          </Key>
+          <Property Name="CoatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Color" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Season" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Design" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Material" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="WardrobeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__Coat__WardrobeID__5629CD9C" FromRole="Coat" ToRole="Wardrobe" />
+          <NavigationProperty Name="Coordinate" Relationship="Self.FK__Coordinat__CoatI__619B8048" FromRole="Coat" ToRole="Coordinate" />
+        </EntityType>
+        <EntityType Name="Collect">
+          <Key>
+            <PropertyRef Name="CollectID" />
+          </Key>
+          <Property Name="CollectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="GoodsID" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__Collect__GoodsID__4316F928" FromRole="Collect" ToRole="Goods" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Collect__UserID__4222D4EF" FromRole="Collect" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorID" />
+          </Key>
+          <Property Name="ColorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Color1" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Category__ColorI__1BFD2C07" FromRole="Color" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="ComReply">
+          <Key>
+            <PropertyRef Name="ComReplyID" />
+          </Key>
+          <Property Name="ComReplyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="GoodsCommentID" Type="Int32" />
+          <Property Name="RepContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RepTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="GoodsComment" Relationship="Self.FK__ComReply__GoodsC__2D27B809" FromRole="ComReply" ToRole="GoodsComment" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__ComReply__UserID__2C3393D0" FromRole="ComReply" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Coordinate">
+          <Key>
+            <PropertyRef Name="CoordinateID" />
+          </Key>
+          <Property Name="CoordinateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CoatID" Type="Int32" />
+          <Property Name="ShirtID" Type="Int32" />
+          <Property Name="NetherGarmentID" Type="Int32" />
+          <Property Name="SuitID" Type="Int32" />
+          <NavigationProperty Name="Coat" Relationship="Self.FK__Coordinat__CoatI__619B8048" FromRole="Coordinate" ToRole="Coat" />
+          <NavigationProperty Name="NetherGarment" Relationship="Self.FK__Coordinat__Nethe__6383C8BA" FromRole="Coordinate" ToRole="NetherGarment" />
+          <NavigationProperty Name="Shirt" Relationship="Self.FK__Coordinat__Shirt__628FA481" FromRole="Coordinate" ToRole="Shirt" />
+          <NavigationProperty Name="Suit" Relationship="Self.FK__Coordinat__SuitI__6477ECF3" FromRole="Coordinate" ToRole="Suit" />
+          <NavigationProperty Name="U_Collect_Coordinate" Relationship="Self.FK__U_Collect__Coord__68487DD7" FromRole="Coordinate" ToRole="U_Collect_Coordinate" />
+          <NavigationProperty Name="U_Dislike_Coordinate" Relationship="Self.FK__U_Dislike__Coord__6C190EBB" FromRole="Coordinate" ToRole="U_Dislike_Coordinate" />
+        </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="GoodsID" />
+          </Key>
+          <Property Name="GoodsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Season" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Material" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="Style" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="GoodsImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Unitprice" Type="Double" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="SizeImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ShangjiaTime" Type="DateTime" Precision="3" />
+          <Property Name="Pageview" Type="Int32" />
+          <Property Name="Size" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="StorageAmount" Type="Int32" />
+          <NavigationProperty Name="Cart" Relationship="Self.FK__Cart__GoodsID__3F466844" FromRole="Goods" ToRole="Cart" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Goods__CategoryI__239E4DCF" FromRole="Goods" ToRole="Category" />
+          <NavigationProperty Name="Collect" Relationship="Self.FK__Collect__GoodsID__4316F928" FromRole="Goods" ToRole="Collect" />
+          <NavigationProperty Name="GoodsComment" Relationship="Self.FK__GoodsComm__Goods__29572725" FromRole="Goods" ToRole="GoodsComment" />
+          <NavigationProperty Name="GoodsLike" Relationship="Self.FK__GoodsLike__Goods__36B12243" FromRole="Goods" ToRole="GoodsLike" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK__Grade__GoodsID__3A81B327" FromRole="Goods" ToRole="Grade" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Goods__49C3F6B7" FromRole="Goods" ToRole="OrderDetails" />
+        </EntityType>
+        <EntityType Name="GoodsComment">
+          <Key>
+            <PropertyRef Name="GoodsCommentID" />
+          </Key>
+          <Property Name="GoodsCommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ComImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Video" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImageOrNot" Type="Boolean" />
+          <Property Name="VideoOrNot" Type="Boolean" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="GoodsID" Type="Int32" Nullable="false" />
+          <Property Name="ComTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ComReply" Relationship="Self.FK__ComReply__GoodsC__2D27B809" FromRole="GoodsComment" ToRole="ComReply" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__GoodsComm__Goods__29572725" FromRole="GoodsComment" ToRole="Goods" />
+          <NavigationProperty Name="GoodsCommentsLike" Relationship="Self.FK__GoodsComm__Goods__31EC6D26" FromRole="GoodsComment" ToRole="GoodsCommentsLike" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__GoodsComm__UserI__286302EC" FromRole="GoodsComment" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="GoodsCommentsLike">
+          <Key>
+            <PropertyRef Name="GoodsCommentsLikeID" />
+          </Key>
+          <Property Name="GoodsCommentsLikeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="GoodsCommentID" Type="Int32" Nullable="false" />
+          <Property Name="ThumbNum" Type="Int32" />
+          <Property Name="ThumbTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="GoodsComment" Relationship="Self.FK__GoodsComm__Goods__31EC6D26" FromRole="GoodsCommentsLike" ToRole="GoodsComment" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__GoodsComm__UserI__30F848ED" FromRole="GoodsCommentsLike" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="GoodsLike">
+          <Key>
+            <PropertyRef Name="GoodsLikeID" />
+          </Key>
+          <Property Name="GoodsLikeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="GoodsID" Type="Int32" Nullable="false" />
+          <Property Name="ThumbNum" Type="Int32" />
+          <Property Name="ThumbTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__GoodsLike__Goods__36B12243" FromRole="GoodsLike" ToRole="Goods" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__GoodsLike__UserI__35BCFE0A" FromRole="GoodsLike" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="GradeID" />
+          </Key>
+          <Property Name="GradeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="GoodsID" Type="Int32" Nullable="false" />
+          <Property Name="Grade1" Type="Int32" />
+          <Property Name="GradeTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__Grade__GoodsID__3A81B327" FromRole="Grade" ToRole="Goods" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Grade__UserID__398D8EEE" FromRole="Grade" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="NetherGarment">
+          <Key>
+            <PropertyRef Name="NetherGarmentID" />
+          </Key>
+          <Property Name="NetherGarmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Color" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Season" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Design" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Material" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="WardrobeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Coordinate" Relationship="Self.FK__Coordinat__Nethe__6383C8BA" FromRole="NetherGarment" ToRole="Coordinate" />
+          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__NetherGar__Wardr__5BE2A6F2" FromRole="NetherGarment" ToRole="Wardrobe" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="NoteID" />
+          </Key>
+          <Property Name="NoteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Img" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NoteContent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Note__UserID__08B54D69" FromRole="Note" ToRole="Users" />
+          <NavigationProperty Name="NoteComment" Relationship="Self.FK__NoteComme__NoteI__0C85DE4D" FromRole="Note" ToRole="NoteComment" />
+          <NavigationProperty Name="NoteLike" Relationship="Self.FK__NoteLike__NoteID__10566F31" FromRole="Note" ToRole="NoteLike" />
+          <NavigationProperty Name="NoteSelect" Relationship="Self.FK__NoteSelec__NoteI__14270015" FromRole="Note" ToRole="NoteSelect" />
+          <NavigationProperty Name="NoteTrasmit" Relationship="Self.FK__NoteTrasm__NoteI__17F790F9" FromRole="Note" ToRole="NoteTrasmit" />
+        </EntityType>
+        <EntityType Name="NoteComment">
+          <Key>
+            <PropertyRef Name="NoteCommentID" />
+          </Key>
+          <Property Name="NoteCommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nccontent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="likenum" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="NoteID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__NoteComme__NoteI__0C85DE4D" FromRole="NoteComment" ToRole="Note" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__NoteComme__UserI__0B91BA14" FromRole="NoteComment" ToRole="Users" />
+          <NavigationProperty Name="U_Reply_NoteComment" Relationship="Self.FK__U_Reply_N__NoteC__1BC821DD" FromRole="NoteComment" ToRole="U_Reply_NoteComment" />
+        </EntityType>
+        <EntityType Name="NoteLike">
+          <Key>
+            <PropertyRef Name="NoteLikeID" />
+          </Key>
+          <Property Name="NoteLikeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="num" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="NoteID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__NoteLike__NoteID__10566F31" FromRole="NoteLike" ToRole="Note" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__NoteLike__UserID__0F624AF8" FromRole="NoteLike" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="NoteSelect">
+          <Key>
+            <PropertyRef Name="NoteSelectID" />
+          </Key>
+          <Property Name="NoteSelectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="NoteID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__NoteSelec__NoteI__14270015" FromRole="NoteSelect" ToRole="Note" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__NoteSelec__UserI__1332DBDC" FromRole="NoteSelect" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="NoteTrasmit">
+          <Key>
+            <PropertyRef Name="NoteTrasmitID" />
+          </Key>
+          <Property Name="NoteTrasmitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddContent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="NoteID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__NoteTrasm__NoteI__17F790F9" FromRole="NoteTrasmit" ToRole="Note" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__NoteTrasm__UserI__17036CC0" FromRole="NoteTrasmit" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailsID" />
+          </Key>
+          <Property Name="OrderDetailsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GoodsID" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__OrderDeta__Goods__49C3F6B7" FromRole="OrderDetails" ToRole="Goods" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__OrderDeta__Order__4AB81AF0" FromRole="OrderDetails" ToRole="Orders" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__OrderDeta__UserI__4BAC3F29" FromRole="OrderDetails" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderTime" Type="DateTime" Precision="3" />
+          <Property Name="TotalAmount" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__4AB81AF0" FromRole="Orders" ToRole="OrderDetails" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Orders__UserID__46E78A0C" FromRole="Orders" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Privatemessage">
+          <Key>
+            <PropertyRef Name="PrivatemessageID" />
+          </Key>
+          <Property Name="PrivatemessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Privatemessage_UserID" Type="Int32" Nullable="false" />
+          <Property Name="MessageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MessageTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Privateme__Priva__4F7CD00D" FromRole="Privatemessage" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK__Privateme__UserI__4E88ABD4" FromRole="Privatemessage" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Shirt">
+          <Key>
+            <PropertyRef Name="ShirtID" />
+          </Key>
+          <Property Name="ShirtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Color" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Season" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Design" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Material" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="WardrobeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Coordinate" Relationship="Self.FK__Coordinat__Shirt__628FA481" FromRole="Shirt" ToRole="Coordinate" />
+          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__Shirt__WardrobeI__59063A47" FromRole="Shirt" ToRole="Wardrobe" />
+        </EntityType>
+        <EntityType Name="Suit">
+          <Key>
+            <PropertyRef Name="SuitID" />
+          </Key>
+          <Property Name="SuitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Color" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Season" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Design" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Material" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="WardrobeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Coordinate" Relationship="Self.FK__Coordinat__SuitI__6477ECF3" FromRole="Suit" ToRole="Coordinate" />
+          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__Suit__WardrobeID__5EBF139D" FromRole="Suit" ToRole="Wardrobe" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ttype">
+          <Key>
+            <PropertyRef Name="TtypeID" />
+          </Key>
+          <Property Name="TtypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ttype1" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Category__TtypeI__1CF15040" FromRole="Ttype" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="U_Attention_U">
+          <Key>
+            <PropertyRef Name="U_Attention_UID" />
+          </Key>
+          <Property Name="U_Attention_UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="User1ID" Type="Int32" Nullable="false" />
+          <Property Name="User2ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__U_Attenti__User1__6EF57B66" FromRole="U_Attention_U" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK__U_Attenti__User2__6FE99F9F" FromRole="U_Attention_U" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="U_Collect_Coordinate">
+          <Key>
+            <PropertyRef Name="U_Collect_CoordinateID" />
+          </Key>
+          <Property Name="U_Collect_CoordinateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CoordinateID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Coordinate" Relationship="Self.FK__U_Collect__Coord__68487DD7" FromRole="U_Collect_Coordinate" ToRole="Coordinate" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__U_Collect__UserI__6754599E" FromRole="U_Collect_Coordinate" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="U_Dislike_Coordinate">
+          <Key>
+            <PropertyRef Name="U_Dislike_CoordinateID" />
+          </Key>
+          <Property Name="U_Dislike_CoordinateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CoordinateID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Coordinate" Relationship="Self.FK__U_Dislike__Coord__6C190EBB" FromRole="U_Dislike_Coordinate" ToRole="Coordinate" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__U_Dislike__UserI__6B24EA82" FromRole="U_Dislike_Coordinate" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="U_Reply_NoteComment">
+          <Key>
+            <PropertyRef Name="U_Reply_NoteCommentID" />
+          </Key>
+          <Property Name="U_Reply_NoteCommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="URNContent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Likenum" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="NoteCommentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NoteComment" Relationship="Self.FK__U_Reply_N__NoteC__1BC821DD" FromRole="U_Reply_NoteComment" ToRole="NoteComment" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__U_Reply_N__UserI__1AD3FDA4" FromRole="U_Reply_NoteComment" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="U_Reply_VideoComment">
+          <Key>
+            <PropertyRef Name="U_Reply_VideoCommentID" />
+          </Key>
+          <Property Name="U_Reply_VideoCommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="VCContent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Likenum" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="VideocommentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__U_Reply_V__UserI__04E4BC85" FromRole="U_Reply_VideoComment" ToRole="Users" />
+          <NavigationProperty Name="VideoComment" Relationship="Self.FK__U_Reply_V__Video__05D8E0BE" FromRole="U_Reply_VideoComment" ToRole="VideoComment" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Quanxian" Type="Boolean" />
+          <Property Name="Role" Type="Boolean" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HeadImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sex" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="Wweight" Type="Int32" />
+          <Property Name="Waistline" Type="Int32" />
+          <Property Name="Tel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cart" Relationship="Self.FK__Cart__UserID__3E52440B" FromRole="Users" ToRole="Cart" />
+          <NavigationProperty Name="Collect" Relationship="Self.FK__Collect__UserID__4222D4EF" FromRole="Users" ToRole="Collect" />
+          <NavigationProperty Name="ComReply" Relationship="Self.FK__ComReply__UserID__2C3393D0" FromRole="Users" ToRole="ComReply" />
+          <NavigationProperty Name="GoodsComment" Relationship="Self.FK__GoodsComm__UserI__286302EC" FromRole="Users" ToRole="GoodsComment" />
+          <NavigationProperty Name="GoodsCommentsLike" Relationship="Self.FK__GoodsComm__UserI__30F848ED" FromRole="Users" ToRole="GoodsCommentsLike" />
+          <NavigationProperty Name="GoodsLike" Relationship="Self.FK__GoodsLike__UserI__35BCFE0A" FromRole="Users" ToRole="GoodsLike" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK__Grade__UserID__398D8EEE" FromRole="Users" ToRole="Grade" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__Note__UserID__08B54D69" FromRole="Users" ToRole="Note" />
+          <NavigationProperty Name="NoteComment" Relationship="Self.FK__NoteComme__UserI__0B91BA14" FromRole="Users" ToRole="NoteComment" />
+          <NavigationProperty Name="NoteLike" Relationship="Self.FK__NoteLike__UserID__0F624AF8" FromRole="Users" ToRole="NoteLike" />
+          <NavigationProperty Name="NoteSelect" Relationship="Self.FK__NoteSelec__UserI__1332DBDC" FromRole="Users" ToRole="NoteSelect" />
+          <NavigationProperty Name="NoteTrasmit" Relationship="Self.FK__NoteTrasm__UserI__17036CC0" FromRole="Users" ToRole="NoteTrasmit" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__UserI__4BAC3F29" FromRole="Users" ToRole="OrderDetails" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__UserID__46E78A0C" FromRole="Users" ToRole="Orders" />
+          <NavigationProperty Name="Privatemessage" Relationship="Self.FK__Privateme__Priva__4F7CD00D" FromRole="Users" ToRole="Privatemessage" />
+          <NavigationProperty Name="Privatemessage1" Relationship="Self.FK__Privateme__UserI__4E88ABD4" FromRole="Users" ToRole="Privatemessage" />
+          <NavigationProperty Name="U_Attention_U" Relationship="Self.FK__U_Attenti__User1__6EF57B66" FromRole="Users" ToRole="U_Attention_U" />
+          <NavigationProperty Name="U_Attention_U1" Relationship="Self.FK__U_Attenti__User2__6FE99F9F" FromRole="Users" ToRole="U_Attention_U" />
+          <NavigationProperty Name="U_Collect_Coordinate" Relationship="Self.FK__U_Collect__UserI__6754599E" FromRole="Users" ToRole="U_Collect_Coordinate" />
+          <NavigationProperty Name="U_Dislike_Coordinate" Relationship="Self.FK__U_Dislike__UserI__6B24EA82" FromRole="Users" ToRole="U_Dislike_Coordinate" />
+          <NavigationProperty Name="U_Reply_NoteComment" Relationship="Self.FK__U_Reply_N__UserI__1AD3FDA4" FromRole="Users" ToRole="U_Reply_NoteComment" />
+          <NavigationProperty Name="U_Reply_VideoComment" Relationship="Self.FK__U_Reply_V__UserI__04E4BC85" FromRole="Users" ToRole="U_Reply_VideoComment" />
+          <NavigationProperty Name="Video" Relationship="Self.FK__Video__UserID__72C60C4A" FromRole="Users" ToRole="Video" />
+          <NavigationProperty Name="VideoComment" Relationship="Self.FK__VideoComm__UserI__75A278F5" FromRole="Users" ToRole="VideoComment" />
+          <NavigationProperty Name="VideoLike" Relationship="Self.FK__VideoLike__UserI__797309D9" FromRole="Users" ToRole="VideoLike" />
+          <NavigationProperty Name="VideoSelect" Relationship="Self.FK__VideoSele__UserI__7D439ABD" FromRole="Users" ToRole="VideoSelect" />
+          <NavigationProperty Name="VideoTrasmit" Relationship="Self.FK__VideoTras__UserI__01142BA1" FromRole="Users" ToRole="VideoTrasmit" />
+          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__Wardrobe__Userid__534D60F1" FromRole="Users" ToRole="Wardrobe" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="VideoID" />
+          </Key>
+          <Property Name="VideoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Intro" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Adress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Video__UserID__72C60C4A" FromRole="Video" ToRole="Users" />
+          <NavigationProperty Name="VideoComment" Relationship="Self.FK__VideoComm__Video__76969D2E" FromRole="Video" ToRole="VideoComment" />
+          <NavigationProperty Name="VideoLike" Relationship="Self.FK__VideoLike__Video__7A672E12" FromRole="Video" ToRole="VideoLike" />
+          <NavigationProperty Name="VideoSelect" Relationship="Self.FK__VideoSele__Video__7E37BEF6" FromRole="Video" ToRole="VideoSelect" />
+          <NavigationProperty Name="VideoTrasmit" Relationship="Self.FK__VideoTras__Video__02084FDA" FromRole="Video" ToRole="VideoTrasmit" />
+        </EntityType>
+        <EntityType Name="VideoComment">
+          <Key>
+            <PropertyRef Name="VideoCommentID" />
+          </Key>
+          <Property Name="VideoCommentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Commentcotent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="likenum" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="VideoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="U_Reply_VideoComment" Relationship="Self.FK__U_Reply_V__Video__05D8E0BE" FromRole="VideoComment" ToRole="U_Reply_VideoComment" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__VideoComm__UserI__75A278F5" FromRole="VideoComment" ToRole="Users" />
+          <NavigationProperty Name="Video" Relationship="Self.FK__VideoComm__Video__76969D2E" FromRole="VideoComment" ToRole="Video" />
+        </EntityType>
+        <EntityType Name="VideoLike">
+          <Key>
+            <PropertyRef Name="VideoLIkeID" />
+          </Key>
+          <Property Name="VideoLIkeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="likenum" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="VideoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__VideoLike__UserI__797309D9" FromRole="VideoLike" ToRole="Users" />
+          <NavigationProperty Name="Video" Relationship="Self.FK__VideoLike__Video__7A672E12" FromRole="VideoLike" ToRole="Video" />
+        </EntityType>
+        <EntityType Name="VideoSelect">
+          <Key>
+            <PropertyRef Name="VideoSelectID" />
+          </Key>
+          <Property Name="VideoSelectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="VideoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__VideoSele__UserI__7D439ABD" FromRole="VideoSelect" ToRole="Users" />
+          <NavigationProperty Name="Video" Relationship="Self.FK__VideoSele__Video__7E37BEF6" FromRole="VideoSelect" ToRole="Video" />
+        </EntityType>
+        <EntityType Name="VideoTrasmit">
+          <Key>
+            <PropertyRef Name="VideoTrasmitID" />
+          </Key>
+          <Property Name="VideoTrasmitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddContent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="VideoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__VideoTras__UserI__01142BA1" FromRole="VideoTrasmit" ToRole="Users" />
+          <NavigationProperty Name="Video" Relationship="Self.FK__VideoTras__Video__02084FDA" FromRole="VideoTrasmit" ToRole="Video" />
+        </EntityType>
+        <EntityType Name="Wardrobe">
+          <Key>
+            <PropertyRef Name="WardrobeID" />
+          </Key>
+          <Property Name="WardrobeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Userid" Type="Int32" Nullable="false" />
+          <Property Name="Lock" Type="Boolean" />
+          <NavigationProperty Name="Coat" Relationship="Self.FK__Coat__WardrobeID__5629CD9C" FromRole="Wardrobe" ToRole="Coat" />
+          <NavigationProperty Name="NetherGarment" Relationship="Self.FK__NetherGar__Wardr__5BE2A6F2" FromRole="Wardrobe" ToRole="NetherGarment" />
+          <NavigationProperty Name="Shirt" Relationship="Self.FK__Shirt__WardrobeI__59063A47" FromRole="Wardrobe" ToRole="Shirt" />
+          <NavigationProperty Name="Suit" Relationship="Self.FK__Suit__WardrobeID__5EBF139D" FromRole="Wardrobe" ToRole="Suit" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Wardrobe__Userid__534D60F1" FromRole="Wardrobe" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK__Cart__GoodsID__3F466844">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="GoodsID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="GoodsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__UserID__3E52440B">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Category__ColorI__1BFD2C07">
+          <End Role="Color" Type="Self.Color" Multiplicity="1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Category__TtypeI__1CF15040">
+          <End Role="Ttype" Type="Self.Ttype" Multiplicity="1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ttype">
+              <PropertyRef Name="TtypeID" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="TtypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods__CategoryI__239E4DCF">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coat__WardrobeID__5629CD9C">
+          <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
+          <End Role="Coat" Type="Self.Coat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wardrobe">
+              <PropertyRef Name="WardrobeID" />
+            </Principal>
+            <Dependent Role="Coat">
+              <PropertyRef Name="WardrobeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__CoatI__619B8048">
+          <End Role="Coat" Type="Self.Coat" Multiplicity="0..1" />
+          <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coat">
+              <PropertyRef Name="CoatID" />
+            </Principal>
+            <Dependent Role="Coordinate">
+              <PropertyRef Name="CoatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Collect__GoodsID__4316F928">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="Collect" Type="Self.Collect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="GoodsID" />
+            </Principal>
+            <Dependent Role="Collect">
+              <PropertyRef Name="GoodsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Collect__UserID__4222D4EF">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Collect" Type="Self.Collect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Collect">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ComReply__GoodsC__2D27B809">
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="0..1" />
+          <End Role="ComReply" Type="Self.ComReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsComment">
+              <PropertyRef Name="GoodsCommentID" />
+            </Principal>
+            <Dependent Role="ComReply">
+              <PropertyRef Name="GoodsCommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ComReply__UserID__2C3393D0">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ComReply" Type="Self.ComReply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ComReply">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__Nethe__6383C8BA">
+          <End Role="NetherGarment" Type="Self.NetherGarment" Multiplicity="0..1" />
+          <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NetherGarment">
+              <PropertyRef Name="NetherGarmentID" />
+            </Principal>
+            <Dependent Role="Coordinate">
+              <PropertyRef Name="NetherGarmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__Shirt__628FA481">
+          <End Role="Shirt" Type="Self.Shirt" Multiplicity="0..1" />
+          <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shirt">
+              <PropertyRef Name="ShirtID" />
+            </Principal>
+            <Dependent Role="Coordinate">
+              <PropertyRef Name="ShirtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__SuitI__6477ECF3">
+          <End Role="Suit" Type="Self.Suit" Multiplicity="0..1" />
+          <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suit">
+              <PropertyRef Name="SuitID" />
+            </Principal>
+            <Dependent Role="Coordinate">
+              <PropertyRef Name="SuitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Collect__Coord__68487DD7">
+          <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="1" />
+          <End Role="U_Collect_Coordinate" Type="Self.U_Collect_Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coordinate">
+              <PropertyRef Name="CoordinateID" />
+            </Principal>
+            <Dependent Role="U_Collect_Coordinate">
+              <PropertyRef Name="CoordinateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Dislike__Coord__6C190EBB">
+          <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="1" />
+          <End Role="U_Dislike_Coordinate" Type="Self.U_Dislike_Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coordinate">
+              <PropertyRef Name="CoordinateID" />
+            </Principal>
+            <Dependent Role="U_Dislike_Coordinate">
+              <PropertyRef Name="CoordinateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsComm__Goods__29572725">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="GoodsID" />
+            </Principal>
+            <Dependent Role="GoodsComment">
+              <PropertyRef Name="GoodsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsLike__Goods__36B12243">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="GoodsLike" Type="Self.GoodsLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="GoodsID" />
+            </Principal>
+            <Dependent Role="GoodsLike">
+              <PropertyRef Name="GoodsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Grade__GoodsID__3A81B327">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="GoodsID" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="GoodsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Goods__49C3F6B7">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="GoodsID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="GoodsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsComm__Goods__31EC6D26">
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="1" />
+          <End Role="GoodsCommentsLike" Type="Self.GoodsCommentsLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsComment">
+              <PropertyRef Name="GoodsCommentID" />
+            </Principal>
+            <Dependent Role="GoodsCommentsLike">
+              <PropertyRef Name="GoodsCommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsComm__UserI__286302EC">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="GoodsComment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsComm__UserI__30F848ED">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="GoodsCommentsLike" Type="Self.GoodsCommentsLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="GoodsCommentsLike">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsLike__UserI__35BCFE0A">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="GoodsLike" Type="Self.GoodsLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="GoodsLike">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Grade__UserID__398D8EEE">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NetherGar__Wardr__5BE2A6F2">
+          <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
+          <End Role="NetherGarment" Type="Self.NetherGarment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wardrobe">
+              <PropertyRef Name="WardrobeID" />
+            </Principal>
+            <Dependent Role="NetherGarment">
+              <PropertyRef Name="WardrobeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Note__UserID__08B54D69">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Note" Type="Self.Note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Note">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteComme__NoteI__0C85DE4D">
+          <End Role="Note" Type="Self.Note" Multiplicity="1" />
+          <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Note">
+              <PropertyRef Name="NoteID" />
+            </Principal>
+            <Dependent Role="NoteComment">
+              <PropertyRef Name="NoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteLike__NoteID__10566F31">
+          <End Role="Note" Type="Self.Note" Multiplicity="1" />
+          <End Role="NoteLike" Type="Self.NoteLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Note">
+              <PropertyRef Name="NoteID" />
+            </Principal>
+            <Dependent Role="NoteLike">
+              <PropertyRef Name="NoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteSelec__NoteI__14270015">
+          <End Role="Note" Type="Self.Note" Multiplicity="1" />
+          <End Role="NoteSelect" Type="Self.NoteSelect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Note">
+              <PropertyRef Name="NoteID" />
+            </Principal>
+            <Dependent Role="NoteSelect">
+              <PropertyRef Name="NoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteTrasm__NoteI__17F790F9">
+          <End Role="Note" Type="Self.Note" Multiplicity="1" />
+          <End Role="NoteTrasmit" Type="Self.NoteTrasmit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Note">
+              <PropertyRef Name="NoteID" />
+            </Principal>
+            <Dependent Role="NoteTrasmit">
+              <PropertyRef Name="NoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteComme__UserI__0B91BA14">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="NoteComment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Reply_N__NoteC__1BC821DD">
+          <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="1" />
+          <End Role="U_Reply_NoteComment" Type="Self.U_Reply_NoteComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NoteComment">
+              <PropertyRef Name="NoteCommentID" />
+            </Principal>
+            <Dependent Role="U_Reply_NoteComment">
+              <PropertyRef Name="NoteCommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteLike__UserID__0F624AF8">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="NoteLike" Type="Self.NoteLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="NoteLike">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteSelec__UserI__1332DBDC">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="NoteSelect" Type="Self.NoteSelect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="NoteSelect">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NoteTrasm__UserI__17036CC0">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="NoteTrasmit" Type="Self.NoteTrasmit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="NoteTrasmit">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Order__4AB81AF0">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__UserI__4BAC3F29">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__UserID__46E78A0C">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Privateme__Priva__4F7CD00D">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Privatemessage" Type="Self.Privatemessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Privatemessage">
+              <PropertyRef Name="Privatemessage_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Privateme__UserI__4E88ABD4">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Privatemessage" Type="Self.Privatemessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Privatemessage">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shirt__WardrobeI__59063A47">
+          <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
+          <End Role="Shirt" Type="Self.Shirt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wardrobe">
+              <PropertyRef Name="WardrobeID" />
+            </Principal>
+            <Dependent Role="Shirt">
+              <PropertyRef Name="WardrobeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Suit__WardrobeID__5EBF139D">
+          <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
+          <End Role="Suit" Type="Self.Suit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wardrobe">
+              <PropertyRef Name="WardrobeID" />
+            </Principal>
+            <Dependent Role="Suit">
+              <PropertyRef Name="WardrobeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Attenti__User1__6EF57B66">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="U_Attention_U" Type="Self.U_Attention_U" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="U_Attention_U">
+              <PropertyRef Name="User1ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Attenti__User2__6FE99F9F">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="U_Attention_U" Type="Self.U_Attention_U" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="U_Attention_U">
+              <PropertyRef Name="User2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Collect__UserI__6754599E">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="U_Collect_Coordinate" Type="Self.U_Collect_Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="U_Collect_Coordinate">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Dislike__UserI__6B24EA82">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="U_Dislike_Coordinate" Type="Self.U_Dislike_Coordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="U_Dislike_Coordinate">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Reply_N__UserI__1AD3FDA4">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="U_Reply_NoteComment" Type="Self.U_Reply_NoteComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="U_Reply_NoteComment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Reply_V__UserI__04E4BC85">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="U_Reply_VideoComment" Type="Self.U_Reply_VideoComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="U_Reply_VideoComment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__U_Reply_V__Video__05D8E0BE">
+          <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="1" />
+          <End Role="U_Reply_VideoComment" Type="Self.U_Reply_VideoComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoComment">
+              <PropertyRef Name="VideoCommentID" />
+            </Principal>
+            <Dependent Role="U_Reply_VideoComment">
+              <PropertyRef Name="VideocommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Video__UserID__72C60C4A">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Video" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoComm__UserI__75A278F5">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="VideoComment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoLike__UserI__797309D9">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="VideoLike" Type="Self.VideoLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="VideoLike">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoSele__UserI__7D439ABD">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="VideoSelect" Type="Self.VideoSelect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="VideoSelect">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoTras__UserI__01142BA1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="VideoTrasmit" Type="Self.VideoTrasmit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="VideoTrasmit">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wardrobe__Userid__534D60F1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Wardrobe">
+              <PropertyRef Name="Userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoComm__Video__76969D2E">
+          <End Role="Video" Type="Self.Video" Multiplicity="1" />
+          <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="VideoID" />
+            </Principal>
+            <Dependent Role="VideoComment">
+              <PropertyRef Name="VideoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoLike__Video__7A672E12">
+          <End Role="Video" Type="Self.Video" Multiplicity="1" />
+          <End Role="VideoLike" Type="Self.VideoLike" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="VideoID" />
+            </Principal>
+            <Dependent Role="VideoLike">
+              <PropertyRef Name="VideoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoSele__Video__7E37BEF6">
+          <End Role="Video" Type="Self.Video" Multiplicity="1" />
+          <End Role="VideoSelect" Type="Self.VideoSelect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="VideoID" />
+            </Principal>
+            <Dependent Role="VideoSelect">
+              <PropertyRef Name="VideoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VideoTras__Video__02084FDA">
+          <End Role="Video" Type="Self.Video" Multiplicity="1" />
+          <End Role="VideoTrasmit" Type="Self.VideoTrasmit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Video">
+              <PropertyRef Name="VideoID" />
+            </Principal>
+            <Dependent Role="VideoTrasmit">
+              <PropertyRef Name="VideoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="yichuEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cart" EntityType="Self.Cart" />
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="Coat" EntityType="Self.Coat" />
+          <EntitySet Name="Collect" EntityType="Self.Collect" />
+          <EntitySet Name="Color" EntityType="Self.Color" />
+          <EntitySet Name="ComReply" EntityType="Self.ComReply" />
+          <EntitySet Name="Coordinate" EntityType="Self.Coordinate" />
+          <EntitySet Name="Goods" EntityType="Self.Goods" />
+          <EntitySet Name="GoodsComment" EntityType="Self.GoodsComment" />
+          <EntitySet Name="GoodsCommentsLike" EntityType="Self.GoodsCommentsLike" />
+          <EntitySet Name="GoodsLike" EntityType="Self.GoodsLike" />
+          <EntitySet Name="Grade" EntityType="Self.Grade" />
+          <EntitySet Name="NetherGarment" EntityType="Self.NetherGarment" />
+          <EntitySet Name="Note" EntityType="Self.Note" />
+          <EntitySet Name="NoteComment" EntityType="Self.NoteComment" />
+          <EntitySet Name="NoteLike" EntityType="Self.NoteLike" />
+          <EntitySet Name="NoteSelect" EntityType="Self.NoteSelect" />
+          <EntitySet Name="NoteTrasmit" EntityType="Self.NoteTrasmit" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="Privatemessage" EntityType="Self.Privatemessage" />
+          <EntitySet Name="Shirt" EntityType="Self.Shirt" />
+          <EntitySet Name="Suit" EntityType="Self.Suit" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Ttype" EntityType="Self.Ttype" />
+          <EntitySet Name="U_Attention_U" EntityType="Self.U_Attention_U" />
+          <EntitySet Name="U_Collect_Coordinate" EntityType="Self.U_Collect_Coordinate" />
+          <EntitySet Name="U_Dislike_Coordinate" EntityType="Self.U_Dislike_Coordinate" />
+          <EntitySet Name="U_Reply_NoteComment" EntityType="Self.U_Reply_NoteComment" />
+          <EntitySet Name="U_Reply_VideoComment" EntityType="Self.U_Reply_VideoComment" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Video" EntityType="Self.Video" />
+          <EntitySet Name="VideoComment" EntityType="Self.VideoComment" />
+          <EntitySet Name="VideoLike" EntityType="Self.VideoLike" />
+          <EntitySet Name="VideoSelect" EntityType="Self.VideoSelect" />
+          <EntitySet Name="VideoTrasmit" EntityType="Self.VideoTrasmit" />
+          <EntitySet Name="Wardrobe" EntityType="Self.Wardrobe" />
+          <AssociationSet Name="FK__Cart__GoodsID__3F466844" Association="Self.FK__Cart__GoodsID__3F466844">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__UserID__3E52440B" Association="Self.FK__Cart__UserID__3E52440B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Category__ColorI__1BFD2C07" Association="Self.FK__Category__ColorI__1BFD2C07">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Category__TtypeI__1CF15040" Association="Self.FK__Category__TtypeI__1CF15040">
+            <End Role="Ttype" EntitySet="Ttype" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods__CategoryI__239E4DCF" Association="Self.FK__Goods__CategoryI__239E4DCF">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coat__WardrobeID__5629CD9C" Association="Self.FK__Coat__WardrobeID__5629CD9C">
+            <End Role="Wardrobe" EntitySet="Wardrobe" />
+            <End Role="Coat" EntitySet="Coat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__CoatI__619B8048" Association="Self.FK__Coordinat__CoatI__619B8048">
+            <End Role="Coat" EntitySet="Coat" />
+            <End Role="Coordinate" EntitySet="Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Collect__GoodsID__4316F928" Association="Self.FK__Collect__GoodsID__4316F928">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Collect" EntitySet="Collect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Collect__UserID__4222D4EF" Association="Self.FK__Collect__UserID__4222D4EF">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Collect" EntitySet="Collect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ComReply__GoodsC__2D27B809" Association="Self.FK__ComReply__GoodsC__2D27B809">
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+            <End Role="ComReply" EntitySet="ComReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ComReply__UserID__2C3393D0" Association="Self.FK__ComReply__UserID__2C3393D0">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ComReply" EntitySet="ComReply" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__Nethe__6383C8BA" Association="Self.FK__Coordinat__Nethe__6383C8BA">
+            <End Role="NetherGarment" EntitySet="NetherGarment" />
+            <End Role="Coordinate" EntitySet="Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__Shirt__628FA481" Association="Self.FK__Coordinat__Shirt__628FA481">
+            <End Role="Shirt" EntitySet="Shirt" />
+            <End Role="Coordinate" EntitySet="Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__SuitI__6477ECF3" Association="Self.FK__Coordinat__SuitI__6477ECF3">
+            <End Role="Suit" EntitySet="Suit" />
+            <End Role="Coordinate" EntitySet="Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Collect__Coord__68487DD7" Association="Self.FK__U_Collect__Coord__68487DD7">
+            <End Role="Coordinate" EntitySet="Coordinate" />
+            <End Role="U_Collect_Coordinate" EntitySet="U_Collect_Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Dislike__Coord__6C190EBB" Association="Self.FK__U_Dislike__Coord__6C190EBB">
+            <End Role="Coordinate" EntitySet="Coordinate" />
+            <End Role="U_Dislike_Coordinate" EntitySet="U_Dislike_Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsComm__Goods__29572725" Association="Self.FK__GoodsComm__Goods__29572725">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsLike__Goods__36B12243" Association="Self.FK__GoodsLike__Goods__36B12243">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="GoodsLike" EntitySet="GoodsLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Grade__GoodsID__3A81B327" Association="Self.FK__Grade__GoodsID__3A81B327">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Goods__49C3F6B7" Association="Self.FK__OrderDeta__Goods__49C3F6B7">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsComm__Goods__31EC6D26" Association="Self.FK__GoodsComm__Goods__31EC6D26">
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+            <End Role="GoodsCommentsLike" EntitySet="GoodsCommentsLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsComm__UserI__286302EC" Association="Self.FK__GoodsComm__UserI__286302EC">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsComm__UserI__30F848ED" Association="Self.FK__GoodsComm__UserI__30F848ED">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GoodsCommentsLike" EntitySet="GoodsCommentsLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsLike__UserI__35BCFE0A" Association="Self.FK__GoodsLike__UserI__35BCFE0A">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="GoodsLike" EntitySet="GoodsLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Grade__UserID__398D8EEE" Association="Self.FK__Grade__UserID__398D8EEE">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NetherGar__Wardr__5BE2A6F2" Association="Self.FK__NetherGar__Wardr__5BE2A6F2">
+            <End Role="Wardrobe" EntitySet="Wardrobe" />
+            <End Role="NetherGarment" EntitySet="NetherGarment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Note__UserID__08B54D69" Association="Self.FK__Note__UserID__08B54D69">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Note" EntitySet="Note" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteComme__NoteI__0C85DE4D" Association="Self.FK__NoteComme__NoteI__0C85DE4D">
+            <End Role="Note" EntitySet="Note" />
+            <End Role="NoteComment" EntitySet="NoteComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteLike__NoteID__10566F31" Association="Self.FK__NoteLike__NoteID__10566F31">
+            <End Role="Note" EntitySet="Note" />
+            <End Role="NoteLike" EntitySet="NoteLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteSelec__NoteI__14270015" Association="Self.FK__NoteSelec__NoteI__14270015">
+            <End Role="Note" EntitySet="Note" />
+            <End Role="NoteSelect" EntitySet="NoteSelect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteTrasm__NoteI__17F790F9" Association="Self.FK__NoteTrasm__NoteI__17F790F9">
+            <End Role="Note" EntitySet="Note" />
+            <End Role="NoteTrasmit" EntitySet="NoteTrasmit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteComme__UserI__0B91BA14" Association="Self.FK__NoteComme__UserI__0B91BA14">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="NoteComment" EntitySet="NoteComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Reply_N__NoteC__1BC821DD" Association="Self.FK__U_Reply_N__NoteC__1BC821DD">
+            <End Role="NoteComment" EntitySet="NoteComment" />
+            <End Role="U_Reply_NoteComment" EntitySet="U_Reply_NoteComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteLike__UserID__0F624AF8" Association="Self.FK__NoteLike__UserID__0F624AF8">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="NoteLike" EntitySet="NoteLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteSelec__UserI__1332DBDC" Association="Self.FK__NoteSelec__UserI__1332DBDC">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="NoteSelect" EntitySet="NoteSelect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NoteTrasm__UserI__17036CC0" Association="Self.FK__NoteTrasm__UserI__17036CC0">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="NoteTrasmit" EntitySet="NoteTrasmit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Order__4AB81AF0" Association="Self.FK__OrderDeta__Order__4AB81AF0">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__UserI__4BAC3F29" Association="Self.FK__OrderDeta__UserI__4BAC3F29">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__UserID__46E78A0C" Association="Self.FK__Orders__UserID__46E78A0C">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Privateme__Priva__4F7CD00D" Association="Self.FK__Privateme__Priva__4F7CD00D">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Privatemessage" EntitySet="Privatemessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Privateme__UserI__4E88ABD4" Association="Self.FK__Privateme__UserI__4E88ABD4">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Privatemessage" EntitySet="Privatemessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shirt__WardrobeI__59063A47" Association="Self.FK__Shirt__WardrobeI__59063A47">
+            <End Role="Wardrobe" EntitySet="Wardrobe" />
+            <End Role="Shirt" EntitySet="Shirt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Suit__WardrobeID__5EBF139D" Association="Self.FK__Suit__WardrobeID__5EBF139D">
+            <End Role="Wardrobe" EntitySet="Wardrobe" />
+            <End Role="Suit" EntitySet="Suit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Attenti__User1__6EF57B66" Association="Self.FK__U_Attenti__User1__6EF57B66">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="U_Attention_U" EntitySet="U_Attention_U" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Attenti__User2__6FE99F9F" Association="Self.FK__U_Attenti__User2__6FE99F9F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="U_Attention_U" EntitySet="U_Attention_U" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Collect__UserI__6754599E" Association="Self.FK__U_Collect__UserI__6754599E">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="U_Collect_Coordinate" EntitySet="U_Collect_Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Dislike__UserI__6B24EA82" Association="Self.FK__U_Dislike__UserI__6B24EA82">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="U_Dislike_Coordinate" EntitySet="U_Dislike_Coordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Reply_N__UserI__1AD3FDA4" Association="Self.FK__U_Reply_N__UserI__1AD3FDA4">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="U_Reply_NoteComment" EntitySet="U_Reply_NoteComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Reply_V__UserI__04E4BC85" Association="Self.FK__U_Reply_V__UserI__04E4BC85">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="U_Reply_VideoComment" EntitySet="U_Reply_VideoComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__U_Reply_V__Video__05D8E0BE" Association="Self.FK__U_Reply_V__Video__05D8E0BE">
+            <End Role="VideoComment" EntitySet="VideoComment" />
+            <End Role="U_Reply_VideoComment" EntitySet="U_Reply_VideoComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Video__UserID__72C60C4A" Association="Self.FK__Video__UserID__72C60C4A">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Video" EntitySet="Video" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoComm__UserI__75A278F5" Association="Self.FK__VideoComm__UserI__75A278F5">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="VideoComment" EntitySet="VideoComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoLike__UserI__797309D9" Association="Self.FK__VideoLike__UserI__797309D9">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="VideoLike" EntitySet="VideoLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoSele__UserI__7D439ABD" Association="Self.FK__VideoSele__UserI__7D439ABD">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="VideoSelect" EntitySet="VideoSelect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoTras__UserI__01142BA1" Association="Self.FK__VideoTras__UserI__01142BA1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="VideoTrasmit" EntitySet="VideoTrasmit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wardrobe__Userid__534D60F1" Association="Self.FK__Wardrobe__Userid__534D60F1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Wardrobe" EntitySet="Wardrobe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoComm__Video__76969D2E" Association="Self.FK__VideoComm__Video__76969D2E">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="VideoComment" EntitySet="VideoComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoLike__Video__7A672E12" Association="Self.FK__VideoLike__Video__7A672E12">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="VideoLike" EntitySet="VideoLike" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoSele__Video__7E37BEF6" Association="Self.FK__VideoSele__Video__7E37BEF6">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="VideoSelect" EntitySet="VideoSelect" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VideoTras__Video__02084FDA" Association="Self.FK__VideoTras__Video__02084FDA">
+            <End Role="Video" EntitySet="Video" />
+            <End Role="VideoTrasmit" EntitySet="VideoTrasmit" />
+          </AssociationSet>
+          <FunctionImport Name="Cart_Orders">
+            <Parameter Name="UserID" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Tel" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(yichuModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(yichuModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="yichuModelStoreContainer" CdmEntityContainer="yichuEntities">
+          <EntitySetMapping Name="Cart">
+            <EntityTypeMapping TypeName="yichuModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="CartTime" ColumnName="CartTime" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="yichuModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="TtypeID" ColumnName="TtypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coat">
+            <EntityTypeMapping TypeName="yichuModel.Coat">
+              <MappingFragment StoreEntitySet="Coat">
+                <ScalarProperty Name="CoatID" ColumnName="CoatID" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="Design" ColumnName="Design" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="WardrobeID" ColumnName="WardrobeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Collect">
+            <EntityTypeMapping TypeName="yichuModel.Collect">
+              <MappingFragment StoreEntitySet="Collect">
+                <ScalarProperty Name="CollectID" ColumnName="CollectID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Color">
+            <EntityTypeMapping TypeName="yichuModel.Color">
+              <MappingFragment StoreEntitySet="Color">
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="Color1" ColumnName="Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComReply">
+            <EntityTypeMapping TypeName="yichuModel.ComReply">
+              <MappingFragment StoreEntitySet="ComReply">
+                <ScalarProperty Name="ComReplyID" ColumnName="ComReplyID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GoodsCommentID" ColumnName="GoodsCommentID" />
+                <ScalarProperty Name="RepContent" ColumnName="RepContent" />
+                <ScalarProperty Name="RepTime" ColumnName="RepTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coordinate">
+            <EntityTypeMapping TypeName="yichuModel.Coordinate">
+              <MappingFragment StoreEntitySet="Coordinate">
+                <ScalarProperty Name="CoordinateID" ColumnName="CoordinateID" />
+                <ScalarProperty Name="CoatID" ColumnName="CoatID" />
+                <ScalarProperty Name="ShirtID" ColumnName="ShirtID" />
+                <ScalarProperty Name="NetherGarmentID" ColumnName="NetherGarmentID" />
+                <ScalarProperty Name="SuitID" ColumnName="SuitID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods">
+            <EntityTypeMapping TypeName="yichuModel.Goods">
+              <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+                <ScalarProperty Name="GoodsImage" ColumnName="GoodsImage" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Unitprice" ColumnName="Unitprice" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="SizeImage" ColumnName="SizeImage" />
+                <ScalarProperty Name="ShangjiaTime" ColumnName="ShangjiaTime" />
+                <ScalarProperty Name="Pageview" ColumnName="Pageview" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="StorageAmount" ColumnName="StorageAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoodsComment">
+            <EntityTypeMapping TypeName="yichuModel.GoodsComment">
+              <MappingFragment StoreEntitySet="GoodsComment">
+                <ScalarProperty Name="GoodsCommentID" ColumnName="GoodsCommentID" />
+                <ScalarProperty Name="ComContent" ColumnName="ComContent" />
+                <ScalarProperty Name="ComImage" ColumnName="ComImage" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="ImageOrNot" ColumnName="ImageOrNot" />
+                <ScalarProperty Name="VideoOrNot" ColumnName="VideoOrNot" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
+                <ScalarProperty Name="ComTime" ColumnName="ComTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoodsCommentsLike">
+            <EntityTypeMapping TypeName="yichuModel.GoodsCommentsLike">
+              <MappingFragment StoreEntitySet="GoodsCommentsLike">
+                <ScalarProperty Name="GoodsCommentsLikeID" ColumnName="GoodsCommentsLikeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GoodsCommentID" ColumnName="GoodsCommentID" />
+                <ScalarProperty Name="ThumbNum" ColumnName="ThumbNum" />
+                <ScalarProperty Name="ThumbTime" ColumnName="ThumbTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoodsLike">
+            <EntityTypeMapping TypeName="yichuModel.GoodsLike">
+              <MappingFragment StoreEntitySet="GoodsLike">
+                <ScalarProperty Name="GoodsLikeID" ColumnName="GoodsLikeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
+                <ScalarProperty Name="ThumbNum" ColumnName="ThumbNum" />
+                <ScalarProperty Name="ThumbTime" ColumnName="ThumbTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grade">
+            <EntityTypeMapping TypeName="yichuModel.Grade">
+              <MappingFragment StoreEntitySet="Grade">
+                <ScalarProperty Name="GradeID" ColumnName="GradeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
+                <ScalarProperty Name="Grade1" ColumnName="Grade" />
+                <ScalarProperty Name="GradeTime" ColumnName="GradeTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NetherGarment">
+            <EntityTypeMapping TypeName="yichuModel.NetherGarment">
+              <MappingFragment StoreEntitySet="NetherGarment">
+                <ScalarProperty Name="NetherGarmentID" ColumnName="NetherGarmentID" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="Design" ColumnName="Design" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="WardrobeID" ColumnName="WardrobeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Note">
+            <EntityTypeMapping TypeName="yichuModel.Note">
+              <MappingFragment StoreEntitySet="Note">
+                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="NoteContent" ColumnName="NoteContent" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NoteComment">
+            <EntityTypeMapping TypeName="yichuModel.NoteComment">
+              <MappingFragment StoreEntitySet="NoteComment">
+                <ScalarProperty Name="NoteCommentID" ColumnName="NoteCommentID" />
+                <ScalarProperty Name="Nccontent" ColumnName="Nccontent" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="likenum" ColumnName="likenum" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NoteLike">
+            <EntityTypeMapping TypeName="yichuModel.NoteLike">
+              <MappingFragment StoreEntitySet="NoteLike">
+                <ScalarProperty Name="NoteLikeID" ColumnName="NoteLikeID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="num" ColumnName="num" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NoteSelect">
+            <EntityTypeMapping TypeName="yichuModel.NoteSelect">
+              <MappingFragment StoreEntitySet="NoteSelect">
+                <ScalarProperty Name="NoteSelectID" ColumnName="NoteSelectID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NoteTrasmit">
+            <EntityTypeMapping TypeName="yichuModel.NoteTrasmit">
+              <MappingFragment StoreEntitySet="NoteTrasmit">
+                <ScalarProperty Name="NoteTrasmitID" ColumnName="NoteTrasmitID" />
+                <ScalarProperty Name="AddContent" ColumnName="AddContent" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="yichuModel.OrderDetails">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="OrderDetailsID" ColumnName="OrderDetailsID" />
+                <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="yichuModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Privatemessage">
+            <EntityTypeMapping TypeName="yichuModel.Privatemessage">
+              <MappingFragment StoreEntitySet="Privatemessage">
+                <ScalarProperty Name="PrivatemessageID" ColumnName="PrivatemessageID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Privatemessage_UserID" ColumnName="Privatemessage_UserID" />
+                <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+                <ScalarProperty Name="MessageTime" ColumnName="MessageTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shirt">
+            <EntityTypeMapping TypeName="yichuModel.Shirt">
+              <MappingFragment StoreEntitySet="Shirt">
+                <ScalarProperty Name="ShirtID" ColumnName="ShirtID" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="Design" ColumnName="Design" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="WardrobeID" ColumnName="WardrobeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suit">
+            <EntityTypeMapping TypeName="yichuModel.Suit">
+              <MappingFragment StoreEntitySet="Suit">
+                <ScalarProperty Name="SuitID" ColumnName="SuitID" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="Design" ColumnName="Design" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="WardrobeID" ColumnName="WardrobeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="yichuModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ttype">
+            <EntityTypeMapping TypeName="yichuModel.Ttype">
+              <MappingFragment StoreEntitySet="Ttype">
+                <ScalarProperty Name="TtypeID" ColumnName="TtypeID" />
+                <ScalarProperty Name="Ttype1" ColumnName="Ttype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="U_Attention_U">
+            <EntityTypeMapping TypeName="yichuModel.U_Attention_U">
+              <MappingFragment StoreEntitySet="U_Attention_U">
+                <ScalarProperty Name="U_Attention_UID" ColumnName="U_Attention_UID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="User1ID" ColumnName="User1ID" />
+                <ScalarProperty Name="User2ID" ColumnName="User2ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="U_Collect_Coordinate">
+            <EntityTypeMapping TypeName="yichuModel.U_Collect_Coordinate">
+              <MappingFragment StoreEntitySet="U_Collect_Coordinate">
+                <ScalarProperty Name="U_Collect_CoordinateID" ColumnName="U_Collect_CoordinateID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CoordinateID" ColumnName="CoordinateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="U_Dislike_Coordinate">
+            <EntityTypeMapping TypeName="yichuModel.U_Dislike_Coordinate">
+              <MappingFragment StoreEntitySet="U_Dislike_Coordinate">
+                <ScalarProperty Name="U_Dislike_CoordinateID" ColumnName="U_Dislike_CoordinateID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CoordinateID" ColumnName="CoordinateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="U_Reply_NoteComment">
+            <EntityTypeMapping TypeName="yichuModel.U_Reply_NoteComment">
+              <MappingFragment StoreEntitySet="U_Reply_NoteComment">
+                <ScalarProperty Name="U_Reply_NoteCommentID" ColumnName="U_Reply_NoteCommentID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="URNContent" ColumnName="URNContent" />
+                <ScalarProperty Name="Likenum" ColumnName="Likenum" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="NoteCommentID" ColumnName="NoteCommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="U_Reply_VideoComment">
+            <EntityTypeMapping TypeName="yichuModel.U_Reply_VideoComment">
+              <MappingFragment StoreEntitySet="U_Reply_VideoComment">
+                <ScalarProperty Name="U_Reply_VideoCommentID" ColumnName="U_Reply_VideoCommentID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="VCContent" ColumnName="VCContent" />
+                <ScalarProperty Name="Likenum" ColumnName="Likenum" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="VideocommentID" ColumnName="VideocommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="yichuModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Quanxian" ColumnName="Quanxian" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="HeadImage" ColumnName="HeadImage" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Wweight" ColumnName="Wweight" />
+                <ScalarProperty Name="Waistline" ColumnName="Waistline" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Video">
+            <EntityTypeMapping TypeName="yichuModel.Video">
+              <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Intro" ColumnName="Intro" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoComment">
+            <EntityTypeMapping TypeName="yichuModel.VideoComment">
+              <MappingFragment StoreEntitySet="VideoComment">
+                <ScalarProperty Name="VideoCommentID" ColumnName="VideoCommentID" />
+                <ScalarProperty Name="Commentcotent" ColumnName="Commentcotent" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="likenum" ColumnName="likenum" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoLike">
+            <EntityTypeMapping TypeName="yichuModel.VideoLike">
+              <MappingFragment StoreEntitySet="VideoLike">
+                <ScalarProperty Name="VideoLIkeID" ColumnName="VideoLIkeID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="likenum" ColumnName="likenum" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoSelect">
+            <EntityTypeMapping TypeName="yichuModel.VideoSelect">
+              <MappingFragment StoreEntitySet="VideoSelect">
+                <ScalarProperty Name="VideoSelectID" ColumnName="VideoSelectID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoTrasmit">
+            <EntityTypeMapping TypeName="yichuModel.VideoTrasmit">
+              <MappingFragment StoreEntitySet="VideoTrasmit">
+                <ScalarProperty Name="VideoTrasmitID" ColumnName="VideoTrasmitID" />
+                <ScalarProperty Name="AddContent" ColumnName="AddContent" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wardrobe">
+            <EntityTypeMapping TypeName="yichuModel.Wardrobe">
+              <MappingFragment StoreEntitySet="Wardrobe">
+                <ScalarProperty Name="WardrobeID" ColumnName="WardrobeID" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Lock" ColumnName="Lock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Cart_Orders" FunctionName="yichuModel.Store.Cart_Orders" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="yichuModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="yichuModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="yichuModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="yichuModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="yichuModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="yichuModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="yichuModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="yichuModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="yichuModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
