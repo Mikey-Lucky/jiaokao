@@ -11,7 +11,8 @@ namespace 精致的衣橱.Controllers
         // GET: Default
         public ActionResult Index()
         {
-            return View();
+            int a;
+            return View(a);
         }
     }
 }
