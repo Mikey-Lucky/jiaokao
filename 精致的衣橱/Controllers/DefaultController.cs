@@ -9,7 +9,7 @@ namespace 精致的衣橱.Controllers
     public class DefaultController : Controller
     {
         // GET: Default
-        public ActionResult Index1()
+        public ActionResult Index2()
         {
             int a;
             return View(a);
