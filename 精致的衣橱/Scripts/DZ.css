@@ -50,7 +50,7 @@ textarea{
     overflow:hidden;
 }
 
-input {
+/*input*/p {
     width: 276px;
     height: 48px;
     border: 1px solid rgba(255,255,255,.4);
@@ -78,7 +78,7 @@ input.name {
 	  padding-left:45px;
 }
 
-input.email {
+/*input*/.email {
 	  background: rgba(255, 255, 255, 0.4) url(http://luismruiz.com/img/gemicon_email.png) no-repeat scroll 16px 20px;
 	  padding-left:45px;
 }
