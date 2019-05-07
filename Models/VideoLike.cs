@@ -16,7 +16,6 @@ namespace Models
     {
         public int VideoLIkeID { get; set; }
         public Nullable<System.DateTime> Time { get; set; }
-        public int likenum { get; set; }
         public int UserID { get; set; }
         public int VideoID { get; set; }
     

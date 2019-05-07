@@ -29,6 +29,7 @@ namespace Models
         public string Intro { get; set; }
         public string Adress { get; set; }
         public Nullable<System.DateTime> Time { get; set; }
+        public Nullable<int> likenum { get; set; }
         public int UserID { get; set; }
     
         public virtual Users Users { get; set; }

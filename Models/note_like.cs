@@ -12,14 +12,17 @@ namespace Models
     using System;
     using System.Collections.Generic;
     
-    public partial class NoteLike
+    public partial class note_like
     {
-        public int NoteLikeID { get; set; }
-        public Nullable<System.DateTime> Time { get; set; }
-        public int UserID { get; set; }
         public int NoteID { get; set; }
-    
-        public virtual Note Note { get; set; }
-        public virtual Users Users { get; set; }
+        public string img { get; set; }
+        public string title { get; set; }
+        public string notecontent { get; set; }
+        public Nullable<System.DateTime> notetime { get; set; }
+        public int noteuserid { get; set; }
+        public int notelikeid { get; set; }
+        public Nullable<System.DateTime> liketime { get; set; }
+        public Nullable<int> likenum { get; set; }
+        public int likeuserid { get; set; }
     }
 }

@@ -65,6 +65,8 @@ namespace Models
         public virtual DbSet<VideoSelect> VideoSelect { get; set; }
         public virtual DbSet<VideoTrasmit> VideoTrasmit { get; set; }
         public virtual DbSet<Wardrobe> Wardrobe { get; set; }
+        public virtual DbSet<note_like> note_like { get; set; }
+        public virtual DbSet<video_like> video_like { get; set; }
     
         public virtual int Cart_Orders(string userID, string userName, string tel, string addressID)
         {
