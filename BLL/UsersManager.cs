@@ -9,17 +9,24 @@ using Models;
 
 namespace BLL
 {
-    class UsersManager
+    public class UsersManager
     {
-        IUsers iusers = DataAccess.CreateUser();
-        public void Register(Users users)
+        IUsers iusers = DataAccess.CreateUsers();
+        public bool Register(string truename,string password,string tel)
         {
-            iusers.Register(users);
+            iusers.Register(truename,password,tel);
+            return true;
         }
-        public Users Login(int Userid,string password)
+        public bool Login(int? Userid,string password)
         {
-            var users = iusers.Login(Userid,password);
-            return users;
+            iusers.Login(Userid,password);
+            //return users;
+            return true;
+        }
+        public string FindPassword(string Tel, string TrueName)
+        {
+            var fwsd = iusers.FindPassword(Tel,TrueName);
+            return fwsd;
         }
     }
 }

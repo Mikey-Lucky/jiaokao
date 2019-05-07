@@ -17,6 +17,7 @@ namespace Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Note()
         {
+            this.NoteComment = new HashSet<NoteComment>();
             this.NoteLike = new HashSet<NoteLike>();
             this.NoteSelect = new HashSet<NoteSelect>();
             this.NoteTrasmit = new HashSet<NoteTrasmit>();
@@ -28,10 +29,10 @@ namespace Models
         public string NoteContent { get; set; }
         public Nullable<System.DateTime> Time { get; set; }
         public int UserID { get; set; }
-        public int NotecommentID { get; set; }
     
-        public virtual NoteComment NoteComment { get; set; }
         public virtual Users Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NoteComment> NoteComment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NoteLike> NoteLike { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

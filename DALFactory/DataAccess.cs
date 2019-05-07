@@ -14,7 +14,7 @@ namespace DALFactory
     {
         private static string AssemblyName = ConfigurationManager.AppSettings["Path"].ToString();
         private static string db = ConfigurationManager.AppSettings["DB"].ToString();
-        public static IUsers CreateUser()
+        public static IUsers CreateUsers()
         {
             string className = AssemblyName + "." + db + "Users";
             return (IUsers)Assembly.Load(AssemblyName).CreateInstance(className);
