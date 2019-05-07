@@ -17,6 +17,7 @@ namespace Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Video()
         {
+            this.VideoComment = new HashSet<VideoComment>();
             this.VideoLike = new HashSet<VideoLike>();
             this.VideoSelect = new HashSet<VideoSelect>();
             this.VideoTrasmit = new HashSet<VideoTrasmit>();
@@ -29,10 +30,10 @@ namespace Models
         public string Adress { get; set; }
         public Nullable<System.DateTime> Time { get; set; }
         public int UserID { get; set; }
-        public int VideoCommentID { get; set; }
     
         public virtual Users Users { get; set; }
-        public virtual VideoComment VideoComment { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VideoComment> VideoComment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VideoLike> VideoLike { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

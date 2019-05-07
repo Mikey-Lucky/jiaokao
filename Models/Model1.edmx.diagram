@@ -4,45 +4,45 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9bf504437de143c09ebfcfca0289957d" Name="Diagram1">
-        <EntityTypeShape EntityType="yichuModel.Address" Width="1.5" PointX="3" PointY="28.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Cart" Width="1.5" PointX="3" PointY="41.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Coat" Width="1.5" PointX="5.25" PointY="80" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Collect" Width="1.5" PointX="6" PointY="41.625" IsExpanded="true" />
+      <Diagram DiagramId="718fe6313f2e4c758c4a387f9c66a19c" Name="Diagram1">
+        <EntityTypeShape EntityType="yichuModel.Address" Width="1.5" PointX="3" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Cart" Width="1.5" PointX="3" PointY="41.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Coat" Width="1.5" PointX="5.25" PointY="72.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Collect" Width="1.5" PointX="6" PointY="41.875" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Color" Width="1.5" PointX="8.25" PointY="26.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.ComReply" Width="1.5" PointX="6" PointY="44.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Coordinate" Width="1.5" PointX="7.5" PointY="85.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Goods" Width="1.5" PointX="8.25" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.ComReply" Width="1.5" PointX="6" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Coordinate" Width="1.5" PointX="7.5" PointY="78" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Goods" Width="1.5" PointX="8.25" PointY="29.25" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Goods_Color" Width="1.5" PointX="10.5" PointY="30.5" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Goods_Size" Width="1.5" PointX="13.5" PointY="30.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.GoodsComment" Width="1.5" PointX="3" PointY="37" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.GoodsCommentsLike" Width="1.5" PointX="8.25" PointY="34.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.GoodsLike" Width="1.5" PointX="3" PointY="45.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Grade" Width="1.5" PointX="8" PointY="38.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.NetherGarment" Width="1.5" PointX="5.25" PointY="83.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Note" Width="1.5" PointX="5.25" PointY="48.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.NoteComment" Width="1.5" PointX="3" PointY="54.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.NoteLike" Width="1.5" PointX="10.5" PointY="47.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.NoteSelect" Width="1.5" PointX="11.5" PointY="43.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.NoteTrasmit" Width="1.5" PointX="13.5" PointY="46.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.GoodsComment" Width="1.5" PointX="3" PointY="37.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.GoodsCommentsLike" Width="1.5" PointX="10.25" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.GoodsLike" Width="1.5" PointX="3" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Grade" Width="1.5" PointX="8" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.NetherGarment" Width="1.5" PointX="5.25" PointY="76.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Note" Width="1.5" PointX="3" PointY="50.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.NoteComment" Width="1.5" PointX="8.25" PointY="45.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.NoteLike" Width="1.5" PointX="5.25" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.NoteSelect" Width="1.5" PointX="8.25" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.NoteTrasmit" Width="1.5" PointX="8.25" PointY="49.75" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.OrderDetails" Width="1.5" PointX="10.5" PointY="38.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Orders" Width="1.5" PointX="5.25" PointY="36.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Privatemessage" Width="1.5" PointX="3" PointY="57.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Shirt" Width="1.5" PointX="5.25" PointY="87.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Orders" Width="1.5" PointX="5.25" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Privatemessage" Width="1.5" PointX="3" PointY="53.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Shirt" Width="1.5" PointX="5.25" PointY="79.875" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Size" Width="1.5" PointX="11.25" PointY="27.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Suit" Width="1.5" PointX="5.25" PointY="90.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.U_Attention_U" Width="1.5" PointX="3" PointY="60.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.U_Collect_Coordinate" Width="1.5" PointX="9" PointY="41.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.U_Dislike_Coordinate" Width="1.5" PointX="9" PointY="44.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.U_Reply_NoteComment" Width="1.5" PointX="8.25" PointY="47.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.U_Reply_VideoComment" Width="1.5" PointX="5.25" PointY="57.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Users" Width="1.5" PointX="0.75" PointY="38.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Video" Width="1.5" PointX="8.25" PointY="58.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.VideoComment" Width="1.5" PointX="3" PointY="76.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.VideoLike" Width="1.5" PointX="10.5" PointY="50.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.VideoSelect" Width="1.5" PointX="13.5" PointY="49.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.VideoTrasmit" Width="1.5" PointX="13.5" PointY="52.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Wardrobe" Width="1.5" PointX="3" PointY="85.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Suit" Width="1.5" PointX="5.25" PointY="83.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.U_Attention_U" Width="1.5" PointX="3" PointY="56.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.U_Collect_Coordinate" Width="1.5" PointX="8" PointY="35.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.U_Dislike_Coordinate" Width="1.5" PointX="3" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.U_Reply_NoteComment" Width="1.5" PointX="10.5" PointY="45.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.U_Reply_VideoComment" Width="1.5" PointX="11" PointY="41.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Users" Width="1.5" PointX="0.75" PointY="38.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Video" Width="1.5" PointX="3" PointY="68.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.VideoComment" Width="1.5" PointX="5.25" PointY="53.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.VideoLike" Width="1.5" PointX="8.25" PointY="55.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.VideoSelect" Width="1.5" PointX="5.25" PointY="58.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.VideoTrasmit" Width="1.5" PointX="8.25" PointY="59.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Wardrobe" Width="1.5" PointX="3" PointY="78.25" IsExpanded="true" />
         <AssociationConnector Association="yichuModel.FK__Address__UserID__48CFD27E" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Orders__AddressI__4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Cart__GoodsID__4222D4EF" ManuallyRouted="false" />
@@ -72,12 +72,12 @@
         <AssociationConnector Association="yichuModel.FK__GoodsLike__UserI__38996AB5" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Grade__UserID__3C69FB99" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__NetherGar__Wardr__628FA481" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__Note__Notecommen__1332DBDC" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__Note__UserID__123EB7A3" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__Note__UserID__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__NoteComme__NoteI__1332DBDC" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__NoteLike__NoteID__17036CC0" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__NoteSelec__NoteI__1AD3FDA4" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__NoteTrasm__NoteI__1EA48E88" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__NoteComme__UserI__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__NoteComme__UserI__123EB7A3" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__U_Reply_N__NoteC__22751F6C" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__NoteLike__UserID__160F4887" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__NoteSelec__UserI__19DFD96B" ManuallyRouted="false" />
@@ -96,13 +96,13 @@
         <AssociationConnector Association="yichuModel.FK__U_Reply_N__UserI__2180FB33" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__U_Reply_V__UserI__0B91BA14" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__U_Reply_V__Video__0C85DE4D" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__Video__UserID__7C4F7684" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__VideoComm__UserI__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__Video__UserID__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__VideoComm__UserI__7C4F7684" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__VideoLike__UserI__00200768" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__VideoSele__UserI__03F0984C" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__VideoTras__UserI__07C12930" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Wardrobe__Userid__59FA5E80" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__Video__VideoComm__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__VideoComm__Video__7D439ABD" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__VideoLike__Video__01142BA1" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__VideoSele__Video__04E4BC85" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__VideoTras__Video__08B54D69" ManuallyRouted="false" />

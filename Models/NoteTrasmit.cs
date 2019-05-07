@@ -15,7 +15,7 @@ namespace Models
     public partial class NoteTrasmit
     {
         public int NoteTrasmitID { get; set; }
-        public string NoteContent { get; set; }
+        public string AddContent { get; set; }
         public Nullable<System.DateTime> Time { get; set; }
         public int UserID { get; set; }
         public int NoteID { get; set; }
