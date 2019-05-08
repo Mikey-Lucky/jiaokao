@@ -19,6 +19,8 @@
         height: 350px;
         border: 1px solid #dddddd;
         margin: 110px auto;
+        background-color:azure;
+        opacity:0.8;
     }
 
     .tab-content p {
@@ -30,91 +32,105 @@
         height: 40px;
     }
     #BJ{
-        width:1038px;
+        width:1022px;
         height:700px;
         background-image:url(../../Images/FM/2.1.PNG);
+        opacity:0.7;
         margin:auto;
     }
+    /*.zi{
+        font: 700 100px "Comic Sans MS";
+    color: white;
+    text-shadow: 0 0 20px #fdec84,
+            10px -10px 30px #ffae35,
+            20px -20px 40px #ec760c,
+            -20px -60px 50px #cd4607,
+            0px -80px 60px #973717,
+            10px -40px 70px #451b0e;
+    }*/
 </style>
 
 <div id="BJ">
-    <h2 style="text-align:center;color:palevioletred">教资服务网欢迎您</h2>
-    <div class="box1" style="text-align:center">
-    
-        <ul id="myTab" class="nav nav-tabs">
-            <li class="active">
-                <a href="#home" data-toggle="tab">登录</a>
-            </li>
-            <li>
-                <a href="#re" data-toggle="tab">注册</a>
-            </li>
-        </ul>
-        <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade in active" id="home">
-                @using (Ajax.BeginForm("RegisterLogin", "Users", new AjaxOptions()
-                {
-                    HttpMethod = "Post",
-                    OnSuccess = "Success",
+    <h2 style="text-align:center;color:palevioletred;margin-top:0px;margin-bottom:-53px;padding-top:50px;font-style:italic">精致的衣橱欢迎您</h2>
+    @*<div class="row">
+        <div class="col-md-3"><p class="zi">精<br />致<br />的<br />衣<br />橱</p></div>*@
+        <div class="box1" style="text-align:center">
 
-                }
-        ))
-                {
-                    <p>
-                        ID:&nbsp;&nbsp;&nbsp;
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#home" data-toggle="tab">登录</a>
+                </li>
+                <li>
+                    <a href="#re" data-toggle="tab">注册</a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="home">
+                    @using (Ajax.BeginForm("RegisterLogin", "Users", new AjaxOptions()
+                    {
+                        HttpMethod = "Post",
+                        OnSuccess = "Success",
 
-                        @Html.TextBoxFor(m => m.UserID) <br />
-                        @Html.ValidationMessageFor(m => m.UserID)
-                    </p>
-                    <p>
-                        密码:
-                        @Html.PasswordFor(m => m.PasswordL)<br />
-                        @Html.ValidationMessageFor(m => m.PasswordL)
-                    </p>
-                    <p>
-                        @Html.LabelFor(m => m.YZM)
-                        @Html.TextBoxFor(m => m.YZM)<br />
-                        <img id="GM" style="cursor: pointer;" src="~/Users/GetImg" title="看不清，点击换一张" />
-                        <button type="button" id="GG">换一张</button>
-                    </p>
-                    <p>
-                        <input type="submit" value="登录" style="width:80%;background-color:deepskyblue" />
-                    </p>
-                    <a href="@Url.Action("FindPassword", "Users")"><span style="color:red">忘记密码</span></a>
-                }
-            </div>
+                    }
+))
+                    {
+                        <p>
+                            ID:&nbsp;&nbsp;&nbsp;
 
-            <div class="tab-pane fade" id="re">
-                @using (Html.BeginForm("Register", "Users"))
+                            @Html.TextBoxFor(m => m.UserID) <br />
+                            @Html.ValidationMessageFor(m => m.UserID)
+                        </p>
+                        <p>
+                            密码:
+                            @Html.PasswordFor(m => m.PasswordL)<br />
+                            @Html.ValidationMessageFor(m => m.PasswordL)
+                        </p>
+                        <p>
+                            @Html.LabelFor(m => m.YZM)
+                            @Html.TextBoxFor(m => m.YZM)<br />
+                            <img id="GM" style="cursor: pointer;" src="~/Users/GetImg" title="看不清，点击换一张" />
+                            <button type="button" id="GG">换一张</button>
+                        </p>
+                        <p>
+                            <input type="submit" value="登录" style="width:80%;background-color:deepskyblue" />
+                        </p>
+                        <a href="@Url.Action("FindPassword", "Users")"><span style="color:red">忘记密码</span></a>
+                    }
+                </div>
+
+                <div class="tab-pane fade" id="re">
+                    @using (Html.BeginForm("Register", "Users"))
             {
-                    <p>
-                        @Html.LabelFor(m => m.TrueName) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        @Html.TextBoxFor(m => m.TrueName)<br />
-                        @Html.ValidationMessageFor(m => m.TrueName)
-                    </p>
-                    <p>
-                        @Html.LabelFor(m => m.PasswordR) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        @Html.PasswordFor(m => m.PasswordR)<br />
-                        @Html.ValidationMessageFor(m => m.PasswordR)
-                    </p>
-                    <p>
-                        @Html.LabelFor(m => m.ConfirmPassword)
-                        @Html.PasswordFor(m => m.ConfirmPassword)<br />
-                        @Html.ValidationMessageFor(m => m.ConfirmPassword)
-                    </p>
-                    <p>
-                        @Html.LabelFor(m => m.Tel)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <div class="email">@Html.TextBoxFor(m => m.Tel)<br /></div>
-                        @Html.ValidationMessageFor(m => m.Tel)
-                    </p>
-                    <p>
-                        <input type="submit" value="注册" />
-                    </p>
-                }
-            </div>
+                        <p>
+                            @Html.LabelFor(m => m.TrueName) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            @Html.TextBoxFor(m => m.TrueName)<br />
+                            @Html.ValidationMessageFor(m => m.TrueName)
+                        </p>
+                        <p>
+                            @Html.LabelFor(m => m.PasswordR) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            @Html.PasswordFor(m => m.PasswordR)<br />
+                            @Html.ValidationMessageFor(m => m.PasswordR)
+                        </p>
+                        <p>
+                            @Html.LabelFor(m => m.ConfirmPassword)
+                            @Html.PasswordFor(m => m.ConfirmPassword)<br />
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                        </p>
+                        <p>
+                            @Html.LabelFor(m => m.Tel)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            @Html.TextBoxFor(m => m.Tel)<br />
+                            @Html.ValidationMessageFor(m => m.Tel)
+                        </p>
+                        <p>
+                            <input type="submit" value="注册" />
+                        </p>
+                    }
+                </div>
 
+            </div>
         </div>
     </div>
-</div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

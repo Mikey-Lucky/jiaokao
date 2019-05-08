@@ -80,7 +80,7 @@ namespace 精致的衣橱.Controllers
             if (a && !b)
             {
                 data = "验证码输入错误，请重试";
-                return Content(data);
+                return Content("<script>alert('" + data + "')</script>");
             }
             else if (a && b)
             {
@@ -89,17 +89,19 @@ namespace 精致的衣橱.Controllers
                 Session["User_image"] = db.Users.Where(m => m.UserID == UserID).FirstOrDefault().HeadImage;
                 Session["User_Name"] = db.Users.Where(m => m.UserID == UserID).FirstOrDefault().UserName;
                 data = "登录成功";
-                return Content(data);
+                //return Content("<script>alert(data)</script>");
+                return Content("<script>alert('"+data+"')</script>");
 
             }
             else if (!a && b)
             {
                 data = "账号或密码错误，请重试";
-                return Content(data);
+                //return Content(data);
+                return Content("<script>alert('" + data + "')</script>");
             }
             else
                 data = "请按照格式输入";
-            return Content(data);
+            return Content("<script>alert('" + data + "')</script>");
         }
 
 
