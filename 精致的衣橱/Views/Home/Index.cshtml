@@ -66,9 +66,12 @@
         @foreach (var note in Model.notes)
         {
             <li>
-                <img src="/Images/Noteimg/@note.Img" />
-                <h3>什么衣服</h3>
-                <p>作者：某某某某</p>
+                <div>
+                    <img src="/Images/Noteimg/@note.Img" />
+                    <h3>@note.Title</h3>
+                    <p>作者:@note.Users.UserName</p>
+                    <p>发表时间：@note.Time</p>
+                </div>
             </li>
         }
     </ul>
@@ -85,4 +88,22 @@
                </li>
            }
         </ul>
+</div>
+<!--商品展示-->
+<div class="goods container">
+    <!--热门商品-->
+     <div class="hotgoods">
+         @foreach (var g in Model.hotgoods)
+         {
+            <img src="~/Images/videoimg/@g.SizeImage" />
+            <p>@g.Name</p>
+         }
+     </div>
+    <!--新品上架-->
+    <div class="newgoods">
+        @foreach (var g in Model.newgoods)
+        {
+            <p>@g.Name</p>
+        }
+    </div>
 </div>

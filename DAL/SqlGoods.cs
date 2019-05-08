@@ -10,14 +10,21 @@ namespace DAL
 {
     public class SqlGoods : IGoods
     {
-        public IEnumerable<Goods> GetHotGoods()
+        yichuEntities db = DbContextFactory.CreateDbContext();
+        public IEnumerable<Goods> GetHotGoods(int top)
         {
-            throw new NotImplementedException();
+            var hotgoods = from good in db.Goods
+                           orderby good.Amount ascending
+                           select good;
+            return hotgoods.Take(top);
         }
 
-        public IEnumerable<Goods> GetNewGoods()
+        public IEnumerable<Goods> GetNewGoods(int top)
         {
-            throw new NotImplementedException();
+            var newgoods = from g in db.Goods
+                           orderby g.ShangjiaTime ascending
+                           select g;
+            return newgoods.Take(top);
         }
     }
 }

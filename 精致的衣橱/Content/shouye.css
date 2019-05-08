@@ -156,7 +156,6 @@ ul li {
 
 /* 热门笔记start */
 .note {
-	background: #fff;
 	margin-top: 10px;
 }
 .notetop h3, span {
@@ -175,15 +174,28 @@ ul li {
 	display: flex;
 	height: 800px;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	
+	
 }
 .note ul li {
 	display: inline-block;
-	flex: 16%;
+	 flex: 20%; 
+	
 }
+
+.note ul div {
+	margin: 15px;
+	background-color: #fff;
+	transition: margin-top 0.3s; 
+}
+.note ul div:hover {
+	box-shadow: 1px 1px 5px #000000;
+	margin-top: -1px;
+}
+
 .note li img {
 	width: 100%;
-    height:200px;
+    height:240px;
 }
 /* 热门笔记end */
 
