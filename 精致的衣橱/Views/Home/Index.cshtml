@@ -4,7 +4,6 @@
     Layout = null;
 }
 <link href="~/Content/shouye.css" rel="stylesheet" />
-
 <!-- 首页第一块板块 -->
 <div class="shouyeban1 container">
     <div class="central">
@@ -76,34 +75,49 @@
         }
     </ul>
 </div>
-<!--热门视频-->
-<div class="hotvideo container">
-        <div class="videotop"><!--热门视频头部-->
-        </div>
-        <ul><!--视频展示-->
-           @foreach (var video in Model.videos)
-           {
-               <li>
-                   <img src="~/Images/videoimg/@video.img" />
-               </li>
-           }
-        </ul>
-</div>
-<!--商品展示-->
-<div class="goods container">
-    <!--热门商品-->
-     <div class="hotgoods">
-         @foreach (var g in Model.hotgoods)
-         {
-            <img src="~/Images/videoimg/@g.SizeImage" />
-            <p>@g.Name</p>
-         }
-     </div>
-    <!--新品上架-->
-    <div class="newgoods">
-        @foreach (var g in Model.newgoods)
-        {
-            <p>@g.Name</p>
-        }
+<!-- 热门视频 -->
+<div class="video container">
+    <!-- 热门视频头部 -->
+    <div class="videotop">
+        <h3>热门视频</h3>
     </div>
+    <!-- 热门视频展示 -->
+    <ul>
+        @foreach (var video in Model.videos)
+        {
+            <li>
+                <img src="~/Images/videoimg/1.png" />
+            </li>
+        }
+    </ul>
+</div>
+<!-- 商品 -->
+<div class="goods container clearfix">
+    <!-- 热销商品 -->
+    <div class="hotgoods goodban">
+        <ul>
+            @foreach (var g in Model.hotgoods)
+            {
+                <li>
+                    <img src="~/Images/videoimg/@g.GoodsImage" />
+                    <p>@g.Name</p>
+                </li>
+            }
+        </ul>
+    </div>
+    <!-- 新品上市 -->
+    <div class="newgoods goodban">
+        <ul>
+            @foreach (var g in Model.newgoods)
+            {
+                <li>
+                    <img src="~/Images/videoimg/@g.GoodsImage" />
+                    <p>@g.Name</p>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<!-- 底部 -->
+<div class="footer">
 </div>

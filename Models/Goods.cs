@@ -33,6 +33,7 @@ namespace Models
         public string Season { get; set; }
         public string Material { get; set; }
         public string Style { get; set; }
+        public string GoodsImage { get; set; }
         public Nullable<int> Amount { get; set; }
         public Nullable<double> Unitprice { get; set; }
         public string Type { get; set; }
