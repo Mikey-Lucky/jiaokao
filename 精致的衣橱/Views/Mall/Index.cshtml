@@ -1,0 +1,163 @@
+﻿@model 精致的衣橱.Models.MallViewModel
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/Cooldog.css" rel="stylesheet" />
+<link href="~/Content/iconfont.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/Cooldog.js"></script>
+<link href="~/Content/Mall.css" rel="stylesheet" />
+<h2>Index</h2>
+
+<div class="Cooldog_container">
+<div class="Cooldog_content">
+    <ul>
+        <li class="p1">
+            <a href="#">
+                <img src="~/Images/LunboImages/1.jpg" />
+            </a>
+        </li>
+        <li class="p2">
+            <a href="#">
+                <img src="~/Images/LunboImages/4.jpg" alt="">
+            </a>
+        </li>
+        <li class="p3">
+            <a href="#">
+                <img src="~/Images/LunboImages/3.jpg" alt="">
+            </a>
+        </li>
+        <li class="p4">
+            <a href="#">
+                <img src="~/Images/LunboImages/2.jpg" alt="">
+            </a>
+        </li>
+        <li class="p5">
+            <a href="#">
+                <img src="~/Images/LunboImages/5.jpg" alt="">
+            </a>
+        </li>
+        <li class="p5">
+            <a href="#">
+                <img src="~/Images/LunboImages/6.jpg" alt="">
+            </a>
+        </li>
+        <li class="p5">
+            <a href="#">
+                <img src="~/Images/LunboImages/7.jpg" alt="">
+            </a>
+        </li>
+    </ul>
+</div>
+<a href="javascript:;" class="btn_left">
+    <i class="iconfont icon-zuoyoujiantou"></i>
+</a>
+<a href="javascript:;" class="btn_right">
+    <i class="iconfont icon-zuoyoujiantou-copy-copy"></i>
+</a>
+<a href="javascript:;" class="btn_close">
+    <i class="iconfont icon-icon-test"></i>
+</a>
+<div class="buttons clearfix">
+    <a href="javascript:;" class="color"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+</div>
+</div>
+<br />
+<div class="rexiao"><h2 class="rxz">热销商品</h2></div>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="home">
+        <div class="row">
+            @foreach (var item in Model.HotGoods)
+            {
+
+                <div class="col-md-4 col-sm-4">
+                    <div class="panel panel-default text-center">
+                        <div class="panel-panel-heading">
+                            <h1>@item.Name</h1>
+                        </div>
+                        <div class="panel-body" style="height:225px">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="@item.Name"><img src="~/Images/GoodsImages/@Html.DisplayFor(Modelitem => item.GoodsImage)" style="height:100%;width:100%" /></a>
+                        </div>
+
+                        <div class="panel-footer">
+                            <h3>@item.Unitprice</h3>
+                            <h4>per clothes</h4>
+                            <a href="@Url.Action("GoodsDetails","Mall",new { id=item.GoodsID})"><h1>立即购买</h1></a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+        </div>
+       
+        @*<div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="panel panel-default text-center">
+                    <div class="panel-panel-heading">
+                        <h1>虾美人</h1>
+                    </div>
+                    <div class="panel-body" style="height:225px">
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="虾美人"><img src="img/25.jpg" style="width: 100%;height: 100%;" class="img-thumbnail"></a>
+                    </div>
+
+                    <div class="panel-footer">
+                        <h3>$60</h3>
+                        <h4>per dishes</h4>
+                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="立即购买">立即购买</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="panel panel-default text-center">
+                    <div class="panel-panel-heading">
+                        <h1>酸辣肉片</h1>
+                    </div>
+                    <div class="panel-body" style="height:225px">
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="酸辣肉片"><img src="img/5.jpg" style="width: 100%;height: 100%;" class="img-thumbnail"></a>
+                    </div>
+
+                    <div class="panel-footer">
+                        <h3>$80</h3>
+                        <h4>per dishes</h4>
+                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="立即购买">立即购买</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="panel panel-default text-center">
+                    <div class="panel-panel-heading">
+                        <h1>糖醋排骨</h1>
+                    </div>
+                    <div class="panel-body" style="height:225px">
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="糖醋排骨"><img src="img/9.jpg" style="width: 100%;height: 100%;"></a>
+                    </div>
+
+                    <div class="panel-footer">
+                        <h3>$130</h3>
+                        <h4>per dishes</h4>
+                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="立即购买">立即购买</button>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    </div>
+</div>
+<div class="rexiao"><h2 class="rxz">新品上市</h2></div>
+<ul>
+    
+    @foreach (var item in Model.NewGoods)
+    {
+        <li>
+            <img src="~/Images/GoodsImages/@Html.DisplayFor(ModelItem => item.GoodsImage)" />
+            <span>@item.Name</span>
+        </li>
+    }
+</ul>

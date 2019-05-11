@@ -199,11 +199,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Attributes\LoginAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MallController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -211,6 +212,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HomeIndexViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\MallViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RegisterLogin.cs" />
     <Compile Include="Models\Verify.cs" />
@@ -220,6 +222,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Cooldog.css" />
+    <Content Include="Content\iconfont.css" />
+    <Content Include="Content\Mall.css" />
     <Content Include="Content\shouye.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -361,6 +366,13 @@
     <Content Include="Images\HeadImages\6.jpg" />
     <Content Include="Images\HeadImages\7.jpg" />
     <Content Include="Images\HeadImages\8.jpg" />
+    <Content Include="Images\LunboImages\1.JPG" />
+    <Content Include="Images\LunboImages\2.jpg" />
+    <Content Include="Images\LunboImages\3.jpg" />
+    <Content Include="Images\LunboImages\4.jpg" />
+    <Content Include="Images\LunboImages\5.jpg" />
+    <Content Include="Images\LunboImages\6.jpg" />
+    <Content Include="Images\LunboImages\7.jpg" />
     <Content Include="Images\Noteimg\1.jpeg" />
     <Content Include="Images\Noteimg\10.jpeg" />
     <Content Include="Images\Noteimg\11.jpeg" />
@@ -381,11 +393,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Cooldog.js" />
     <Content Include="Scripts\DZ.css" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -444,6 +458,7 @@
     <Content Include="Views\Users\FindPassword.cshtml" />
     <Content Include="Views\Users\TX.cshtml" />
     <Content Include="Views\Users\GetImg.cshtml" />
+    <Content Include="Views\Mall\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

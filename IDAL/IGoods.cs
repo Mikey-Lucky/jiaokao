@@ -10,7 +10,7 @@ namespace IDAL
     public interface IGoods
     {
         //查找销量前几的商品
-        IEnumerable<Goods_Color> GetHotGoods(int top);
+        IEnumerable<Goods> GetHotGoods(int top);
         //查找最新上架商品
         IEnumerable<Goods> GetNewGoods(int top);
     }
