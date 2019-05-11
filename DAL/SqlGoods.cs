@@ -11,11 +11,16 @@ namespace DAL
     public class SqlGoods : IGoods
     {
         yichuEntities db = DbContextFactory.CreateDbContext();
-        public IEnumerable<Goods> GetHotGoods(int top)
+        public IEnumerable<Goods_Color> GetHotGoods(int top)
         {
-            var hotgoods = from good in db.Goods
-                           orderby good.Amount ascending
-                           select good;
+            //var hotgoods = from good in db.Goods
+            //               orderby good.Amount ascending
+            //               select good;
+            //return hotgoods.Take(top);
+            var hotgoods = from o in db.Goods_Color
+                           join b in db.Goods on o.GoodsID equals b.GoodsID
+                           orderby b.Amount
+                           select o;
             return hotgoods.Take(top);
         }
 

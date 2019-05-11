@@ -13,7 +13,7 @@ namespace BLL
     {
         IGoods igoods = DataAccess.CreateGoods();
         //热门商品
-        public IEnumerable<Goods> GetHotGoods(int top)
+        public IEnumerable<Goods_Color> GetHotGoods(int top)
         {
             var hotgoods = igoods.GetHotGoods(top);
             return hotgoods;
