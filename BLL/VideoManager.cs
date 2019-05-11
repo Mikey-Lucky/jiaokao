@@ -13,7 +13,7 @@ namespace BLL
     {
         IVideo ivideo = DataAccess.CreateVideo();
         //根据点赞量获取热门视频
-        public IEnumerable<video_like> GetHotVideo(int top)
+        public IEnumerable<Video> GetHotVideo(int top)
         {
             var hotvideo = ivideo.Gethotvideo(top);
             return hotvideo;

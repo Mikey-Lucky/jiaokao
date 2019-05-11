@@ -11,11 +11,11 @@ namespace DAL
     public class SqlVideo : IVideo
     {
         yichuEntities db = DbContextFactory.CreateDbContext();
-        public IEnumerable<video_like> Gethotvideo(int top)
+        public IEnumerable<Video> Gethotvideo(int top)
         {
-            var hotvideo = from video in db.video_like
-                          orderby video.num ascending
-                          select video;
+            var hotvideo = from v in db.Video
+                          orderby v.likenum ascending
+                          select v;
 
             return hotvideo.Take(top);
         }

@@ -10,6 +10,6 @@ namespace IDAL
     public interface IVideo
     {
         //热门视频
-        IEnumerable<video_like> Gethotvideo(int top);
+        IEnumerable<Video> Gethotvideo(int top);
     }
 }

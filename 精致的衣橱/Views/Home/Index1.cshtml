@@ -1,0 +1,215 @@
+﻿@model 精致的衣橱.Models.HomeIndexViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index1</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/shouye.css" rel="stylesheet" />
+</head>
+<body>
+    <!--导航-->
+    <style>
+        #manban2 div {
+            margin-top: 20px;
+        }
+    </style>
+        <!-- 首页第一块板块 -->
+        <div class="shouyeban1 ">
+            <div class="central">
+                <div class="zong-nav">
+                    <div class="nav">
+                        <ul>
+                            <li><a href="#">首页</a></li>
+                            <li><a href="#">我的衣橱</a></li>
+                            <li><a href="#">衣橱秀</a></li>
+                            <li><a href="#">商城</a></li>
+                            <li><a href="#">个性推荐</a></li>
+                            <li class="logo">JZYC</li>
+                        </ul>
+                    </div>
+                    <div class="nav-r">
+                        <div class="login-out">
+                            <div class="login">
+                                <a href="#">登陆</a>
+                                <a href="#">注册</a>
+                            </div>
+                            <div class="logout"></div>
+                        </div>
+                        <div class="zoom"></div>
+                    </div>
+                </div>
+                <div class="yichu">
+                    <div class="leftdoor">
+                        <img src="~/shouyeimg/leftzheng.jpg" />
+                        <img src="~/shouyeimg/fan.jpg" />
+                    </div>
+                    <div class="rightdoor">
+                        <img src="~/shouyeimg/rightzheng.jpg" />
+                        <img src="~/shouyeimg/fan.jpg" />
+                    </div>
+                    <div class="dandoor">
+                        <img src="~/shouyeimg/danzheng.jpg" />
+                        <img src="~/shouyeimg/fan.jpg" />
+                    </div>
+                </div>
+            </div>
+            <div class="foot">
+                <ul>
+                    <li>热门笔记</li>
+                    <li>热门视频</li>
+                    <li>新品上架</li>
+                    <li>热销商品</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+        <!--热门视频-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="font-size: large;">
+                    热门视频<span style="padding-left:950px;">更多>></span>
+                </h3>
+            </div>
+            <div class="panel-body row">
+                @foreach (var v in Model.videos)
+                {
+                    <div class="col-md-2 col-sm-4">
+                        <img src="/Images/videoimg/@v.Image" style="height: 100px;width: 100px;" data-toggle="tooltip" data-placement="right" title="" />
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- 热门笔记-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title" style="font-size: large;">
+                    笔记排行榜<span class="label label-danger">最热</span>
+                </h2>
+            </div>
+            <div class="panel-body row" id="manban2" style="text-overflow:ellipsis">
+                @foreach (var n in Model.notes)
+                {
+                    <div class="col-md-3 col-sm-4" style="height:306px;">
+                        <img src="/Images/Noteimg/@n.Img" style="width:  100%;height: 226px;" />
+                        <span class="label label-default" style="margin-top: -20px;">已完结</span>
+                        <span>@n.Title</span>
+                    </div>
+                }
+                <script>
+                    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+                </script>
+            </div>
+        </div>
+        <!-- 热门商品-->
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title" style="font-size: large;">
+                        热门商品<span class="label label-danger">最热</span>
+                    </h2>
+                </div>
+                <div class="panel-body row" id="manban2" style="text-overflow:ellipsis">
+                    @foreach (var g in Model.hotgoods)
+                    {
+                        <div class="col-md-2 col-sm-4" style="height:306px;">
+                            <img src="/Images/Noteimg/@g.GoodsImage" style="width:  100%;height: 226px;" />
+                            <span class="label label-default" style="margin-top: -20px;">已完结</span>
+                            <span>@g.Name</span>
+                        </div>
+                    }
+                    <script>
+                    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+                    </script>
+                </div>
+            </div>
+        <!-- 新品上架-->
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title" style="font-size: large;">
+                        热门商品<span class="label label-danger">最热</span>
+                    </h2>
+                </div>
+                <div class="panel-body row" id="manban2" style="text-overflow:ellipsis">
+                    @foreach (var g in Model.newgoods)
+                    {
+                        <div class="col-md-2 col-sm-4" style="height:306px;">
+                            <img src="/Images/Noteimg/@g.GoodsImage" style="width:  100%;height: 226px;" />
+                            <span class="label label-default" style="margin-top: -20px;">已完结</span>
+                            <span>@g.Name</span>
+                        </div>
+                    }
+                    <script>
+                    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+                    </script>
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <h2>友情连接</h2>
+        <br />
+        <br />
+        <div class="row" style="color: #000000;">
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">哈哈网</a>
+            </div>
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">欸嘿嘿网</a>
+            </div>
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">韩娱网</a>
+            </div>
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">爱豆</a>
+            </div>
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">u五五零零</a>
+            </div>
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">迟迟但是</a>
+            </div>
+            <br />
+            <br />
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">隐隐音乐</a>
+            </div>
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">风景画</a>
+            </div>
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">嘎嘎嘎</a>
+            </div>
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">凤飞飞</a>
+            </div>
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">反反复复</a>
+            </div>
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">报告会</a>
+            </div>
+            <br />
+            <br />
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">哈哈哈</a>
+            </div>
+            <div class="col-md-2">
+                <a href="#" style="color: #000000;font-size: medium;">咯咯咯</a>
+            </div>
+        </div>
+        <hr />
+        <footer>
+            Copyright ©2019 HJ韩剧网 liqi
+        </footer>
+        <br />
+
+    </div>
+</body>
+</html>
