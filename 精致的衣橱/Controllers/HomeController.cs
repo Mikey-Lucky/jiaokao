@@ -16,10 +16,23 @@ namespace 精致的衣橱.Controllers
         
         public ActionResult Index()
         {
-            var note=notes.GetHotNote(10);
-            var video = videos.GetHotVideo(5);
-            var hgood = goods.GetHotGoods(5);
-            var ngood = goods.GetNewGoods(5);
+            var note=notes.GetHotNote(8);
+            var video = videos.GetHotVideo(6);
+            var hgood = goods.GetHotGoods(6);
+            var ngood = goods.GetNewGoods(6);
+            HomeIndexViewModel homeindexviewmodel = new HomeIndexViewModel();
+            homeindexviewmodel.notes = note;
+            homeindexviewmodel.videos = video;
+            homeindexviewmodel.hotgoods = hgood;
+            homeindexviewmodel.newgoods = ngood;
+            return View(homeindexviewmodel);
+        }
+        public ActionResult Index1()
+        {
+            var note = notes.GetHotNote(8);
+            var video = videos.GetHotVideo(6);
+            var hgood = goods.GetHotGoods(6);
+            var ngood = goods.GetNewGoods(6);
             HomeIndexViewModel homeindexviewmodel = new HomeIndexViewModel();
             homeindexviewmodel.notes = note;
             homeindexviewmodel.videos = video;

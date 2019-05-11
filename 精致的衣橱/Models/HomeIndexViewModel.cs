@@ -11,7 +11,7 @@ namespace 精致的衣橱.Models
         //笔记部分
         public IEnumerable<Note> notes { get; set; }
         //视频
-        public IEnumerable<video_like> videos { get; set; }
+        public IEnumerable<Video> videos { get; set; }
         //热门商品
         public IEnumerable<Goods> hotgoods { get; set; }
         //最新上架商品

@@ -444,6 +444,7 @@
     <Content Include="Views\Users\FindPassword.cshtml" />
     <Content Include="Views\Users\TX.cshtml" />
     <Content Include="Views\Users\GetImg.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
