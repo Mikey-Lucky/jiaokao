@@ -46,6 +46,7 @@ ul li {
     line-height: 54px;
     font-size: 20px;
     color: #232323;
+   
 }
 .logo {
 	font-size: 75px!important;
@@ -165,7 +166,7 @@ ul li {
 /* banner end */
 
 /* 热门笔记start */
-.note {
+/*.note {
 	margin-top: 10px;
 }
 .notetop h3, span {
@@ -201,7 +202,7 @@ ul li {
 .note li img {
 	width: 100%;
     height:240px;
-}
+}*/
 /* 热门笔记end */
 
 
@@ -209,7 +210,7 @@ ul li {
 .video ul {
     display: flex;
 }
-.video li {
+/*.video li {
 	display:inline-block;
 	flex: 1;
 }
@@ -219,10 +220,10 @@ ul li {
 }
 .video {
 	margin-bottom: 80px;
-}
+}*/
 /* 热门视频结束 */
 /* 商品开始 */
-.goods {
+/*.goods {
 	margin-top: 20px;
 }
 .hotgoods {
@@ -271,11 +272,11 @@ width: 450px;
 .goodban li:nth-child(5) img {
 	width: 80%;
 	height: 80%;
-}
+}*/
 /* 商品结束 */
 /* 底部 */
 
-.footer {
+/*.footer {
     height: 300px;
     background-color: black;
-}
+}*/

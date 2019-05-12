@@ -20,6 +20,123 @@
         #manban2 div {
             margin-top: 20px;
         }
+        .central,
+        .foot {
+            width: 85%;
+        }
+        .container {
+            max-width: 1373px;
+        }
+        #manban2 img {
+            height: 297px;
+        }
+        #manban2 .topshadow {
+            height: 40px;
+            width: 200px;
+            /*background-color:rgb(0,0,0);*/
+            /*filter: opacity(50%);*/
+            background: -webkit-linear-gradient(left,rgba(0,0,0,30%),rgba(0,0,0,0));
+            position: absolute;
+            top: -20px;
+            z-index: 2;
+            color: #f5f5f5;
+        }
+        .footshadow {
+            height: 65px;
+            width: 306px;
+            background-color: rgba(0,0,0,0.3);
+            position: absolute;
+            bottom: 8px;
+            color: #f5f5f5;
+            font-size:16px;
+        }
+        #manban2 .footshadow {
+            height: 65px;
+            width: 306px;
+            background-color: rgba(0,0,0,0.3);
+            /*position: absolute;
+            bottom: 8px;
+            color: #f5f5f5;
+            font-size:16px;*/
+        }
+        #manban2 .topshadow span {
+                text-indent: 2em;
+                line-height: 40px;
+        }
+        #video img {
+           height: 120px;
+           width: 120px;
+        }
+        #manban2 .more {
+                font-size:16px;
+                display:block;
+            	white-space:nowrap; 
+	            width:19em; 
+	            overflow:hidden; 
+                text-overflow:ellipsis;
+	            /*border:1px solid #000000;*/
+        }
+        #manban2 a {
+            color:rgb(0,0,0);
+        }
+        #manban2 img:hover {
+	        box-shadow: 1px 1px 5px #000000;
+	        margin-top: -1px;
+         }
+        /*.hotvideo:hover img {
+            -webkit-filter: blur(3px); 
+            filter: blur(5px);
+        }*/
+        /*.hotvideo:hover img::before {
+            
+            display:block;
+            position:absolute;
+            height:120px;
+            width:120px;
+            background-color:aqua;
+           
+        }*/
+       .hotvideo:hover::after { 
+            position: absolute; 
+        }
+        .hotvideo:hover img {
+             -webkit-filter: blur(1px); 
+            filter: blur(1px);
+        }
+        .hotvideo:hover::after {
+            content: "\25BA";
+            display: inline-block;
+            line-height:120px;
+            left: 12px;
+            height: 120px;
+            text-align: center;
+            width: 120px;
+            font-size:40px;
+            color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0);
+        }
+        .goods .footshadow {
+            
+            visibility: hidden;
+            color: white;
+            bottom: 40px;
+            width: 192px;
+            background-color: rgba(0,0,0,0.2);
+            text-align:center;
+            font-size:18px;
+
+        }
+         .goods:hover .footshadow {
+            visibility: visible;
+        }
+        .goods a {
+         color:black;
+        }
+        .goods a:hover {
+            
+            text-decoration: none;
+            color:red;
+        }
     </style>
         <!-- 首页第一块板块 -->
         <div class="shouyeban1 ">
@@ -72,17 +189,17 @@
         </div>
         <div class="container">
         <!--热门视频-->
-        <div class="panel panel-default">
+        <div class="panel panel-default" id="video">
             <div class="panel-heading">
                 <h3 class="panel-title" style="font-size: large;">
                     热门视频<span style="padding-left:950px;">更多>></span>
                 </h3>
             </div>
-            <div class="panel-body row">
+            <div class="panel-body row " >
                 @foreach (var v in Model.videos)
                 {
-                    <div class="col-md-2 col-sm-4">
-                        <img src="/Images/videoimg/@v.Image" style="height: 100px;width: 100px;" data-toggle="tooltip" data-placement="right" title="" />
+                    <div class="col-md-2 col-sm-4 hotvideo">
+                        <img src="/Images/videoimg/@v.Image"  data-toggle="tooltip" data-placement="right" title="" />
                     </div>
                 }
             </div>
@@ -94,18 +211,22 @@
                     笔记排行榜<span class="label label-danger">最热</span>
                 </h2>
             </div>
-            <div class="panel-body row" id="manban2" style="text-overflow:ellipsis">
+            <div class="panel-body row" id="manban2" >
                 @foreach (var n in Model.notes)
                 {
-                    <div class="col-md-3 col-sm-4" style="height:306px;">
-                        <img src="/Images/Noteimg/@n.Img" style="width:  100%;height: 226px;" />
-                        <span class="label label-default" style="margin-top: -20px;">已完结</span>
-                        <span>@n.Title</span>
+                    
+                    <div class="col-md-3 col-sm-4 " style="height:306px;">
+                        <a href="#">
+                            <div class="topshadow ">
+                                <span class="glyphicon glyphicon-thumbs-up">&nbsp;@n.likenum</span>
+                            </div>
+                            <img src="/Images/Noteimg/@n.Img" style="width:  100%;" />
+                            <span class="label label-default" style="margin-top: -20px;"></span>
+                           <!-- <span class="more">@n.Title</span>-->
+                            <div class="footshadow">@n.Title</div>
+                        </a>
                     </div>
                 }
-                <script>
-                    $(function () { $("[data-toggle='tooltip']").tooltip(); });
-                </script>
             </div>
         </div>
         <!-- 热门商品-->
@@ -115,13 +236,18 @@
                         热门商品<span class="label label-danger">最热</span>
                     </h2>
                 </div>
-                <div class="panel-body row" id="manban2" style="text-overflow:ellipsis">
+                <div class="panel-body row"  style="text-overflow:ellipsis">
                     @foreach (var g in Model.hotgoods)
                     {
-                        <div class="col-md-2 col-sm-4" style="height:306px;">
-                            <img src="/Images/Noteimg/@g.GoodsImage" style="width:  100%;height: 226px;" />
-                            <span class="label label-default" style="margin-top: -20px;">已完结</span>
-                            <span>@g.Name</span>
+                        <div class="col-md-2 col-sm-4 goods" style="height:340px;">
+                            <a href="#">
+                                <img src="/Images/Noteimg/@g.GoodsImage" style="width:  100%;height: 300px;" />
+                                <span class="label label-default" style="margin-top: -20px;">@g.Style</span>
+                                <span>@g.Name</span>
+                            </a>
+                            <div class="footshadow">
+                               $: @g.Unitprice
+                            </div>
                         </div>
                     }
                     <script>
@@ -133,17 +259,22 @@
         <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title" style="font-size: large;">
-                        热门商品<span class="label label-danger">最热</span>
+                        热门商品<span class="label label-danger">最新</span>
                     </h2>
                 </div>
-                <div class="panel-body row" id="manban2" style="text-overflow:ellipsis">
+                <div class="panel-body row"  style="text-overflow:ellipsis">
                     @foreach (var g in Model.newgoods)
                     {
-                        <div class="col-md-2 col-sm-4" style="height:306px;">
-                            <img src="/Images/Noteimg/@g.GoodsImage" style="width:  100%;height: 226px;" />
-                            <span class="label label-default" style="margin-top: -20px;">已完结</span>
-                            <span>@g.Name</span>
-                        </div>
+                        <div class="col-md-2 col-sm-4 goods" style="height:340px;">
+                                <a href="#">
+                                <img src="/Images/Noteimg/@g.GoodsImage" style="width:  100%;height: 300px;" />
+                                <span class="label label-default" style="margin-top: -20px;">@g.Style</span>
+                                <span>@g.Name</span>
+                                </a>
+                                <div class="footshadow">
+                                    $: @g.Unitprice
+                                </div>
+                    </div>
                     }
                     <script>
                     $(function () { $("[data-toggle='tooltip']").tooltip(); });
@@ -206,10 +337,9 @@
         </div>
         <hr />
         <footer>
-            Copyright ©2019 HJ韩剧网 liqi
+            Copyright ©2019 精致的衣橱 lq wjk
         </footer>
         <br />
 
-    </div>
 </body>
 </html>

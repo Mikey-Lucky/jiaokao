@@ -206,6 +206,7 @@
     <Compile Include="Controllers\MallController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\YiChuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -459,6 +460,8 @@
     <Content Include="Views\Users\TX.cshtml" />
     <Content Include="Views\Users\GetImg.cshtml" />
     <Content Include="Views\Mall\Index.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Views\YiChu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

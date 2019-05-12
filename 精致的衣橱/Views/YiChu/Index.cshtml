@@ -1,0 +1,57 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+
+        body {
+            background-color:darkgrey;
+        }
+         .container {
+            max-width: 1373px;
+        }
+        .banner {
+            background-image: url('../../Images/Noteimg/11.jpeg');
+            height: 216px;
+        }
+        .top nav {
+            height: 116px;
+            background-color: white;
+        }
+        .main .tianqi {
+            min-height: 800px;
+            width: 30%;
+            background-color: white;
+            float: left;
+        }
+        .main .content {
+           min-height: 800px;
+           width: 69%;
+           background-color: white;
+           float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="top container">
+        <div class="banner">
+        </div>
+        <nav></nav>
+    </div>
+    <div class="main container">
+        <div class="tianqi">
+            <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=55" style="border:solid 1px #7ec8ea" width="255" height="294" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+        </div>
+        <div class="content"></div>
+    </div>
+</body>
+</html>
