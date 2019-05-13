@@ -10,15 +10,12 @@
     text-align:center;
     font-size:88px;
 }
-ul li{
-    display:inline;
+
+.panel-body row a{
+    color:black;
 }
-ul li span{
-    margin-bottom:-20px;
-    margin:auto;
-    
+.panel-body row a:hover{
+    text-decoration: none;
+    color:red;
 }
-ul li span:hover{
-    box-shadow:inset;
-    margin-bottom:20px;
-}
+

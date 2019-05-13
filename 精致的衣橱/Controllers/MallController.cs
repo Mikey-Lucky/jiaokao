@@ -16,11 +16,13 @@ namespace 精致的衣橱.Controllers
         GoodsManager goodsmanager = new GoodsManager();
         public ActionResult Index()
         {
-            var g1 = goodsmanager.GetHotGoods(6);
+            var g1 = goodsmanager.GetHotGoods(8);
             var g2 = goodsmanager.GetNewGoods(10);
+            var g3 = goodsmanager.Chun(12);
             MallViewModel mallviewmodel = new MallViewModel();
             mallviewmodel.HotGoods = g1;
             mallviewmodel.NewGoods = g2;
+            mallviewmodel.Chun = g3;
             return View(mallviewmodel);
         }
     }

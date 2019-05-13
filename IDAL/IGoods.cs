@@ -13,5 +13,6 @@ namespace IDAL
         IEnumerable<Goods> GetHotGoods(int top);
         //查找最新上架商品
         IEnumerable<Goods> GetNewGoods(int top);
+        IEnumerable<Goods> Chun(int top);
     }
 }
