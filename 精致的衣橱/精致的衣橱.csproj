@@ -386,6 +386,10 @@
     <Content Include="Images\Noteimg\7.jpeg" />
     <Content Include="Images\Noteimg\8.png" />
     <Content Include="Images\Noteimg\9.jpeg" />
+    <Content Include="Images\videoimg\6.png" />
+    <Content Include="Images\yichu\744065b6f88e74fa5557db77422fece0.jpg" />
+    <Content Include="Images\yichu\banner1.jpg" />
+    <Content Include="Images\yichu\banner2.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -465,7 +469,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\videoimg\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Shop\" />
   </ItemGroup>
