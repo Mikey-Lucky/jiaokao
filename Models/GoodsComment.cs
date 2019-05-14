@@ -30,6 +30,7 @@ namespace Models
         public int UserID { get; set; }
         public int GoodsID { get; set; }
         public Nullable<System.DateTime> ComTime { get; set; }
+        public Nullable<int> ThumbNum { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ComReply> ComReply { get; set; }

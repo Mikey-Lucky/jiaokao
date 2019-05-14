@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c2c599e846b74e05b9593e2ab641ca93" Name="Diagram1">
+      <Diagram DiagramId="3e40f512840b4686a0ec6f818c990016" Name="Diagram1">
         <EntityTypeShape EntityType="yichuModel.Address" Width="1.5" PointX="3" PointY="27.5" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Cart" Width="1.5" PointX="3" PointY="41.375" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Coat" Width="1.5" PointX="5.25" PointY="72.625" IsExpanded="true" />
@@ -12,12 +12,12 @@
         <EntityTypeShape EntityType="yichuModel.Color" Width="1.5" PointX="8.25" PointY="25.625" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.ComReply" Width="1.5" PointX="6" PointY="44.5" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Coordinate" Width="1.5" PointX="7.5" PointY="78" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Goods" Width="1.5" PointX="8.25" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Goods" Width="1.5" PointX="8.25" PointY="28.75" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Goods_Color" Width="1.5" PointX="10.5" PointY="30.25" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Goods_Size" Width="1.5" PointX="13.5" PointY="30.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.GoodsComment" Width="1.5" PointX="3" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.GoodsComment" Width="1.5" PointX="3" PointY="36.875" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.GoodsCommentsLike" Width="1.5" PointX="10.25" PointY="34.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.GoodsLike" Width="1.5" PointX="3" PointY="45.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.GoodsLike" Width="1.5" PointX="3" PointY="45.625" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Grade" Width="1.5" PointX="8" PointY="38.5" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.NetherGarment" Width="1.5" PointX="5.25" PointY="76.25" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Note" Width="1.5" PointX="3" PointY="49.75" IsExpanded="true" />
@@ -53,24 +53,24 @@
         <AssociationConnector Association="yichuModel.FK__Coordinat__CoatI__68487DD7" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Collect__GoodsID__45F365D3" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Collect__UserID__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__Goods_Col__Color__22AA2996" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__ComReply__GoodsC__300424B4" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__ComReply__UserID__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__Goods_Col__Color__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__ComReply__GoodsC__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__ComReply__UserID__30F848ED" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Coordinat__Nethe__6A30C649" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Coordinat__Shirt__693CA210" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Coordinat__SuitI__6B24EA82" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__U_Collect__Coord__6EF57B66" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__U_Dislike__Coord__72C60C4A" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__Goods_Col__Goods__21B6055D" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__Goods_Siz__Goods__25869641" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__GoodsComm__Goods__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__Goods_Col__Goods__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__Goods_Siz__Goods__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__GoodsComm__Goods__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__GoodsLike__Goods__398D8EEE" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Grade__GoodsID__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__OrderDeta__Goods__5070F446" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__Goods_Siz__SizeI__267ABA7A" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__GoodsComm__Goods__34C8D9D1" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__GoodsComm__UserI__2B3F6F97" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__GoodsComm__UserI__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__Goods_Siz__SizeI__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__GoodsComm__Goods__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__GoodsComm__UserI__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__GoodsComm__UserI__34C8D9D1" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__GoodsLike__UserI__38996AB5" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Grade__UserID__3C69FB99" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__NetherGar__Wardr__628FA481" ManuallyRouted="false" />

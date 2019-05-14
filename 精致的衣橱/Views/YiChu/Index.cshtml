@@ -97,6 +97,10 @@
             border-radius: 30%;
             margin-left: 10px;
         }
+        .tab-pane img {
+            height: 100px;
+            width: 100px;
+        }
     </style>
 </head>
 <body>
@@ -159,27 +163,22 @@
               <div class="content tab-content" id="myTabContent">
                   <div class="tab-pane in active" id="spring">
                       <div>
-                          @foreach (var c in Model.springcoat) {
-                              @c.CoatID;
+                          @foreach (var c in Model.springcoat) {   
                             <img src="/Images/Coat/@c.Image" />
                           }
                       </div>
                       <div>
                           @foreach (var s in Model.springshirt) {
-                              @s.ShirtID;
-
                             <img src="/Images/shirt/@s.Image" />
                           }
                       </div>
                       <div>
                           @foreach (var s in Model.springsuit) {
-                              @s.SuitID;
                             <img src="/Images/Suit/@s.Image" />
                           }
                       </div>
                       <div>
                           @foreach (var n in Model.springnethergarment) {
-                              @n.NetherGarmentID;
                             <img src="/Images/NetherGarment/@n.Image" />
                           }
                       </div>
@@ -189,28 +188,24 @@
                       <div>
                           @foreach (var c in Model.summercoat)
                           {
-                              @c.CoatID;
                             <img src="/Images/Coat/@c.Image" />
                           }
                       </div>
                       <div>
                           @foreach (var s in Model.summershirt)
                           {
-                              @s.ShirtID;
                             <img src="/Images/shirt/@s.Image" />
                           }
                       </div>
                       <div>
                           @foreach (var s in Model.summersuit)
                           {
-                              @s.SuitID;
                             <img src="/Images/Suit/@s.Image" />
                           }
                       </div>
                       <div>
                           @foreach (var n in Model.summernethergarment)
                           {
-                             @n.NetherGarmentID;
                             <img src="/Images/NetherGarment/@n.Image" />
                           }
                       </div>
@@ -220,28 +215,24 @@
                       <div>
                           @foreach (var c in Model.autumncoat)
                           {
-                              @c.CoatID;
                             <img src="/Images/Coat/@c.Image" />
                           }
                       </div>
                       <div>
                           @foreach (var s in Model.autumnshirt)
                           {
-                              @s.ShirtID;
                             <img src="/Images/shirt/@s.Image" />
                           }
                       </div>
                       <div>
                           @foreach (var s in Model.autumnsuit)
                           {
-                              @s.SuitID;
                             <img src="/Images/Suit/@s.Image" />
                           }
                       </div>
                       <div>
                           @foreach (var n in Model.autumnnethergarment)
                           {
-                              @n.NetherGarmentID;
                             <img src="/Images/NetherGarment/@n.Image" />
                           }
                       </div>
@@ -251,28 +242,24 @@
                       <div>
                           @foreach (var c in Model.wintercoat)
                           {
-                              @c.CoatID;
                             <img src="/Images/Coat/@c.Image" />
                           }
                       </div>
                       <div>
                           @foreach (var s in Model.wintershirt)
                           {
-                              @s.ShirtID;
                             <img src="/Images/shirt/@s.Image" />
                           }
                       </div>
                       <div>
                           @foreach (var s in Model.wintersuit)
                           {
-                              @s.SuitID;
                             <img src="/Images/Suit/@s.Image" />
                           }
                       </div>
                       <div>
                           @foreach (var n in Model.autumnnethergarment)
                           {
-                             @n.NetherGarmentID;
                             <img src="/Images/NetherGarment/@n.Image" />
                           }
                       </div>

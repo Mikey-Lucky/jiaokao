@@ -17,7 +17,6 @@ namespace Models
         public int GoodsLikeID { get; set; }
         public int UserID { get; set; }
         public int GoodsID { get; set; }
-        public Nullable<int> ThumbNum { get; set; }
         public Nullable<System.DateTime> ThumbTime { get; set; }
     
         public virtual Goods Goods { get; set; }
