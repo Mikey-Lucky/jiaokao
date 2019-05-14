@@ -7,8 +7,101 @@
 <script src="~/Scripts/jquery.min.js"></script>
 <script src="~/Scripts/Cooldog.js"></script>
 <link href="~/Content/Mall.css" rel="stylesheet" />
-<h2>Index</h2>
 
+<style>
+    .hotprice{
+     text-decoration:none;
+     font-size:16px;
+     /*color: rgba(0, 0, 0,0.5);*/
+     color:red;
+     display:block;
+     text-align:center;
+     margin:auto;
+ }
+  .hottitle{
+     text-decoration:none;
+     font-size:18px;
+     color: rgba(0, 0, 0,0.7);
+     display:block;
+     text-align:center;
+     /*margin:6px 0 8px 0;*/
+     margin:auto;
+ }
+.rexiao{
+    height:100px;
+    background-color:antiquewhite;
+}
+.rxz{
+    text-align:center;
+    font-size:88px;
+}
+  .t{
+    display:inline-block;
+}
+.t p{
+    font-size:30px;
+    margin:15px 0;
+    display:inline-block;
+}
+/*ul li{
+    display:inline-block;
+}
+/*ul li span{
+    margin-bottom:-20px;
+    margin:auto;
+    
+}*/
+/*ul li:hover{
+    box-shadow:inset;
+    margin-bottom:20px;
+}*/
+.c1{
+    width:100%;
+}
+.c1 img {
+     
+       width:275px;
+       box-sizing: border-box; 
+}
+.c1 img:hover{
+  
+    box-shadow: 1px 1px 5px #000000;
+    border:1px solid red;
+	margin-top: -1px;
+
+}
+    .chungoods li {
+        display:inline-block;
+        height:300px;
+        width:282px;
+    }
+    .goods_change{
+        width: 102px;
+        height: 25px;
+        float: right;
+        margin-top: 20px;
+        border: 1px solid #F0F0F0;
+        color: #BEBEBE;
+        line-height: 25px;
+        text-align: center;
+    }
+    .goods_prave{
+        width: 50px;
+        height: 25px;
+        float: left;
+        font-size: 20px;
+        border-right: 1px solid #F0F0F0;
+        cursor: pointer;
+    }
+    .goods_next{
+        width: 50px;
+        height: 25px;
+        float: right;
+        font-size: 20px;
+        border-right: 1px solid #F0F0F0;
+        cursor: pointer;
+    }
+</style>
 <div class="Cooldog_container">
 <div class="Cooldog_content">
     <ul>
@@ -76,7 +169,7 @@
             @foreach (var item in Model.HotGoods)
             {
 
-                <div class="col-md-4 col-sm-4">
+                <div class="col-md-3 col-sm-3">
                     <div class="panel panel-default text-center">
                         <div class="panel-panel-heading">
                             <h1>@item.Name</h1>
@@ -98,59 +191,10 @@
             }
         </div>
        
-        @*<div class="row">
-            <div class="col-md-4 col-sm-4">
-                <div class="panel panel-default text-center">
-                    <div class="panel-panel-heading">
-                        <h1>虾美人</h1>
-                    </div>
-                    <div class="panel-body" style="height:225px">
-                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="虾美人"><img src="img/25.jpg" style="width: 100%;height: 100%;" class="img-thumbnail"></a>
-                    </div>
-
-                    <div class="panel-footer">
-                        <h3>$60</h3>
-                        <h4>per dishes</h4>
-                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="立即购买">立即购买</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="panel panel-default text-center">
-                    <div class="panel-panel-heading">
-                        <h1>酸辣肉片</h1>
-                    </div>
-                    <div class="panel-body" style="height:225px">
-                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="酸辣肉片"><img src="img/5.jpg" style="width: 100%;height: 100%;" class="img-thumbnail"></a>
-                    </div>
-
-                    <div class="panel-footer">
-                        <h3>$80</h3>
-                        <h4>per dishes</h4>
-                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="立即购买">立即购买</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="panel panel-default text-center">
-                    <div class="panel-panel-heading">
-                        <h1>糖醋排骨</h1>
-                    </div>
-                    <div class="panel-body" style="height:225px">
-                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="糖醋排骨"><img src="img/9.jpg" style="width: 100%;height: 100%;"></a>
-                    </div>
-
-                    <div class="panel-footer">
-                        <h3>$130</h3>
-                        <h4>per dishes</h4>
-                        <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="立即购买">立即购买</button>
-                    </div>
-                </div>
-            </div>
-        </div>*@
+        
     </div>
 </div>
-<div class="rexiao"><h2 class="rxz">新品上市</h2></div>
+@*<div class="rexiao"><h2 class="rxz">新品上市</h2></div>
 <ul>
     
     @foreach (var item in Model.NewGoods)
@@ -160,4 +204,113 @@
             <span>@item.Name</span>
         </li>
     }
-</ul>
+</ul>*@
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title" style="font-size: large;">
+            热门商品<span class="label label-danger">最热</span><span style="padding-left:927px;">更多>></span>
+        </h2>
+    </div>
+    <div class="panel-body row" style="text-overflow:ellipsis">
+        @foreach (var g in Model.HotGoods)
+        {
+            <div class="col-md-2 col-sm-4" style="height:340px;">
+                <a href="#">
+                    <img src="~/Images/GoodsImages/@g.GoodsImage" style="width:  100%;height: 300px;" />
+                    @*<span class="label label-default" style="margin-top: -20px;">@g.Style</span>*@
+                    <div class="hottitle">@g.Name</div>
+                    <div class="hotprice">$: @g.Unitprice</div>
+
+                </a>
+                
+                    
+            </div>
+        }
+        <script>
+                    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+        </script>
+    </div>
+</div>
+<br />
+<br />
+<div class="t">
+    <p>春/秋</p>
+    @*<div class="goods_change">
+        <span class="goods_prave"><</span>
+        <span class="goods_next">></span>
+    </div>*@
+</div>
+<hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
+<div class="c1">
+    @*<div class="row">
+        @foreach (var item in Model.Chun)
+        {
+
+                <div class="col-md-4" style="box-sizing: border-box;">
+                    <a href="#">
+                        <img src="~/Images/GoodsImages/@item.GoodsImage"  />
+                        <div>@item.Name</div>
+                        <div>@item.Unitprice</div>
+                    </a>
+               </div>
+        
+
+        }
+    </div>*@    
+    <ul class="chungoods">
+        @foreach (var item in Model.ChunQiu)
+        {
+            <li>
+                <div style="box-sizing: border-box;">
+                    <a href="#">
+                        <img src="~/Images/GoodsImages/@item.GoodsImage" />
+                        <div>@item.Name</div>
+                        <div>@item.Unitprice</div>
+                    </a>
+                </div>
+            </li>
+        }   
+    </ul>
+</div>
+<div class="t">
+    <p>夏</p>
+</div>
+<hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
+<div class="c1">
+    <ul class="chungoods">
+        @foreach (var item in Model.Xia)
+        {
+            <li>
+                <div style="box-sizing: border-box;">
+                    <a href="#">
+                        <img src="~/Images/GoodsImages/@item.GoodsImage" />
+                        <div>@item.Name</div>
+                        <div>@item.Unitprice</div>
+                    </a>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+<div class="t">
+    <p>冬</p>
+</div>
+<hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
+<div class="c1">
+    <ul class="chungoods">
+        @foreach (var item in Model.Xia)
+        {
+            <li>
+                <div style="box-sizing: border-box;">
+                    <a href="#">
+                        <img src="~/Images/GoodsImages/@item.GoodsImage" />
+                        <div>@item.Name</div>
+                        <div>@item.Unitprice</div>
+                    </a>
+                </div>
+            </li>
+        }
+    </ul>
+</div>

@@ -24,5 +24,20 @@ namespace BLL
             var newgoods = igoods.GetNewGoods(top);
             return newgoods;
         }
+        public  IEnumerable<Goods> ChunQiu(int top)
+        {
+            var goods = igoods.Xia(top);
+            return goods;
+        }
+        public IEnumerable<Goods> Xia(int top)
+        {
+            var goods = igoods.Xia(top);
+            return goods;
+        }
+        public IEnumerable<Goods> Dong(int top)
+        {
+            var goods = igoods.Dong(top);
+            return goods;
+        }
     }
 }
