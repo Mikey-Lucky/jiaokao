@@ -7,7 +7,7 @@
 <script src="~/Scripts/jquery.min.js"></script>
 <script src="~/Scripts/Cooldog.js"></script>
 <link href="~/Content/Mall.css" rel="stylesheet" />
-@*<h2>Index</h2>*@
+
 <style>
     .hotprice{
      text-decoration:none;
@@ -27,6 +27,14 @@
      /*margin:6px 0 8px 0;*/
      margin:auto;
  }
+.rexiao{
+    height:100px;
+    background-color:antiquewhite;
+}
+.rxz{
+    text-align:center;
+    font-size:88px;
+}
   .t{
     display:inline-block;
 }
@@ -50,11 +58,49 @@
 .c1{
     width:100%;
 }
-.c1 a:hover{
+.c1 img {
+     
+       width:275px;
+       box-sizing: border-box; 
+}
+.c1 img:hover{
   
     box-shadow: 1px 1px 5px #000000;
+    border:1px solid red;
 	margin-top: -1px;
+
 }
+    .chungoods li {
+        display:inline-block;
+        height:300px;
+        width:282px;
+    }
+    .goods_change{
+        width: 102px;
+        height: 25px;
+        float: right;
+        margin-top: 20px;
+        border: 1px solid #F0F0F0;
+        color: #BEBEBE;
+        line-height: 25px;
+        text-align: center;
+    }
+    .goods_prave{
+        width: 50px;
+        height: 25px;
+        float: left;
+        font-size: 20px;
+        border-right: 1px solid #F0F0F0;
+        cursor: pointer;
+    }
+    .goods_next{
+        width: 50px;
+        height: 25px;
+        float: right;
+        font-size: 20px;
+        border-right: 1px solid #F0F0F0;
+        cursor: pointer;
+    }
 </style>
 <div class="Cooldog_container">
 <div class="Cooldog_content">
@@ -190,22 +236,81 @@
 <br />
 <br />
 <div class="t">
-    <p>春</p>
+    <p>春/秋</p>
+    @*<div class="goods_change">
+        <span class="goods_prave"><</span>
+        <span class="goods_next">></span>
+    </div>*@
 </div>
 <hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
 <div class="c1">
-    <div class="row">
+    @*<div class="row">
         @foreach (var item in Model.Chun)
         {
 
-            <a href="#">
-                <div class="col-md-2">
-                    <img src="~/Images/GoodsImages/@item.GoodsImage" style="width:100%"/>
-                    <div>@item.Name</div>
-                    <div>@item.Unitprice</div>
-                </div>
-            </a>
+                <div class="col-md-4" style="box-sizing: border-box;">
+                    <a href="#">
+                        <img src="~/Images/GoodsImages/@item.GoodsImage"  />
+                        <div>@item.Name</div>
+                        <div>@item.Unitprice</div>
+                    </a>
+               </div>
+        
 
         }
-    </div>    
+    </div>*@    
+    <ul class="chungoods">
+        @foreach (var item in Model.ChunQiu)
+        {
+            <li>
+                <div style="box-sizing: border-box;">
+                    <a href="#">
+                        <img src="~/Images/GoodsImages/@item.GoodsImage" />
+                        <div>@item.Name</div>
+                        <div>@item.Unitprice</div>
+                    </a>
+                </div>
+            </li>
+        }   
+    </ul>
+</div>
+<div class="t">
+    <p>夏</p>
+</div>
+<hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
+<div class="c1">
+    <ul class="chungoods">
+        @foreach (var item in Model.Xia)
+        {
+            <li>
+                <div style="box-sizing: border-box;">
+                    <a href="#">
+                        <img src="~/Images/GoodsImages/@item.GoodsImage" />
+                        <div>@item.Name</div>
+                        <div>@item.Unitprice</div>
+                    </a>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+<div class="t">
+    <p>冬</p>
+</div>
+<hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
+<div class="c1">
+    <ul class="chungoods">
+        @foreach (var item in Model.Xia)
+        {
+            <li>
+                <div style="box-sizing: border-box;">
+                    <a href="#">
+                        <img src="~/Images/GoodsImages/@item.GoodsImage" />
+                        <div>@item.Name</div>
+                        <div>@item.Unitprice</div>
+                    </a>
+                </div>
+            </li>
+        }
+    </ul>
 </div>

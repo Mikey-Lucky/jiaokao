@@ -1,21 +1,8 @@
-﻿.row  div img:hover {
+﻿/*.row  div img:hover {
 	box-shadow: 1px 1px 5px #000000;
 	margin-top: -1px;
-}
-.rexiao{
-    height:100px;
-    background-color:antiquewhite;
-}
-.rxz{
-    text-align:center;
-    font-size:88px;
-}
+}*/
 
-.panel-body row a{
-    color:black;
-}
-.panel-body row a:hover{
-    text-decoration: none;
-    color:red;
-}
+
+
 

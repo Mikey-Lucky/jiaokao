@@ -10,6 +10,8 @@ namespace 精致的衣橱.Models
     {
         public IEnumerable<Goods> HotGoods { get; set; }
         public IEnumerable<Goods> NewGoods { get; set; }
-        public IEnumerable<Goods> Chun { get; set; }
+        public IEnumerable<Goods> ChunQiu { get; set; }
+        public IEnumerable<Goods> Xia { get; set; }
+        public IEnumerable<Goods> Dong { get; set; }
     }
 }
