@@ -40,8 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICoat.cs" />
     <Compile Include="IGoods.cs" />
+    <Compile Include="INetherGarment.cs" />
     <Compile Include="INote.cs" />
+    <Compile Include="IShirt.cs" />
+    <Compile Include="ISuit.cs" />
     <Compile Include="IUsers.cs" />
     <Compile Include="IVideo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

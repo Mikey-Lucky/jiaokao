@@ -207,6 +207,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\YiChuController.cs" />
+    <Compile Include="Controllers\YIChuShowController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,6 +218,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RegisterLogin.cs" />
     <Compile Include="Models\Verify.cs" />
+    <Compile Include="Models\YiChuViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -359,7 +361,6 @@
     <Content Include="Images\GoodsImages\9.1.jpg" />
     <Content Include="Images\GoodsImages\9.2.jpg" />
     <Content Include="Images\GoodsImages\9.jpg" />
-    <Content Include="Images\HeadImages\1.jpg" />
     <Content Include="Images\HeadImages\2.jpg" />
     <Content Include="Images\HeadImages\3.jpg" />
     <Content Include="Images\HeadImages\4.jpg" />
@@ -367,6 +368,7 @@
     <Content Include="Images\HeadImages\6.jpg" />
     <Content Include="Images\HeadImages\7.jpg" />
     <Content Include="Images\HeadImages\8.jpg" />
+    <Content Include="Images\HeadImages\1.jpg" />
     <Content Include="Images\LunboImages\1.JPG" />
     <Content Include="Images\LunboImages\2.jpg" />
     <Content Include="Images\LunboImages\3.jpg" />
@@ -386,10 +388,29 @@
     <Content Include="Images\Noteimg\7.jpeg" />
     <Content Include="Images\Noteimg\8.png" />
     <Content Include="Images\Noteimg\9.jpeg" />
+    <Content Include="Images\shirt\1.jpg" />
+    <Content Include="Images\shirt\10.jpg" />
+    <Content Include="Images\shirt\11.jpg" />
+    <Content Include="Images\shirt\12.jpg" />
+    <Content Include="Images\shirt\13.jpg" />
+    <Content Include="Images\shirt\14.jpg" />
+    <Content Include="Images\shirt\15.jpg" />
+    <Content Include="Images\shirt\16.jpg" />
+    <Content Include="Images\shirt\2.jpg" />
+    <Content Include="Images\shirt\3.jpg" />
+    <Content Include="Images\shirt\4.jpg" />
+    <Content Include="Images\shirt\5.jpg" />
+    <Content Include="Images\shirt\6.jpg" />
+    <Content Include="Images\shirt\7.jpg" />
+    <Content Include="Images\shirt\8.jpg" />
+    <Content Include="Images\shirt\9.jpg" />
     <Content Include="Images\videoimg\6.png" />
     <Content Include="Images\yichu\744065b6f88e74fa5557db77422fece0.jpg" />
     <Content Include="Images\yichu\banner1.jpg" />
     <Content Include="Images\yichu\banner2.jpg" />
+    <Content Include="Images\yichu\lu.jpg" />
+    <Content Include="Images\yichu\wu.jpg" />
+    <Content Include="Images\yichu\麋鹿素材.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -466,9 +487,13 @@
     <Content Include="Views\Mall\Index.cshtml" />
     <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="Views\YiChu\Index.cshtml" />
+    <Content Include="Views\YIChuShow\Userhome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Coat\" />
+    <Folder Include="Images\NetherGarment\" />
+    <Folder Include="Images\Suit\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Shop\" />
   </ItemGroup>
