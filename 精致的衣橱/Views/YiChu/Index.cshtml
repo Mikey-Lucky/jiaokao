@@ -20,26 +20,23 @@
            margin-top: 39px;
            margin-bottom: 10px;
          }
+        li {
+        list-style: none;
+        }
         .main {
             height: 700px;
             width: 85%;
-            background-color: rgba(0,0,0,0.5);
             margin:20px auto;
         }
-        .main-l {
+        /*左侧布局开始*/
+         .main-l {
             position: relative;
             height: 100%;
             width: 20%;
             float: left;
             background-color: white;
         }
-        .main-r {
-            height: 100%;
-            width: 79.9%;
-            float: right;
-            background-color: #f5f5f5;
-        }
-        .userinfo img {
+         .userinfo img { /*头像*/
             height: 77px;
             width: 77px;
             border-radius: 50%;
@@ -47,30 +44,19 @@
             margin-bottom: 20px;
             border: 2px solid rgba(255,255,255,0.3);
         }
-       
-        .daohang li {
-        list-style: none;
-        }
-        .main-l ul {
-        margin-left: 50px;
-        }
-        .main-l .daohang li {
-         display: block;
-         height: 80px;
-        }
-        .main-l .daohang a {
-        color: darkgray;
-        }
-        .add {
-         width: 54px;
-        background-color: rgb(202,220,222);
-        border-radius: 50%;
-        color: white;
-        text-align: center;
-        line-height: 56px;
-        margin-left: 566px;
-        }
-        #footer {
+            /*导航开始*/
+            .main-l ul {
+            margin-left: 50px;
+            }
+            .main-l .daohang li {
+             display: block;
+             height: 80px;
+            }
+            .main-l .daohang a {
+            color: darkgray;
+            }
+            /*导航结束*/
+             #footer {
             position: absolute;
             bottom: 0px;
             width: 100%;
@@ -79,28 +65,80 @@
             background-repeat: no-repeat;
             background-image: linear-gradient(to top,rgba(255,255,255,0) 42%,rgba(255,255,255,1) 100%), url('../../Images/yichu/麋鹿素材.jpg');
             /*background-blend-mode: multiply;*/
-        }
-        .category li {
-           display: inline-block;
-        }
-        .main-r .daohang {
-           margin-top: 30px;
-        }
-        .main-r .daohang h2,
-        .main-r .daohang input,
-        .main-r .daohang .glyphicon-search {
-          margin-left:50px;
-        }
-        .main-r .daohang input {
-            outline: 0;
-            border: 1px solid #f5f5f5;
-            border-radius: 30%;
-            margin-left: 10px;
-        }
-        .tab-pane img {
-            height: 100px;
-            width: 100px;
-        }
+            }
+        /*左侧布局结束*/
+        /*右侧布局开始*/
+        .main-r {
+            height: 100%;
+            width: 79.9%;
+            float: right;
+            background-color: #f5f5f5;
+        }       
+            /*导航开始*/
+            .main-r .daohang {
+               margin-top: 30px;
+            }
+            .main-r .daohang h2
+            {
+              margin-left:50px;
+            }
+             .category li {
+               display: inline-block;
+            }
+                .add {/*添加*/
+                width: 54px;
+                background-color: rgb(202,220,222);
+                border-radius: 50%;
+                color: white;
+                text-align: center;
+                line-height: 56px;
+                margin-left: 566px;
+                }
+                /*搜索开始*/
+                .search {
+                   display: inline-block;
+                }
+                .search .glyphicon {
+                      top: 0px;
+                }
+                .search span,
+                .search input {
+                   height: 26px;
+                   background-color: white;
+                   float:left;
+                   line-height: 26px;
+                   text-indent: 1em;
+                 }
+                .search input {
+                    outline-color: white;
+                    border: 0px;
+                }
+                .search span:first-child {
+                  width:26px;
+                  border-radius:50% 0 0 50%;
+                }
+                .search span:last-child {
+                  width:26px;
+                  border-radius:0 50% 50% 0;
+                }
+                /*搜索结束*/
+            /*导航结束*/
+            /*内容布局开始*/
+              .tab-pane img {
+               height: 100px;
+               width: 100px;
+              }
+              
+              .tab-pane span {/*衣种标签*/
+               display: inline-block;
+               width: 18px;
+               color: white;
+               background-color: rgb(202,220,222);
+               text-align: center;
+               margin-top: 25px;
+              } 
+            /*内容布局结束*/   
+        /*右侧布局结束*/  
     </style>
 </head>
 <body>
@@ -112,21 +150,21 @@
                   <p style="display: inline-block;">我是一只麋鹿</p>
               </div>
               <div class="daohang">
-                  <ul>
+                  <ul id="#yichudaohang">
                       <li>
-                          <a href="#">
+                          <a href="@Url.Action("Index1","Home")">
                               <span class="glyphicon glyphicon-home"></span>
                               回到首页
                           </a>
                       </li>
-                      <li>
-                          <a href="#">
+                      <li class="active">
+                          <a href="#myclothes" data-toggle="tab">
                               <span class="glyphicon glyphicon-paperclip"></span>
                               我的衣服
                           </a>
                       </li>
                       <li>
-                          <a href="#">
+                          <a href="#todayclothes" data-toggle="tab">
                               <span class="glyphicon glyphicon-send"></span>
                               今日推荐
                           </a>
@@ -137,140 +175,172 @@
           </div>
           <div class="main-r">
               <div class="daohang">
-                  <h2 style="display: inline-block;">Choleth</h2>
-                  <span class="glyphicon glyphicon-search"></span>
-                  <input placeholder="搜受" />
+                  <h2 style="display: inline-block;">Clothes</h2>
+                  <div class="search"><!--搜索-->
+                      <span class="glyphicon glyphicon-search"></span>
+                      <input placeholder="输入你想查询衣服" />
+                      <span></span>
+                  </div>
                   <span class="glyphicon glyphicon-plus add">
                       <a href="#"></a>
                   </span>
               </div>
-              <div class="category">
-                  <ul id="myTab">
-                      <li class="active">
-                          <a href="#spring" data-toggle="tab">春</a>
-                      </li>
-                      <li>
-                          <a href="#summer" data-toggle="tab">夏</a>
-                      </li>
-                      <li>
-                          <a href="#autumn" data-toggle="tab">秋</a>
-                      </li>
-                      <li>
-                          <a href="#winter" data-toggle="tab">冬</a>
-                      </li>
-                  </ul>
+              <div class="content tab-content" id="yichuContent">
+                  <div id="myclothes" class="tab-pane in active">
+                      <div class="category">
+                          <ul id="myTab">
+                              <li class="active">
+                                  <a href="#spring" data-toggle="tab">春</a>
+                              </li>
+                              <li>
+                                  <a href="#summer" data-toggle="tab">夏</a>
+                              </li>
+                              <li>
+                                  <a href="#autumn" data-toggle="tab">秋</a>
+                              </li>
+                              <li>
+                                  <a href="#winter" data-toggle="tab">冬</a>
+                              </li>
+                          </ul>
+                      </div>
+                      <div class="content tab-content" id="myTabContent">
+                          <div class="tab-pane in active" id="spring">
+                              <div>
+                                  <span>外套<span class="glyphicon glyphicon-plus" style="background-color:aliceblue;display:inline-block;width:100%;height:10px;"></span></span>
+                                  @foreach (var c in Model.springcoat) {
+                              <img src="/Images/Coat/@c.Image" />
+                          }
+                              </div>
+                              <div>
+                                  <span>上单衣</span>
+                                  @foreach (var s in Model.springshirt) {
+                              <img src="/Images/shirt/@s.Image" />
+                          }
+                              </div>
+                              <div>
+                                  <span>下装</span>
+                                  @foreach (var n in Model.springnethergarment)
+                              {
+                              <img src="/Images/NetherGarment/@n.Image" />
+                              }
+                              </div>
+                              <div>
+                                  <span>套装</span>
+                                  @foreach (var s in Model.springsuit) {
+                              <img src="/Images/Suit/@s.Image" />
+                          }
+                              </div>
+                              <p>春天</p>
+                          </div>
+                          <div class="tab-pane " id="summer">
+                              <div>
+                                  <span>外套</span>
+                                  @foreach (var c in Model.summercoat)
+                          {
+                              <img src="/Images/Coat/@c.Image" />
+                          }
+                              </div>
+                              <div>
+                                  <span>上单衣</span>
+                                  @foreach (var s in Model.summershirt)
+                          {
+                              <img src="/Images/shirt/@s.Image" />
+                          }
+                              </div>
+                              <div>
+                                  <span>下装</span>
+                                  @foreach (var n in Model.summernethergarment)
+                              {
+                              <img src="/Images/NetherGarment/@n.Image" />
+                              }
+                              </div>
+                              <div>
+                                  <span>套装</span>
+                                  @foreach (var s in Model.summersuit)
+                          {
+                              <img src="/Images/Suit/@s.Image" />
+                          }
+                              </div>
+
+                              <p>夏天</p>
+                          </div>
+                          <div class="tab-pane " id="autumn">
+                              <div>
+                                  <span>外套</span>
+                                  @foreach (var c in Model.autumncoat)
+                          {
+                              <img src="/Images/Coat/@c.Image" />
+                          }
+                              </div>
+                              <div>
+                                  <span>上单衣</span>
+                                  @foreach (var s in Model.autumnshirt)
+                          {
+                              <img src="/Images/shirt/@s.Image" />
+                          }
+                              </div>
+                              <div>
+                                  <span>下装</span>
+                                  @foreach (var n in Model.autumnnethergarment)
+                              {
+                              <img src="/Images/NetherGarment/@n.Image" />
+                              }
+                              </div>
+                              <p>秋天</p>
+                              <div>
+                                  <span>套装</span>
+                                  @foreach (var s in Model.autumnsuit)
+                          {
+                              <img src="/Images/Suit/@s.Image" />
+                          }
+                              </div>
+                          </div>
+                          <div class="tab-pane " id="winter">
+                              <div>
+                                  <span>外套</span>
+                                  @foreach (var c in Model.wintercoat)
+                          {
+                              <img src="/Images/Coat/@c.Image" />
+                          }
+                              </div>
+                              <div>
+                                  <span>上单衣</span>
+                                  @foreach (var s in Model.wintershirt)
+                          {
+                              <img src="/Images/shirt/@s.Image" />
+                          }
+                              </div>
+                              <div>
+                                  <span>下装</span>
+                                  @foreach (var n in Model.autumnnethergarment)
+                              {
+                              <img src="/Images/NetherGarment/@n.Image" />
+                              }
+                              </div>
+                              <p>冬天</p>
+                              <div>
+                                  <span>套装</span>
+                                  @foreach (var s in Model.wintersuit)
+                          {
+                              <img src="/Images/Suit/@s.Image" />
+                          }
+                              </div>
+
+                          </div>
+                      </div>
+                      <script>
+	              $(function () {
+		          $('#myTab li:eq(1) a').tab('show');});
+                      </script>
+                  </div>
+                  <div id="todayclothes" class="tab-pane"></div>
               </div>
-              <div class="content tab-content" id="myTabContent">
-                  <div class="tab-pane in active" id="spring">
-                      <div>
-                          @foreach (var c in Model.springcoat) {   
-                            <img src="/Images/Coat/@c.Image" />
-                          }
-                      </div>
-                      <div>
-                          @foreach (var s in Model.springshirt) {
-                            <img src="/Images/shirt/@s.Image" />
-                          }
-                      </div>
-                      <div>
-                          @foreach (var s in Model.springsuit) {
-                            <img src="/Images/Suit/@s.Image" />
-                          }
-                      </div>
-                      <div>
-                          @foreach (var n in Model.springnethergarment) {
-                            <img src="/Images/NetherGarment/@n.Image" />
-                          }
-                      </div>
-                      <p>春天</p>
-                  </div>
-                  <div class="tab-pane " id="summer">
-                      <div>
-                          @foreach (var c in Model.summercoat)
-                          {
-                            <img src="/Images/Coat/@c.Image" />
-                          }
-                      </div>
-                      <div>
-                          @foreach (var s in Model.summershirt)
-                          {
-                            <img src="/Images/shirt/@s.Image" />
-                          }
-                      </div>
-                      <div>
-                          @foreach (var s in Model.summersuit)
-                          {
-                            <img src="/Images/Suit/@s.Image" />
-                          }
-                      </div>
-                      <div>
-                          @foreach (var n in Model.summernethergarment)
-                          {
-                            <img src="/Images/NetherGarment/@n.Image" />
-                          }
-                      </div>
-                      <p>夏天</p>
-                  </div>
-                  <div class="tab-pane " id="autumn">
-                      <div>
-                          @foreach (var c in Model.autumncoat)
-                          {
-                            <img src="/Images/Coat/@c.Image" />
-                          }
-                      </div>
-                      <div>
-                          @foreach (var s in Model.autumnshirt)
-                          {
-                            <img src="/Images/shirt/@s.Image" />
-                          }
-                      </div>
-                      <div>
-                          @foreach (var s in Model.autumnsuit)
-                          {
-                            <img src="/Images/Suit/@s.Image" />
-                          }
-                      </div>
-                      <div>
-                          @foreach (var n in Model.autumnnethergarment)
-                          {
-                            <img src="/Images/NetherGarment/@n.Image" />
-                          }
-                      </div>
-                      <p>秋天</p>
-                  </div>
-                  <div class="tab-pane " id="winter">
-                      <div>
-                          @foreach (var c in Model.wintercoat)
-                          {
-                            <img src="/Images/Coat/@c.Image" />
-                          }
-                      </div>
-                      <div>
-                          @foreach (var s in Model.wintershirt)
-                          {
-                            <img src="/Images/shirt/@s.Image" />
-                          }
-                      </div>
-                      <div>
-                          @foreach (var s in Model.wintersuit)
-                          {
-                            <img src="/Images/Suit/@s.Image" />
-                          }
-                      </div>
-                      <div>
-                          @foreach (var n in Model.autumnnethergarment)
-                          {
-                            <img src="/Images/NetherGarment/@n.Image" />
-                          }
-                      </div>
-                      <p>冬天</p>
-                  </div>
+                  <script>
+                      $(function () {
+                          $('#yichudaohang li:eq(1) a').tab('show');
+                      });
+                  </script>
               </div>
-             <script>
-	         $(function () {
-		     $('#myTab li:eq(1) a').tab('show');});
-             </script>
-          </div>
       </div>
 </body>
 </html>
