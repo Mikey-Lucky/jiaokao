@@ -12,11 +12,16 @@ namespace BLL
     public class CoatManager
     {
         ICoat icoat = DataAccess.CreateCoat();
-        //通过季节查询上衣
+        //通过季节查询外套
         public IQueryable<Coat> CoatBySeason(string season)
         {
             var coat = icoat.CoatBySeason(season);
             return coat;
+        }
+        //通过温度查询外套
+        public IQueryable<Coat> CoatByTemp(int temp)
+        {
+            return icoat.CoatByTemp(temp);
         }
     }
 }

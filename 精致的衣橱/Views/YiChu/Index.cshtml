@@ -333,7 +333,37 @@
 		          $('#myTab li:eq(1) a').tab('show');});
                       </script>
                   </div>
-                  <div id="todayclothes" class="tab-pane"></div>
+                  <div id="todayclothes" class="tab-pane">
+                      <div id="todayallc">
+                          <div>
+                              @foreach (var c in Model.coatbytemp)
+                              {
+                                  <img src="/Images/Coat/@c.Image" />
+                              }
+                          </div>
+                          <div>
+                              @foreach (var s in Model.shirtbytemp)
+                              {
+                                  <img src="/Images/shirt/@s.Image" />
+                              }
+                          </div>
+                          <div>
+                              @foreach (var n in Model.nethergarmentbytemp)
+                              {
+                                  <img src="/Images/NetherGarment/@n.Image" />
+                              }
+                          </div>
+                          <div>
+                              @foreach (var s in Model.suitbytemp)
+                              {
+                                  <img src="/Images/Suit/@s.Image" />
+                              }
+                          </div>
+                      </div>
+                      <div id="todaydapei">
+                          <p>daipei</p>
+                      </div>
+                  </div>
               </div>
                   <script>
                       $(function () {
@@ -342,5 +372,47 @@
                   </script>
               </div>
       </div>
+    <!--获取天气-->
+            <button onclick="getWeather()">查询天气</button>
+            <p class="temperature"></p>
+            <p class="temperature1"></p>
+            <p class="temperature2"></p>
+            <script>
+            // Ajax请求：一般在刷新页面中的局部数据时，会使用ajax请求。该请求不会去重新刷新或请求这个页面中的所有数据，而只是动态的修改一部分数据。
+            function getWeather() {
+            // 通过ajax向天气接口发送请求
+            // $.get('url', '请求成功之后的回调函数');
+            // $.post('url', 'POST参数', '请求成功之后的回调函数');
+            $.ajax({
+            // 请求地址
+            url: 'http://api.map.baidu.com/telematics/v3/weather?location=' + '南昌' + '&output=json&ak=TueGDhCvwI6fOrQnLM0qmXxY9N0OkOiQ&callback=?',
+            // 请求类型：GET/POST
+            type: 'GET',
+            // 请求参数，是一个字符串。
+            // data: '',
+            // 指定服务器返回的数据类型
+            dataType: 'json',
+            // 指定请求失败的回调函数
+            error: function (data, status) {
+            console.log('请求失败：', status, data);
+            },
+            // 请求成功的回调函数
+            success: function (data, status) {
+            // 请求成功，得到json数据，解析json数据，将数据展示到页面中。
+            console.log('请求成功：', data);
+            var result = data['results'][0];
+            var weather_data = result['weather_data'][0];
+            var tem = weather_data['temperature'];
+            var temnum = tem.split("~");
+            var center = (parseInt(temnum[0]) + parseInt(temnum[1])) * 0.5;
+            $('.temperature').text(parseInt(temnum[0]));
+            $('.temperature1').text(parseInt(temnum[1]));
+            $('.temperature2').text(parseInt(center));
+            },
+            // 发起请求的方式：同步(false)还是异步(true)
+            async: true
+            });
+        }
+    </script>
 </body>
 </html>

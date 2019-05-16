@@ -40,5 +40,13 @@ namespace 精致的衣橱.Models
         public IEnumerable<NetherGarment> autumnnethergarment { get; set; }
         //冬季下装
         public IEnumerable<NetherGarment> winternethergarment { get; set; }
+        //根据温度找出的外套
+        public IQueryable<Coat> coatbytemp { get; set; }
+        //根据温度找出的上单衣
+        public IQueryable<Shirt> shirtbytemp { get; set; }
+        //根据温度找出的下装
+        public IQueryable<NetherGarment> nethergarmentbytemp { get; set; }
+        //根据温度找出的套装
+        public IQueryable<Suit> suitbytemp { get; set; }
     }
 }

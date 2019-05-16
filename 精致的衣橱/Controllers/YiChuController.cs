@@ -19,6 +19,7 @@ namespace 精致的衣橱.Controllers
         public ActionResult Index()
         {
             YiChuViewModel yichuview = new YiChuViewModel();
+            int temp=12;//需获取前台值
             yichuview.springsuit = suits.ShirtBySeason("春季");
             yichuview.summersuit = suits.ShirtBySeason("夏季");
             yichuview.autumnsuit = suits.ShirtBySeason("秋季");
@@ -35,7 +36,10 @@ namespace 精致的衣橱.Controllers
             yichuview.summershirt = shirts.ShirtBySeason("夏季");
             yichuview.autumnshirt = shirts.ShirtBySeason("秋季");
             yichuview.wintershirt = shirts.ShirtBySeason("冬季");
-
+            yichuview.nethergarmentbytemp = nethers.NetherGarmentByTemp(temp);
+            yichuview.shirtbytemp = shirts.ShirtByTemp(temp);
+            yichuview.coatbytemp = coats.CoatByTemp(temp);
+            yichuview.suitbytemp = suits.SuitByTemp(temp);
             return View(yichuview);
         }
     }

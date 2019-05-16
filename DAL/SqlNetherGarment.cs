@@ -18,5 +18,35 @@ namespace DAL
                         select n;
             return nether;
         }
+
+        public IQueryable<NetherGarment> NetherGarmentByTemp(int temp)
+        {
+            IQueryable<NetherGarment> nether;
+            if (temp < 5)
+            {
+                nether = from c in db.NetherGarment
+                       where c.Season == "冬季"
+                       select c;
+            }
+            else if (temp >= 5 && temp < 20)
+            {
+                nether = from c in db.NetherGarment
+                       where c.Season == "春季" || c.Season == "秋季"
+                       select c;
+            }
+            else if (temp >= 20 && temp < 25)
+            {
+                nether = from c in db.NetherGarment
+                       where c.Season == "春季" || c.Season == "夏季"
+                       select c;
+            }
+            else
+            {
+                nether = from c in db.NetherGarment
+                       where c.Season == "夏季"
+                       select c;
+            }
+            return nether;
+        }
     }
 }

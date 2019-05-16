@@ -18,5 +18,10 @@ namespace BLL
             var suit = isuit.SuitBySeason(season);
             return suit;
         }
+        //通过气温查询套装
+        public IQueryable<Suit> SuitByTemp(int temp)
+        {
+            return isuit.SuitByTemp(temp);
+        }
     }
 }
