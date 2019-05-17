@@ -13,5 +13,7 @@ namespace IDAL
         IQueryable<Suit> SuitBySeason(string season);
         //通过气温查找套装
         IQueryable<Suit> SuitByTemp(int temp);
+        //添加套装
+        void AddSuit(Suit suit);
     }
 }

@@ -11,6 +11,13 @@ namespace DAL
     public class SqlNetherGarment : INetherGarment
     {
         yichuEntities db = DbContextFactory.CreateDbContext();
+
+        public void AddNether(NetherGarment nether)
+        {
+            db.NetherGarment.Add(nether);
+            db.SaveChanges();
+        }
+
         public IQueryable<NetherGarment> NetherGarmentBySeason(string season)
         {
             var nether = from n in db.NetherGarment

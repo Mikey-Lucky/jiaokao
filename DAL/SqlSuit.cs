@@ -11,6 +11,13 @@ namespace DAL
     public class SqlSuit : ISuit
     {
         yichuEntities db = DbContextFactory.CreateDbContext();
+
+        public void AddSuit(Suit suit)
+        {
+            db.Suit.Add(suit);
+            db.SaveChanges();
+        }
+
         public IQueryable<Suit> SuitBySeason(string season)
         {
             var suit = from s in db.Suit

@@ -23,5 +23,10 @@ namespace BLL
         {
             return inether.NetherGarmentByTemp(temp);
         }
+        //添加下衣
+        public void AddNether(NetherGarment nether)
+        {
+            inether.AddNether(nether);
+        }
     }
 }

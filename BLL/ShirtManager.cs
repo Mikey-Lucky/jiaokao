@@ -22,5 +22,10 @@ namespace BLL
         public IQueryable<Shirt> ShirtByTemp(int temp) {
             return ishirt.ShirtByTemp(temp);
         }
+        //添加上衣
+        public void AddShirt(Shirt shirt)
+        {
+            ishirt.AddShirt(shirt);
+        }
     }
 }

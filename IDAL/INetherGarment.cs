@@ -13,5 +13,7 @@ namespace IDAL
         IQueryable<NetherGarment> NetherGarmentBySeason(string season);
         //通过温度找下衣
         IQueryable<NetherGarment> NetherGarmentByTemp(int temp);
+        //添加下衣
+        void AddNether(NetherGarment nether);
     }
 }

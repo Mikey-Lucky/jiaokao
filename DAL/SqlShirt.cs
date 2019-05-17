@@ -48,5 +48,10 @@ namespace DAL
             }
             return shirt;
         }
+        public void AddShirt(Shirt shirt)
+        {
+            db.Shirt.Add(shirt);
+            db.SaveChanges();
+        }
     }
 }

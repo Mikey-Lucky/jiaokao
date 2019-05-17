@@ -11,6 +11,13 @@ namespace DAL
     public class SqlCoat : ICoat
     {
         yichuEntities db = DbContextFactory.CreateDbContext();
+
+        public void AddCoat(Coat coat)
+        {
+            db.Coat.Add(coat);
+            db.SaveChanges();
+        }
+
         public IQueryable<Coat> CoatBySeason(string season)
         {
             var coat = from c in db.Coat
