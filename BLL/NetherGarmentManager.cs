@@ -18,5 +18,15 @@ namespace BLL
             var nether = inether.NetherGarmentBySeason(season);
             return nether;
         }
+        //通过温度找下装
+        public IQueryable<NetherGarment> NetherGarmentByTemp(int temp)
+        {
+            return inether.NetherGarmentByTemp(temp);
+        }
+        //添加下衣
+        public void AddNether(NetherGarment nether)
+        {
+            inether.AddNether(nether);
+        }
     }
 }

@@ -18,5 +18,14 @@ namespace BLL
             var shirt = ishirt.ShirtBySeason(season);
             return shirt;
         }
+        //通过气温查询上衣
+        public IQueryable<Shirt> ShirtByTemp(int temp) {
+            return ishirt.ShirtByTemp(temp);
+        }
+        //添加上衣
+        public void AddShirt(Shirt shirt)
+        {
+            ishirt.AddShirt(shirt);
+        }
     }
 }

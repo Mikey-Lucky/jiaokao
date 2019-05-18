@@ -501,6 +501,7 @@
     <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="Views\YiChu\Index.cshtml" />
     <Content Include="Views\YIChuShow\Userhome.cshtml" />
+    <Content Include="Views\YiChu\AddClothes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
