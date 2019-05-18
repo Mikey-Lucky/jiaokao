@@ -13,5 +13,6 @@ namespace 精致的衣橱.Models
         public IEnumerable<Goods> ChunQiu { get; set; }
         public IEnumerable<Goods> Xia { get; set; }
         public IEnumerable<Goods> Dong { get; set; }
+        public IEnumerable<Goods> allgoodsbytype{ get; set; }
     }
 }
