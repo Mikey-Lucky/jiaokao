@@ -231,6 +231,7 @@
     <Content Include="Content\iconfont.css" />
     <Content Include="Content\Mall.css" />
     <Content Include="Content\shouye.css" />
+    <Content Include="Content\zyUpload.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -435,6 +436,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Cooldog.js" />
     <Content Include="Scripts\DZ.css" />
+    <Content Include="Scripts\jq22.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -448,6 +450,8 @@
     <Content Include="Scripts\modernizr.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\zyFile.js" />
+    <Content Include="Scripts\zyUpload.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="shouyeimg\danzheng.jpg" />
     <Content Include="shouyeimg\fan.jpg" />
