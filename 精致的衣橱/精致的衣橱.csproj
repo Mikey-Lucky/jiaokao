@@ -406,6 +406,18 @@
     <Content Include="Images\shirt\7.jpg" />
     <Content Include="Images\shirt\8.jpg" />
     <Content Include="Images\shirt\9.jpg" />
+    <Content Include="Images\Suit\1.jpg" />
+    <Content Include="Images\Suit\10.jpg" />
+    <Content Include="Images\Suit\11.jpg" />
+    <Content Include="Images\Suit\12.jpg" />
+    <Content Include="Images\Suit\2.jpg" />
+    <Content Include="Images\Suit\3.jpg" />
+    <Content Include="Images\Suit\4.jpg" />
+    <Content Include="Images\Suit\5.jpg" />
+    <Content Include="Images\Suit\6.jpg" />
+    <Content Include="Images\Suit\7.jpg" />
+    <Content Include="Images\Suit\8.jpg" />
+    <Content Include="Images\Suit\9.jpg" />
     <Content Include="Images\videoimg\6.png" />
     <Content Include="Images\yichu\744065b6f88e74fa5557db77422fece0.jpg" />
     <Content Include="Images\yichu\banner1.jpg" />
@@ -499,7 +511,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\Coat\" />
     <Folder Include="Images\NetherGarment\" />
-    <Folder Include="Images\Suit\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Shop\" />
   </ItemGroup>

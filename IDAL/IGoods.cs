@@ -16,5 +16,6 @@ namespace IDAL
         IEnumerable<Goods> ChunQiu(int top);
         IEnumerable<Goods> Xia(int top);
         IEnumerable<Goods> Dong(int top);
+        //IEnumerable<> allgoodsbytype(string sex,string material, string style);
     }
 }
