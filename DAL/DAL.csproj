@@ -55,6 +55,7 @@
     <Compile Include="DbContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlCoat.cs" />
+    <Compile Include="SqlGGCC.cs" />
     <Compile Include="SqlGoods.cs" />
     <Compile Include="SqlNetherGarment.cs" />
     <Compile Include="SqlNote.cs" />

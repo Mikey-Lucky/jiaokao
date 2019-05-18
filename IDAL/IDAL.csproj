@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICoat.cs" />
+    <Compile Include="IGGCC.cs" />
     <Compile Include="IGoods.cs" />
     <Compile Include="INetherGarment.cs" />
     <Compile Include="INote.cs" />

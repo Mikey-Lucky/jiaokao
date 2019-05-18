@@ -46,12 +46,12 @@ namespace DAL
             var goods = db.Goods.Where(u => u.Season == "冬").Take(top);
             return goods;
         }
-        public IEnumerable<Goods> allgoodsbytype(s)
-        {
-            var goods = from o in db.Goods
-                        where o.Season=="春"
-                        orderby o.Sex
-                        select o;
-        }
+        //public IEnumerable<Goods> allgoodsbytype(s)
+        //{
+        //    var goods = from o in db.Goods
+        //                where o.Season=="春"
+        //                orderby o.Sex
+        //                select o;
+        //}
     }
 }
