@@ -20,7 +20,8 @@ namespace 精致的衣橱.Controllers
         public ActionResult Index()
         {
             YiChuViewModel yichuview = new YiChuViewModel();
-            int temp=12;//需获取前台值
+            /* var temp = Convert.ToInt32(context.Request["weather"]);*///数据获取失败
+            int temp = 12;//需获取前台值
             yichuview.springsuit = suits.ShirtBySeason("春季");
             yichuview.summersuit = suits.ShirtBySeason("夏季");
             yichuview.autumnsuit = suits.ShirtBySeason("秋季");
@@ -43,7 +44,7 @@ namespace 精致的衣橱.Controllers
             yichuview.suitbytemp = suits.SuitByTemp(temp);
             return View(yichuview);
         }
-        //GET单件上传衣服
+        //GET上传衣服
         public ActionResult AddClothes()
         {
             return View();
