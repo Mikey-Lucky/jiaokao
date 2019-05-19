@@ -14,6 +14,7 @@ namespace 精致的衣橱.Controllers
         // GET: Mall
         yichuEntities db = new yichuEntities();
         GoodsManager goodsmanager = new GoodsManager();
+        GGCCManager ggccmanager = new GGCCManager();
         public ActionResult Index()
         {
             var g1 = goodsmanager.GetHotGoods(8);
@@ -35,5 +36,29 @@ namespace 精致的衣橱.Controllers
             var a = db.Goods.Where(p=>p.GoodsID==id).FirstOrDefault();
             return View(a);
         }
+        //public ActionResult Category(string CateName,string currentFilter,int ? page)
+        //{
+        //    var c = ggccmanager.GetGoods();
+        //    if(CateName!=null)
+        //    {
+        //        page = 1;
+        //    }
+        //    else
+        //    {
+        //        CateName = currentFilter;
+        //    }
+        //    ViewBag.CurrentFilter = CateName;
+        //    if(!string.IsNullOrEmpty(CateName))
+        //    {
+        //        c = c.Where(x=>x.Color);
+        //    }
+        //    return View(c);
+        //}
+        //public ActionResult GoodsShow()
+        //{
+        //    var c1 = ggccmanager.GetGoods();
+        //    var c2 = ggccmanager.Category();
+        //    var c3 = ggccmanager.GetCategoryByCateName();
+        //}
     }
 }

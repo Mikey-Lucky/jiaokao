@@ -413,6 +413,29 @@
           <Property Name="Lock" Type="bit" />
         </EntityType>
         <!--生成过程中发现错误:
+警告 6002: 表/视图“yichu.dbo.GGCC”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="GGCC">
+          <Key>
+            <PropertyRef Name="GoodsID" />
+            <PropertyRef Name="StorageAmount" />
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="GoodsID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Sex" Type="char" MaxLength="2" />
+          <Property Name="Season" Type="char" MaxLength="2" />
+          <Property Name="Style" Type="char" MaxLength="50" />
+          <Property Name="Material" Type="char" MaxLength="50" />
+          <Property Name="GoodsImage" Type="varchar(max)" />
+          <Property Name="GCimage" Type="varchar(max)" />
+          <Property Name="StorageAmount" Type="int" Nullable="false" />
+          <Property Name="ShangjiaTime" Type="datetime" />
+          <Property Name="Unitprice" Type="float" />
+          <Property Name="Type" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="ThumbNum" Type="int" />
+          <Property Name="Color" Type="char" MaxLength="5" />
+        </EntityType>
+        <!--生成过程中发现错误:
 警告 6002: 表/视图“yichu.dbo.note_like”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="note_like">
           <Key>
@@ -1254,6 +1277,24 @@
           <EntitySet Name="VideoSelect" EntityType="Self.VideoSelect" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VideoTrasmit" EntityType="Self.VideoTrasmit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wardrobe" EntityType="Self.Wardrobe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GGCC" EntityType="Self.GGCC" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GGCC].[GoodsID] AS [GoodsID], 
+    [GGCC].[Name] AS [Name], 
+    [GGCC].[Sex] AS [Sex], 
+    [GGCC].[Season] AS [Season], 
+    [GGCC].[Style] AS [Style], 
+    [GGCC].[Material] AS [Material], 
+    [GGCC].[GoodsImage] AS [GoodsImage], 
+    [GGCC].[GCimage] AS [GCimage], 
+    [GGCC].[StorageAmount] AS [StorageAmount], 
+    [GGCC].[ShangjiaTime] AS [ShangjiaTime], 
+    [GGCC].[Unitprice] AS [Unitprice], 
+    [GGCC].[Type] AS [Type], 
+    [GGCC].[ThumbNum] AS [ThumbNum], 
+    [GGCC].[Color] AS [Color]
+    FROM [dbo].[GGCC] AS [GGCC]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="note_like" EntityType="Self.note_like" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [note_like].[NoteID] AS [NoteID], 
@@ -2073,6 +2114,27 @@
           <NavigationProperty Name="Shirt" Relationship="Self.FK__Shirt__WardrobeI__5FB337D6" FromRole="Wardrobe" ToRole="Shirt" />
           <NavigationProperty Name="Suit" Relationship="Self.FK__Suit__WardrobeID__656C112C" FromRole="Wardrobe" ToRole="Suit" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Wardrobe__Userid__59FA5E80" FromRole="Wardrobe" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="GGCC">
+          <Key>
+            <PropertyRef Name="GoodsID" />
+            <PropertyRef Name="StorageAmount" />
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="GoodsID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Season" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Style" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="Material" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="GoodsImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GCimage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StorageAmount" Type="Int32" Nullable="false" />
+          <Property Name="ShangjiaTime" Type="DateTime" Precision="3" />
+          <Property Name="Unitprice" Type="Double" />
+          <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ThumbNum" Type="Int32" />
+          <Property Name="Color" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="note_like">
           <Key>
@@ -2906,6 +2968,7 @@
           <EntitySet Name="VideoSelect" EntityType="Self.VideoSelect" />
           <EntitySet Name="VideoTrasmit" EntityType="Self.VideoTrasmit" />
           <EntitySet Name="Wardrobe" EntityType="Self.Wardrobe" />
+          <EntitySet Name="GGCC" EntityType="Self.GGCC" />
           <EntitySet Name="note_like" EntityType="Self.note_like" />
           <EntitySet Name="video_like" EntityType="Self.video_like" />
           <AssociationSet Name="FK__Address__UserID__48CFD27E" Association="Self.FK__Address__UserID__48CFD27E">
@@ -3615,6 +3678,26 @@
                 <ScalarProperty Name="WardrobeID" ColumnName="WardrobeID" />
                 <ScalarProperty Name="Userid" ColumnName="Userid" />
                 <ScalarProperty Name="Lock" ColumnName="Lock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GGCC">
+            <EntityTypeMapping TypeName="yichuModel.GGCC">
+              <MappingFragment StoreEntitySet="GGCC">
+                <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="GoodsImage" ColumnName="GoodsImage" />
+                <ScalarProperty Name="GCimage" ColumnName="GCimage" />
+                <ScalarProperty Name="StorageAmount" ColumnName="StorageAmount" />
+                <ScalarProperty Name="ShangjiaTime" ColumnName="ShangjiaTime" />
+                <ScalarProperty Name="Unitprice" ColumnName="Unitprice" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ThumbNum" ColumnName="ThumbNum" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
