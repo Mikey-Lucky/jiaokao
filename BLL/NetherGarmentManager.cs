@@ -28,5 +28,10 @@ namespace BLL
         {
             inether.AddNether(nether);
         }
+        //查找与某颜色上衣相配的下衣
+        public IQueryable<NetherGarment> NetherBaiDa(string season, string color)
+        {
+            return inether.NetherBaiDa(season, color);
+        }
     }
 }

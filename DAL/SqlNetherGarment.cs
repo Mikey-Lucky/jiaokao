@@ -18,6 +18,8 @@ namespace DAL
             db.SaveChanges();
         }
 
+      
+
         public IQueryable<NetherGarment> NetherGarmentBySeason(string season)
         {
             var nether = from n in db.NetherGarment
@@ -52,6 +54,75 @@ namespace DAL
                 nether = from c in db.NetherGarment
                        where c.Season == "夏季"
                        select c;
+            }
+            return nether;
+        }
+        public IQueryable<NetherGarment> NetherBaiDa(string season, string color)
+        {
+            IQueryable<NetherGarment> nether=null;
+            switch (color)
+            {
+                case "白色":
+                    nether = from c in db.NetherGarment
+                             where c.Season == season && (c.Color == "黑色" || c.Color == "蓝色" || c.Color == "红色" || c.Color == "灰色" || c.Color == "棕色")
+                             select c;
+                    break;
+                case "红色":
+                    nether = from c in db.NetherGarment
+                             where c.Season == season && (c.Color == "黑色" || c.Color == "白色")
+                             select c;
+                    break;
+                case "米色":
+                    nether = from c in db.NetherGarment
+                             where c.Season == season && (c.Color == "黑色" || c.Color == "绿色" || c.Color == "蓝色")
+                             select c;
+                    break;
+                case "黑色":
+                    nether = from c in db.NetherGarment
+                             where c.Season == season && (c.Color == "白色" || c.Color == "灰色")
+                             select c;
+                    break;
+                case "黄色":
+                    nether = from c in db.NetherGarment
+                             where c.Season == season && (c.Color == "白色" || c.Color == "蓝色" || c.Color == "灰色" || c.Color == "黑色" || c.Color == "米色")
+                             select c;
+                    break;
+                case "蓝色":
+                    nether = from c in db.NetherGarment
+                             where c.Season == season && (c.Color == "白色" || c.Color == "灰色" || c.Color == "红色" || c.Color == "棕色" || c.Color == "黑色")
+                             select c;
+                    break;
+                case "橙色":
+                    nether = from c in db.NetherGarment
+                             where c.Season == season && (c.Color == "白色" || c.Color == "灰色" || c.Color == "黑色")
+                             select c;
+                    break;
+                case "紫色":
+                    nether = from c in db.NetherGarment
+                             where c.Season == season && (c.Color == "白色" || c.Color == "灰色" || c.Color == "黑色")
+                             select c;
+                    break;
+                case "灰色":
+                    nether = from c in db.NetherGarment
+                             where c.Season == season && (c.Color == "黑色" || c.Color == "白色" || c.Color == "棕色" || c.Color == "蓝色")
+                             select c;
+                    break;
+                case "棕色":
+                    nether = from c in db.NetherGarment
+                             where c.Season == season && (c.Color == "米色" || c.Color == "黄色" || c.Color == "红色" || c.Color == "黑色")
+                             select c;
+                    break;
+                case "绿色":
+                    nether = from c in db.NetherGarment
+                             where c.Season == season && (c.Color == "棕色" || c.Color == "白色" || c.Color == "米色" || c.Color == "黑色")
+                             select c;
+                    break;
+                case "粉色":
+                    nether = from c in db.NetherGarment
+                             where c.Season == season && (c.Color == "紫色" || c.Color == "灰色" || c.Color == "白色" || c.Color == "米色" || c.Color == "棕色" || c.Color == "蓝色")
+                             select c;
+                    break;
+                    //return nether;
             }
             return nether;
         }

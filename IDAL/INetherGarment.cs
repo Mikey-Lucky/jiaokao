@@ -15,5 +15,8 @@ namespace IDAL
         IQueryable<NetherGarment> NetherGarmentByTemp(int temp);
         //添加下衣
         void AddNether(NetherGarment nether);
+        //可以与某颜色上单衣搭配的下衣，传入季节和颜色参数
+        IQueryable<NetherGarment> NetherBaiDa(string season, string color);
+
     }
 }

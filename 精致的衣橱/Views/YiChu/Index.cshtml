@@ -136,7 +136,21 @@
                background-color: rgb(202,220,222);
                text-align: center;
                margin-top: 25px;
-              } 
+              }
+            #todayclothes {
+                /*position: relative;*/
+            }
+            #todayallc,
+            #todaydapei
+             {
+                 float: left;
+            }
+              #todayallc div {
+                 
+                  width: 400px;
+                  height:100px;
+                  overflow-x: auto;
+              }
             /*内容布局结束*/   
         /*右侧布局结束*/  
     </style>
@@ -181,9 +195,10 @@
                       <input placeholder="输入你想查询衣服" />
                       <span></span>
                   </div>
-                  <span class="glyphicon glyphicon-plus add">
-                      <a href="#"></a>
-                  </span>
+                  <a href="@Url.Action("AddClothes","YiChu")">
+                      <span class="glyphicon glyphicon-plus add">
+                      </span>
+                  </a>
               </div>
               <div class="content tab-content" id="yichuContent">
                   <div id="myclothes" class="tab-pane in active">
@@ -361,7 +376,7 @@
                           </div>
                       </div>
                       <div id="todaydapei">
-                          <p>daipei</p>
+                          <p>为你搭配</p>
                       </div>
                   </div>
               </div>
