@@ -54,5 +54,12 @@ namespace DALFactory
             string className = AssemblyName + "." + db + "NetherGarment";
             return (INetherGarment)Assembly.Load(AssemblyName).CreateInstance(className);
         }
+        
+        public static IGGCC CreateGGCC()
+        {
+            string className = AssemblyName + "." + db + "GGCC";
+            return (IGGCC)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
+
     }
 }

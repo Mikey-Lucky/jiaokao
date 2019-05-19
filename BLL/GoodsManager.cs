@@ -12,6 +12,7 @@ namespace BLL
     public class GoodsManager
     {
         IGoods igoods = DataAccess.CreateGoods();
+        
         //热门商品
         public IEnumerable<Goods> GetHotGoods(int top)
         {

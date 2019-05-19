@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3e40f512840b4686a0ec6f818c990016" Name="Diagram1">
+      <Diagram DiagramId="5acd86ea522e431b8e2c9fcc7734d8c6" Name="Diagram1" ZoomLevel="95">
         <EntityTypeShape EntityType="yichuModel.Address" Width="1.5" PointX="3" PointY="27.5" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Cart" Width="1.5" PointX="3" PointY="41.375" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Coat" Width="1.5" PointX="5.25" PointY="72.625" IsExpanded="true" />
@@ -43,8 +43,9 @@
         <EntityTypeShape EntityType="yichuModel.VideoSelect" Width="1.5" PointX="5.25" PointY="58.125" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.VideoTrasmit" Width="1.5" PointX="8.25" PointY="58" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Wardrobe" Width="1.5" PointX="3" PointY="78.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.note_like" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.video_like" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.GGCC" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.note_like" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.video_like" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="yichuModel.FK__Address__UserID__48CFD27E" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Orders__AddressI__4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Cart__GoodsID__4222D4EF" ManuallyRouted="false" />

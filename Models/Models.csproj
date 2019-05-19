@@ -72,6 +72,9 @@
     <Compile Include="Coordinate.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="GGCC.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Goods.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

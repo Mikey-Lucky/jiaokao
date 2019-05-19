@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoatManager.cs" />
+    <Compile Include="GGCCManager.cs" />
     <Compile Include="GoodsManager.cs" />
     <Compile Include="NetherGarmentManager.cs" />
     <Compile Include="NoteManager.cs" />
