@@ -11,7 +11,7 @@ namespace BLL
 {
     public class CoatManager
     {
-        ICoat icoat = DataAccess.CreateCoat();
+        ICoat icoat = DataAccess.CreateCart();
         //增加衣服
         public void AddCoat(Coat coat)
         {

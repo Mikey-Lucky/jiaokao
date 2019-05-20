@@ -7,7 +7,7 @@ using IDAL;
 using Models;
 namespace DAL
 {
-     public class SqlGGCC:IGGCC
+    public class SqlGGCC : IGGCC
     {
         yichuEntities db = DbContextFactory.CreateDbContext();
         public IEnumerable<GGCC> GetGoods()
@@ -17,16 +17,24 @@ namespace DAL
         }
         public IEnumerable<GGCC> Category()
         {
-            var cate = (from o in db.GGCC
-                       select o).ToList();
+            //var cate = (from o in db.GGCC
+            //            select o).ToList().Distinct();
+            //var cate1 = db.GGCC.Distinct(p => new { p.Season, p.Color });
+            //var cate1 = (from o in db.GGCC
+            //            select o).GroupBy(p => p.Season, p => p.Color)
+            //          .Select(g => g.First()).ToList();
+            var cate = from o in db.GGCC
+                       select o;
+            //var t = cate.DistinctBy();
             return cate;
         }
-        public IEnumerable<GGCC> GetCategoryByCateName(string season, string sex, string style, string material, string color)
+        public IEnumerable<GGCC> GetCategoryByCateName(string CateName, string season)
         {
             var categorygoods = from o in db.GGCC
-                                where o.Color == color && o.Season == season && o.Sex == sex && o.Style == style && o.Material == material
+                                where o.Color == CateName || o.Season == season
                                 select o;
             return categorygoods;
         }
     }
 }
+
