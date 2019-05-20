@@ -508,6 +508,7 @@
     <Content Include="Views\YiChu\Index.cshtml" />
     <Content Include="Views\YIChuShow\Userhome.cshtml" />
     <Content Include="Views\YiChu\AddClothes.cshtml" />
+    <Content Include="Views\YiChu\ShirtDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

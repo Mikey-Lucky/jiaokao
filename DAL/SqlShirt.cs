@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IDAL;
 using Models;
+using System.Data.Entity;
 
 namespace DAL
 {
@@ -51,6 +52,30 @@ namespace DAL
         public void AddShirt(Shirt shirt)
         {
             db.Shirt.Add(shirt);
+            db.SaveChanges();
+        }
+        public Shirt GetShirtById(int id)
+        {
+            var shirt = from s in db.Shirt
+                        where s.ShirtID ==id
+                        select s;
+            return shirt.FirstOrDefault();  
+        }   
+        public void DeleteShirtById(int id)
+        {
+            Shirt shirt = db.Shirt.Where(s => s.ShirtID == id).FirstOrDefault();
+            IQueryable<Coordinate> co = db.Coordinate.Where(c => c.ShirtID == id);
+            if (shirt != null) {
+                db.Shirt.Remove(shirt);
+                db.Coordinate.RemoveRange(co);//相关的搭配表数据删除
+            }
+            db.SaveChanges();
+        }
+
+        public void UpdateShirt(Shirt shirt)
+        {
+
+            db.Entry(shirt).State = EntityState.Modified;
             db.SaveChanges();
         }
     }

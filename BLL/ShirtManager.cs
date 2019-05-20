@@ -27,5 +27,20 @@ namespace BLL
         {
             ishirt.AddShirt(shirt);
         }
+        //更具id查找上衣
+        public Shirt GetShirtById(int id)
+        {
+           return ishirt.GetShirtById(id);
+        }
+        //根据id删除上衣
+        public void DeleteShirtById(int id)
+        {
+            ishirt.DeleteShirtById(id);
+        }
+        //更新上衣
+        public void UpdateShirt(Shirt shirt)
+        {
+            ishirt.UpdateShirt(shirt);
+        }
     }
 }

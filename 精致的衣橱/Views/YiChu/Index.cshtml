@@ -228,9 +228,13 @@
                               </div>
                               <div>
                                   <span>上单衣</span>
-                                  @foreach (var s in Model.springshirt) {
-                              <img src="/Images/shirt/@s.Image" />
-                          }
+                                  @foreach (var s in Model.springshirt)
+                                  {
+                                    <a href="@Url.Action("ShirtDetail", "YiChu", new {id=@s.ShirtID})">
+                                        @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
+                                        <img src="/Images/shirt/@s.Image" />
+                                    </a>
+                                  }
                               </div>
                               <div>
                                   <span>下装</span>
@@ -258,9 +262,12 @@
                               <div>
                                   <span>上单衣</span>
                                   @foreach (var s in Model.summershirt)
-                          {
-                              <img src="/Images/shirt/@s.Image" />
-                          }
+                                  {
+                                    <a href="@Url.Action("ShirtDetail", "YiChu", new {id=@s.ShirtID})">
+                                        @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
+                                        <img src="/Images/shirt/@s.Image" />
+                                    </a>
+                                  }
                               </div>
                               <div>
                                   <span>下装</span>
@@ -280,23 +287,27 @@
                               <p>夏天</p>
                           </div>
                           <div class="tab-pane " id="autumn">
-                              <div>
-                                  <span>外套</span>
-                                  @foreach (var c in Model.autumncoat)
+                           <div>
+                           <span>外套</span>
+                          @foreach (var c in Model.autumncoat)
                           {
                               <img src="/Images/Coat/@c.Image" />
                           }
                               </div>
                               <div>
-                                  <span>上单衣</span>
-                                  @foreach (var s in Model.autumnshirt)
-                          {
-                              <img src="/Images/shirt/@s.Image" />
-                          }
+                               <span>上单衣</span>
+                                 
+                               @foreach (var s in Model.autumnshirt)
+                                  {
+                                    <a href="@Url.Action("ShirtDetail", "YiChu", new {id=@s.ShirtID})">
+                                        @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
+                                        <img src="/Images/shirt/@s.Image" />
+                                    </a>
+                                  }
                               </div>
                               <div>
                                   <span>下装</span>
-                                  @foreach (var n in Model.autumnnethergarment)
+                               @foreach (var n in Model.autumnnethergarment)
                               {
                               <img src="/Images/NetherGarment/@n.Image" />
                               }
@@ -304,10 +315,10 @@
                               <p>秋天</p>
                               <div>
                                   <span>套装</span>
-                                  @foreach (var s in Model.autumnsuit)
-                          {
-                              <img src="/Images/Suit/@s.Image" />
-                          }
+                              @foreach (var s in Model.autumnsuit)
+                              {
+                                  <img src="/Images/Suit/@s.Image" />
+                              }
                               </div>
                           </div>
                           <div class="tab-pane " id="winter">
@@ -321,9 +332,12 @@
                               <div>
                                   <span>上单衣</span>
                                   @foreach (var s in Model.wintershirt)
-                          {
-                              <img src="/Images/shirt/@s.Image" />
-                          }
+                                  {
+                                    <a href="@Url.Action("ShirtDetail", "YiChu", new {id=@s.ShirtID})">
+                                        @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
+                                        <img src="/Images/shirt/@s.Image" />
+                                    </a>
+                                  }
                               </div>
                               <div>
                                   <span>下装</span>

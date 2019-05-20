@@ -60,6 +60,7 @@ namespace 精致的衣橱.Controllers
             string color = col["color"];            string yizong = col["yifu"];            string season = col["season"];            string material = col["material"];            var img = Request.Files["imgFile"];            string path = Guid.NewGuid().ToString() + img.FileName;            switch (yizong)            {                case "衬衫":                case "连帽卫衣":                case "圆领卫衣":                case "T恤":                case "吊带":                    shirt.Color = color;                    shirt.Design = yizong;                    shirt.Image = "../shirt/" + path;                    shirt.Material = material;                    shirt.Season = season;                    shirt.Time = DateTime.Now;                    shirt.WardrobeID = 1;                    shirts.AddShirt(shirt);                    img.SaveAs(Request.MapPath("/Images/shirt/" + path));
 
                     break;                case "棒球服":                case "风衣":                case "针织开衫":                case "牛仔":
+                case "西装":
                     coat.Color = color;
                     coat.Design = yizong;
                     coat.Image = "../Coat/" + path;
@@ -85,6 +86,12 @@ namespace 精致的衣橱.Controllers
                     suit.WardrobeID = 1;
                     suits.AddSuit(suit);                    img.SaveAs(Request.MapPath("/Images/Suit/" + path));                    break;            }
             return Content(color + path);
+        }
+        //上衣详情
+        public ActionResult ShirtDetail(int id)
+        {
+            var shirt = shirts.GetShirtById(id);
+            return View(shirt);
         }
     }
 }
