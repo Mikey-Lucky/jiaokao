@@ -57,9 +57,34 @@ namespace 精致的衣橱.Controllers
             NetherGarment ne = new NetherGarment();
             Shirt shirt = new Shirt();
 
-            string color = col["color"];            string yizong = col["yifu"];            string season = col["season"];            string material = col["material"];            var img = Request.Files["imgFile"];            string path = Guid.NewGuid().ToString() + img.FileName;            switch (yizong)            {                case "衬衫":                case "连帽卫衣":                case "圆领卫衣":                case "T恤":                case "吊带":                    shirt.Color = color;                    shirt.Design = yizong;                    shirt.Image = "../shirt/" + path;                    shirt.Material = material;                    shirt.Season = season;                    shirt.Time = DateTime.Now;                    shirt.WardrobeID = 1;                    shirts.AddShirt(shirt);                    img.SaveAs(Request.MapPath("/Images/shirt/" + path));
+            string color = col["color"];
+            string yizong = col["yifu"];
+            string season = col["season"];
+            string material = col["material"];
+            var img = Request.Files["imgFile"];
+            string path = Guid.NewGuid().ToString() + img.FileName;
+            switch (yizong)
+            {
+                case "衬衫":
+                case "连帽卫衣":
+                case "圆领卫衣":
+                case "T恤":
+                case "吊带":
+                    shirt.Color = color;
+                    shirt.Design = yizong;
+                    shirt.Image = "../shirt/" + path;
+                    shirt.Material = material;
+                    shirt.Season = season;
+                    shirt.Time = DateTime.Now;
+                    shirt.WardrobeID = 1;
+                    shirts.AddShirt(shirt);
+                    img.SaveAs(Request.MapPath("/Images/shirt/" + path));
 
-                    break;                case "棒球服":                case "风衣":                case "针织开衫":                case "牛仔":
+                    break;
+                case "棒球服":
+                case "风衣":
+                case "针织开衫":
+                case "牛仔":
                 case "西装":
                     coat.Color = color;
                     coat.Design = yizong;
@@ -68,7 +93,13 @@ namespace 精致的衣橱.Controllers
                     coat.Season = season;
                     coat.Time = DateTime.Now;
                     coat.WardrobeID = 1;
-                    coats.AddCoat(coat);                    img.SaveAs(Request.MapPath("/Images/Coat/" + path));                    break;                case "超短裤":                case "短裤":                case "中长裙":                case "长裤":
+                    coats.AddCoat(coat);
+                    img.SaveAs(Request.MapPath("/Images/Coat/" + path));
+                    break;
+                case "超短裤":
+                case "短裤":
+                case "中长裙":
+                case "长裤":
                     ne.Color = color;
                     ne.Design = yizong;
                     ne.Image = "../NetherGarment/" + path;
@@ -76,7 +107,10 @@ namespace 精致的衣橱.Controllers
                     ne.Season = season;
                     ne.Time = DateTime.Now;
                     ne.WardrobeID = 1;
-                    nethers.AddNether(ne);                    img.SaveAs(Request.MapPath("/Images/NetherGarment/" + path));                    break;                case "套装":
+                    nethers.AddNether(ne);
+                    img.SaveAs(Request.MapPath("/Images/NetherGarment/" + path));
+                    break;
+                case "套装":
                     suit.Color = color;
                     suit.Design = yizong;
                     suit.Image = "../Suit/" + path;
@@ -84,7 +118,10 @@ namespace 精致的衣橱.Controllers
                     suit.Season = season;
                     suit.Time = DateTime.Now;
                     suit.WardrobeID = 1;
-                    suits.AddSuit(suit);                    img.SaveAs(Request.MapPath("/Images/Suit/" + path));                    break;            }
+                    suits.AddSuit(suit);
+                    img.SaveAs(Request.MapPath("/Images/Suit/" + path));
+                    break;
+            }
             return Content(color + path);
         }
         //上衣详情
