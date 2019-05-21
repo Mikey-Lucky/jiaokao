@@ -7,6 +7,7 @@ using BLL;
 using Models;
 using 精致的衣橱.Models;
 using PagedList;
+using 精致的衣橱.Attributes;
 
 
 namespace 精致的衣橱.Controllers
@@ -131,12 +132,56 @@ namespace 精致的衣橱.Controllers
             goods = ggccmanager.GetCategoryByCateName(CateName, season);
             return View(goods);
         }
-
+        [Login]
         public ActionResult Cart()
         {
             var userid = Convert.ToInt32(Session["User_id"]);
             var cart = cartmanager.Cart(userid);
             return View(cart);
+        }
+        [Login]
+        [HttpPost]
+        //public ActionResult jrgwc([Bind(Include = "UserID,GoodsID,Count,CartTime,Price,Flag")]Cart cart)
+        public ActionResult Cart( int GoodsID,Cart cart)
+        {
+            //if (Session["Users_id"] != null)
+            //{
+            //string name = Request.Form["ljgm"];
+            int id = Convert.ToInt32(Session["User_id"]);
+            
+            var nowtime = System.DateTime.Now;
+            var t = Convert.ToDouble(cartmanager.getgoodsbyid(GoodsID).Unitprice);
+            var amount = cartmanager.getgoodsbyid(GoodsID).TotalStorageAmount;
+            //var price = t;
+            var Count = Convert.ToInt32(Request.Form["number"]);
+            if (amount>Count)
+            {
+                int Flag = 1;
+                cartmanager.AddCart(id, GoodsID, Count, nowtime, t, Flag);
+                return Content("<script>alert('加入购物车成功');window.location.href='../Mall/Cart';</script>");
+            }
+            else
+            {
+                return Content("<script>alert('加入购物车失败')</script>");
+            }
+        }
+        //更新购物车数量
+        [Login]
+        public ActionResult UpdateCartNum(int num,int CartID)
+        {
+            
+            cartmanager.Update(num,CartID);
+            return Content("<script>alert('更新成功');window.location.href='../Mall/Cart';</script>");
+        }
+
+        [Login]
+        public ActionResult Delete(int CartID)
+        {
+            //var ca = db.Cart.Where(u => u.UserID == Convert.ToInt32(Session["User_id"]));
+            //var ca = cartmanager.getcartbyid(CartID).CartID;
+            cartmanager.Delete(CartID);
+            return Content("删除成功");
+            
         }
         public ActionResult Comment()
         {

@@ -207,6 +207,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Attributes\LoginAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddressesController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MallController.cs" />
@@ -224,6 +225,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MallViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\RegisterLogin.cs" />
     <Compile Include="Models\Verify.cs" />
     <Compile Include="Models\YiChuViewModel.cs" />
@@ -236,6 +238,7 @@
     <Content Include="Content\Cooldog.css" />
     <Content Include="Content\iconfont.css" />
     <Content Include="Content\Mall.css" />
+    <Content Include="Content\ShopCar.css" />
     <Content Include="Content\shouye.css" />
     <Content Include="Content\zyUpload.css" />
     <Content Include="favicon.ico" />
@@ -520,6 +523,13 @@
     <Content Include="Views\Mall\GoodsType.cshtml" />
     <Content Include="Views\Mall\GoodsShow.cshtml" />
     <Content Include="Views\Mall\Comment.cshtml" />
+    <Content Include="Views\Mall\Cart.cshtml" />
+    <Content Include="Views\Mall\Cart1.cshtml" />
+    <Content Include="Views\Addresses\Create.cshtml" />
+    <Content Include="Views\Addresses\Delete.cshtml" />
+    <Content Include="Views\Addresses\Details.cshtml" />
+    <Content Include="Views\Addresses\Edit.cshtml" />
+    <Content Include="Views\Addresses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
