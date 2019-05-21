@@ -39,7 +39,7 @@ namespace DALFactory
             string className = AssemblyName + "." + db + "Shirt";
             return (IShirt)Assembly.Load(AssemblyName).CreateInstance(className);
         }
-        public static ICoat CreateCoat()
+        public static ICoat CreateCart()
         {
             string className = AssemblyName + "." + db + "Coat";
             return (ICoat)Assembly.Load(AssemblyName).CreateInstance(className);
@@ -54,11 +54,16 @@ namespace DALFactory
             string className = AssemblyName + "." + db + "NetherGarment";
             return (INetherGarment)Assembly.Load(AssemblyName).CreateInstance(className);
         }
-        
+
         public static IGGCC CreateGGCC()
         {
             string className = AssemblyName + "." + db + "GGCC";
             return (IGGCC)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
+        public static ICart CreateCart1()
+        {
+            string className = AssemblyName + "." + db + "Cart";
+            return (ICart)Assembly.Load(AssemblyName).CreateInstance(className);
         }
 
     }

@@ -1,0 +1,83 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Models.GGCC>
+<style>
+    a {
+        color: black;
+    }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+    .pic {
+        width: 810px;
+        height: 600px;
+        /*margin:0 auto;*/
+        margin-left: 121px;
+        float: left;
+    }
+
+        .pic img {
+            width: 200px;
+            height: 200px;
+            margin-right: 44px;
+        }
+
+    .small {
+        width: 200px;
+        height: 280px;
+        float: left;
+    }
+
+        .small .bookpic {
+            width: 200px;
+            height: 200px;
+        }
+
+        .small .bookdetail {
+            width: 120px;
+            margin: 0 auto;
+        }
+
+    .DD {
+        margin-top: 20px;
+    }
+
+    .page-list ul {
+        margin-left: 940px;
+        margin-top: -30px;
+    }
+</style>
+
+<div class="container" style="overflow:hidden" id="con">
+    <div class="pic">
+        @foreach (var item in Model)
+        {
+            <div class="small">
+                <a href="@Url.Action("GoodsDetails", "Mall", new {id=item.GoodsID})">
+                    <div class="bookpic">
+                        <img src="~/Images/GoodsImages/@item.GCimage" />
+                    </div>
+                    <div class="bookdetail">
+                        <span>￥@item.Unitprice</span>
+                        <p>@item.Name</p>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+    <div class="page-list">
+
+        @Html.PagedListPager(Model, page => Url.Action("GoodsType", "Mall", new { page, currentFilter = ViewBag.CurrentFilter}),
+            PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+                  new AjaxOptions
+                  {
+                      HttpMethod = "GET",
+                      InsertionMode = InsertionMode.Replace,
+                      UpdateTargetId = "DD"
+                  }))
+
+    </div>
+</div>
+
+

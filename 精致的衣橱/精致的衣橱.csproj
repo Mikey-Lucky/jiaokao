@@ -79,6 +79,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList">
+      <HintPath>D:\2016级工作室\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>D:\2016级工作室\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -420,10 +426,6 @@
     <Content Include="Images\Suit\8.jpg" />
     <Content Include="Images\Suit\9.jpg" />
     <Content Include="Images\videoimg\6.png" />
-    <Content Include="Images\yichushow\bg.jpg" />
-    <Content Include="Images\yichushow\bg1.jpg" />
-    <Content Include="Images\yichushow\bg2.jpg" />
-    <Content Include="Images\yichushow\bg5.jpg" />
     <Content Include="Images\yichu\744065b6f88e74fa5557db77422fece0.jpg" />
     <Content Include="Images\yichu\banner1.jpg" />
     <Content Include="Images\yichu\banner2.jpg" />
@@ -513,8 +515,11 @@
     <Content Include="Views\YIChuShow\Userhome.cshtml" />
     <Content Include="Views\YiChu\AddClothes.cshtml" />
     <Content Include="Views\YiChu\ShirtDetail.cshtml" />
-    <Content Include="Views\Shared\_UsershowhomeLayout.cshtml" />
-    <Content Include="Views\YIChuShow\Index.cshtml" />
+    <Content Include="Views\Mall\GoodsDetails.cshtml" />
+    <Content Include="Views\Mall\GoodIndex.cshtml" />
+    <Content Include="Views\Mall\GoodsType.cshtml" />
+    <Content Include="Views\Mall\GoodsShow.cshtml" />
+    <Content Include="Views\Mall\Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

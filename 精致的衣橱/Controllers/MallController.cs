@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using BLL;
 using Models;
 using 精致的衣橱.Models;
+using PagedList;
+
 
 namespace 精致的衣橱.Controllers
 {
@@ -15,6 +17,7 @@ namespace 精致的衣橱.Controllers
         yichuEntities db = new yichuEntities();
         GoodsManager goodsmanager = new GoodsManager();
         GGCCManager ggccmanager = new GGCCManager();
+        CartManager cartmanager = new CartManager();
         public ActionResult Index()
         {
             var g1 = goodsmanager.GetHotGoods(8);
@@ -33,32 +36,111 @@ namespace 精致的衣橱.Controllers
         public ActionResult GoodsDetails(int id)
         {
             Session["GoodsID"] = id;
-            var a = db.Goods.Where(p=>p.GoodsID==id).FirstOrDefault();
+            var a = db.Goods.Where(p => p.GoodsID == id).FirstOrDefault();
             return View(a);
         }
-        //public ActionResult Category(string CateName,string currentFilter,int ? page)
+        public ActionResult GoodIndex()
+        {
+            //var c1 = from o in db.GGCC
+            //         where o.Season == season
+            //         select o;
+            //var c2 = from o in db.GGCC
+            //         where o.Sex == sex
+            //         select o;
+            //var c3 = from o in db.GGCC
+            //         where o.Style == style
+            //         select o;
+            //var c4 = from o in db.GGCC
+            //         where o.Material == material
+            //         select o;
+            //var c5 = from o in db.GGCC
+            //         where o.Color == color
+            //         select o;
+            //Category1ViewModel cate = new Category1ViewModel();
+            //cate.Season = c1;
+            //cate.Sex = c2;
+            //cate.Style = c3;
+            //cate.Material = c4;
+            //cate.Color = c5;
+            //return View(cate);
+            var goods = ggccmanager.Category();
+            return View(goods);
+
+        }
+
+
+        //public ActionResult GoodsType(string season,string sex,string style,string material,string color,string currentFilter,int ? page)
         //{
-        //    var c = ggccmanager.GetGoods();
-        //    if(CateName!=null)
+        //    var c1 = ggccmanager.GetGoods();
+
+        //    if(season !=null || sex!=null || style!=null || material!=null || color!=null)
         //    {
         //        page = 1;
         //    }
         //    else
         //    {
-        //        CateName = currentFilter;
+        //        season = currentFilter;
+        //        sex = currentFilter;
+        //        style = currentFilter;
+        //        material = currentFilter;
+        //        color = currentFilter;
         //    }
-        //    ViewBag.CurrentFilter = CateName;
-        //    if(!string.IsNullOrEmpty(CateName))
+        //    ViewBag.CurrentFilter = season;
+        //    ViewBag.CurrentFilter = sex;
+        //    ViewBag.CurrentFilter = style;
+        //    ViewBag.CurrentFilter = material;
+        //    ViewBag.CurrntFilter = color;
+
+        //    if(season!=null||sex!=null||style!=null||material!=null||color!=null)
         //    {
-        //        c = c.Where(x=>x.Color);
+        //        c1 = ggccmanager.GetCategoryByCateName(season,sex,style,material,color);
         //    }
-        //    return View(c);
+        //    int pageSize = 8;
+        //    int pageNumber = (page??1);
+        //    return PartialView(c1.ToPagedList(pageNumber,pageSize));
         //}
-        //public ActionResult GoodsShow()
-        //{
-        //    var c1 = ggccmanager.GetGoods();
-        //    var c2 = ggccmanager.Category();
-        //    var c3 = ggccmanager.GetCategoryByCateName();
-        //}
+        //有问题
+        public ActionResult GoodsType(string CategoryName, string Season, string currentFilter,int? page)
+        {
+            var c1 = ggccmanager.GetGoods();
+            if (CategoryName != null || Season != null)
+            {
+
+                page = 1;
+            }
+            if (CategoryName != null && Season == null)
+            {
+                CategoryName = currentFilter;
+
+                ViewBag.CurrentFilter = CategoryName;
+
+            }
+            else if (CategoryName == null && Season != null )
+            {
+                Season = currentFilter;
+                ViewBag.CurrentFilter = Season;
+            }
+                       
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            return PartialView(c1.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult GoodsShow(string CateName, string season)
+        {
+            var goods = ggccmanager.GetGoods();
+            goods = ggccmanager.GetCategoryByCateName(CateName, season);
+            return View(goods);
+        }
+
+        public ActionResult Cart()
+        {
+            var userid = Convert.ToInt32(Session["User_id"]);
+            var cart = cartmanager.Cart(userid);
+            return View(cart);
+        }
+        public ActionResult Comment()
+        {
+            return View();
+        }
     }
 }

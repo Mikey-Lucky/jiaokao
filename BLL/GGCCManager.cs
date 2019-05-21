@@ -22,11 +22,12 @@ namespace BLL
             var category = ig.Category();
             return category;
         }
-        public IEnumerable<GGCC> GetCategoryByCateName(string season, string sex, string style, string material, string color)
+        public IEnumerable<GGCC> GetCategoryByCateName(string CateName, string season)
         {
-            var getcategorybyname = ig.GetCategoryByCateName(season, sex, style, material, color);
+            var getcategorybyname = ig.GetCategoryByCateName(CateName, season);
             return getcategorybyname;
         }
+
 
     }
 }
