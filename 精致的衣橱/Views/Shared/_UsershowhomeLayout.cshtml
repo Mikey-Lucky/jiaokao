@@ -1,0 +1,176 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 我的 ASP.NET 应用程序</title>
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: rgb(231,239,241);
+        }
+
+        .container {
+            max-width: 1319px;
+        }
+
+        .banner {
+            /*background-image: url('../../Images/yichu/banner2.jpg');*/
+            background-image: url('../../Images/yichushow/bg5.jpg');
+            background-size: cover;
+            height: 236px;
+            position: relative;
+        }
+
+        .top nav {
+            height: 78px;
+            background-color: white;
+            box-sizing: border-box;
+        }
+        .top nav li {
+            display: inline-block;
+            font-size: 19px;
+            line-height: 78px;
+            margin-right: 16px;
+            position: relative;
+                
+       }
+        .top nav a {
+            color: black;
+        }
+        .top nav span{
+           color: #dfcdcb;
+        }
+
+        .main {
+            margin-top: 14px;
+        }
+
+            .main .tianqi {
+                min-height: 800px;
+                width: 255px;
+                background-color: white;
+                float: left;
+                border: 1px solid rgb(238,238,238);
+                border-radius: 1% 0 0 1%;
+            }
+
+            .main .content {
+                min-height: 800px;
+                width: 1033px;
+                background-color: white;
+                float: right;
+                border: 1px solid rgb(238,238,238);
+                border-radius: 0 1% 1% 0;
+            }
+
+        .banner img {
+            height: 77px;
+            width: 77px;
+            border-radius: 50%;
+            margin-left: 27px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .banner h2,
+        .banner span,
+        .banner a {
+            display: inline-block;
+            color: white;
+        }
+
+        .banner h2 {
+            margin-left: 28px;
+        }
+
+        .banner .h-user {
+            position: absolute;
+            bottom: 0px;
+            height: 83px;
+            width: 100%;
+            background: -webkit-linear-gradient(bottom,rgba(202,220,222,75%),rgba(0,0,0,0));
+        }
+
+        .h-action {
+            position: absolute;
+            right: 0px;
+            bottom: 20px;
+        }
+
+            .h-action span,
+            .h-action a {
+                box-sizing: border-box;
+                width: 76px;
+                line-height: 30px;
+                text-align: center;
+                font-size: 14px;
+                border: 2px solid #fff;
+                border-radius: 14%;
+                margin-right: 60px;
+            }
+
+            .h-action span {
+                background-color: rgb(202,220,222);
+                margin-right: 20px;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="top container">
+        <div class="banner">
+            <div class="h-user">
+                <img src="~/Images/HeadImages/1.jpg" />
+                <h2>疯狂的企鹅</h2>
+                <span>女</span>
+                <div class="h-action">
+                    <span>锁</span>
+                    <a href="#">衣橱圈</a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <span class="glyphicon glyphicon-home"></span>
+                    <a href="#">秀场</a>
+                </li>
+                <li>
+                    <span class="glyphicon glyphicon-dashboard"></span>
+                    <a href="#">动态</a>
+                </li>
+                <li>
+                    <span class="glyphicon glyphicon-heart-empty"></span>
+                    <a href="#">收藏</a>
+                </li>
+                <li>
+                    <span class="glyphicon glyphicon-book"></span>
+                    <a href="#">笔记</a>
+                </li>
+                <li>
+                    <span class="glyphicon glyphicon-facetime-video"></span>
+                    <a href="#">视频</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main container">
+        @RenderBody()
+        @*<div class="tianqi">
+            <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=55" width="255" height="294" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+        </div>
+        <div class="content"></div>*@
+    </div>
+</body>
+</html>
