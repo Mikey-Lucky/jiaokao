@@ -1,0 +1,16 @@
+﻿@model 精致的衣橱.Models.YiChuShowViewModel
+@{
+    Layout = "~/Views/Shared/_UsershowhomeLayout.cshtml";
+}
+<!--说说动态-->
+
+   
+    @foreach (var item in Model.AllNoteByID)
+    {
+        @Html.Raw(item.NoteContent)
+      
+    }
+
+
+
+
