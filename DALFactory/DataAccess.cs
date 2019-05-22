@@ -65,6 +65,11 @@ namespace DALFactory
             string className = AssemblyName + "." + db + "Cart";
             return (ICart)Assembly.Load(AssemblyName).CreateInstance(className);
         }
+        public static IOrders CreateOrders()
+        {
+            string className = AssemblyName + "." + db + "Orders";
+            return (IOrders)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
 
     }
 }

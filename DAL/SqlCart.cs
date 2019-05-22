@@ -111,7 +111,7 @@ namespace DAL
             {
                 var cart = db.Cart.Where(o => o.CartID == CartID).FirstOrDefault();
                 cart.Count = num;
-
+                               
                 db.SaveChanges();
             }
         public void AddCart(int userid, int goodsid, int count, DateTime carttime, double price, int flag)
