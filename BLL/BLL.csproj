@@ -46,6 +46,7 @@
     <Compile Include="GoodsManager.cs" />
     <Compile Include="NetherGarmentManager.cs" />
     <Compile Include="NoteManager.cs" />
+    <Compile Include="OdersManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShirtManager.cs" />
     <Compile Include="SuitManager.cs" />

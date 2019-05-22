@@ -35,7 +35,7 @@
                     <img src="~/Images/GoodsImages/@item.Goods.GoodsImage" style="height:110px;" />
                 </td>
                 <td>
-                    <input type="number" data-CarID="@item.CartID" class="in" min="0" max="@item.Goods.TotalStorageAmount" value="@item.Count" style="width:50px;" />
+                    <input type="number" data-Car="@item.CartID" class="in" min="0" max="@item.Goods.TotalStorageAmount" value="@item.Count" style="width:50px;" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Goods.Unitprice)
@@ -44,17 +44,18 @@
                     @sum
                 </td>
                 <td>
-                    @*<button type="button" class="bianji">更改</button>
-                    <button type="button" class="delete">删除</button>*@
+                    @*<button type="button" class="bianji">更改</button>*@
+                    @*<button type="button" class="delete">删除</button>*@
                    <a href="@Url.Action("Delete","Mall",new { CartID=@item.CartID})">删除</a>|
-                    <a href="@Url.Action("UpdateCartNum", "Mall",new {num=@item.Count,CartID=@item.CartID})">更新</a>
+                    <a href="@Url.Action("UpdateCartNum", "Mall",new {num=item.Count,CartID=item.CartID})">更新</a>
                 </td>
             </tr>
-                        }
+         }
     </table>
     <div style="width:300px;margin-left:900px;">
-        <span style="color:palevioletred">总价：</span><input type="text" id="total" readonly style="width:60px;">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">立即下单</button>
+        <span style="color:palevioletred">总价：</span><input type="text" id="total" readonly style="width:60px;border:none">
+        <button></button>
+        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">立即下单</button>
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -87,11 +88,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
 
     </div>
 </div>
-@*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
+
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script>
     $(function () {
@@ -132,91 +133,91 @@
                 }
             }
         };
-        var name = $("#Order_Name");
-        var add = $("#Order_Add");
-        var tel = $("#Order_Tel");
+        //    var name = $("#Order_Name");
+        //    var add = $("#Order_Add");
+        //    var tel = $("#Order_Tel");
 
-        $("#Sub").on("click", function () {
-            //var checked = $("input[name='check']");
-            var check = [];
-            for (var i = 0; i < checked.length; i++) {
-                if (checked.eq(i).prop("checked")) {
-                    check.push(parseInt(checked.eq(i).attr("data-id"), 10));
-                }
-            }
-            if (check.length > 0) {
-                $.ajax({
-                    type: 'Post',
-                    dataType: 'json',
-                    url: "/Mall/Buy",
-                    data: {
-                        "a": check,
-                        "Name": name.val(),
-                        "Tel": tel.val(),
-                        "Add": add.val(),
-                        "Total": total.val(),
-                    },
-                    traditional: true,
-                    success: function (data) {
-                        alert(data.Mess);
-                        window.history.go(0);
-                    },
-                    error: function () {
-                        alert("订单失败");
-                    }
-                });
-            }
-        });
+        //    $("#Sub").on("click", function () {
+            
+        //        var check = [];
+        //        for (var i = 0; i < checked.length; i++) {
+        //            if (checked.eq(i).prop("checked")) {
+        //                check.push(parseInt(checked.eq(i).attr("data-id"), 10));
+        //            }
+        //        }
+        //        if (check.length > 0) {
+        //            $.ajax({
+        //                type: 'Post',
+        //                dataType: 'json',
+        //                url: "/Mall/Buy",
+        //                data: {
+        //                    "a": check,
+        //                    "Name": name.val(),
+        //                    "Tel": tel.val(),
+        //                    "Add": add.val(),
+        //                    "Total": total.val(),
+        //                },
+        //                traditional: true,
+        //                success: function (data) {
+        //                    alert(data.Mess);
+        //                    window.history.go(0);
+        //                },
+        //                error: function () {
+        //                    alert("订单失败");
+        //                }
+        //            });
+        //        }
+        //    });
 
-        $(".bianji").each(function () {
-            $(this).click(function () {
-                var con = $(this).parents("tr").eq(0).find(".in");
-                var ID = $(this).parents("tr").eq(0).find(".in");
-                $.ajax({
-                    type: 'Post',
-                    dataType: 'json',
-                    url: '/Mall/UpdateCartNum',
-                    data: {
-                        "num": con.val(),
-                        "CartID": ID.attr("data-CarID"),
-                    },
-                    traditional: true,
-                    success: function (data) {
-                        alert(data.Mess);
-                        window.history.go(0);
-                    },
-                    error: function () {
-                        alert("更新失败");
-                    }
-                })
-            })
-        })
+        //    $(".bianji").each(function () {
+        //        $(this).click(function () {
+        //            var con = $(this).parents("tr").eq(0).find(".in");
+        //            var ID = $(this).parents("tr").eq(0).find(".in");
+        //            $.ajax({
+        //                type: 'Post',
+        //                dataType: 'json',
+        //                url: '/Mall/UpdateCartNum',
+        //                data: {
+        //                    "num": con.val(),
+        //                    "CartID": ID.attr("data-target"),
+        //                },
+        //                traditional: true,
+        //                success: function (data) {
+        //                    alert(data.Mess);
+        //                    window.history.go(0);
+        //                },
+        //                error: function () {
+        //                    alert("更新失败");
+        //                }
+        //            })
+        //        })
+        //    })
 
-        $(".delete").each(function () {
-            $(this).click(function () {
-                var ID = $(this).parents("tr").eq(0).find(".in").eq(0);
-                $.ajax({
-                    type: 'Post',
-                    dataType: 'json',
-                    url: '/Mall/Delete',
-                    data: {
-                        "CartID": ID.attr("data-CarID"),
-                    },
-                    traditional: true,
-                    success: function (data) {
-                        alert(data.Mess);
-                        window.history.go(0);
-                    },
-                    error: function () {
-                        alert("删除失败");
-                    }
-                })
-            })
-        })
-
-
+        //    $(".delete").each(function () {
+        //        $(this).click(function () {
+        //            var ID = $(this).parents("tr").eq(0).find(".in").eq(0);
+        //            $.ajax({
+        //                type: 'Post',
+        //                dataType: 'json',
+        //                url: '/Mall/Delete',
+        //                data: {
+        //                    "CartID": ID.attr("data-T"),
+        //                },
+        //                traditional: true,
+        //                success: function (data) {
+        //                    alert(data.Mess);
+        //                    window.history.go(0);
+        //                },
+        //                error: function () {
+        //                    alert("删除失败");
+        //                }
+        //            })
+        //        })
+        //    })
 
 
+
+
+        //})
     })
-
 </script>

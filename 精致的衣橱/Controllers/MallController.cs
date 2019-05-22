@@ -101,7 +101,7 @@ namespace 精致的衣橱.Controllers
         //    return PartialView(c1.ToPagedList(pageNumber,pageSize));
         //}
         //有问题
-        public ActionResult GoodsType(string CategoryName, string Season, string currentFilter,int? page)
+        public ActionResult GoodsType(string CategoryName, string Season, string currentFilter, int? page)
         {
             var c1 = ggccmanager.GetGoods();
             if (CategoryName != null || Season != null)
@@ -116,12 +116,12 @@ namespace 精致的衣橱.Controllers
                 ViewBag.CurrentFilter = CategoryName;
 
             }
-            else if (CategoryName == null && Season != null )
+            else if (CategoryName == null && Season != null)
             {
                 Season = currentFilter;
                 ViewBag.CurrentFilter = Season;
             }
-                       
+
             int pageSize = 8;
             int pageNumber = (page ?? 1);
             return PartialView(c1.ToPagedList(pageNumber, pageSize));
@@ -142,19 +142,19 @@ namespace 精致的衣橱.Controllers
         [Login]
         [HttpPost]
         //public ActionResult jrgwc([Bind(Include = "UserID,GoodsID,Count,CartTime,Price,Flag")]Cart cart)
-        public ActionResult Cart( int GoodsID,Cart cart)
+        public ActionResult Cart(int GoodsID, Cart cart)
         {
             //if (Session["Users_id"] != null)
             //{
             //string name = Request.Form["ljgm"];
             int id = Convert.ToInt32(Session["User_id"]);
-            
+
             var nowtime = System.DateTime.Now;
             var t = Convert.ToDouble(cartmanager.getgoodsbyid(GoodsID).Unitprice);
             var amount = cartmanager.getgoodsbyid(GoodsID).TotalStorageAmount;
             //var price = t;
             var Count = Convert.ToInt32(Request.Form["number"]);
-            if (amount>Count)
+            if (amount > Count)
             {
                 int Flag = 1;
                 cartmanager.AddCart(id, GoodsID, Count, nowtime, t, Flag);
@@ -167,10 +167,10 @@ namespace 精致的衣橱.Controllers
         }
         //更新购物车数量
         [Login]
-        public ActionResult UpdateCartNum(int num,int CartID)
+        public ActionResult UpdateCartNum(int num, int CartID)
         {
-            
-            cartmanager.Update(num,CartID);
+
+            cartmanager.Update(num, CartID);
             return Content("<script>alert('更新成功');window.location.href='../Mall/Cart';</script>");
         }
 
@@ -181,11 +181,22 @@ namespace 精致的衣橱.Controllers
             //var ca = cartmanager.getcartbyid(CartID).CartID;
             cartmanager.Delete(CartID);
             return Content("删除成功");
-            
+
         }
         public ActionResult Comment()
         {
             return View();
         }
+        public ActionResult Order()
+        {
+            return View();
+        }
+        //[HttpPost]
+        //[Login]
+        //public ActionResult Buy(int[] a,string Name,string address,string tel,string Tol)
+        //{
+        //    int id = Convert.ToInt32(Session["User_id"]);
+        //}
     }
 }
+
