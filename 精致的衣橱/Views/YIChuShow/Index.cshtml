@@ -9,10 +9,43 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 </head>
 <body>
-    <div> 
+    <div>
+
         <a href="@Url.Action("Userhome","YiChuShow")">aaa</a>
+        <button>123</button>
     </div>
+    <script type="text/javascript">
+        //$("button").click(function () {
+        //    $.ajax({
+        //        url: "demo_test.txt", success: function (result) {
+        //            $("#div1").html(result);
+        //        }
+        //    });
+        //});
+        $("button").click(function () {
+            $.ajax({
+                url: "/YiChuShow/Index",
+                data: { },
+                cache: false,
+                async: false,
+                dataType: 'json',
+                susscess: function (data) {
+                    if (data) {
+                        //alert(data);
+                        console.log(data);
+                    }
+                },
+                error: function (msg) {
+                    alert("系统发生错误");
+                }
+
+
+            });
+        });
+       
+    </script>
 </body>
 </html>

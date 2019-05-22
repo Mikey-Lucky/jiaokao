@@ -17,6 +17,8 @@ namespace 精致的衣橱.Controllers
         // GET: YIChuShow
         public ActionResult Index()
         {
+            var a=notes.GetHotNote(20);
+            Response.Write(a);
             return View();
         }
         public ActionResult Userhome()
