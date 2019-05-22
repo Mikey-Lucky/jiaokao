@@ -11,5 +11,14 @@ namespace IDAL
     {
         //热门帖子
         IEnumerable<Note> Gethotnote(int top);
+        //通过用户id查询笔记
+        IQueryable<Note> AllNoteByID(int id);
+        //添加笔记
+        void AddNote(Note note);
+        //删除笔记
+        bool DeleteNote(int id);
+        //修改笔记
+        void EditNote(Note note);
+
     }
 }
