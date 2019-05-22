@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressManager.cs" />
     <Compile Include="CartManager.cs" />
     <Compile Include="CoatManager.cs" />
     <Compile Include="GGCCManager.cs" />

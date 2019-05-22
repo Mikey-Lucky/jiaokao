@@ -15,19 +15,19 @@ namespace DAL
         yichuEntities db = new yichuEntities();
         public IEnumerable<Orders> GetOrders()
         {
-            var orderss = db.Orders.ToList();
-            return orderss;
-        }
-        public Orders GetOrdersById(int? id)
-        {
-            Orders orders = db.Orders.Find(id);
+            var orders = db.Orders.ToList();
             return orders;
         }
-        public void Buy(DateTime datetime, int totalamount, int userid, string uname, string tel, int addressid)
+        public IEnumerable<Orders> GetOrdersById(int? id)
+        {
+            var orders = db.Orders.Where(u=>u.UserID==id);
+            return orders;
+        }
+        public void Order(DateTime datetime, int totalamount, int userid, string uname, string tel, int addressid)
         {
             //int i = db.Orders(uid, uname, userphone, address, note);
             //db.SaveChanges();
-            var orders=db.Orders.Where(o => o.UserID == userid && o.UserName == uname && o.Tel == tel && o.AddressID == addressid).FirstOrDefault();
+            var orders=db.Orders.Where(o => o.UserID == userid && o.UserName == uname && o.Tel == tel && o.AddressID == addressid && o.TotalAmount==totalamount&&o.OrderTime==datetime).FirstOrDefault();
             db.Orders.Add(orders);
             db.SaveChanges();
         }

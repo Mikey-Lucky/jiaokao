@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Models.Orders>
+@{
+    ViewBag.Title = "Order";
+}
+
+<h2>Order</h2>
+
+@foreach (var item in Model)
+{
+    <label>姓名</label><input type="text" name="xingming" />
+    <label>联系电话</label><input type="text" name="dianhua" />
+    <label>地址</label><input type="text" name="dizhi" />
+    <a href="@Url.Action("Order","Mall",new { userid=@item.UserID})">提交</a>
+    @*<button value="提交"></button>
+    @*<a href="@Url.Action("Buy","Mall")"></a>*@
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tel)
+        </th>
+        
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.OrderTime)*@
+                @item.OrderTime
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.TotalAmount)*@
+                @item.TotalAmount
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.UserName)*@
+                @item.TotalAmount
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Tel)*@
+                @item.Tel
+            </td>
+            
+        </tr>
+    }
+    </table>
+

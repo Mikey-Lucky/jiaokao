@@ -10,9 +10,9 @@ namespace IDAL
     public interface IOrders
     {
         IEnumerable<Orders> GetOrders();
-        Orders GetOrdersById(int? id);
+        IEnumerable<Orders> GetOrdersById(int? id);
         void RemoveOrders(Orders orders);
         void EditOrders(Orders orders);
-        void Buy(DateTime datetime,int totalamount,int userid, string uname, string tel, int addressid);
+        void Order(DateTime datetime,int totalamount,int userid, string uname, string tel, int addressid);
     }
 }

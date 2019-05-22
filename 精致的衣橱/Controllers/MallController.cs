@@ -19,6 +19,8 @@ namespace 精致的衣橱.Controllers
         GoodsManager goodsmanager = new GoodsManager();
         GGCCManager ggccmanager = new GGCCManager();
         CartManager cartmanager = new CartManager();
+        OdersManager odersmanager = new OdersManager();
+        AddressManager addressmanager = new AddressManager();
         public ActionResult Index()
         {
             var g1 = goodsmanager.GetHotGoods(8);
@@ -174,29 +176,62 @@ namespace 精致的衣橱.Controllers
             return Content("<script>alert('更新成功');window.location.href='../Mall/Cart';</script>");
         }
 
-        [Login]
+        //[Login]
         public ActionResult Delete(int CartID)
         {
             //var ca = db.Cart.Where(u => u.UserID == Convert.ToInt32(Session["User_id"]));
             //var ca = cartmanager.getcartbyid(CartID).CartID;
             cartmanager.Delete(CartID);
-            return Content("删除成功");
+            return Content("<script>alert('删除成功');window.location.href='../Mall/Cart';<script>");
 
         }
         public ActionResult Comment()
         {
             return View();
         }
+        [Login]
         public ActionResult Order()
         {
-            return View();
+            int id = Convert.ToInt32(Session["User_id"]);
+            var order = odersmanager.GetOrdersById(id);
+            return View(order);
         }
-        //[HttpPost]
+        //public ActionResult Addaddress()
+        // {
+        //     return PartialView();
+        // }
+
+        //将Addaddress改成了Order
+        [HttpPost]
+        public ActionResult Order(int userid)
+        {
+            userid = Convert.ToInt32(Session["User_id"]);
+            var add = Request.Form["dizhi"];
+            Session["address"] = add;
+            
+            addressmanager.Add(userid, add);
+            return Content("<script>alert('添加地址成功');window.location.href='../Mall/Order';<script>");
+        }
+        //将Buy改成了Order
+        [HttpPost]
         //[Login]
-        //public ActionResult Buy(int[] a,string Name,string address,string tel,string Tol)
-        //{
-        //    int id = Convert.ToInt32(Session["User_id"]);
-        //}
+        public ActionResult Order(int cartid, string Name, int addressid, string tel, int Tol)
+        {
+            var t = db.Address.Where(u => u.Address1 == Convert.ToString(Session["address"])).FirstOrDefault();
+            int m = t.AddressID;
+
+
+            int id = Convert.ToInt32(Session["User_id"]);
+            var datetime = System.DateTime.Now;
+            var name = Request["xingming"];
+            var telephone = Request["dianhua"];
+            //var address = Request["地址"];
+            odersmanager.Order(datetime, Tol, id, Name, tel,m);
+
+            cartmanager.Pay(cartid, datetime, id);
+            return Content("<script>alert('购买成功');window.location.href='../Mall/Order';<script>");
+        }
+       
     }
 }
 

@@ -30,7 +30,7 @@ namespace BLL
         {
             icart.Update(num,CartID);
         }
-        Cart Pay(int? id, DateTime datetime, int ID)
+        public Cart Pay(int? id, DateTime datetime, int ID)
         {
             var pay = icart.Pay(id,datetime,ID);
             return pay;

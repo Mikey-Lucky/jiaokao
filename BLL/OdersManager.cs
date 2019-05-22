@@ -16,15 +16,15 @@ namespace BLL
             var orderss = iorders.GetOrders();
             return orderss;
         }
-        public Orders GetOrdersById(int? id)
+        public IEnumerable<Orders> GetOrdersById(int? id)
         {
-            Orders orders = iorders.GetOrdersById(id);
+            var orders = iorders.GetOrdersById(id);
             return orders;
         }
 
-        public void Buy(DateTime datetime, int totalamount, int userid, string uname, string tel, int addressid)
+        public void Order(DateTime datetime, int totalamount, int userid, string uname, string tel, int addressid)
         {
-            iorders.Buy(datetime,totalamount,userid, uname, tel, addressid);
+            iorders.Order(datetime,totalamount,userid, uname, tel, addressid);
         }
         public void RemoveOrders(Orders orders)
         {
