@@ -14,7 +14,7 @@ namespace DAL
         yichuEntities db = DbContextFactory.CreateDbContext();
         public void Add(int userid,string address)
         {
-            var add = db.Address.Where(u => u.UserID == userid && u.Address1 == address).FirstOrDefault(); ;
+            var add = db.Address.Where(u => u.UserID == userid && u.Address1 == address).FirstOrDefault();
             db.Address.Add(add);
             db.SaveChanges();
         }

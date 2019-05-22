@@ -206,7 +206,7 @@ namespace 精致的衣橱.Controllers
         public ActionResult Order(int userid)
         {
             userid = Convert.ToInt32(Session["User_id"]);
-            var add = Request.Form["dizhi"];
+            var add = Request["dizhi"].ToString();
             Session["address"] = add;
             
             addressmanager.Add(userid, add);
@@ -223,8 +223,8 @@ namespace 精致的衣橱.Controllers
 
             int id = Convert.ToInt32(Session["User_id"]);
             var datetime = System.DateTime.Now;
-            var name = Request["xingming"];
-            var telephone = Request["dianhua"];
+            var name = Request["xingming"].ToString();
+            var telephone = Request["dianhua"].ToString();
             //var address = Request["地址"];
             odersmanager.Order(datetime, Tol, id, Name, tel,m);
 
