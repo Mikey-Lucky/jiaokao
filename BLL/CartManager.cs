@@ -35,5 +35,19 @@ namespace BLL
             var pay = icart.Pay(id,datetime,ID);
             return pay;
         }
+        public void AddCart(int userid, int goodsid, int count, DateTime carttime, double price, int flag)
+        {
+            icart.AddCart(userid,goodsid,count,carttime,price,flag);
+        }
+        public Goods getgoodsbyid(int? id)
+        {
+            var gd=icart.getgoodsbyid(id);
+            return gd;
+        }
+        public Cart getcartbyid(int? id)
+        {
+            var ct = icart.getcartbyid(id);
+            return ct;
+        }
     }
 }

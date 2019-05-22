@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 using IDAL;
+
 namespace DAL
 {
-    public class SqlCart
+    public class SqlCart:ICart
     {
        
             yichuEntities db = DbContextFactory.CreateDbContext();
@@ -57,9 +58,9 @@ namespace DAL
                 cars.Flag = 1;
                 db.SaveChanges();
                 //获取书 ID  并修改库存
-                var bookid = cars.GoodsID;
-                var books = db.Goods.Where(o => o.GoodsID == bookid).FirstOrDefault();
-                books.Amount = books.Amount - cars.Count;
+                var goodsid = cars.GoodsID;
+                var goods = db.Goods.Where(o => o.GoodsID == goodsid).FirstOrDefault();
+                goods.TotalStorageAmount= goods.TotalStorageAmount - cars.Count;
                 db.SaveChanges();
                 //添加进订单详情         
                 var orders = db.Orders.Where(o => o.UserID == ID);
@@ -110,7 +111,41 @@ namespace DAL
             {
                 var cart = db.Cart.Where(o => o.CartID == CartID).FirstOrDefault();
                 cart.Count = num;
+
+                db.SaveChanges();
+            }
+        public void AddCart(int userid, int goodsid, int count, DateTime carttime, double price, int flag)
+        {
+            var ca =db.Cart.Where(o => o.GoodsID == goodsid).FirstOrDefault();
+            if (ca == null)
+            { 
+                var cart = new Cart()
+                {
+                    UserID = userid,
+                    GoodsID = goodsid,
+                    Count = count,
+                    CartTime = carttime,
+                    Price = price,
+                    Flag = flag
+                };
+                db.Cart.Add(cart);
+                db.SaveChanges();
+            }
+            else
+            {
+                ca.Count = ca.Count + count;
                 db.SaveChanges();
             }
         }
+        public Goods getgoodsbyid(int? id)
+        {
+            var gd = db.Goods.Where(u => u.GoodsID == id).FirstOrDefault();
+            return gd;
+        }
+        public Cart getcartbyid(int? id)
+        {
+            var ct = db.Cart.Where(u => u.CartID == id).FirstOrDefault();
+            return ct;
+        }
+    }
 }
