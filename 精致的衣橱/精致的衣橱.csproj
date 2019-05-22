@@ -228,6 +228,7 @@
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\RegisterLogin.cs" />
     <Compile Include="Models\Verify.cs" />
+    <Compile Include="Models\YiChuShowViewModel.cs" />
     <Compile Include="Models\YiChuViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -530,6 +531,8 @@
     <Content Include="Views\Addresses\Details.cshtml" />
     <Content Include="Views\Addresses\Edit.cshtml" />
     <Content Include="Views\Addresses\Index.cshtml" />
+    <Content Include="Views\YIChuShow\Index.cshtml" />
+    <Content Include="Views\YIChuShow\UserAllNote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
