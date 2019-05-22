@@ -52,5 +52,10 @@ namespace DAL
                           select note;
             return hotnote.Take(top);
         }
+
+        public IEnumerable<Note> Getnewnote(int top)
+        {
+            return db.Note.OrderByDescending(o => o.Time);
+        }
     }
 }

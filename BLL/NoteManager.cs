@@ -39,7 +39,11 @@ namespace BLL
         {
             inote.EditNote(note);
         }
-
+        //查找最新笔记
+        public IEnumerable<Note> Getnewnote(int top)
+        {
+            return inote.Getnewnote(top);
+        }
 
     }
 }

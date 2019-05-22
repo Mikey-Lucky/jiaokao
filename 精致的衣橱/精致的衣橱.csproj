@@ -533,6 +533,7 @@
     <Content Include="Views\Addresses\Index.cshtml" />
     <Content Include="Views\YIChuShow\Index.cshtml" />
     <Content Include="Views\YIChuShow\UserAllNote.cshtml" />
+    <Content Include="Views\YiChu\a.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

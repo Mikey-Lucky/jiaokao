@@ -18,5 +18,11 @@ namespace BLL
             var hotvideo = ivideo.Gethotvideo(top);
             return hotvideo;
         }
+        //获取最新视频
+        public IEnumerable<Video> Getnewvideo(int top)
+        {
+            return ivideo.Getnewvideo(top);
+        }
     }
+
 }
