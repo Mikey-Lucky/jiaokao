@@ -11,6 +11,8 @@ namespace IDAL
     {
         //热门帖子
         IEnumerable<Note> Gethotnote(int top);
+        //查找最新笔记
+        IEnumerable<Note> Getnewnote(int top);
         //通过用户id查询笔记
         IQueryable<Note> AllNoteByID(int id);
         //添加笔记

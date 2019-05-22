@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Models;
 using BLL;
 using 精致的衣橱.Models;
+using System.Web.Script.Serialization;
 
 namespace 精致的衣橱.Controllers
 {
@@ -13,13 +14,19 @@ namespace 精致的衣橱.Controllers
     {
 
         NoteManager notes = new NoteManager();
+        VideoManager videos = new VideoManager();
         YiChuShowViewModel ycsv = new YiChuShowViewModel();
         // GET: YIChuShow
         public ActionResult Index()
         {
-            var a=notes.GetHotNote(20);
-            Response.Write(a);
-            return View();
+            //JavaScriptSerializer jss = new JavaScriptSerializer();
+            //var a = Request["tianqi"];
+            ycsv.JingXuanNote = notes.GetHotNote(20);
+            ycsv.JingXuanVideo = videos.GetHotVideo(20);
+            ycsv.NewNote = notes.Getnewnote(20);
+            ycsv.NewVideo = videos.GetHotVideo(20);
+
+            return View(ycsv);
         }
         public ActionResult Userhome()
         {

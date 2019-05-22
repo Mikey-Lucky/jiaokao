@@ -21,7 +21,8 @@ namespace 精致的衣橱.Controllers
         {
             YiChuViewModel yichuview = new YiChuViewModel();
             /* var temp = Convert.ToInt32(context.Request["weather"]);*///数据获取失败
-            int temp = 12;//需获取前台值
+            var temp = Request["tianqi"];
+           /* int temp = 12;*///需获取前台值
             yichuview.springsuit = suits.ShirtBySeason("春季");
             yichuview.summersuit = suits.ShirtBySeason("夏季");
             yichuview.autumnsuit = suits.ShirtBySeason("秋季");
@@ -38,10 +39,10 @@ namespace 精致的衣橱.Controllers
             yichuview.summershirt = shirts.ShirtBySeason("夏季");
             yichuview.autumnshirt = shirts.ShirtBySeason("秋季");
             yichuview.wintershirt = shirts.ShirtBySeason("冬季");
-            yichuview.nethergarmentbytemp = nethers.NetherGarmentByTemp(temp);
-            yichuview.shirtbytemp = shirts.ShirtByTemp(temp);
-            yichuview.coatbytemp = coats.CoatByTemp(temp);
-            yichuview.suitbytemp = suits.SuitByTemp(temp);
+            yichuview.nethergarmentbytemp = nethers.NetherGarmentByTemp(Convert.ToInt32(temp));
+            yichuview.shirtbytemp = shirts.ShirtByTemp(Convert.ToInt32(temp));
+            yichuview.coatbytemp = coats.CoatByTemp(Convert.ToInt32(temp));
+            yichuview.suitbytemp = suits.SuitByTemp(Convert.ToInt32(temp));
             return View(yichuview);
         }
         //GET上传衣服
@@ -129,6 +130,12 @@ namespace 精致的衣橱.Controllers
         {
             var shirt = shirts.GetShirtById(id);
             return View(shirt);
+        }
+        //实验
+        public ActionResult a()
+        {
+            var a = Request["tianqi"];
+            return Content(a);
         }
     }
 }

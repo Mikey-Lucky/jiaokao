@@ -11,5 +11,7 @@ namespace IDAL
     {
         //热门视频
         IEnumerable<Video> Gethotvideo(int top);
+        //最新视频
+        IEnumerable<Video> Getnewvideo(int top);
     }
 }

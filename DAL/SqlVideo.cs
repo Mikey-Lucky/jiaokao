@@ -19,5 +19,10 @@ namespace DAL
 
             return hotvideo.Take(top);
         }
+
+        public IEnumerable<Video> Getnewvideo(int top)
+        {
+            return db.Video.OrderByDescending(o => o.Time); 
+        }
     }
 }

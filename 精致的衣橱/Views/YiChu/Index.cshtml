@@ -409,7 +409,7 @@
             <script>
                 $(function () {
                     // Ajax请求：一般在刷新页面中的局部数据时，会使用ajax请求。该请求不会去重新刷新或请求这个页面中的所有数据，而只是动态的修改一部分数据。
-                    $("#getw").click(function () {
+                   
                         $.ajax({
                             // 请求地址
                             url: 'http://api.map.baidu.com/telematics/v3/weather?location=' + '南昌' + '&output=json&ak=TueGDhCvwI6fOrQnLM0qmXxY9N0OkOiQ&callback=?',
@@ -431,16 +431,24 @@
                                 var weather_data = result['weather_data'][0];
                                 var tem = weather_data['temperature'];
                                 var temnum = tem.split("~");
-                                var center = (parseInt(temnum[0]) + parseInt(temnum[1])) * 0.5;
-                                $('.temperature').text(parseInt(temnum[0]));
-                                $('.temperature1').text(parseInt(temnum[1]));
-                                $('.temperature2').text(parseInt(center));
-
+                                var center = parseInt((parseInt(temnum[0]) + parseInt(temnum[1])) * 0.5);
+                                $('.temperature2').text(center);
+                                
+                                    $.ajax({
+                                        url: "/YiChu/Index",
+                                        type: 'POST',
+                                        data: { "tianqi": center },
+                                        success: function (data, status) {
+                                            console.log(data)
+                                        },
+                                        async: true
+                                    });
+                            
                             },
                             // 发起请求的方式：同步(false)还是异步(true)
                             async: true
                         });
-                    })
+                })
                     //$("#chufa").click(function () {
                     //    $.ajax({
                     //        url: '/YiChu/Index',
@@ -455,8 +463,7 @@
                     //        },
                     //        async: true
                     //    });
-                    //})
-                })     
+                    //})     
     </script>
 </body>
 </html>
