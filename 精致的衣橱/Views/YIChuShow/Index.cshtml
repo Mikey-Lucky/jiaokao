@@ -4,144 +4,98 @@
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <title>Index</title> 
+    <link href="~/Content/normalize.css" rel="stylesheet" />
+    <link href="~/Content/demo.css" rel="stylesheet" />
+    <script>document.documentElement.className = 'js';</script>
     <style>
-        * {
-            margin: 0px;
-            padding:0px;
-            position: relative;
+        body {
+            background-color: white;
         }
-        img {
-            width: 220px;
-            display: block;
+        .control__item {
+            display: inline-block;
         }
-        .item {
-            box-shadow: 2px 2px 2px #999;
-            position: absolute;
+        main .content{
+            margin: 0 auto;
+        }
+        .control--grids {
+             text-align: left;
         }
     </style>
 </head>
-<body>
-    <div id="box">
-        @foreach (var n in Model.JingXuanNote)
-        {
-            <div class="item">
-                <img src="/Images/Noteimg/@n.Img" />
+<body class="loading">
+        <div class="control control--grids">
+            <div class="control__item">
+                <input class="control__radio" type="radio" name="grid-type" value="grid--type-a" id="control-grid-a" checked>
+                <label class="control__label" for="control-grid-a">精选笔记</label>
             </div>
-
-        }
-    </div>
-    <div style="height:300px;width:100%" ></div>
-    @foreach (var n in Model.JingXuanNote)
-    {
-        @n.likenum
-
-    }
-
-    <div>
-        <ul  id="myTab">
-            <li><a href="#">首页</a></li>
-            <li><a href="#jinxunnote" data-toggle="tab">精选衣橱</a></li>
-            <li><a href="#jinxunvideo" data-toggle="tab">精选视频</a></li>
-            <li><a href="#hoteshowuser" data-toggle="tab">热门show主</a></li>
-            <li><a href="#newnote" data-toggle="tab">新笔记</a></li>
-            <li><a href="#newvideo" data-toggle="tab">新视频</a></li>
-        </ul>
-        <div class="tab-content">
-            @*<div class="tab-pane active" id="home">0</div>*@
-            <div class="tab-pane " id="jinxunnote">
-               
-               
+            <div class="control__item">
+                <input class="control__radio" type="radio" name="grid-type" value="grid--type-b" id="control-grid-b">
+                <label class="control__label" for="control-grid-b">精选视频</label>
             </div>
-            <div class="tab-pane " id="jinxunvideo">2</div>
-            <div class="tab-pane " id="hoteshowuser">3</div>
-            <div class="tab-pane " id="newnote">4</div>
-            <div class="tab-pane " id="newvideo">5</div>     
+            <div class="control__item">
+                <input class="control__radio" type="radio" name="grid-type" value="grid--type-c" id="control-grid-c">
+                <label class="control__label" for="control-grid-c">最新笔记</label>
+            </div>
+            <div class="control__item">
+                <input class="control__radio" type="radio" name="grid-type" value="grid--type-d" id="control-grid-d">
+                <label class="control__label" for="control-grid-d">最新视频</label>
+            </div>
         </div>
-        @*<script>
-            //$(function () {
-            //    $('#myTab a:first').tab('show')
-            //})
-
-        </script>*@
-    </div>
-    <script type="text/javascript">
-        var box = document.getElementById('box');
-        var items = box.children;
-        //定义每列距离
-        var gap = 10;
-        window.onload = function () {
-            warteFall();
-        }
-        function warteFall() {
-            //1.确定列数=页面的宽度/图片宽度
-            var pageWidth = 1314;
-            var itemWidth = items[0].offsetWidth;
-            var columns = parseInt(pageWidth / (itemWidth + gap));
-            var arr = [];
-            for (var i = 0; i < items.length; i++) {
-                if (i < columns) {
-                    //确定第一行
-                    items[i].style.top = 0;
-                    items[i].style.left = (itemWidth + gap) * i + 'px';
-                    arr.push(items[i].offsetHeight);
-                } else {
-                    //其他行
-                    //3.找到数组中最小高度和索引
-                    var minHeight = arr[0];
-                    var index = 0;
-                    for (var j = 0; j < arr.length; j++) {
-                        if (minHeight < arr[j]) {
-                            minHeight = arr[j];
-                            index = j;
-                        };
+        <main>
+            <div class="content content--center">
+                <div class="grid grid--type-a">
+                    <div class="grid__sizer"></div>
+                    @foreach (var n in Model.JingXuanNote)
+                    {
+                        <div class="grid__item">
+                            <a class="grid__link" href="#">
+                            <img class="grid__img" src="/Images/Noteimg/@n.Img" alt="Some image" />
+                            </a>
+                        </div>
                     }
-                    //4.设置下一行的第一个盒子位置
-                    //top就是最小列高度+pag
-                    items[i].style.top = arr[index] + gap + 'px';
-                    //left就是最小列距离左边都距离
-                    items[i].style.left = items[index].offsetLeft + 'px';
-                    //5.修改最小列的高度
-                    //最小列的高度=当前自己的高度+拼接的高度+间隙的高度
-                    arr[index] = arr[index] + items[i].offsetHeight + gap;
-                }
-            }
-        }
-        window.onresize = function () {
-            warteFall();
-        }
-        //加载下一批
-        window.onscroll = function () {
-            var height = document.documentElement.clientHeight;
-            var solTop = document.documentElement.scrollTop;
-            if ((height=solTop) >= items[items.length - 1].offsetTop) {
-                //模拟后台数据
-                var datas = [
-                    "~/Images/Noteimg/1.jpeg",
-                    "../Noteimg/1.jpeg",
-                    "../Noteimg/1.jpeg",
-                    "../Noteimg/1.jpeg",
-                    "../Noteimg/1.jpeg",
-                    "../Noteimg/1.jpeg",
-                    "../Noteimg/1.jpeg",
-                    "../Noteimg/1.jpeg",
-                ];
-                for (var i = 0; i < datas.length; i++) {
-                    var div = document.createElement("div");
-                    div.className = "item";
-                    div.innerHTML = '<img ser="'+ datas[i]+'"alt="">';
-                    box.appendChild(div);
-                };
-                warteFall();
-            }
-        }
-    </script>
-</body>
+                </div>
+                <div class="grid grid--type-b">
+                    <div class="grid__sizer"></div>
+                    @foreach (var n in Model.JingXuanVideo)
+                    {
+                        <div class="grid__item">
+                            <a class="grid__link" href="#">
+                            <img class="grid__img" src="/Images/Noteimg/@n.Image" alt="Some image" />
+                            </a>
+                        </div>
+                    }
+                </div>
+                <div class="grid grid--type-c">
+                    <div class="grid__sizer"></div>
+                    @foreach (var n in Model.NewNote)
+                    {
+                        <div class="grid__item">
+                            <a class="grid__link" href="#">
+                                <img class="grid__img" src="/Images/Noteimg/@n.Img" alt="Some image" />
+                            </a>
+                        </div>
+                    }
+                </div>
+                <div class="grid grid--type-d">
+                    <div class="grid__sizer"></div>
+                    @foreach (var n in Model.NewVideo)
+                    {
+                        <div class="grid__item">
+                            <a class="grid__link" href="#">
+                                <img class="grid__img" src="/Images/Noteimg/@n.Image" alt="Some image" />
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </main>
+    <script src="~/Scripts/imagesloaded.pkgd.min.js"></script>
+    <script src="~/Scripts/masonry.pkgd.min.js"></script>
+    <script src="~/Scripts/anime.min.js"></script>
+    <script src="~/Scripts/main.js"></script>
+    </body>
 </html>

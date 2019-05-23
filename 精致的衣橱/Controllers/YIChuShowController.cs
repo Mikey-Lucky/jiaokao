@@ -19,8 +19,6 @@ namespace 精致的衣橱.Controllers
         // GET: YIChuShow
         public ActionResult Index()
         {
-            //JavaScriptSerializer jss = new JavaScriptSerializer();
-            //var a = Request["tianqi"];
             ycsv.JingXuanNote = notes.GetHotNote(20);
             ycsv.JingXuanVideo = videos.GetHotVideo(20);
             ycsv.NewNote = notes.Getnewnote(20);

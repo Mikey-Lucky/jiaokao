@@ -238,8 +238,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Cooldog.css" />
+    <Content Include="Content\demo.css" />
     <Content Include="Content\iconfont.css" />
     <Content Include="Content\Mall.css" />
+    <Content Include="Content\normalize.css" />
     <Content Include="Content\ShopCar.css" />
     <Content Include="Content\shouye.css" />
     <Content Include="Content\zyUpload.css" />
@@ -439,6 +441,7 @@
     <Content Include="Images\yichu\麋鹿素材.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\anime.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -448,6 +451,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Cooldog.js" />
     <Content Include="Scripts\DZ.css" />
+    <Content Include="Scripts\imagesloaded.pkgd.min.js" />
     <Content Include="Scripts\jq22.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -458,6 +462,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\masonry.pkgd.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr.js" />
     <Content Include="Scripts\respond.js" />
