@@ -21,7 +21,6 @@ namespace Models
         public string Style { get; set; }
         public string Material { get; set; }
         public string GoodsImage { get; set; }
-        public string GCimage { get; set; }
         public int StorageAmount { get; set; }
         public Nullable<System.DateTime> ShangjiaTime { get; set; }
         public Nullable<double> Unitprice { get; set; }

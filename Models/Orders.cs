@@ -26,9 +26,8 @@ namespace Models
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string Tel { get; set; }
-        public int AddressID { get; set; }
+        public string Address { get; set; }
     
-        public virtual Address Address { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
         public virtual Users Users { get; set; }

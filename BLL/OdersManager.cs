@@ -22,9 +22,9 @@ namespace BLL
             return orders;
         }
 
-        public void Order(DateTime datetime, int totalamount, int userid, string uname, string tel, int addressid)
+        public void Order(int userid, string uname, string tel, string address)
         {
-            iorders.Order(datetime,totalamount,userid, uname, tel, addressid);
+            iorders.Order(userid, uname, tel, address);
         }
         public void RemoveOrders(Orders orders)
         {

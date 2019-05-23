@@ -241,7 +241,7 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="100" />
           <Property Name="Tel" Type="char" MaxLength="11" Nullable="false" />
-          <Property Name="AddressID" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Privatemessage">
           <Key>
@@ -427,7 +427,6 @@
           <Property Name="Style" Type="char" MaxLength="50" />
           <Property Name="Material" Type="char" MaxLength="50" />
           <Property Name="GoodsImage" Type="varchar(max)" />
-          <Property Name="GCimage" Type="varchar(max)" />
           <Property Name="StorageAmount" Type="int" Nullable="false" />
           <Property Name="ShangjiaTime" Type="datetime" />
           <Property Name="Unitprice" Type="float" />
@@ -512,7 +511,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Coat__WardrobeID__5CD6CB2B">
+        <Association Name="FK__Coat__WardrobeID__5BE2A6F2">
           <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
           <End Role="Coat" Type="Self.Coat" Multiplicity="*" />
           <ReferentialConstraint>
@@ -572,7 +571,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Coordinat__CoatI__68487DD7">
+        <Association Name="FK__Coordinat__CoatI__6754599E">
           <End Role="Coat" Type="Self.Coat" Multiplicity="0..1" />
           <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -584,7 +583,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Coordinat__Nethe__6A30C649">
+        <Association Name="FK__Coordinat__Nethe__693CA210">
           <End Role="NetherGarment" Type="Self.NetherGarment" Multiplicity="0..1" />
           <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -596,7 +595,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Coordinat__Shirt__693CA210">
+        <Association Name="FK__Coordinat__Shirt__68487DD7">
           <End Role="Shirt" Type="Self.Shirt" Multiplicity="0..1" />
           <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -608,7 +607,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Coordinat__SuitI__6B24EA82">
+        <Association Name="FK__Coordinat__SuitI__6A30C649">
           <End Role="Suit" Type="Self.Suit" Multiplicity="0..1" />
           <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -764,7 +763,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NetherGar__Wardr__628FA481">
+        <Association Name="FK__NetherGar__Wardr__619B8048">
           <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
           <End Role="NetherGarment" Type="Self.NetherGarment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -776,7 +775,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Note__UserID__114A936A">
+        <Association Name="FK__Note__UserID__10566F31">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Note" Type="Self.Note" Multiplicity="*" />
           <ReferentialConstraint>
@@ -788,7 +787,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteComme__NoteI__151B244E">
+        <Association Name="FK__NoteComme__NoteI__14270015">
           <End Role="Note" Type="Self.Note" Multiplicity="1" />
           <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -800,7 +799,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteComme__UserI__14270015">
+        <Association Name="FK__NoteComme__UserI__1332DBDC">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -812,7 +811,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteLike__NoteID__18EBB532">
+        <Association Name="FK__NoteLike__NoteID__17F790F9">
           <End Role="Note" Type="Self.Note" Multiplicity="1" />
           <End Role="NoteLike" Type="Self.NoteLike" Multiplicity="*" />
           <ReferentialConstraint>
@@ -824,7 +823,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteLike__UserID__17F790F9">
+        <Association Name="FK__NoteLike__UserID__17036CC0">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="NoteLike" Type="Self.NoteLike" Multiplicity="*" />
           <ReferentialConstraint>
@@ -836,7 +835,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteSelec__NoteI__1CBC4616">
+        <Association Name="FK__NoteSelec__NoteI__1BC821DD">
           <End Role="Note" Type="Self.Note" Multiplicity="1" />
           <End Role="NoteSelect" Type="Self.NoteSelect" Multiplicity="*" />
           <ReferentialConstraint>
@@ -848,7 +847,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteSelec__UserI__1BC821DD">
+        <Association Name="FK__NoteSelec__UserI__1AD3FDA4">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="NoteSelect" Type="Self.NoteSelect" Multiplicity="*" />
           <ReferentialConstraint>
@@ -860,7 +859,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteTrasm__NoteI__208CD6FA">
+        <Association Name="FK__NoteTrasm__NoteI__1F98B2C1">
           <End Role="Note" Type="Self.Note" Multiplicity="1" />
           <End Role="NoteTrasmit" Type="Self.NoteTrasmit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -872,7 +871,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteTrasm__UserI__1F98B2C1">
+        <Association Name="FK__NoteTrasm__UserI__1EA48E88">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="NoteTrasmit" Type="Self.NoteTrasmit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -884,7 +883,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Goods__5070F446">
+        <Association Name="FK__OrderDeta__Goods__4F7CD00D">
           <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -896,7 +895,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Order__5165187F">
+        <Association Name="FK__OrderDeta__Order__5070F446">
           <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -908,7 +907,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__UserI__52593CB8">
+        <Association Name="FK__OrderDeta__UserI__5165187F">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -917,18 +916,6 @@
             </Principal>
             <Dependent Role="OrderDetails">
               <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Orders__AddressI__4D94879B">
-          <End Role="Address" Type="Self.Address" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="AddressID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="AddressID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -944,7 +931,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Privateme__Priva__5629CD9C">
+        <Association Name="FK__Privateme__Priva__5535A963">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Privatemessage" Type="Self.Privatemessage" Multiplicity="*" />
           <ReferentialConstraint>
@@ -956,7 +943,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Privateme__UserI__5535A963">
+        <Association Name="FK__Privateme__UserI__5441852A">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Privatemessage" Type="Self.Privatemessage" Multiplicity="*" />
           <ReferentialConstraint>
@@ -968,7 +955,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Shirt__WardrobeI__5FB337D6">
+        <Association Name="FK__Shirt__WardrobeI__5EBF139D">
           <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
           <End Role="Shirt" Type="Self.Shirt" Multiplicity="*" />
           <ReferentialConstraint>
@@ -980,7 +967,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Suit__WardrobeID__656C112C">
+        <Association Name="FK__Suit__WardrobeID__6477ECF3">
           <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
           <End Role="Suit" Type="Self.Suit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -992,7 +979,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Attenti__User1__75A278F5">
+        <Association Name="FK__U_Attenti__User1__74AE54BC">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="U_Attention_U" Type="Self.U_Attention_U" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1004,7 +991,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Attenti__User2__76969D2E">
+        <Association Name="FK__U_Attenti__User2__75A278F5">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="U_Attention_U" Type="Self.U_Attention_U" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1016,7 +1003,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Collect__Coord__6EF57B66">
+        <Association Name="FK__U_Collect__Coord__6E01572D">
           <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="1" />
           <End Role="U_Collect_Coordinate" Type="Self.U_Collect_Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1028,7 +1015,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Collect__UserI__6E01572D">
+        <Association Name="FK__U_Collect__UserI__6D0D32F4">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="U_Collect_Coordinate" Type="Self.U_Collect_Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1040,7 +1027,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Dislike__Coord__72C60C4A">
+        <Association Name="FK__U_Dislike__Coord__71D1E811">
           <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="1" />
           <End Role="U_Dislike_Coordinate" Type="Self.U_Dislike_Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1052,7 +1039,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Dislike__UserI__71D1E811">
+        <Association Name="FK__U_Dislike__UserI__70DDC3D8">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="U_Dislike_Coordinate" Type="Self.U_Dislike_Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1064,7 +1051,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Reply_N__NoteC__245D67DE">
+        <Association Name="FK__U_Reply_N__NoteC__236943A5">
           <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="1" />
           <End Role="U_Reply_NoteComment" Type="Self.U_Reply_NoteComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1076,7 +1063,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Reply_N__UserI__236943A5">
+        <Association Name="FK__U_Reply_N__UserI__22751F6C">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="U_Reply_NoteComment" Type="Self.U_Reply_NoteComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1088,7 +1075,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Reply_V__UserI__0C85DE4D">
+        <Association Name="FK__U_Reply_V__UserI__0B91BA14">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="U_Reply_VideoComment" Type="Self.U_Reply_VideoComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1100,7 +1087,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Reply_V__Video__0D7A0286">
+        <Association Name="FK__U_Reply_V__Video__0C85DE4D">
           <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="1" />
           <End Role="U_Reply_VideoComment" Type="Self.U_Reply_VideoComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1112,7 +1099,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Video__UserID__7A672E12">
+        <Association Name="FK__Video__UserID__797309D9">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Video" Type="Self.Video" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1124,7 +1111,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoComm__UserI__7D439ABD">
+        <Association Name="FK__VideoComm__UserI__7C4F7684">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1136,7 +1123,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoComm__Video__7E37BEF6">
+        <Association Name="FK__VideoComm__Video__7D439ABD">
           <End Role="Video" Type="Self.Video" Multiplicity="1" />
           <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1148,7 +1135,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoLike__UserI__01142BA1">
+        <Association Name="FK__VideoLike__UserI__00200768">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="VideoLike" Type="Self.VideoLike" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1160,7 +1147,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoLike__Video__02084FDA">
+        <Association Name="FK__VideoLike__Video__01142BA1">
           <End Role="Video" Type="Self.Video" Multiplicity="1" />
           <End Role="VideoLike" Type="Self.VideoLike" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1172,7 +1159,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoSele__UserI__04E4BC85">
+        <Association Name="FK__VideoSele__UserI__03F0984C">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="VideoSelect" Type="Self.VideoSelect" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1184,7 +1171,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoSele__Video__05D8E0BE">
+        <Association Name="FK__VideoSele__Video__04E4BC85">
           <End Role="Video" Type="Self.Video" Multiplicity="1" />
           <End Role="VideoSelect" Type="Self.VideoSelect" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1196,7 +1183,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoTras__UserI__08B54D69">
+        <Association Name="FK__VideoTras__UserI__07C12930">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="VideoTrasmit" Type="Self.VideoTrasmit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1208,7 +1195,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoTras__Video__09A971A2">
+        <Association Name="FK__VideoTras__Video__08B54D69">
           <End Role="Video" Type="Self.Video" Multiplicity="1" />
           <End Role="VideoTrasmit" Type="Self.VideoTrasmit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1220,7 +1207,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wardrobe__Userid__59FA5E80">
+        <Association Name="FK__Wardrobe__Userid__59063A47">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1233,10 +1220,10 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="Cart_Orders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
           <Parameter Name="UserName" Type="nvarchar" Mode="In" />
           <Parameter Name="Tel" Type="nvarchar" Mode="In" />
-          <Parameter Name="AddressID" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Address" Type="varchar(max)" Mode="In" />
         </Function>
         <EntityContainer Name="yichuModelStoreContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
@@ -1286,7 +1273,6 @@
     [GGCC].[Style] AS [Style], 
     [GGCC].[Material] AS [Material], 
     [GGCC].[GoodsImage] AS [GoodsImage], 
-    [GGCC].[GCimage] AS [GCimage], 
     [GGCC].[StorageAmount] AS [StorageAmount], 
     [GGCC].[ShangjiaTime] AS [ShangjiaTime], 
     [GGCC].[Unitprice] AS [Unitprice], 
@@ -1336,7 +1322,7 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__Coat__WardrobeID__5CD6CB2B" Association="Self.FK__Coat__WardrobeID__5CD6CB2B">
+          <AssociationSet Name="FK__Coat__WardrobeID__5BE2A6F2" Association="Self.FK__Coat__WardrobeID__5BE2A6F2">
             <End Role="Wardrobe" EntitySet="Wardrobe" />
             <End Role="Coat" EntitySet="Coat" />
           </AssociationSet>
@@ -1356,19 +1342,19 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="ComReply" EntitySet="ComReply" />
           </AssociationSet>
-          <AssociationSet Name="FK__Coordinat__CoatI__68487DD7" Association="Self.FK__Coordinat__CoatI__68487DD7">
+          <AssociationSet Name="FK__Coordinat__CoatI__6754599E" Association="Self.FK__Coordinat__CoatI__6754599E">
             <End Role="Coat" EntitySet="Coat" />
             <End Role="Coordinate" EntitySet="Coordinate" />
           </AssociationSet>
-          <AssociationSet Name="FK__Coordinat__Nethe__6A30C649" Association="Self.FK__Coordinat__Nethe__6A30C649">
+          <AssociationSet Name="FK__Coordinat__Nethe__693CA210" Association="Self.FK__Coordinat__Nethe__693CA210">
             <End Role="NetherGarment" EntitySet="NetherGarment" />
             <End Role="Coordinate" EntitySet="Coordinate" />
           </AssociationSet>
-          <AssociationSet Name="FK__Coordinat__Shirt__693CA210" Association="Self.FK__Coordinat__Shirt__693CA210">
+          <AssociationSet Name="FK__Coordinat__Shirt__68487DD7" Association="Self.FK__Coordinat__Shirt__68487DD7">
             <End Role="Shirt" EntitySet="Shirt" />
             <End Role="Coordinate" EntitySet="Coordinate" />
           </AssociationSet>
-          <AssociationSet Name="FK__Coordinat__SuitI__6B24EA82" Association="Self.FK__Coordinat__SuitI__6B24EA82">
+          <AssociationSet Name="FK__Coordinat__SuitI__6A30C649" Association="Self.FK__Coordinat__SuitI__6A30C649">
             <End Role="Suit" EntitySet="Suit" />
             <End Role="Coordinate" EntitySet="Coordinate" />
           </AssociationSet>
@@ -1420,159 +1406,155 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Grade" EntitySet="Grade" />
           </AssociationSet>
-          <AssociationSet Name="FK__NetherGar__Wardr__628FA481" Association="Self.FK__NetherGar__Wardr__628FA481">
+          <AssociationSet Name="FK__NetherGar__Wardr__619B8048" Association="Self.FK__NetherGar__Wardr__619B8048">
             <End Role="Wardrobe" EntitySet="Wardrobe" />
             <End Role="NetherGarment" EntitySet="NetherGarment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Note__UserID__114A936A" Association="Self.FK__Note__UserID__114A936A">
+          <AssociationSet Name="FK__Note__UserID__10566F31" Association="Self.FK__Note__UserID__10566F31">
             <End Role="Users" EntitySet="Users" />
             <End Role="Note" EntitySet="Note" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteComme__NoteI__151B244E" Association="Self.FK__NoteComme__NoteI__151B244E">
+          <AssociationSet Name="FK__NoteComme__NoteI__14270015" Association="Self.FK__NoteComme__NoteI__14270015">
             <End Role="Note" EntitySet="Note" />
             <End Role="NoteComment" EntitySet="NoteComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteComme__UserI__14270015" Association="Self.FK__NoteComme__UserI__14270015">
+          <AssociationSet Name="FK__NoteComme__UserI__1332DBDC" Association="Self.FK__NoteComme__UserI__1332DBDC">
             <End Role="Users" EntitySet="Users" />
             <End Role="NoteComment" EntitySet="NoteComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteLike__NoteID__18EBB532" Association="Self.FK__NoteLike__NoteID__18EBB532">
+          <AssociationSet Name="FK__NoteLike__NoteID__17F790F9" Association="Self.FK__NoteLike__NoteID__17F790F9">
             <End Role="Note" EntitySet="Note" />
             <End Role="NoteLike" EntitySet="NoteLike" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteLike__UserID__17F790F9" Association="Self.FK__NoteLike__UserID__17F790F9">
+          <AssociationSet Name="FK__NoteLike__UserID__17036CC0" Association="Self.FK__NoteLike__UserID__17036CC0">
             <End Role="Users" EntitySet="Users" />
             <End Role="NoteLike" EntitySet="NoteLike" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteSelec__NoteI__1CBC4616" Association="Self.FK__NoteSelec__NoteI__1CBC4616">
+          <AssociationSet Name="FK__NoteSelec__NoteI__1BC821DD" Association="Self.FK__NoteSelec__NoteI__1BC821DD">
             <End Role="Note" EntitySet="Note" />
             <End Role="NoteSelect" EntitySet="NoteSelect" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteSelec__UserI__1BC821DD" Association="Self.FK__NoteSelec__UserI__1BC821DD">
+          <AssociationSet Name="FK__NoteSelec__UserI__1AD3FDA4" Association="Self.FK__NoteSelec__UserI__1AD3FDA4">
             <End Role="Users" EntitySet="Users" />
             <End Role="NoteSelect" EntitySet="NoteSelect" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteTrasm__NoteI__208CD6FA" Association="Self.FK__NoteTrasm__NoteI__208CD6FA">
+          <AssociationSet Name="FK__NoteTrasm__NoteI__1F98B2C1" Association="Self.FK__NoteTrasm__NoteI__1F98B2C1">
             <End Role="Note" EntitySet="Note" />
             <End Role="NoteTrasmit" EntitySet="NoteTrasmit" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteTrasm__UserI__1F98B2C1" Association="Self.FK__NoteTrasm__UserI__1F98B2C1">
+          <AssociationSet Name="FK__NoteTrasm__UserI__1EA48E88" Association="Self.FK__NoteTrasm__UserI__1EA48E88">
             <End Role="Users" EntitySet="Users" />
             <End Role="NoteTrasmit" EntitySet="NoteTrasmit" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Goods__5070F446" Association="Self.FK__OrderDeta__Goods__5070F446">
+          <AssociationSet Name="FK__OrderDeta__Goods__4F7CD00D" Association="Self.FK__OrderDeta__Goods__4F7CD00D">
             <End Role="Goods" EntitySet="Goods" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Order__5165187F" Association="Self.FK__OrderDeta__Order__5165187F">
+          <AssociationSet Name="FK__OrderDeta__Order__5070F446" Association="Self.FK__OrderDeta__Order__5070F446">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__UserI__52593CB8" Association="Self.FK__OrderDeta__UserI__52593CB8">
+          <AssociationSet Name="FK__OrderDeta__UserI__5165187F" Association="Self.FK__OrderDeta__UserI__5165187F">
             <End Role="Users" EntitySet="Users" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Orders__AddressI__4D94879B" Association="Self.FK__Orders__AddressI__4D94879B">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK__Orders__UserID__4CA06362" Association="Self.FK__Orders__UserID__4CA06362">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Privateme__Priva__5629CD9C" Association="Self.FK__Privateme__Priva__5629CD9C">
+          <AssociationSet Name="FK__Privateme__Priva__5535A963" Association="Self.FK__Privateme__Priva__5535A963">
             <End Role="Users" EntitySet="Users" />
             <End Role="Privatemessage" EntitySet="Privatemessage" />
           </AssociationSet>
-          <AssociationSet Name="FK__Privateme__UserI__5535A963" Association="Self.FK__Privateme__UserI__5535A963">
+          <AssociationSet Name="FK__Privateme__UserI__5441852A" Association="Self.FK__Privateme__UserI__5441852A">
             <End Role="Users" EntitySet="Users" />
             <End Role="Privatemessage" EntitySet="Privatemessage" />
           </AssociationSet>
-          <AssociationSet Name="FK__Shirt__WardrobeI__5FB337D6" Association="Self.FK__Shirt__WardrobeI__5FB337D6">
+          <AssociationSet Name="FK__Shirt__WardrobeI__5EBF139D" Association="Self.FK__Shirt__WardrobeI__5EBF139D">
             <End Role="Wardrobe" EntitySet="Wardrobe" />
             <End Role="Shirt" EntitySet="Shirt" />
           </AssociationSet>
-          <AssociationSet Name="FK__Suit__WardrobeID__656C112C" Association="Self.FK__Suit__WardrobeID__656C112C">
+          <AssociationSet Name="FK__Suit__WardrobeID__6477ECF3" Association="Self.FK__Suit__WardrobeID__6477ECF3">
             <End Role="Wardrobe" EntitySet="Wardrobe" />
             <End Role="Suit" EntitySet="Suit" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Attenti__User1__75A278F5" Association="Self.FK__U_Attenti__User1__75A278F5">
+          <AssociationSet Name="FK__U_Attenti__User1__74AE54BC" Association="Self.FK__U_Attenti__User1__74AE54BC">
             <End Role="Users" EntitySet="Users" />
             <End Role="U_Attention_U" EntitySet="U_Attention_U" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Attenti__User2__76969D2E" Association="Self.FK__U_Attenti__User2__76969D2E">
+          <AssociationSet Name="FK__U_Attenti__User2__75A278F5" Association="Self.FK__U_Attenti__User2__75A278F5">
             <End Role="Users" EntitySet="Users" />
             <End Role="U_Attention_U" EntitySet="U_Attention_U" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Collect__Coord__6EF57B66" Association="Self.FK__U_Collect__Coord__6EF57B66">
+          <AssociationSet Name="FK__U_Collect__Coord__6E01572D" Association="Self.FK__U_Collect__Coord__6E01572D">
             <End Role="Coordinate" EntitySet="Coordinate" />
             <End Role="U_Collect_Coordinate" EntitySet="U_Collect_Coordinate" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Collect__UserI__6E01572D" Association="Self.FK__U_Collect__UserI__6E01572D">
+          <AssociationSet Name="FK__U_Collect__UserI__6D0D32F4" Association="Self.FK__U_Collect__UserI__6D0D32F4">
             <End Role="Users" EntitySet="Users" />
             <End Role="U_Collect_Coordinate" EntitySet="U_Collect_Coordinate" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Dislike__Coord__72C60C4A" Association="Self.FK__U_Dislike__Coord__72C60C4A">
+          <AssociationSet Name="FK__U_Dislike__Coord__71D1E811" Association="Self.FK__U_Dislike__Coord__71D1E811">
             <End Role="Coordinate" EntitySet="Coordinate" />
             <End Role="U_Dislike_Coordinate" EntitySet="U_Dislike_Coordinate" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Dislike__UserI__71D1E811" Association="Self.FK__U_Dislike__UserI__71D1E811">
+          <AssociationSet Name="FK__U_Dislike__UserI__70DDC3D8" Association="Self.FK__U_Dislike__UserI__70DDC3D8">
             <End Role="Users" EntitySet="Users" />
             <End Role="U_Dislike_Coordinate" EntitySet="U_Dislike_Coordinate" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Reply_N__NoteC__245D67DE" Association="Self.FK__U_Reply_N__NoteC__245D67DE">
+          <AssociationSet Name="FK__U_Reply_N__NoteC__236943A5" Association="Self.FK__U_Reply_N__NoteC__236943A5">
             <End Role="NoteComment" EntitySet="NoteComment" />
             <End Role="U_Reply_NoteComment" EntitySet="U_Reply_NoteComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Reply_N__UserI__236943A5" Association="Self.FK__U_Reply_N__UserI__236943A5">
+          <AssociationSet Name="FK__U_Reply_N__UserI__22751F6C" Association="Self.FK__U_Reply_N__UserI__22751F6C">
             <End Role="Users" EntitySet="Users" />
             <End Role="U_Reply_NoteComment" EntitySet="U_Reply_NoteComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Reply_V__UserI__0C85DE4D" Association="Self.FK__U_Reply_V__UserI__0C85DE4D">
+          <AssociationSet Name="FK__U_Reply_V__UserI__0B91BA14" Association="Self.FK__U_Reply_V__UserI__0B91BA14">
             <End Role="Users" EntitySet="Users" />
             <End Role="U_Reply_VideoComment" EntitySet="U_Reply_VideoComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Reply_V__Video__0D7A0286" Association="Self.FK__U_Reply_V__Video__0D7A0286">
+          <AssociationSet Name="FK__U_Reply_V__Video__0C85DE4D" Association="Self.FK__U_Reply_V__Video__0C85DE4D">
             <End Role="VideoComment" EntitySet="VideoComment" />
             <End Role="U_Reply_VideoComment" EntitySet="U_Reply_VideoComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Video__UserID__7A672E12" Association="Self.FK__Video__UserID__7A672E12">
+          <AssociationSet Name="FK__Video__UserID__797309D9" Association="Self.FK__Video__UserID__797309D9">
             <End Role="Users" EntitySet="Users" />
             <End Role="Video" EntitySet="Video" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoComm__UserI__7D439ABD" Association="Self.FK__VideoComm__UserI__7D439ABD">
+          <AssociationSet Name="FK__VideoComm__UserI__7C4F7684" Association="Self.FK__VideoComm__UserI__7C4F7684">
             <End Role="Users" EntitySet="Users" />
             <End Role="VideoComment" EntitySet="VideoComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoComm__Video__7E37BEF6" Association="Self.FK__VideoComm__Video__7E37BEF6">
+          <AssociationSet Name="FK__VideoComm__Video__7D439ABD" Association="Self.FK__VideoComm__Video__7D439ABD">
             <End Role="Video" EntitySet="Video" />
             <End Role="VideoComment" EntitySet="VideoComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoLike__UserI__01142BA1" Association="Self.FK__VideoLike__UserI__01142BA1">
+          <AssociationSet Name="FK__VideoLike__UserI__00200768" Association="Self.FK__VideoLike__UserI__00200768">
             <End Role="Users" EntitySet="Users" />
             <End Role="VideoLike" EntitySet="VideoLike" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoLike__Video__02084FDA" Association="Self.FK__VideoLike__Video__02084FDA">
+          <AssociationSet Name="FK__VideoLike__Video__01142BA1" Association="Self.FK__VideoLike__Video__01142BA1">
             <End Role="Video" EntitySet="Video" />
             <End Role="VideoLike" EntitySet="VideoLike" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoSele__UserI__04E4BC85" Association="Self.FK__VideoSele__UserI__04E4BC85">
+          <AssociationSet Name="FK__VideoSele__UserI__03F0984C" Association="Self.FK__VideoSele__UserI__03F0984C">
             <End Role="Users" EntitySet="Users" />
             <End Role="VideoSelect" EntitySet="VideoSelect" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoSele__Video__05D8E0BE" Association="Self.FK__VideoSele__Video__05D8E0BE">
+          <AssociationSet Name="FK__VideoSele__Video__04E4BC85" Association="Self.FK__VideoSele__Video__04E4BC85">
             <End Role="Video" EntitySet="Video" />
             <End Role="VideoSelect" EntitySet="VideoSelect" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoTras__UserI__08B54D69" Association="Self.FK__VideoTras__UserI__08B54D69">
+          <AssociationSet Name="FK__VideoTras__UserI__07C12930" Association="Self.FK__VideoTras__UserI__07C12930">
             <End Role="Users" EntitySet="Users" />
             <End Role="VideoTrasmit" EntitySet="VideoTrasmit" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoTras__Video__09A971A2" Association="Self.FK__VideoTras__Video__09A971A2">
+          <AssociationSet Name="FK__VideoTras__Video__08B54D69" Association="Self.FK__VideoTras__Video__08B54D69">
             <End Role="Video" EntitySet="Video" />
             <End Role="VideoTrasmit" EntitySet="VideoTrasmit" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wardrobe__Userid__59FA5E80" Association="Self.FK__Wardrobe__Userid__59FA5E80">
+          <AssociationSet Name="FK__Wardrobe__Userid__59063A47" Association="Self.FK__Wardrobe__Userid__59063A47">
             <End Role="Users" EntitySet="Users" />
             <End Role="Wardrobe" EntitySet="Wardrobe" />
           </AssociationSet>
@@ -1590,7 +1572,6 @@
           <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Address__UserID__48CFD27E" FromRole="Address" ToRole="Users" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__AddressI__4D94879B" FromRole="Address" ToRole="Orders" />
         </EntityType>
         <EntityType Name="Cart">
           <Key>
@@ -1618,8 +1599,8 @@
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="WardrobeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__Coat__WardrobeID__5CD6CB2B" FromRole="Coat" ToRole="Wardrobe" />
-          <NavigationProperty Name="Coordinate" Relationship="Self.FK__Coordinat__CoatI__68487DD7" FromRole="Coat" ToRole="Coordinate" />
+          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__Coat__WardrobeID__5BE2A6F2" FromRole="Coat" ToRole="Wardrobe" />
+          <NavigationProperty Name="Coordinate" Relationship="Self.FK__Coordinat__CoatI__6754599E" FromRole="Coat" ToRole="Coordinate" />
         </EntityType>
         <EntityType Name="Collect">
           <Key>
@@ -1661,12 +1642,12 @@
           <Property Name="ShirtID" Type="Int32" />
           <Property Name="NetherGarmentID" Type="Int32" />
           <Property Name="SuitID" Type="Int32" />
-          <NavigationProperty Name="Coat" Relationship="Self.FK__Coordinat__CoatI__68487DD7" FromRole="Coordinate" ToRole="Coat" />
-          <NavigationProperty Name="NetherGarment" Relationship="Self.FK__Coordinat__Nethe__6A30C649" FromRole="Coordinate" ToRole="NetherGarment" />
-          <NavigationProperty Name="Shirt" Relationship="Self.FK__Coordinat__Shirt__693CA210" FromRole="Coordinate" ToRole="Shirt" />
-          <NavigationProperty Name="Suit" Relationship="Self.FK__Coordinat__SuitI__6B24EA82" FromRole="Coordinate" ToRole="Suit" />
-          <NavigationProperty Name="U_Collect_Coordinate" Relationship="Self.FK__U_Collect__Coord__6EF57B66" FromRole="Coordinate" ToRole="U_Collect_Coordinate" />
-          <NavigationProperty Name="U_Dislike_Coordinate" Relationship="Self.FK__U_Dislike__Coord__72C60C4A" FromRole="Coordinate" ToRole="U_Dislike_Coordinate" />
+          <NavigationProperty Name="Coat" Relationship="Self.FK__Coordinat__CoatI__6754599E" FromRole="Coordinate" ToRole="Coat" />
+          <NavigationProperty Name="NetherGarment" Relationship="Self.FK__Coordinat__Nethe__693CA210" FromRole="Coordinate" ToRole="NetherGarment" />
+          <NavigationProperty Name="Shirt" Relationship="Self.FK__Coordinat__Shirt__68487DD7" FromRole="Coordinate" ToRole="Shirt" />
+          <NavigationProperty Name="Suit" Relationship="Self.FK__Coordinat__SuitI__6A30C649" FromRole="Coordinate" ToRole="Suit" />
+          <NavigationProperty Name="U_Collect_Coordinate" Relationship="Self.FK__U_Collect__Coord__6E01572D" FromRole="Coordinate" ToRole="U_Collect_Coordinate" />
+          <NavigationProperty Name="U_Dislike_Coordinate" Relationship="Self.FK__U_Dislike__Coord__71D1E811" FromRole="Coordinate" ToRole="U_Dislike_Coordinate" />
         </EntityType>
         <EntityType Name="Goods">
           <Key>
@@ -1694,7 +1675,7 @@
           <NavigationProperty Name="GoodsComment" Relationship="Self.FK__GoodsComm__Goods__2E1BDC42" FromRole="Goods" ToRole="GoodsComment" />
           <NavigationProperty Name="GoodsLike" Relationship="Self.FK__GoodsLike__Goods__398D8EEE" FromRole="Goods" ToRole="GoodsLike" />
           <NavigationProperty Name="Grade" Relationship="Self.FK__Grade__GoodsID__3D5E1FD2" FromRole="Goods" ToRole="Grade" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Goods__5070F446" FromRole="Goods" ToRole="OrderDetails" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Goods__4F7CD00D" FromRole="Goods" ToRole="OrderDetails" />
         </EntityType>
         <EntityType Name="Goods_Color">
           <Key>
@@ -1785,8 +1766,8 @@
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="WardrobeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Coordinate" Relationship="Self.FK__Coordinat__Nethe__6A30C649" FromRole="NetherGarment" ToRole="Coordinate" />
-          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__NetherGar__Wardr__628FA481" FromRole="NetherGarment" ToRole="Wardrobe" />
+          <NavigationProperty Name="Coordinate" Relationship="Self.FK__Coordinat__Nethe__693CA210" FromRole="NetherGarment" ToRole="Coordinate" />
+          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__NetherGar__Wardr__619B8048" FromRole="NetherGarment" ToRole="Wardrobe" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -1799,11 +1780,11 @@
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="likenum" Type="Int32" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Note__UserID__114A936A" FromRole="Note" ToRole="Users" />
-          <NavigationProperty Name="NoteComment" Relationship="Self.FK__NoteComme__NoteI__151B244E" FromRole="Note" ToRole="NoteComment" />
-          <NavigationProperty Name="NoteLike" Relationship="Self.FK__NoteLike__NoteID__18EBB532" FromRole="Note" ToRole="NoteLike" />
-          <NavigationProperty Name="NoteSelect" Relationship="Self.FK__NoteSelec__NoteI__1CBC4616" FromRole="Note" ToRole="NoteSelect" />
-          <NavigationProperty Name="NoteTrasmit" Relationship="Self.FK__NoteTrasm__NoteI__208CD6FA" FromRole="Note" ToRole="NoteTrasmit" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Note__UserID__10566F31" FromRole="Note" ToRole="Users" />
+          <NavigationProperty Name="NoteComment" Relationship="Self.FK__NoteComme__NoteI__14270015" FromRole="Note" ToRole="NoteComment" />
+          <NavigationProperty Name="NoteLike" Relationship="Self.FK__NoteLike__NoteID__17F790F9" FromRole="Note" ToRole="NoteLike" />
+          <NavigationProperty Name="NoteSelect" Relationship="Self.FK__NoteSelec__NoteI__1BC821DD" FromRole="Note" ToRole="NoteSelect" />
+          <NavigationProperty Name="NoteTrasmit" Relationship="Self.FK__NoteTrasm__NoteI__1F98B2C1" FromRole="Note" ToRole="NoteTrasmit" />
         </EntityType>
         <EntityType Name="NoteComment">
           <Key>
@@ -1815,9 +1796,9 @@
           <Property Name="likenum" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="NoteID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Note" Relationship="Self.FK__NoteComme__NoteI__151B244E" FromRole="NoteComment" ToRole="Note" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__NoteComme__UserI__14270015" FromRole="NoteComment" ToRole="Users" />
-          <NavigationProperty Name="U_Reply_NoteComment" Relationship="Self.FK__U_Reply_N__NoteC__245D67DE" FromRole="NoteComment" ToRole="U_Reply_NoteComment" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__NoteComme__NoteI__14270015" FromRole="NoteComment" ToRole="Note" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__NoteComme__UserI__1332DBDC" FromRole="NoteComment" ToRole="Users" />
+          <NavigationProperty Name="U_Reply_NoteComment" Relationship="Self.FK__U_Reply_N__NoteC__236943A5" FromRole="NoteComment" ToRole="U_Reply_NoteComment" />
         </EntityType>
         <EntityType Name="NoteLike">
           <Key>
@@ -1827,8 +1808,8 @@
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="NoteID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Note" Relationship="Self.FK__NoteLike__NoteID__18EBB532" FromRole="NoteLike" ToRole="Note" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__NoteLike__UserID__17F790F9" FromRole="NoteLike" ToRole="Users" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__NoteLike__NoteID__17F790F9" FromRole="NoteLike" ToRole="Note" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__NoteLike__UserID__17036CC0" FromRole="NoteLike" ToRole="Users" />
         </EntityType>
         <EntityType Name="NoteSelect">
           <Key>
@@ -1838,8 +1819,8 @@
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="NoteID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Note" Relationship="Self.FK__NoteSelec__NoteI__1CBC4616" FromRole="NoteSelect" ToRole="Note" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__NoteSelec__UserI__1BC821DD" FromRole="NoteSelect" ToRole="Users" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__NoteSelec__NoteI__1BC821DD" FromRole="NoteSelect" ToRole="Note" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__NoteSelec__UserI__1AD3FDA4" FromRole="NoteSelect" ToRole="Users" />
         </EntityType>
         <EntityType Name="NoteTrasmit">
           <Key>
@@ -1850,8 +1831,8 @@
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="NoteID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Note" Relationship="Self.FK__NoteTrasm__NoteI__208CD6FA" FromRole="NoteTrasmit" ToRole="Note" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__NoteTrasm__UserI__1F98B2C1" FromRole="NoteTrasmit" ToRole="Users" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__NoteTrasm__NoteI__1F98B2C1" FromRole="NoteTrasmit" ToRole="Note" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__NoteTrasm__UserI__1EA48E88" FromRole="NoteTrasmit" ToRole="Users" />
         </EntityType>
         <EntityType Name="OrderDetails">
           <Key>
@@ -1862,9 +1843,9 @@
           <Property Name="Count" Type="Int32" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" />
-          <NavigationProperty Name="Goods" Relationship="Self.FK__OrderDeta__Goods__5070F446" FromRole="OrderDetails" ToRole="Goods" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__OrderDeta__Order__5165187F" FromRole="OrderDetails" ToRole="Orders" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__OrderDeta__UserI__52593CB8" FromRole="OrderDetails" ToRole="Users" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__OrderDeta__Goods__4F7CD00D" FromRole="OrderDetails" ToRole="Goods" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__OrderDeta__Order__5070F446" FromRole="OrderDetails" ToRole="Orders" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__OrderDeta__UserI__5165187F" FromRole="OrderDetails" ToRole="Users" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -1876,9 +1857,8 @@
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Tel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="AddressID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Address" Relationship="Self.FK__Orders__AddressI__4D94879B" FromRole="Orders" ToRole="Address" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__5165187F" FromRole="Orders" ToRole="OrderDetails" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__5070F446" FromRole="Orders" ToRole="OrderDetails" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Orders__UserID__4CA06362" FromRole="Orders" ToRole="Users" />
         </EntityType>
         <EntityType Name="Privatemessage">
@@ -1890,8 +1870,8 @@
           <Property Name="Privatemessage_UserID" Type="Int32" Nullable="false" />
           <Property Name="MessageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MessageTime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Privateme__Priva__5629CD9C" FromRole="Privatemessage" ToRole="Users" />
-          <NavigationProperty Name="Users1" Relationship="Self.FK__Privateme__UserI__5535A963" FromRole="Privatemessage" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Privateme__Priva__5535A963" FromRole="Privatemessage" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK__Privateme__UserI__5441852A" FromRole="Privatemessage" ToRole="Users" />
         </EntityType>
         <EntityType Name="Shirt">
           <Key>
@@ -1905,8 +1885,8 @@
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="WardrobeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Coordinate" Relationship="Self.FK__Coordinat__Shirt__693CA210" FromRole="Shirt" ToRole="Coordinate" />
-          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__Shirt__WardrobeI__5FB337D6" FromRole="Shirt" ToRole="Wardrobe" />
+          <NavigationProperty Name="Coordinate" Relationship="Self.FK__Coordinat__Shirt__68487DD7" FromRole="Shirt" ToRole="Coordinate" />
+          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__Shirt__WardrobeI__5EBF139D" FromRole="Shirt" ToRole="Wardrobe" />
         </EntityType>
         <EntityType Name="Size">
           <Key>
@@ -1928,8 +1908,8 @@
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="WardrobeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Coordinate" Relationship="Self.FK__Coordinat__SuitI__6B24EA82" FromRole="Suit" ToRole="Coordinate" />
-          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__Suit__WardrobeID__656C112C" FromRole="Suit" ToRole="Wardrobe" />
+          <NavigationProperty Name="Coordinate" Relationship="Self.FK__Coordinat__SuitI__6A30C649" FromRole="Suit" ToRole="Coordinate" />
+          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__Suit__WardrobeID__6477ECF3" FromRole="Suit" ToRole="Wardrobe" />
         </EntityType>
         <EntityType Name="U_Attention_U">
           <Key>
@@ -1939,8 +1919,8 @@
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="User1ID" Type="Int32" Nullable="false" />
           <Property Name="User2ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__U_Attenti__User1__75A278F5" FromRole="U_Attention_U" ToRole="Users" />
-          <NavigationProperty Name="Users1" Relationship="Self.FK__U_Attenti__User2__76969D2E" FromRole="U_Attention_U" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__U_Attenti__User1__74AE54BC" FromRole="U_Attention_U" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="Self.FK__U_Attenti__User2__75A278F5" FromRole="U_Attention_U" ToRole="Users" />
         </EntityType>
         <EntityType Name="U_Collect_Coordinate">
           <Key>
@@ -1950,8 +1930,8 @@
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="CoordinateID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Coordinate" Relationship="Self.FK__U_Collect__Coord__6EF57B66" FromRole="U_Collect_Coordinate" ToRole="Coordinate" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__U_Collect__UserI__6E01572D" FromRole="U_Collect_Coordinate" ToRole="Users" />
+          <NavigationProperty Name="Coordinate" Relationship="Self.FK__U_Collect__Coord__6E01572D" FromRole="U_Collect_Coordinate" ToRole="Coordinate" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__U_Collect__UserI__6D0D32F4" FromRole="U_Collect_Coordinate" ToRole="Users" />
         </EntityType>
         <EntityType Name="U_Dislike_Coordinate">
           <Key>
@@ -1961,8 +1941,8 @@
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="CoordinateID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Coordinate" Relationship="Self.FK__U_Dislike__Coord__72C60C4A" FromRole="U_Dislike_Coordinate" ToRole="Coordinate" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__U_Dislike__UserI__71D1E811" FromRole="U_Dislike_Coordinate" ToRole="Users" />
+          <NavigationProperty Name="Coordinate" Relationship="Self.FK__U_Dislike__Coord__71D1E811" FromRole="U_Dislike_Coordinate" ToRole="Coordinate" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__U_Dislike__UserI__70DDC3D8" FromRole="U_Dislike_Coordinate" ToRole="Users" />
         </EntityType>
         <EntityType Name="U_Reply_NoteComment">
           <Key>
@@ -1974,8 +1954,8 @@
           <Property Name="Likenum" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="NoteCommentID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="NoteComment" Relationship="Self.FK__U_Reply_N__NoteC__245D67DE" FromRole="U_Reply_NoteComment" ToRole="NoteComment" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__U_Reply_N__UserI__236943A5" FromRole="U_Reply_NoteComment" ToRole="Users" />
+          <NavigationProperty Name="NoteComment" Relationship="Self.FK__U_Reply_N__NoteC__236943A5" FromRole="U_Reply_NoteComment" ToRole="NoteComment" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__U_Reply_N__UserI__22751F6C" FromRole="U_Reply_NoteComment" ToRole="Users" />
         </EntityType>
         <EntityType Name="U_Reply_VideoComment">
           <Key>
@@ -1987,8 +1967,8 @@
           <Property Name="Likenum" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="VideocommentID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__U_Reply_V__UserI__0C85DE4D" FromRole="U_Reply_VideoComment" ToRole="Users" />
-          <NavigationProperty Name="VideoComment" Relationship="Self.FK__U_Reply_V__Video__0D7A0286" FromRole="U_Reply_VideoComment" ToRole="VideoComment" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__U_Reply_V__UserI__0B91BA14" FromRole="U_Reply_VideoComment" ToRole="Users" />
+          <NavigationProperty Name="VideoComment" Relationship="Self.FK__U_Reply_V__Video__0C85DE4D" FromRole="U_Reply_VideoComment" ToRole="VideoComment" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -2014,27 +1994,27 @@
           <NavigationProperty Name="GoodsCommentsLike" Relationship="Self.FK__GoodsComm__UserI__34C8D9D1" FromRole="Users" ToRole="GoodsCommentsLike" />
           <NavigationProperty Name="GoodsLike" Relationship="Self.FK__GoodsLike__UserI__38996AB5" FromRole="Users" ToRole="GoodsLike" />
           <NavigationProperty Name="Grade" Relationship="Self.FK__Grade__UserID__3C69FB99" FromRole="Users" ToRole="Grade" />
-          <NavigationProperty Name="Note" Relationship="Self.FK__Note__UserID__114A936A" FromRole="Users" ToRole="Note" />
-          <NavigationProperty Name="NoteComment" Relationship="Self.FK__NoteComme__UserI__14270015" FromRole="Users" ToRole="NoteComment" />
-          <NavigationProperty Name="NoteLike" Relationship="Self.FK__NoteLike__UserID__17F790F9" FromRole="Users" ToRole="NoteLike" />
-          <NavigationProperty Name="NoteSelect" Relationship="Self.FK__NoteSelec__UserI__1BC821DD" FromRole="Users" ToRole="NoteSelect" />
-          <NavigationProperty Name="NoteTrasmit" Relationship="Self.FK__NoteTrasm__UserI__1F98B2C1" FromRole="Users" ToRole="NoteTrasmit" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__UserI__52593CB8" FromRole="Users" ToRole="OrderDetails" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__Note__UserID__10566F31" FromRole="Users" ToRole="Note" />
+          <NavigationProperty Name="NoteComment" Relationship="Self.FK__NoteComme__UserI__1332DBDC" FromRole="Users" ToRole="NoteComment" />
+          <NavigationProperty Name="NoteLike" Relationship="Self.FK__NoteLike__UserID__17036CC0" FromRole="Users" ToRole="NoteLike" />
+          <NavigationProperty Name="NoteSelect" Relationship="Self.FK__NoteSelec__UserI__1AD3FDA4" FromRole="Users" ToRole="NoteSelect" />
+          <NavigationProperty Name="NoteTrasmit" Relationship="Self.FK__NoteTrasm__UserI__1EA48E88" FromRole="Users" ToRole="NoteTrasmit" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__UserI__5165187F" FromRole="Users" ToRole="OrderDetails" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__UserID__4CA06362" FromRole="Users" ToRole="Orders" />
-          <NavigationProperty Name="Privatemessage" Relationship="Self.FK__Privateme__Priva__5629CD9C" FromRole="Users" ToRole="Privatemessage" />
-          <NavigationProperty Name="Privatemessage1" Relationship="Self.FK__Privateme__UserI__5535A963" FromRole="Users" ToRole="Privatemessage" />
-          <NavigationProperty Name="U_Attention_U" Relationship="Self.FK__U_Attenti__User1__75A278F5" FromRole="Users" ToRole="U_Attention_U" />
-          <NavigationProperty Name="U_Attention_U1" Relationship="Self.FK__U_Attenti__User2__76969D2E" FromRole="Users" ToRole="U_Attention_U" />
-          <NavigationProperty Name="U_Collect_Coordinate" Relationship="Self.FK__U_Collect__UserI__6E01572D" FromRole="Users" ToRole="U_Collect_Coordinate" />
-          <NavigationProperty Name="U_Dislike_Coordinate" Relationship="Self.FK__U_Dislike__UserI__71D1E811" FromRole="Users" ToRole="U_Dislike_Coordinate" />
-          <NavigationProperty Name="U_Reply_NoteComment" Relationship="Self.FK__U_Reply_N__UserI__236943A5" FromRole="Users" ToRole="U_Reply_NoteComment" />
-          <NavigationProperty Name="U_Reply_VideoComment" Relationship="Self.FK__U_Reply_V__UserI__0C85DE4D" FromRole="Users" ToRole="U_Reply_VideoComment" />
-          <NavigationProperty Name="Video" Relationship="Self.FK__Video__UserID__7A672E12" FromRole="Users" ToRole="Video" />
-          <NavigationProperty Name="VideoComment" Relationship="Self.FK__VideoComm__UserI__7D439ABD" FromRole="Users" ToRole="VideoComment" />
-          <NavigationProperty Name="VideoLike" Relationship="Self.FK__VideoLike__UserI__01142BA1" FromRole="Users" ToRole="VideoLike" />
-          <NavigationProperty Name="VideoSelect" Relationship="Self.FK__VideoSele__UserI__04E4BC85" FromRole="Users" ToRole="VideoSelect" />
-          <NavigationProperty Name="VideoTrasmit" Relationship="Self.FK__VideoTras__UserI__08B54D69" FromRole="Users" ToRole="VideoTrasmit" />
-          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__Wardrobe__Userid__59FA5E80" FromRole="Users" ToRole="Wardrobe" />
+          <NavigationProperty Name="Privatemessage" Relationship="Self.FK__Privateme__Priva__5535A963" FromRole="Users" ToRole="Privatemessage" />
+          <NavigationProperty Name="Privatemessage1" Relationship="Self.FK__Privateme__UserI__5441852A" FromRole="Users" ToRole="Privatemessage" />
+          <NavigationProperty Name="U_Attention_U" Relationship="Self.FK__U_Attenti__User1__74AE54BC" FromRole="Users" ToRole="U_Attention_U" />
+          <NavigationProperty Name="U_Attention_U1" Relationship="Self.FK__U_Attenti__User2__75A278F5" FromRole="Users" ToRole="U_Attention_U" />
+          <NavigationProperty Name="U_Collect_Coordinate" Relationship="Self.FK__U_Collect__UserI__6D0D32F4" FromRole="Users" ToRole="U_Collect_Coordinate" />
+          <NavigationProperty Name="U_Dislike_Coordinate" Relationship="Self.FK__U_Dislike__UserI__70DDC3D8" FromRole="Users" ToRole="U_Dislike_Coordinate" />
+          <NavigationProperty Name="U_Reply_NoteComment" Relationship="Self.FK__U_Reply_N__UserI__22751F6C" FromRole="Users" ToRole="U_Reply_NoteComment" />
+          <NavigationProperty Name="U_Reply_VideoComment" Relationship="Self.FK__U_Reply_V__UserI__0B91BA14" FromRole="Users" ToRole="U_Reply_VideoComment" />
+          <NavigationProperty Name="Video" Relationship="Self.FK__Video__UserID__797309D9" FromRole="Users" ToRole="Video" />
+          <NavigationProperty Name="VideoComment" Relationship="Self.FK__VideoComm__UserI__7C4F7684" FromRole="Users" ToRole="VideoComment" />
+          <NavigationProperty Name="VideoLike" Relationship="Self.FK__VideoLike__UserI__00200768" FromRole="Users" ToRole="VideoLike" />
+          <NavigationProperty Name="VideoSelect" Relationship="Self.FK__VideoSele__UserI__03F0984C" FromRole="Users" ToRole="VideoSelect" />
+          <NavigationProperty Name="VideoTrasmit" Relationship="Self.FK__VideoTras__UserI__07C12930" FromRole="Users" ToRole="VideoTrasmit" />
+          <NavigationProperty Name="Wardrobe" Relationship="Self.FK__Wardrobe__Userid__59063A47" FromRole="Users" ToRole="Wardrobe" />
         </EntityType>
         <EntityType Name="Video">
           <Key>
@@ -2048,11 +2028,11 @@
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="likenum" Type="Int32" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Video__UserID__7A672E12" FromRole="Video" ToRole="Users" />
-          <NavigationProperty Name="VideoComment" Relationship="Self.FK__VideoComm__Video__7E37BEF6" FromRole="Video" ToRole="VideoComment" />
-          <NavigationProperty Name="VideoLike" Relationship="Self.FK__VideoLike__Video__02084FDA" FromRole="Video" ToRole="VideoLike" />
-          <NavigationProperty Name="VideoSelect" Relationship="Self.FK__VideoSele__Video__05D8E0BE" FromRole="Video" ToRole="VideoSelect" />
-          <NavigationProperty Name="VideoTrasmit" Relationship="Self.FK__VideoTras__Video__09A971A2" FromRole="Video" ToRole="VideoTrasmit" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Video__UserID__797309D9" FromRole="Video" ToRole="Users" />
+          <NavigationProperty Name="VideoComment" Relationship="Self.FK__VideoComm__Video__7D439ABD" FromRole="Video" ToRole="VideoComment" />
+          <NavigationProperty Name="VideoLike" Relationship="Self.FK__VideoLike__Video__01142BA1" FromRole="Video" ToRole="VideoLike" />
+          <NavigationProperty Name="VideoSelect" Relationship="Self.FK__VideoSele__Video__04E4BC85" FromRole="Video" ToRole="VideoSelect" />
+          <NavigationProperty Name="VideoTrasmit" Relationship="Self.FK__VideoTras__Video__08B54D69" FromRole="Video" ToRole="VideoTrasmit" />
         </EntityType>
         <EntityType Name="VideoComment">
           <Key>
@@ -2064,9 +2044,9 @@
           <Property Name="likenum" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="VideoID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="U_Reply_VideoComment" Relationship="Self.FK__U_Reply_V__Video__0D7A0286" FromRole="VideoComment" ToRole="U_Reply_VideoComment" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__VideoComm__UserI__7D439ABD" FromRole="VideoComment" ToRole="Users" />
-          <NavigationProperty Name="Video" Relationship="Self.FK__VideoComm__Video__7E37BEF6" FromRole="VideoComment" ToRole="Video" />
+          <NavigationProperty Name="U_Reply_VideoComment" Relationship="Self.FK__U_Reply_V__Video__0C85DE4D" FromRole="VideoComment" ToRole="U_Reply_VideoComment" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__VideoComm__UserI__7C4F7684" FromRole="VideoComment" ToRole="Users" />
+          <NavigationProperty Name="Video" Relationship="Self.FK__VideoComm__Video__7D439ABD" FromRole="VideoComment" ToRole="Video" />
         </EntityType>
         <EntityType Name="VideoLike">
           <Key>
@@ -2076,8 +2056,8 @@
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="VideoID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__VideoLike__UserI__01142BA1" FromRole="VideoLike" ToRole="Users" />
-          <NavigationProperty Name="Video" Relationship="Self.FK__VideoLike__Video__02084FDA" FromRole="VideoLike" ToRole="Video" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__VideoLike__UserI__00200768" FromRole="VideoLike" ToRole="Users" />
+          <NavigationProperty Name="Video" Relationship="Self.FK__VideoLike__Video__01142BA1" FromRole="VideoLike" ToRole="Video" />
         </EntityType>
         <EntityType Name="VideoSelect">
           <Key>
@@ -2087,8 +2067,8 @@
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="VideoID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__VideoSele__UserI__04E4BC85" FromRole="VideoSelect" ToRole="Users" />
-          <NavigationProperty Name="Video" Relationship="Self.FK__VideoSele__Video__05D8E0BE" FromRole="VideoSelect" ToRole="Video" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__VideoSele__UserI__03F0984C" FromRole="VideoSelect" ToRole="Users" />
+          <NavigationProperty Name="Video" Relationship="Self.FK__VideoSele__Video__04E4BC85" FromRole="VideoSelect" ToRole="Video" />
         </EntityType>
         <EntityType Name="VideoTrasmit">
           <Key>
@@ -2099,8 +2079,8 @@
           <Property Name="Time" Type="DateTime" Precision="3" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="VideoID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__VideoTras__UserI__08B54D69" FromRole="VideoTrasmit" ToRole="Users" />
-          <NavigationProperty Name="Video" Relationship="Self.FK__VideoTras__Video__09A971A2" FromRole="VideoTrasmit" ToRole="Video" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__VideoTras__UserI__07C12930" FromRole="VideoTrasmit" ToRole="Users" />
+          <NavigationProperty Name="Video" Relationship="Self.FK__VideoTras__Video__08B54D69" FromRole="VideoTrasmit" ToRole="Video" />
         </EntityType>
         <EntityType Name="Wardrobe">
           <Key>
@@ -2109,11 +2089,11 @@
           <Property Name="WardrobeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Userid" Type="Int32" Nullable="false" />
           <Property Name="Lock" Type="Boolean" />
-          <NavigationProperty Name="Coat" Relationship="Self.FK__Coat__WardrobeID__5CD6CB2B" FromRole="Wardrobe" ToRole="Coat" />
-          <NavigationProperty Name="NetherGarment" Relationship="Self.FK__NetherGar__Wardr__628FA481" FromRole="Wardrobe" ToRole="NetherGarment" />
-          <NavigationProperty Name="Shirt" Relationship="Self.FK__Shirt__WardrobeI__5FB337D6" FromRole="Wardrobe" ToRole="Shirt" />
-          <NavigationProperty Name="Suit" Relationship="Self.FK__Suit__WardrobeID__656C112C" FromRole="Wardrobe" ToRole="Suit" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Wardrobe__Userid__59FA5E80" FromRole="Wardrobe" ToRole="Users" />
+          <NavigationProperty Name="Coat" Relationship="Self.FK__Coat__WardrobeID__5BE2A6F2" FromRole="Wardrobe" ToRole="Coat" />
+          <NavigationProperty Name="NetherGarment" Relationship="Self.FK__NetherGar__Wardr__619B8048" FromRole="Wardrobe" ToRole="NetherGarment" />
+          <NavigationProperty Name="Shirt" Relationship="Self.FK__Shirt__WardrobeI__5EBF139D" FromRole="Wardrobe" ToRole="Shirt" />
+          <NavigationProperty Name="Suit" Relationship="Self.FK__Suit__WardrobeID__6477ECF3" FromRole="Wardrobe" ToRole="Suit" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Wardrobe__Userid__59063A47" FromRole="Wardrobe" ToRole="Users" />
         </EntityType>
         <EntityType Name="GGCC">
           <Key>
@@ -2128,7 +2108,6 @@
           <Property Name="Style" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
           <Property Name="Material" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
           <Property Name="GoodsImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="GCimage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="StorageAmount" Type="Int32" Nullable="false" />
           <Property Name="ShangjiaTime" Type="DateTime" Precision="3" />
           <Property Name="Unitprice" Type="Double" />
@@ -2185,18 +2164,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__AddressI__4D94879B">
-          <End Role="Address" Type="Self.Address" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="AddressID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="AddressID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Cart__GoodsID__4222D4EF">
           <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
@@ -2221,7 +2188,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Coat__WardrobeID__5CD6CB2B">
+        <Association Name="FK__Coat__WardrobeID__5BE2A6F2">
           <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
           <End Role="Coat" Type="Self.Coat" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2233,7 +2200,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Coordinat__CoatI__68487DD7">
+        <Association Name="FK__Coordinat__CoatI__6754599E">
           <End Role="Coat" Type="Self.Coat" Multiplicity="0..1" />
           <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2305,7 +2272,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Coordinat__Nethe__6A30C649">
+        <Association Name="FK__Coordinat__Nethe__693CA210">
           <End Role="NetherGarment" Type="Self.NetherGarment" Multiplicity="0..1" />
           <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2317,7 +2284,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Coordinat__Shirt__693CA210">
+        <Association Name="FK__Coordinat__Shirt__68487DD7">
           <End Role="Shirt" Type="Self.Shirt" Multiplicity="0..1" />
           <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2329,7 +2296,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Coordinat__SuitI__6B24EA82">
+        <Association Name="FK__Coordinat__SuitI__6A30C649">
           <End Role="Suit" Type="Self.Suit" Multiplicity="0..1" />
           <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2341,7 +2308,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Collect__Coord__6EF57B66">
+        <Association Name="FK__U_Collect__Coord__6E01572D">
           <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="1" />
           <End Role="U_Collect_Coordinate" Type="Self.U_Collect_Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2353,7 +2320,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Dislike__Coord__72C60C4A">
+        <Association Name="FK__U_Dislike__Coord__71D1E811">
           <End Role="Coordinate" Type="Self.Coordinate" Multiplicity="1" />
           <End Role="U_Dislike_Coordinate" Type="Self.U_Dislike_Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2425,7 +2392,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Goods__5070F446">
+        <Association Name="FK__OrderDeta__Goods__4F7CD00D">
           <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2509,7 +2476,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NetherGar__Wardr__628FA481">
+        <Association Name="FK__NetherGar__Wardr__619B8048">
           <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
           <End Role="NetherGarment" Type="Self.NetherGarment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2521,7 +2488,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Note__UserID__114A936A">
+        <Association Name="FK__Note__UserID__10566F31">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Note" Type="Self.Note" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2533,7 +2500,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteComme__NoteI__151B244E">
+        <Association Name="FK__NoteComme__NoteI__14270015">
           <End Role="Note" Type="Self.Note" Multiplicity="1" />
           <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2545,7 +2512,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteLike__NoteID__18EBB532">
+        <Association Name="FK__NoteLike__NoteID__17F790F9">
           <End Role="Note" Type="Self.Note" Multiplicity="1" />
           <End Role="NoteLike" Type="Self.NoteLike" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2557,7 +2524,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteSelec__NoteI__1CBC4616">
+        <Association Name="FK__NoteSelec__NoteI__1BC821DD">
           <End Role="Note" Type="Self.Note" Multiplicity="1" />
           <End Role="NoteSelect" Type="Self.NoteSelect" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2569,7 +2536,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteTrasm__NoteI__208CD6FA">
+        <Association Name="FK__NoteTrasm__NoteI__1F98B2C1">
           <End Role="Note" Type="Self.Note" Multiplicity="1" />
           <End Role="NoteTrasmit" Type="Self.NoteTrasmit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2581,7 +2548,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteComme__UserI__14270015">
+        <Association Name="FK__NoteComme__UserI__1332DBDC">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2593,7 +2560,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Reply_N__NoteC__245D67DE">
+        <Association Name="FK__U_Reply_N__NoteC__236943A5">
           <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="1" />
           <End Role="U_Reply_NoteComment" Type="Self.U_Reply_NoteComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2605,7 +2572,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteLike__UserID__17F790F9">
+        <Association Name="FK__NoteLike__UserID__17036CC0">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="NoteLike" Type="Self.NoteLike" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2617,7 +2584,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteSelec__UserI__1BC821DD">
+        <Association Name="FK__NoteSelec__UserI__1AD3FDA4">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="NoteSelect" Type="Self.NoteSelect" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2629,7 +2596,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NoteTrasm__UserI__1F98B2C1">
+        <Association Name="FK__NoteTrasm__UserI__1EA48E88">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="NoteTrasmit" Type="Self.NoteTrasmit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2641,7 +2608,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Order__5165187F">
+        <Association Name="FK__OrderDeta__Order__5070F446">
           <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2653,7 +2620,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__UserI__52593CB8">
+        <Association Name="FK__OrderDeta__UserI__5165187F">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2677,7 +2644,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Privateme__Priva__5629CD9C">
+        <Association Name="FK__Privateme__Priva__5535A963">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Privatemessage" Type="Self.Privatemessage" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2689,7 +2656,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Privateme__UserI__5535A963">
+        <Association Name="FK__Privateme__UserI__5441852A">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Privatemessage" Type="Self.Privatemessage" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2701,7 +2668,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Shirt__WardrobeI__5FB337D6">
+        <Association Name="FK__Shirt__WardrobeI__5EBF139D">
           <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
           <End Role="Shirt" Type="Self.Shirt" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2713,7 +2680,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Suit__WardrobeID__656C112C">
+        <Association Name="FK__Suit__WardrobeID__6477ECF3">
           <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="1" />
           <End Role="Suit" Type="Self.Suit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2725,7 +2692,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Attenti__User1__75A278F5">
+        <Association Name="FK__U_Attenti__User1__74AE54BC">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="U_Attention_U" Type="Self.U_Attention_U" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2737,7 +2704,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Attenti__User2__76969D2E">
+        <Association Name="FK__U_Attenti__User2__75A278F5">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="U_Attention_U" Type="Self.U_Attention_U" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2749,7 +2716,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Collect__UserI__6E01572D">
+        <Association Name="FK__U_Collect__UserI__6D0D32F4">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="U_Collect_Coordinate" Type="Self.U_Collect_Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2761,7 +2728,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Dislike__UserI__71D1E811">
+        <Association Name="FK__U_Dislike__UserI__70DDC3D8">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="U_Dislike_Coordinate" Type="Self.U_Dislike_Coordinate" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2773,7 +2740,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Reply_N__UserI__236943A5">
+        <Association Name="FK__U_Reply_N__UserI__22751F6C">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="U_Reply_NoteComment" Type="Self.U_Reply_NoteComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2785,7 +2752,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Reply_V__UserI__0C85DE4D">
+        <Association Name="FK__U_Reply_V__UserI__0B91BA14">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="U_Reply_VideoComment" Type="Self.U_Reply_VideoComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2797,7 +2764,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__U_Reply_V__Video__0D7A0286">
+        <Association Name="FK__U_Reply_V__Video__0C85DE4D">
           <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="1" />
           <End Role="U_Reply_VideoComment" Type="Self.U_Reply_VideoComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2809,7 +2776,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Video__UserID__7A672E12">
+        <Association Name="FK__Video__UserID__797309D9">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Video" Type="Self.Video" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2821,7 +2788,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoComm__UserI__7D439ABD">
+        <Association Name="FK__VideoComm__UserI__7C4F7684">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2833,7 +2800,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoLike__UserI__01142BA1">
+        <Association Name="FK__VideoLike__UserI__00200768">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="VideoLike" Type="Self.VideoLike" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2845,7 +2812,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoSele__UserI__04E4BC85">
+        <Association Name="FK__VideoSele__UserI__03F0984C">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="VideoSelect" Type="Self.VideoSelect" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2857,7 +2824,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoTras__UserI__08B54D69">
+        <Association Name="FK__VideoTras__UserI__07C12930">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="VideoTrasmit" Type="Self.VideoTrasmit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2869,7 +2836,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wardrobe__Userid__59FA5E80">
+        <Association Name="FK__Wardrobe__Userid__59063A47">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Wardrobe" Type="Self.Wardrobe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2881,7 +2848,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoComm__Video__7E37BEF6">
+        <Association Name="FK__VideoComm__Video__7D439ABD">
           <End Role="Video" Type="Self.Video" Multiplicity="1" />
           <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2893,7 +2860,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoLike__Video__02084FDA">
+        <Association Name="FK__VideoLike__Video__01142BA1">
           <End Role="Video" Type="Self.Video" Multiplicity="1" />
           <End Role="VideoLike" Type="Self.VideoLike" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2905,7 +2872,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoSele__Video__05D8E0BE">
+        <Association Name="FK__VideoSele__Video__04E4BC85">
           <End Role="Video" Type="Self.Video" Multiplicity="1" />
           <End Role="VideoSelect" Type="Self.VideoSelect" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2917,7 +2884,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VideoTras__Video__09A971A2">
+        <Association Name="FK__VideoTras__Video__08B54D69">
           <End Role="Video" Type="Self.Video" Multiplicity="1" />
           <End Role="VideoTrasmit" Type="Self.VideoTrasmit" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2975,10 +2942,6 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Address" EntitySet="Address" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__AddressI__4D94879B" Association="Self.FK__Orders__AddressI__4D94879B">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
           <AssociationSet Name="FK__Cart__GoodsID__4222D4EF" Association="Self.FK__Cart__GoodsID__4222D4EF">
             <End Role="Goods" EntitySet="Goods" />
             <End Role="Cart" EntitySet="Cart" />
@@ -2987,11 +2950,11 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__Coat__WardrobeID__5CD6CB2B" Association="Self.FK__Coat__WardrobeID__5CD6CB2B">
+          <AssociationSet Name="FK__Coat__WardrobeID__5BE2A6F2" Association="Self.FK__Coat__WardrobeID__5BE2A6F2">
             <End Role="Wardrobe" EntitySet="Wardrobe" />
             <End Role="Coat" EntitySet="Coat" />
           </AssociationSet>
-          <AssociationSet Name="FK__Coordinat__CoatI__68487DD7" Association="Self.FK__Coordinat__CoatI__68487DD7">
+          <AssociationSet Name="FK__Coordinat__CoatI__6754599E" Association="Self.FK__Coordinat__CoatI__6754599E">
             <End Role="Coat" EntitySet="Coat" />
             <End Role="Coordinate" EntitySet="Coordinate" />
           </AssociationSet>
@@ -3015,23 +2978,23 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="ComReply" EntitySet="ComReply" />
           </AssociationSet>
-          <AssociationSet Name="FK__Coordinat__Nethe__6A30C649" Association="Self.FK__Coordinat__Nethe__6A30C649">
+          <AssociationSet Name="FK__Coordinat__Nethe__693CA210" Association="Self.FK__Coordinat__Nethe__693CA210">
             <End Role="NetherGarment" EntitySet="NetherGarment" />
             <End Role="Coordinate" EntitySet="Coordinate" />
           </AssociationSet>
-          <AssociationSet Name="FK__Coordinat__Shirt__693CA210" Association="Self.FK__Coordinat__Shirt__693CA210">
+          <AssociationSet Name="FK__Coordinat__Shirt__68487DD7" Association="Self.FK__Coordinat__Shirt__68487DD7">
             <End Role="Shirt" EntitySet="Shirt" />
             <End Role="Coordinate" EntitySet="Coordinate" />
           </AssociationSet>
-          <AssociationSet Name="FK__Coordinat__SuitI__6B24EA82" Association="Self.FK__Coordinat__SuitI__6B24EA82">
+          <AssociationSet Name="FK__Coordinat__SuitI__6A30C649" Association="Self.FK__Coordinat__SuitI__6A30C649">
             <End Role="Suit" EntitySet="Suit" />
             <End Role="Coordinate" EntitySet="Coordinate" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Collect__Coord__6EF57B66" Association="Self.FK__U_Collect__Coord__6EF57B66">
+          <AssociationSet Name="FK__U_Collect__Coord__6E01572D" Association="Self.FK__U_Collect__Coord__6E01572D">
             <End Role="Coordinate" EntitySet="Coordinate" />
             <End Role="U_Collect_Coordinate" EntitySet="U_Collect_Coordinate" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Dislike__Coord__72C60C4A" Association="Self.FK__U_Dislike__Coord__72C60C4A">
+          <AssociationSet Name="FK__U_Dislike__Coord__71D1E811" Association="Self.FK__U_Dislike__Coord__71D1E811">
             <End Role="Coordinate" EntitySet="Coordinate" />
             <End Role="U_Dislike_Coordinate" EntitySet="U_Dislike_Coordinate" />
           </AssociationSet>
@@ -3055,7 +3018,7 @@
             <End Role="Goods" EntitySet="Goods" />
             <End Role="Grade" EntitySet="Grade" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Goods__5070F446" Association="Self.FK__OrderDeta__Goods__5070F446">
+          <AssociationSet Name="FK__OrderDeta__Goods__4F7CD00D" Association="Self.FK__OrderDeta__Goods__4F7CD00D">
             <End Role="Goods" EntitySet="Goods" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
@@ -3083,55 +3046,55 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Grade" EntitySet="Grade" />
           </AssociationSet>
-          <AssociationSet Name="FK__NetherGar__Wardr__628FA481" Association="Self.FK__NetherGar__Wardr__628FA481">
+          <AssociationSet Name="FK__NetherGar__Wardr__619B8048" Association="Self.FK__NetherGar__Wardr__619B8048">
             <End Role="Wardrobe" EntitySet="Wardrobe" />
             <End Role="NetherGarment" EntitySet="NetherGarment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Note__UserID__114A936A" Association="Self.FK__Note__UserID__114A936A">
+          <AssociationSet Name="FK__Note__UserID__10566F31" Association="Self.FK__Note__UserID__10566F31">
             <End Role="Users" EntitySet="Users" />
             <End Role="Note" EntitySet="Note" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteComme__NoteI__151B244E" Association="Self.FK__NoteComme__NoteI__151B244E">
+          <AssociationSet Name="FK__NoteComme__NoteI__14270015" Association="Self.FK__NoteComme__NoteI__14270015">
             <End Role="Note" EntitySet="Note" />
             <End Role="NoteComment" EntitySet="NoteComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteLike__NoteID__18EBB532" Association="Self.FK__NoteLike__NoteID__18EBB532">
+          <AssociationSet Name="FK__NoteLike__NoteID__17F790F9" Association="Self.FK__NoteLike__NoteID__17F790F9">
             <End Role="Note" EntitySet="Note" />
             <End Role="NoteLike" EntitySet="NoteLike" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteSelec__NoteI__1CBC4616" Association="Self.FK__NoteSelec__NoteI__1CBC4616">
+          <AssociationSet Name="FK__NoteSelec__NoteI__1BC821DD" Association="Self.FK__NoteSelec__NoteI__1BC821DD">
             <End Role="Note" EntitySet="Note" />
             <End Role="NoteSelect" EntitySet="NoteSelect" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteTrasm__NoteI__208CD6FA" Association="Self.FK__NoteTrasm__NoteI__208CD6FA">
+          <AssociationSet Name="FK__NoteTrasm__NoteI__1F98B2C1" Association="Self.FK__NoteTrasm__NoteI__1F98B2C1">
             <End Role="Note" EntitySet="Note" />
             <End Role="NoteTrasmit" EntitySet="NoteTrasmit" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteComme__UserI__14270015" Association="Self.FK__NoteComme__UserI__14270015">
+          <AssociationSet Name="FK__NoteComme__UserI__1332DBDC" Association="Self.FK__NoteComme__UserI__1332DBDC">
             <End Role="Users" EntitySet="Users" />
             <End Role="NoteComment" EntitySet="NoteComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Reply_N__NoteC__245D67DE" Association="Self.FK__U_Reply_N__NoteC__245D67DE">
+          <AssociationSet Name="FK__U_Reply_N__NoteC__236943A5" Association="Self.FK__U_Reply_N__NoteC__236943A5">
             <End Role="NoteComment" EntitySet="NoteComment" />
             <End Role="U_Reply_NoteComment" EntitySet="U_Reply_NoteComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteLike__UserID__17F790F9" Association="Self.FK__NoteLike__UserID__17F790F9">
+          <AssociationSet Name="FK__NoteLike__UserID__17036CC0" Association="Self.FK__NoteLike__UserID__17036CC0">
             <End Role="Users" EntitySet="Users" />
             <End Role="NoteLike" EntitySet="NoteLike" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteSelec__UserI__1BC821DD" Association="Self.FK__NoteSelec__UserI__1BC821DD">
+          <AssociationSet Name="FK__NoteSelec__UserI__1AD3FDA4" Association="Self.FK__NoteSelec__UserI__1AD3FDA4">
             <End Role="Users" EntitySet="Users" />
             <End Role="NoteSelect" EntitySet="NoteSelect" />
           </AssociationSet>
-          <AssociationSet Name="FK__NoteTrasm__UserI__1F98B2C1" Association="Self.FK__NoteTrasm__UserI__1F98B2C1">
+          <AssociationSet Name="FK__NoteTrasm__UserI__1EA48E88" Association="Self.FK__NoteTrasm__UserI__1EA48E88">
             <End Role="Users" EntitySet="Users" />
             <End Role="NoteTrasmit" EntitySet="NoteTrasmit" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Order__5165187F" Association="Self.FK__OrderDeta__Order__5165187F">
+          <AssociationSet Name="FK__OrderDeta__Order__5070F446" Association="Self.FK__OrderDeta__Order__5070F446">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__UserI__52593CB8" Association="Self.FK__OrderDeta__UserI__52593CB8">
+          <AssociationSet Name="FK__OrderDeta__UserI__5165187F" Association="Self.FK__OrderDeta__UserI__5165187F">
             <End Role="Users" EntitySet="Users" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
@@ -3139,95 +3102,95 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Privateme__Priva__5629CD9C" Association="Self.FK__Privateme__Priva__5629CD9C">
+          <AssociationSet Name="FK__Privateme__Priva__5535A963" Association="Self.FK__Privateme__Priva__5535A963">
             <End Role="Users" EntitySet="Users" />
             <End Role="Privatemessage" EntitySet="Privatemessage" />
           </AssociationSet>
-          <AssociationSet Name="FK__Privateme__UserI__5535A963" Association="Self.FK__Privateme__UserI__5535A963">
+          <AssociationSet Name="FK__Privateme__UserI__5441852A" Association="Self.FK__Privateme__UserI__5441852A">
             <End Role="Users" EntitySet="Users" />
             <End Role="Privatemessage" EntitySet="Privatemessage" />
           </AssociationSet>
-          <AssociationSet Name="FK__Shirt__WardrobeI__5FB337D6" Association="Self.FK__Shirt__WardrobeI__5FB337D6">
+          <AssociationSet Name="FK__Shirt__WardrobeI__5EBF139D" Association="Self.FK__Shirt__WardrobeI__5EBF139D">
             <End Role="Wardrobe" EntitySet="Wardrobe" />
             <End Role="Shirt" EntitySet="Shirt" />
           </AssociationSet>
-          <AssociationSet Name="FK__Suit__WardrobeID__656C112C" Association="Self.FK__Suit__WardrobeID__656C112C">
+          <AssociationSet Name="FK__Suit__WardrobeID__6477ECF3" Association="Self.FK__Suit__WardrobeID__6477ECF3">
             <End Role="Wardrobe" EntitySet="Wardrobe" />
             <End Role="Suit" EntitySet="Suit" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Attenti__User1__75A278F5" Association="Self.FK__U_Attenti__User1__75A278F5">
+          <AssociationSet Name="FK__U_Attenti__User1__74AE54BC" Association="Self.FK__U_Attenti__User1__74AE54BC">
             <End Role="Users" EntitySet="Users" />
             <End Role="U_Attention_U" EntitySet="U_Attention_U" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Attenti__User2__76969D2E" Association="Self.FK__U_Attenti__User2__76969D2E">
+          <AssociationSet Name="FK__U_Attenti__User2__75A278F5" Association="Self.FK__U_Attenti__User2__75A278F5">
             <End Role="Users" EntitySet="Users" />
             <End Role="U_Attention_U" EntitySet="U_Attention_U" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Collect__UserI__6E01572D" Association="Self.FK__U_Collect__UserI__6E01572D">
+          <AssociationSet Name="FK__U_Collect__UserI__6D0D32F4" Association="Self.FK__U_Collect__UserI__6D0D32F4">
             <End Role="Users" EntitySet="Users" />
             <End Role="U_Collect_Coordinate" EntitySet="U_Collect_Coordinate" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Dislike__UserI__71D1E811" Association="Self.FK__U_Dislike__UserI__71D1E811">
+          <AssociationSet Name="FK__U_Dislike__UserI__70DDC3D8" Association="Self.FK__U_Dislike__UserI__70DDC3D8">
             <End Role="Users" EntitySet="Users" />
             <End Role="U_Dislike_Coordinate" EntitySet="U_Dislike_Coordinate" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Reply_N__UserI__236943A5" Association="Self.FK__U_Reply_N__UserI__236943A5">
+          <AssociationSet Name="FK__U_Reply_N__UserI__22751F6C" Association="Self.FK__U_Reply_N__UserI__22751F6C">
             <End Role="Users" EntitySet="Users" />
             <End Role="U_Reply_NoteComment" EntitySet="U_Reply_NoteComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Reply_V__UserI__0C85DE4D" Association="Self.FK__U_Reply_V__UserI__0C85DE4D">
+          <AssociationSet Name="FK__U_Reply_V__UserI__0B91BA14" Association="Self.FK__U_Reply_V__UserI__0B91BA14">
             <End Role="Users" EntitySet="Users" />
             <End Role="U_Reply_VideoComment" EntitySet="U_Reply_VideoComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__U_Reply_V__Video__0D7A0286" Association="Self.FK__U_Reply_V__Video__0D7A0286">
+          <AssociationSet Name="FK__U_Reply_V__Video__0C85DE4D" Association="Self.FK__U_Reply_V__Video__0C85DE4D">
             <End Role="VideoComment" EntitySet="VideoComment" />
             <End Role="U_Reply_VideoComment" EntitySet="U_Reply_VideoComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Video__UserID__7A672E12" Association="Self.FK__Video__UserID__7A672E12">
+          <AssociationSet Name="FK__Video__UserID__797309D9" Association="Self.FK__Video__UserID__797309D9">
             <End Role="Users" EntitySet="Users" />
             <End Role="Video" EntitySet="Video" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoComm__UserI__7D439ABD" Association="Self.FK__VideoComm__UserI__7D439ABD">
+          <AssociationSet Name="FK__VideoComm__UserI__7C4F7684" Association="Self.FK__VideoComm__UserI__7C4F7684">
             <End Role="Users" EntitySet="Users" />
             <End Role="VideoComment" EntitySet="VideoComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoLike__UserI__01142BA1" Association="Self.FK__VideoLike__UserI__01142BA1">
+          <AssociationSet Name="FK__VideoLike__UserI__00200768" Association="Self.FK__VideoLike__UserI__00200768">
             <End Role="Users" EntitySet="Users" />
             <End Role="VideoLike" EntitySet="VideoLike" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoSele__UserI__04E4BC85" Association="Self.FK__VideoSele__UserI__04E4BC85">
+          <AssociationSet Name="FK__VideoSele__UserI__03F0984C" Association="Self.FK__VideoSele__UserI__03F0984C">
             <End Role="Users" EntitySet="Users" />
             <End Role="VideoSelect" EntitySet="VideoSelect" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoTras__UserI__08B54D69" Association="Self.FK__VideoTras__UserI__08B54D69">
+          <AssociationSet Name="FK__VideoTras__UserI__07C12930" Association="Self.FK__VideoTras__UserI__07C12930">
             <End Role="Users" EntitySet="Users" />
             <End Role="VideoTrasmit" EntitySet="VideoTrasmit" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wardrobe__Userid__59FA5E80" Association="Self.FK__Wardrobe__Userid__59FA5E80">
+          <AssociationSet Name="FK__Wardrobe__Userid__59063A47" Association="Self.FK__Wardrobe__Userid__59063A47">
             <End Role="Users" EntitySet="Users" />
             <End Role="Wardrobe" EntitySet="Wardrobe" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoComm__Video__7E37BEF6" Association="Self.FK__VideoComm__Video__7E37BEF6">
+          <AssociationSet Name="FK__VideoComm__Video__7D439ABD" Association="Self.FK__VideoComm__Video__7D439ABD">
             <End Role="Video" EntitySet="Video" />
             <End Role="VideoComment" EntitySet="VideoComment" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoLike__Video__02084FDA" Association="Self.FK__VideoLike__Video__02084FDA">
+          <AssociationSet Name="FK__VideoLike__Video__01142BA1" Association="Self.FK__VideoLike__Video__01142BA1">
             <End Role="Video" EntitySet="Video" />
             <End Role="VideoLike" EntitySet="VideoLike" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoSele__Video__05D8E0BE" Association="Self.FK__VideoSele__Video__05D8E0BE">
+          <AssociationSet Name="FK__VideoSele__Video__04E4BC85" Association="Self.FK__VideoSele__Video__04E4BC85">
             <End Role="Video" EntitySet="Video" />
             <End Role="VideoSelect" EntitySet="VideoSelect" />
           </AssociationSet>
-          <AssociationSet Name="FK__VideoTras__Video__09A971A2" Association="Self.FK__VideoTras__Video__09A971A2">
+          <AssociationSet Name="FK__VideoTras__Video__08B54D69" Association="Self.FK__VideoTras__Video__08B54D69">
             <End Role="Video" EntitySet="Video" />
             <End Role="VideoTrasmit" EntitySet="VideoTrasmit" />
           </AssociationSet>
-          <FunctionImport Name="Cart_Orders">
-            <Parameter Name="UserID" Mode="In" Type="String" />
+          <FunctionImport Name="Cart_Orders" ReturnType="Collection(Int32)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
             <Parameter Name="UserName" Mode="In" Type="String" />
             <Parameter Name="Tel" Mode="In" Type="String" />
-            <Parameter Name="AddressID" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -3492,7 +3455,7 @@
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Tel" ColumnName="Tel" />
-                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3691,7 +3654,6 @@
                 <ScalarProperty Name="Style" ColumnName="Style" />
                 <ScalarProperty Name="Material" ColumnName="Material" />
                 <ScalarProperty Name="GoodsImage" ColumnName="GoodsImage" />
-                <ScalarProperty Name="GCimage" ColumnName="GCimage" />
                 <ScalarProperty Name="StorageAmount" ColumnName="StorageAmount" />
                 <ScalarProperty Name="ShangjiaTime" ColumnName="ShangjiaTime" />
                 <ScalarProperty Name="Unitprice" ColumnName="Unitprice" />

@@ -197,41 +197,46 @@ namespace 精致的衣橱.Controllers
             return View(order);
         }
         //public ActionResult Addaddress()
-        // {
-        //     return PartialView();
-        // }
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //[Login]
+        //public ActionResult Addaddress(string add)
+        //{
+        //    int userid = Convert.ToInt32(Session["User_id"]);
+
+        //    add = Request["dizhi"].ToString();
+        //    addressmanager.Add(userid,add);
+        //    return Content("添加地址成功");
+        //}
 
         //将Addaddress改成了Order
         [HttpPost]
-        public ActionResult Order(int userid)
+        [Login]
+        public ActionResult Addaddress(string add)
         {
-            userid = Convert.ToInt32(Session["User_id"]);
-            var add = Request["dizhi"].ToString();
-            Session["address"] = add;
+            int userid = Convert.ToInt32(Session["User_id"]);
+            add = Request["dizhi"].ToString();
             
             addressmanager.Add(userid, add);
-            return Content("<script>alert('添加地址成功');window.location.href='../Mall/Order';<script>");
+            return Content("<script>alert('添加成功');window.location.href='../Mall/Order';<script>");
+
         }
         //将Buy改成了Order
         [HttpPost]
-        //[Login]
-        public ActionResult Order(int cartid, string Name, int addressid, string tel, int Tol)
+        [Login]
+        public ActionResult Buy()
         {
-            var t = db.Address.Where(u => u.Address1 == Convert.ToString(Session["address"])).FirstOrDefault();
-            int m = t.AddressID;
-
-
-            int id = Convert.ToInt32(Session["User_id"]);
-            var datetime = System.DateTime.Now;
+            
+            int uid = Convert.ToInt32(Session["User_id"]);
             var name = Request["xingming"].ToString();
-            var telephone = Request["dianhua"].ToString();
-            //var address = Request["地址"];
-            odersmanager.Order(datetime, Tol, id, Name, tel,m);
-
-            cartmanager.Pay(cartid, datetime, id);
-            return Content("<script>alert('购买成功');window.location.href='../Mall/Order';<script>");
+            var userphone = Request["dianhua"].ToString();
+            var address = Request["dizhi"];
+            odersmanager.Order(uid, name, userphone,address);
+            return Content("<script>alert('添加地址成功');window.location.href='../Mall/Order';<script>");
         }
-       
+
     }
 }
 
