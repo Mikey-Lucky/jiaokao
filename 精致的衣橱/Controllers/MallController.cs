@@ -150,7 +150,7 @@ namespace 精致的衣橱.Controllers
             //{
             //string name = Request.Form["ljgm"];
             int id = Convert.ToInt32(Session["User_id"]);
-
+            //int Flag = 0;
             var nowtime = System.DateTime.Now;
             var t = Convert.ToDouble(cartmanager.getgoodsbyid(GoodsID).Unitprice);
             var amount = cartmanager.getgoodsbyid(GoodsID).TotalStorageAmount;
@@ -171,7 +171,7 @@ namespace 精致的衣橱.Controllers
         [Login]
         public ActionResult UpdateCartNum(int num, int CartID)
         {
-
+            //num = Convert.ToInt32(Request["check"]);
             cartmanager.Update(num, CartID);
             return Content("<script>alert('更新成功');window.location.href='../Mall/Cart';</script>");
         }
