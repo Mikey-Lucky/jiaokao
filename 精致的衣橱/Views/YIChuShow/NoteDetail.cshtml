@@ -1,0 +1,74 @@
+﻿@model Models.Note
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NoteDetail</title>
+</head>
+<body>
+    <div>
+        <h4>Note</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Img)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Img)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NoteContent)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NoteContent)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Time)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Time)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.likenum)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.likenum)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Users.Password)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Users.Password)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.NoteID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

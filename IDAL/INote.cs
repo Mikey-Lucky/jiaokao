@@ -21,6 +21,8 @@ namespace IDAL
         bool DeleteNote(int id);
         //修改笔记
         void EditNote(Note note);
+        //更具笔记id查找上衣
+        Note GetNoteById(int id);
 
     }
 }

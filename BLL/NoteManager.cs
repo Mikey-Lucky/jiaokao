@@ -44,6 +44,12 @@ namespace BLL
         {
             return inote.Getnewnote(top);
         }
+        //笔记详情
+        public Note NoteDetail(int id)
+        {
+
+            return inote.GetNoteById(id);
+        }
 
     }
 }

@@ -57,5 +57,13 @@ namespace DAL
         {
             return db.Note.OrderByDescending(o => o.Time);
         }
+
+        public Note GetNoteById(int id)
+        {
+            var note = from n in db.Note
+                        where n.NoteID == id
+                        select n;
+            return note.FirstOrDefault();
+        }
     }
 }

@@ -19,12 +19,18 @@ namespace 精致的衣橱.Controllers
         // GET: YIChuShow
         public ActionResult Index()
         {
-            ycsv.JingXuanNote = notes.GetHotNote(20);
-            ycsv.JingXuanVideo = videos.GetHotVideo(20);
-            ycsv.NewNote = notes.Getnewnote(20);
-            ycsv.NewVideo = videos.GetHotVideo(20);
+            ycsv.JingXuanNote = notes.GetHotNote(30);
+            ycsv.JingXuanVideo = videos.GetHotVideo(30);
+            ycsv.NewNote = notes.Getnewnote(30);
+            ycsv.NewVideo = videos.GetHotVideo(30);
 
             return View(ycsv);
+        }
+        //笔记详情页
+        public ActionResult NoteDetail(int id)
+        {
+            var note = notes.NoteDetail(id);
+            return View();
         }
         public ActionResult Userhome()
         {
@@ -40,5 +46,6 @@ namespace 精致的衣橱.Controllers
             ycsv.AllNoteByID = usershuoshuo;
             return View(ycsv);
         }
+
     }
 }
