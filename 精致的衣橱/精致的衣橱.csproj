@@ -536,12 +536,12 @@
     <Content Include="Views\YIChuShow\Index.cshtml" />
     <Content Include="Views\YIChuShow\UserAllNote.cshtml" />
     <Content Include="Views\Mall\Order.cshtml" />
-    <Content Include="Views\Mall\Addaddress.cshtml" />
     <Content Include="Views\Addresses\Create.cshtml" />
     <Content Include="Views\Addresses\Delete.cshtml" />
     <Content Include="Views\Addresses\Details.cshtml" />
     <Content Include="Views\Addresses\Edit.cshtml" />
     <Content Include="Views\Addresses\Index.cshtml" />
+    <Content Include="Views\Mall\Addaddress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

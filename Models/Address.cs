@@ -14,18 +14,10 @@ namespace Models
     
     public partial class Address
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Address()
-        {
-            this.Orders = new HashSet<Orders>();
-        }
-    
         public int AddressID { get; set; }
         public string Address1 { get; set; }
         public int UserID { get; set; }
     
         public virtual Users Users { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

@@ -147,5 +147,11 @@ namespace DAL
             var ct = db.Cart.Where(u => u.CartID == id).FirstOrDefault();
             return ct;
         }
+        //public int GetCartIidByDatetime(DateTime datetime)
+        //{
+        //     var t=db.Cart.Where(c=>c.CartTime==datetime).FirstOrDefault();
+        //    return t.CartID;
+            
+        //}
     }
 }

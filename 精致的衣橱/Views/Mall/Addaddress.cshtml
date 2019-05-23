@@ -1,1 +1,48 @@
-﻿
+﻿@model IEnumerable<Models.Address>
+
+
+@{
+    ViewBag.Title = "Addaddress";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <h2>Addaddress</h2>
+    @*@foreach (var item in Model)
+    {
+        @Html.DisplayFor(modelItem => item.Address1)
+        @Html.DisplayFor(modelItem => item.UserID)
+       
+    }*@
+   @*<label>地址：</label> <input type="text" name="dizhi"/>*@
+    @using (Html.BeginForm("Addaddress", "Mall", FormMethod.Post))
+    {
+        <div>
+            <input type="text" name="dizhi"/>
+            <button>发表</button>
+        </div>
+    }
+
+</body>
+</html>
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap 实例 - 默认的导航栏</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  
+
+</body>
+</html>*@
+

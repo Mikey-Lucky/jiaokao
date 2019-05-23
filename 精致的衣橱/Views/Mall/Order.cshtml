@@ -3,27 +3,40 @@
     ViewBag.Title = "Order";
 }
 
-<h2>Order</h2>
+<!DOCTYPE html>
+<html>
+<head>
 
-@foreach (var item in Model)
-{
-    <label>姓名</label><input type="text" name="xingming" />
-    <label>联系电话</label><input type="text" name="dianhua" />
-    <label>地址</label><input type="text" name="dizhi" />
-    <a href="@Url.Action("Order","Mall",new { userid=@item.UserID})">提交</a>
-    @*<button value="提交"></button>
-    @*<a href="@Url.Action("Buy","Mall")"></a>*@
-}
+</head>
+<body>
+    <h2>Addaddress</h2>
+    @*@foreach (var item in Model)
+        {
+            @Html.DisplayFor(modelItem => item.Address1)
+            @Html.DisplayFor(modelItem => item.UserID)
+
+        }*@
+    @*<label>地址：</label> <input type="text" name="dizhi"/>*@
+
+
+
+    @using (Html.BeginForm("Buy", "Mall", FormMethod.Post))
+    {
+        <label>姓名</label><input type="text" name="xingming" />
+        <label>联系电话</label><input type="text" name="dianhua" />
+        <label>地址</label><input type="text" name="dizhi" />
+        <button>提交2</button>
+    }
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.OrderTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalAmount)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.)*@
+        </th>
+        <th>
+            
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Tel)
@@ -53,4 +66,5 @@
         </tr>
     }
     </table>
-
+</body>
+</html>

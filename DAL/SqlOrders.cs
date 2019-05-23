@@ -23,13 +23,27 @@ namespace DAL
             var orders = db.Orders.Where(u=>u.UserID==id);
             return orders;
         }
-        public void Order(DateTime datetime, int totalamount, int userid, string uname, string tel, int addressid)
+        public void Order(int userid, string uname, string tel, string address)
         {
+            //DateTime datetime, int totalamount,
+            db.Cart_Orders(userid,uname,tel,address);
+            db.SaveChanges();
             //int i = db.Orders(uid, uname, userphone, address, note);
             //db.SaveChanges();
-            var orders=db.Orders.Where(o => o.UserID == userid && o.UserName == uname && o.Tel == tel && o.AddressID == addressid && o.TotalAmount==totalamount&&o.OrderTime==datetime).FirstOrDefault();
-            db.Orders.Add(orders);
-            db.SaveChanges();
+            //var orders=db.Orders.Where(o => o.UserID == userid && o.UserName == uname && o.Tel == tel && o.AddressID == addressid && o.TotalAmount==totalamount&&o.OrderTime==datetime).FirstOrDefault();
+            //db.Orders.Add(orders);
+            //db.SaveChanges();
+            //var order = new Orders()
+            //{
+            //    OrderTime = datetime,
+            //    TotalAmount = totalamount,
+            //    UserID = userid,
+            //    UserName = uname,
+            //    Tel = tel,
+            //    AddressID = addressid
+            //};
+            //db.Orders.Add(order);
+            //db.SaveChanges();
         }
         public void RemoveOrders(Orders orders)
         {
