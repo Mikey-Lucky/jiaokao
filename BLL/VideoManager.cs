@@ -23,6 +23,16 @@ namespace BLL
         {
             return ivideo.Getnewvideo(top);
         }
+        //视频详情
+        public Video VideoDetail(int id)
+        {
+            return ivideo.GetVideoById(id);
+        }
+        //查找相关的五条视频
+        public IEnumerable<Video> VideoRelative(int authorid, string title, string intro)
+        {
+            return ivideo.VideoRelative(authorid, title, intro,5);
+        }
     }
 
 }

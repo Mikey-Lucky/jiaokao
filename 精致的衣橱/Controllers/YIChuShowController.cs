@@ -30,7 +30,19 @@ namespace 精致的衣橱.Controllers
         public ActionResult NoteDetail(int id)
         {
             var note = notes.NoteDetail(id);
-            return View();
+            return View(note);
+        }
+        //视频详情页
+        public ActionResult VideoDetail(int id)
+        {
+            var video = videos.VideoDetail(id);
+            return View(video);
+        }
+        //相关笔记分布视图
+        public ActionResult VideoRelative(int authorid, string title, string intro)
+        {
+            var video = videos.VideoRelative(authorid, title, intro);
+            return PartialView(video);
         }
         public ActionResult Userhome()
         {
