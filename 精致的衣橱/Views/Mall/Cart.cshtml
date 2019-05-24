@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<Models.Cart>
-
+<style>
+    #buy{
+        text-decoration:none;
+    }
+</style>
 
 <div class="container" style="margin:40px auto">
 
@@ -29,7 +33,7 @@
             var sum = item.Goods.Unitprice * item.Count;
             <tr>
                 <td>
-                    <input data-id="@item.CartID" type="checkbox" name="check" value="@sum" />
+                    <input data-id="@item.CartID" type="checkbox" name="check" value="@sum" id="#p"/>
                 </td>
                 <td>
                     <img src="~/Images/GoodsImages/@item.Goods.GoodsImage" style="height:110px;" />
@@ -53,10 +57,12 @@
          }
     </table>
     <div style="width:300px;margin-left:900px;">
-        <span style="color:palevioletred">总价：</span><input type="text" id="total" readonly style="width:60px;border:none">
-        <a href="@Url.Action("Order","Mall")">立即购买</a>
+        <span style="color:palevioletred">总价：</span>
        
-        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">立即下单</button>
+        <input type="text" id="total" readonly style="width:60px;border:none">
+        <a href="@Url.Action("Order", "Mall")" id="#buy">立即购买</a>
+       
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">立即下单</button>
 
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -89,7 +95,7 @@
                     </div>
                 </div>
             </div>
-        </div>*@
+        </div>
 
     </div>
 </div>
@@ -139,7 +145,7 @@
             var name = $("#Order_Name");
             var add = $("#Order_Add");
             var tel = $("#Order_Tel");
-            //var total=$("#total");
+            //var cartid = $("#p");
         //Session["total"]=total.val();
 
 
@@ -227,6 +233,39 @@
 
         //})
         //勾选框
-        var check = $("input[name="check"]")
+        //var check = $("input[name="check"]")
+            $("#Sub").on("click", function () {
+                //var checked = $("input[name='check']");
+                var check = [];
+                for (var i = 0; i < checked.length; i++) {
+                    if (checked.eq(i).prop("checked")) {
+                        check.push(parseInt(checked.eq(i).attr("data-id"), 10));
+                    }
+                }
+                if (check.length > 0) {
+                    $.ajax({
+                        type: 'Post',
+                        dataType: 'json',
+                        url: "/Mall/Buy",
+                        data: {
+                            "a": check,
+                            
+                            "name": name.val(),
+                            "userphone": tel.val(),
+                            "address": add.val(),
+                            "total":total.val()
+                        },
+                        traditional: true,
+                        success: function (data) {
+                            alert(data.message);
+                            window.history.go(0);
+                        },
+                        error: function () {
+                            alert("订单失败");
+                        }
+                    });
+                }
+            });
+
     })
 </script>

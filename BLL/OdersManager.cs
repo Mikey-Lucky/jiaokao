@@ -22,9 +22,9 @@ namespace BLL
             return orders;
         }
 
-        public void Order(int userid, string uname, string tel, string address)
+        public void Order(DateTime datetime, int totalamount, int userid, string uname, string tel, string address)
         {
-            iorders.Order(userid, uname, tel, address);
+            iorders.Order(datetime,totalamount,userid,uname,tel,address);
         }
         public void RemoveOrders(Orders orders)
         {
@@ -35,6 +35,11 @@ namespace BLL
         {
             iorders.EditOrders(orders);
 
+        }
+        public Cart Pay(int? id, int userid, string uname, string tel, string address)
+        {
+            var cart = iorders.Pay(id,userid,uname,tel,address);
+            return cart;
         }
     }
 }

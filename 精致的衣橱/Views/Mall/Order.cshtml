@@ -20,13 +20,13 @@
 
 
 
-    @using (Html.BeginForm("Buy", "Mall", FormMethod.Post))
+    @*@using (Html.BeginForm("Buy", "Mall", FormMethod.Post))
     {
         <label>姓名</label><input type="text" name="xingming" />
         <label>联系电话</label><input type="text" name="dianhua" />
         <label>地址</label><input type="text" name="dizhi" />
         <button>提交2</button>
-    }
+    }*@
 <table class="table">
     <tr>
         <th>
@@ -54,10 +54,10 @@
                 @*@Html.DisplayFor(modelItem => item.TotalAmount)*@
                 @item.TotalAmount
             </td>
-            <td>
+            @*<td>*@
                 @*@Html.DisplayFor(modelItem => item.UserName)*@
-                @item.TotalAmount
-            </td>
+               
+            @*</td>*@
             <td>
                 @*@Html.DisplayFor(modelItem => item.Tel)*@
                 @item.Tel

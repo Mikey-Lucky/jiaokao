@@ -13,6 +13,7 @@ namespace IDAL
         IEnumerable<Orders> GetOrdersById(int? id);
         void RemoveOrders(Orders orders);
         void EditOrders(Orders orders);
-        void Order(int userid, string uname, string tel, string address);
+        void Order(DateTime datetime, int totalamount, int userid, string uname, string tel, string address);
+       Cart Pay(int? id, int userid, string uname, string tel, string address);
     }
 }

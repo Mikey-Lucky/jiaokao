@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="942e011d673142f29584c409eacb966c" Name="Diagram1">
+      <Diagram DiagramId="f80ea1d5edf04a9aa7fdd3808f3f9620" Name="Diagram1">
         <EntityTypeShape EntityType="yichuModel.Address" Width="1.5" PointX="3" PointY="29" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Cart" Width="1.5" PointX="3" PointY="44.375" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Coat" Width="1.5" PointX="5.25" PointY="80.5" IsExpanded="true" />

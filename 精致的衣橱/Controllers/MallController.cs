@@ -158,7 +158,7 @@ namespace 精致的衣橱.Controllers
             var Count = Convert.ToInt32(Request.Form["number"]);
             if (amount > Count)
             {
-                int Flag = 1;
+                int Flag =0;
                 cartmanager.AddCart(id, GoodsID, Count, nowtime, t, Flag);
                 return Content("<script>alert('加入购物车成功');window.location.href='../Mall/Cart';</script>");
             }
@@ -167,6 +167,14 @@ namespace 精致的衣橱.Controllers
                 return Content("<script>alert('加入购物车失败')</script>");
             }
         }
+        //[HttpPost]
+        //public ActionResult Xiadan(int id,int? sum)
+        //{
+        //    int userid = Convert.ToInt32(Session["Users_id"]);
+        //    var beforeshopcar = cartmanager.whereCartById(userid,id);
+        //    beforeshopcar.Flag = 1;
+        //    return Content("下单成功");
+        //}
         //更新购物车数量
         [Login]
         public ActionResult UpdateCartNum(int num, int CartID)
@@ -226,15 +234,25 @@ namespace 精致的衣橱.Controllers
         //将Buy改成了Order
         [HttpPost]
         [Login]
-        public ActionResult Buy()
+        public JsonResult Buy(int[] a,string name,string userphone,string address,int total)
         {
-            
+            var datetime = System.DateTime.Now;
             int uid = Convert.ToInt32(Session["User_id"]);
-            var name = Request["xingming"].ToString();
-            var userphone = Request["dianhua"].ToString();
-            var address = Request["dizhi"];
-            odersmanager.Order(uid, name, userphone,address);
-            return Content("<script>alert('添加地址成功');window.location.href='../Mall/Order';<script>");
+            //var name = Request["xingming"].ToString();
+            //var userphone = Request["dianhua"].ToString();
+            //var address = Request["dizhi"];
+            //total = 1000;
+            odersmanager.Order(datetime,total,uid, name, userphone, address);
+            for(int i =0;i<a.Length;i++)
+            {
+                odersmanager.Pay(a[i],uid,name,userphone,address);
+            }
+            //return Content("<script>alert('添加地址成功');window.location.href='../Mall/Order';<script>");
+             Message msg =new Message()
+            {
+                message = "下单成功"
+            };
+            return base.Json(msg);
         }
 
     }

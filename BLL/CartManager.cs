@@ -49,5 +49,10 @@ namespace BLL
             var ct = icart.getcartbyid(id);
             return ct;
         }
+        public Cart whereCartById(int uid, int gid)
+        {
+            var ct = icart.whereCartById(uid,gid);
+            return ct;
+        }
     }
 }

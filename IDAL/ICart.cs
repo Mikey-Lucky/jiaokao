@@ -17,6 +17,7 @@ namespace IDAL
         void AddCart(int userid, int goodsid, int count, DateTime carttime, double price, int flag);
         Goods getgoodsbyid(int ? id);
         Cart getcartbyid(int? id);
+        Cart whereCartById(int uid, int gid);
         //void GetCartIidByDatetime(DateTime datetime);
     }
        
