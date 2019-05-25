@@ -17,6 +17,7 @@ namespace 精致的衣橱.Controllers
         VideoManager videos = new VideoManager();
         YiChuShowViewModel ycsv = new YiChuShowViewModel();
         VideoLikeManager likes = new VideoLikeManager();
+        VideoSelectManager selects = new VideoSelectManager();
         // GET: YIChuShow
         public ActionResult Index()
         {
@@ -61,11 +62,19 @@ namespace 精致的衣橱.Controllers
             return View(ycsv);
         }
         //点赞取消赞操作
-        public string Zan(int videoid)
+        public int Zan(int videoid)
         {
-            int userid = 1;
+
+            int userid = 1;//测试用
             //videos.Videolikeclick(userid,videoid);
             likes.Videolikeclick(userid, videoid);
+            int a = likes.videolikenum(videoid);
+            return a;
+        }
+        public string Select(int videoid)
+        {
+            int userid = 1;//用于测试
+            selects.VideoSelect(userid, videoid);
             return videoid.ToString();
         }
 

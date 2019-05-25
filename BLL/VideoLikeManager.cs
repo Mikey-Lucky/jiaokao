@@ -16,5 +16,10 @@ namespace BLL
         {
             ilike.Videolikeclick(userid, videoid);
         }
+        //视频点赞的数量
+        public int videolikenum(int videoid)
+        {
+            return ilike.videolikenum(videoid);
+        }
     }
 }

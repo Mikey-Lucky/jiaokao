@@ -80,6 +80,11 @@ namespace DALFactory
             string className = AssemblyName + "." + db + "VideoLike";
             return (IVideoLike)Assembly.Load(AssemblyName).CreateInstance(className);
         }
+        public static IVideoSelect CreateVideoSelect()
+        {
+            string className = AssemblyName + "." + db + "VideoSelect";
+            return (IVideoSelect)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
 
     }
 }

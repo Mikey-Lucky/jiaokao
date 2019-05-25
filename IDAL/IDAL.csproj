@@ -53,6 +53,7 @@
     <Compile Include="IUsers.cs" />
     <Compile Include="IVideo.cs" />
     <Compile Include="IVideoLike.cs" />
+    <Compile Include="IVideoSelect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
