@@ -1,0 +1,82 @@
+﻿@model Models.Video
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VideoDetail</title>
+    <style>
+        video {
+            width: 769px;
+            /*height: 476px;*/
+        }
+        .title {
+            position: relative;
+            bottom: 18px;
+        }
+        .title h2{
+            display: inline;
+            font-weight: normal;
+        }
+        .container {
+            margin: 0 auto;
+            width: 76%;
+            background-color: antiquewhite;
+        }
+        .left {
+           float: left;
+            width: 75%;
+        }
+        .videodisplay {
+           
+           padding: 47px 30px 40px 39px;   
+        }
+        .right {
+            float: right;
+            width: 25%;
+        }
+        .right .videointro {
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="videodisplay">
+                <div class="title">
+                 @Html.ActionLink("<", "Index")&nbsp;<h2>@Model.Title</h2>&nbsp;<span>by</span>&nbsp;<a href="@Url.Action("Userhome", "YiChuShow", new {id=@Model.UserID})">@Model.Users.UserName</a>
+                </div>
+                <video controls autoplay>
+                    <source src="~/Images/video/@Model.Adress" type="video/mp4">
+                </video>
+            </div>
+            <div class="chaozuo">
+                   <a class="dianzan"></a>
+                   <a class="shoucang"></a>
+            </div>
+            <div class="commentinput"></div>
+            <div class="commentlist"></div>
+        </div>
+        <div class="right">
+            <div class="videointro">
+                <h3>视频介绍</h3>
+                <hr />
+                <p>发布时间：@Model.Time</p>
+                <p>视频简介：@Model.Intro</p>
+            </div>
+            <div class="videorelative">
+                <h3>相关推荐</h3>
+                <hr />
+                @Html.Action("VideoRelative",new { authorid= @Model.UserID, title= @Model.Title, intro= @Model.Intro })
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
