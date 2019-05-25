@@ -22,10 +22,12 @@ namespace DAL
             }
             else
             {
-                like.VideoID = videoid;
-                like.UserID = userid;
-                like.Time = DateTime.Now;
-                db.VideoLike.Add(like);
+                VideoLike like1 = new VideoLike();
+                like1.VideoID = videoid;
+                like1.UserID = userid;
+                like1.Time = DateTime.Now;
+                db.VideoLike.Add(like1);
+                db.SaveChanges();
             }
         }
     }

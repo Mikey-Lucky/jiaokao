@@ -20,7 +20,7 @@ namespace 精致的衣橱.Controllers
         // GET: YIChuShow
         public ActionResult Index()
         {
-            likes.Videolikeclick(1, 1);
+           
             ycsv.JingXuanNote = notes.GetHotNote(30);
             ycsv.JingXuanVideo = videos.GetHotVideo(30);
             ycsv.NewNote = notes.Getnewnote(30);
@@ -63,9 +63,9 @@ namespace 精致的衣橱.Controllers
         //点赞取消赞操作
         public string Zan(int videoid)
         {
-            //int userid = 1;
+            int userid = 1;
             //videos.Videolikeclick(userid,videoid);
-            
+            likes.Videolikeclick(userid, videoid);
             return videoid.ToString();
         }
 
