@@ -11,6 +11,9 @@ namespace DAL
     public class SqlVideo : IVideo
     {
         yichuEntities db = DbContextFactory.CreateDbContext();
+
+       
+
         public IEnumerable<Video> Gethotvideo(int top)
         {
             var hotvideo = from v in db.Video
@@ -32,7 +35,6 @@ namespace DAL
                         select v;
             return video.FirstOrDefault();
         }
-
         public IEnumerable<Video> VideoRelative(int authorid, string title, string intro, int top)
         {
             var video = from v in db.Video
@@ -40,5 +42,6 @@ namespace DAL
                         select v;
             return video.Take(top);
         }
+  
     }
 }

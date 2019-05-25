@@ -57,7 +57,7 @@
                 </video>
             </div>
             <div class="chaozuo">
-                   <a class="dianzan"></a>
+                   <div class="zan">赞</div>
                    <a class="shoucang"></a>
             </div>
             <div class="commentinput"></div>
@@ -78,5 +78,24 @@
             </div>
         </div>
     </div>
+    <input type="hidden" class="videoid" value="@Model.VideoID" />
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        $(function () {
+            $(document).on('click', '.zan', function () {   //赞     
+                var Videoid = $(".videoid").val();
+                $.ajax({
+                    type: "post",
+                    url: "/YiChuShow/Zan",
+                    data: { "videoid": Videoid },
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

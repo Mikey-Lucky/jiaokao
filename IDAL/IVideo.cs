@@ -17,5 +17,7 @@ namespace IDAL
         Video GetVideoById(int id);
         //查找前几条相关视频
         IEnumerable<Video> VideoRelative(int authorid, string title,string intro,int top);
+     
+
     }
 }

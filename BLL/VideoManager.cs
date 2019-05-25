@@ -12,6 +12,7 @@ namespace BLL
     public class VideoManager
     {
         IVideo ivideo = DataAccess.CreateVideo();
+
         //根据点赞量获取热门视频
         public IEnumerable<Video> GetHotVideo(int top)
         {
@@ -33,6 +34,7 @@ namespace BLL
         {
             return ivideo.VideoRelative(authorid, title, intro,5);
         }
+    
     }
 
 }

@@ -66,6 +66,7 @@
     <Compile Include="SqlSuit.cs" />
     <Compile Include="SqlUsers.cs" />
     <Compile Include="SqlVideo.cs" />
+    <Compile Include="SqlVideoLike.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IDAL\IDAL.csproj">
