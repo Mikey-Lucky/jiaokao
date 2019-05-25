@@ -235,7 +235,7 @@
         //勾选框
         //var check = $("input[name="check"]")
             $("#Sub").on("click", function () {
-                //var checked = $("input[name='check']");
+               
                 var check = [];
                 for (var i = 0; i < checked.length; i++) {
                     if (checked.eq(i).prop("checked")) {
@@ -258,7 +258,8 @@
                         traditional: true,
                         success: function (data) {
                             alert(data.message);
-                            window.history.go(0);
+                            location.href = "/Mall/Order";
+                            //window.history.go(0);
                         },
                         error: function () {
                             alert("订单失败");

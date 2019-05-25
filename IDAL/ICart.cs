@@ -11,9 +11,9 @@ namespace IDAL
     {
         IEnumerable<Cart> Cart(int? id);
         void Delete(int CartID);
-        void DirectBuy(int GoodsID, DateTime time, int ID, int num);
+        //void DirectBuy(int GoodsID, DateTime time, int ID, int num);
         void Update(int num, int CartID);
-        Cart Pay(int? id, DateTime datetime, int ID);
+        //Cart Pay(int? id, DateTime datetime, int ID);
         void AddCart(int userid, int goodsid, int count, DateTime carttime, double price, int flag);
         Goods getgoodsbyid(int ? id);
         Cart getcartbyid(int? id);

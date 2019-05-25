@@ -625,14 +625,13 @@
     <Content Include="Views\Addresses\Index.cshtml" />
     <Content Include="Views\Mall\Addaddress.cshtml" />
     <Content Include="Views\YIChuShow\NoteDetail.cshtml" />
-    <Content Include="Views\YIChuShow\VideoDetail.cshtml" />
-    <Content Include="Views\YIChuShow\VideoRelative.cshtml" />
+    <Content Include="Views\Mall\OrderDetails.cshtml" />
+    <Content Include="Views\Mall\OrderDetails1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Coat\" />
     <Folder Include="Images\NetherGarment\" />
-    <Folder Include="Images\video\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Shop\" />
   </ItemGroup>

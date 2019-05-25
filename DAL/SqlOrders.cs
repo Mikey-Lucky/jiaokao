@@ -59,41 +59,15 @@ namespace DAL
         //此处id为CartID
         public Cart Pay(int? id, int userid,string uname,string tel,string address)
         {
-            //将选中订单的flag设置为1          
-            //var cart = db.Cart.Where(c => c.CartID == id).FirstOrDefault();
-            //cart.Flag = 1;
-            //var r = db.Cart.Where(s=>s.CartID==id);
-           
-            //int id = Convert.ToInt32(Session["User_id"]);
-            ////int Flag = 0;
-            //var nowtime = System.DateTime.Now;
-            //var t = Convert.ToDouble(cartmanager.getgoodsbyid(GoodsID).Unitprice);
-            //var amount = cartmanager.getgoodsbyid(GoodsID).TotalStorageAmount;
-            ////var price = t;
-            //var Count = Convert.ToInt32(Request.Form["number"]);
-            var p = db.Cart.Where(t => t.CartID == 6).FirstOrDefault();
             
-            var a = p.CartTime;
-            var b = p.Count;
-            var c = p.Price;
-            var d = p.GoodsID;
-            var e = p.UserID;
-            
-            db.Cart.Remove(p);
-            var s = new Cart()
-            {
-                CartTime = a,
-                Count = b,
-                Price = c,
-                GoodsID = d,
-                UserID = e,
-                Flag = 1
-            };
-            db.Cart.Add(s);
+            var cart = db.Cart.FirstOrDefault(p=>p.CartID==id);
+            cart.Flag = 1;
+            //db.Cart.Add(s);
             db.SaveChanges();
             db.Cart_Orders(userid, uname, tel, address);
             db.SaveChanges();
-            return s;
+            return cart;
+           
         }
     }
 }

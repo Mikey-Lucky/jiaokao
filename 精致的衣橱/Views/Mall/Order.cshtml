@@ -1,45 +1,35 @@
 ﻿@model IEnumerable<Models.Orders>
 @{
     ViewBag.Title = "Order";
+
 }
 
-<!DOCTYPE html>
+@*<!DOCTYPE html>
 <html>
 <head>
 
 </head>
-<body>
-    <h2>Addaddress</h2>
-    @*@foreach (var item in Model)
-        {
-            @Html.DisplayFor(modelItem => item.Address1)
-            @Html.DisplayFor(modelItem => item.UserID)
-
-        }*@
-    @*<label>地址：</label> <input type="text" name="dizhi"/>*@
+<body>*@
+   
 
 
-
-    @*@using (Html.BeginForm("Buy", "Mall", FormMethod.Post))
-    {
-        <label>姓名</label><input type="text" name="xingming" />
-        <label>联系电话</label><input type="text" name="dianhua" />
-        <label>地址</label><input type="text" name="dizhi" />
-        <button>提交2</button>
-    }*@
-<table class="table">
+ <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserName)
+            用户姓名
+        </th>
+        
+        <th>
+            用户地址
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.)*@
+            订单总金额
         </th>
         <th>
-            
+            电话号码
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tel)
+            订单详情
         </th>
         
     </tr>
@@ -47,24 +37,26 @@
     {
         <tr>
             <td>
-                @*@Html.DisplayFor(modelItem => item.OrderTime)*@
-                @item.OrderTime
+                
+                @item.UserName
             </td>
             <td>
-                @*@Html.DisplayFor(modelItem => item.TotalAmount)*@
+                
+                @item.Address
+            </td>
+            <td>
+
                 @item.TotalAmount
             </td>
-            @*<td>*@
-                @*@Html.DisplayFor(modelItem => item.UserName)*@
-               
-            @*</td>*@
             <td>
-                @*@Html.DisplayFor(modelItem => item.Tel)*@
                 @item.Tel
             </td>
-            
+            <td>
+                <a href="@Url.Action("OrderDetails1","Mall", new { OrderID = @item.OrderID })">订单详情</a>
+                @*@{ Html.RenderAction("OrderDetails", "Mall", new { OrderID = @item.OrderID });}*@
+            </td>
         </tr>
     }
     </table>
-</body>
-</html>
+@*</body>
+</html>*@

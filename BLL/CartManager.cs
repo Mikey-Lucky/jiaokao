@@ -22,19 +22,19 @@ namespace BLL
         {
            icart.Delete(CartID);
         }
-        public void DirectBuy(int GoodsID, DateTime time, int ID, int num)
-        {
-            icart.DirectBuy(GoodsID,time,ID,num);
-        }
+        //public void DirectBuy(int GoodsID, DateTime time, int ID, int num)
+        //{
+        //    icart.DirectBuy(GoodsID,time,ID,num);
+        //}
         public void Update(int num, int CartID)
         {
             icart.Update(num,CartID);
         }
-        public Cart Pay(int? id, DateTime datetime, int ID)
-        {
-            var pay = icart.Pay(id,datetime,ID);
-            return pay;
-        }
+        //public Cart Pay(int? id, DateTime datetime, int ID)
+        //{
+        //    var pay = icart.Pay(id,datetime,ID);
+        //    return pay;
+        //}
         public void AddCart(int userid, int goodsid, int count, DateTime carttime, double price, int flag)
         {
             icart.AddCart(userid,goodsid,count,carttime,price,flag);

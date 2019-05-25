@@ -47,6 +47,7 @@
     <Compile Include="IGoods.cs" />
     <Compile Include="INetherGarment.cs" />
     <Compile Include="INote.cs" />
+    <Compile Include="IOrderDetails.cs" />
     <Compile Include="IOrders.cs" />
     <Compile Include="IShirt.cs" />
     <Compile Include="ISuit.cs" />
