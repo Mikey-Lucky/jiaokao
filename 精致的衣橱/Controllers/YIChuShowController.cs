@@ -16,9 +16,11 @@ namespace 精致的衣橱.Controllers
         NoteManager notes = new NoteManager();
         VideoManager videos = new VideoManager();
         YiChuShowViewModel ycsv = new YiChuShowViewModel();
+        VideoLikeManager likes = new VideoLikeManager();
         // GET: YIChuShow
         public ActionResult Index()
         {
+           
             ycsv.JingXuanNote = notes.GetHotNote(30);
             ycsv.JingXuanVideo = videos.GetHotVideo(30);
             ycsv.NewNote = notes.Getnewnote(30);
@@ -57,6 +59,14 @@ namespace 精致的衣橱.Controllers
             var usershuoshuo = notes.AllNoteByID(1);
             ycsv.AllNoteByID = usershuoshuo;
             return View(ycsv);
+        }
+        //点赞取消赞操作
+        public string Zan(int videoid)
+        {
+            int userid = 1;
+            //videos.Videolikeclick(userid,videoid);
+            likes.Videolikeclick(userid, videoid);
+            return videoid.ToString();
         }
 
     }

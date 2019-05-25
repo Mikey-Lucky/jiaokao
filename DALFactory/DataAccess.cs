@@ -75,6 +75,12 @@ namespace DALFactory
             string className = AssemblyName + "." + db + "Address";
             return (IAddress)Assembly.Load(AssemblyName).CreateInstance(className);
         }
+
+        public static IVideoLike CreateVideoLike()
+        {
+            string className = AssemblyName + "." + db + "VideoLike";
+            return (IVideoLike)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
         public static IOrderDetails CreateOrderDetails()
         {
             string className = AssemblyName + "." + db + "OrderDetails";
