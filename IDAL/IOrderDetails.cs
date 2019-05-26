@@ -11,5 +11,6 @@ namespace IDAL
     public interface IOrderDetails
     {
         IEnumerable<OrderDetails> GetOrderdetailsById(int? orderid);
+        void DirectBuy(int GoodsID, DateTime dateTime, int ID, int Num);
     }
 }

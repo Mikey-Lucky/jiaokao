@@ -15,5 +15,6 @@ namespace IDAL
         void EditOrders(Orders orders);
         void Order(DateTime datetime, int totalamount, int userid, string uname, string tel, string address);
        Cart Pay(int? id, int userid, string uname, string tel, string address);
+       
     }
 }

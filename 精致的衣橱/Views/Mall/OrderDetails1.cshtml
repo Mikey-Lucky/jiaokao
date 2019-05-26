@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Models.OrderDetails>
 @{
     ViewBag.Title = "OrderDetails1";
+    Layout = null;
 }
 
 <h2>OrderDetails1</h2>
@@ -20,7 +21,7 @@
             <td>@item.Goods.Unitprice</td>
             <td>@item.Count</td>
         </tr>
+        
 
     }
 </table>
-
