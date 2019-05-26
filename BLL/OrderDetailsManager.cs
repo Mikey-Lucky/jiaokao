@@ -19,5 +19,9 @@ namespace BLL
             var orderdetails = p.GetOrderdetailsById(orderid);
             return orderdetails;
         }
+        public void DirectBuy(int GoodsID, DateTime dateTime, int ID, int Num)
+        {
+          p.DirectBuy(GoodsID,dateTime,ID,Num);
+        }
     }
 }

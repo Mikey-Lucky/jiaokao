@@ -25,14 +25,7 @@ namespace DAL
         }
         public void Order(DateTime datetime, int totalamount,int userid, string uname, string tel,string address)
         {
-            //DateTime datetime, int totalamount,
-            //db.Cart_Orders(userid,uname,tel,address);
-            //db.SaveChanges();
-            //int i = db.Orders(uid, uname, userphone, address, note);
-            //db.SaveChanges();
-            //var orders=db.Orders.Where(o => o.UserID == userid && o.UserName == uname && o.Tel == tel && o.AddressID == addressid && o.TotalAmount==totalamount&&o.OrderTime==datetime).FirstOrDefault();
-            //db.Orders.Add(orders);
-            //db.SaveChanges();
+           
             var order = new Orders()
             {
                 OrderTime = datetime,
@@ -69,5 +62,6 @@ namespace DAL
             return cart;
            
         }
+        
     }
 }

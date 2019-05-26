@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Models.OrderDetails>
+﻿@model Models.OrderDetails
+
+@Model.Count
+<img src="~/Images/GoodsImages/@Model.Goods.GoodsImage" />
    <table>
        <tr>
            <th>商品名称</th>
@@ -6,9 +9,9 @@
            <th>商品单价</th>
            <th>商品数量</th>
        </tr>
-
-@foreach(var item in Model)
-{
+    
+           @*@foreach(var item in Model)
+            {
     <tr>
        <td>@Html.DisplayFor(modelItem=>item.Goods.Name)</td>
         <td><img src="~/Images/GoodsImages/@item.Goods.GoodsImage" /></td>
@@ -16,5 +19,5 @@
         <td>@item.Count</td>
    </tr>
   
-}
+}*@*@
    </table>

@@ -52,7 +52,7 @@
                 @item.Tel
             </td>
             <td>
-                <a href="@Url.Action("OrderDetails1","Mall", new { OrderID = @item.OrderID })">订单详情</a>
+                <a href="@Url.Action("OrderDetails1","Mall", new { orderid = item.OrderID})">订单详情</a>
                 @*@{ Html.RenderAction("OrderDetails", "Mall", new { OrderID = @item.OrderID });}*@
             </td>
         </tr>

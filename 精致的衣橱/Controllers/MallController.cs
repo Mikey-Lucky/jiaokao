@@ -39,7 +39,7 @@ namespace 精致的衣橱.Controllers
         }
         public ActionResult GoodsDetails(int id)
         {
-            Session["GoodsID"] = id;
+            //Session["GoodsID"] = id;
             var a = db.Goods.Where(p => p.GoodsID == id).FirstOrDefault();
             return View(a);
         }
@@ -184,6 +184,10 @@ namespace 精致的衣橱.Controllers
             return Content("<script>alert('删除成功');window.location.href='../Mall/Cart';</script>");
 
         }
+        //public ActionResult DirectBuy()
+        //{
+
+        //}
         public ActionResult Comment()
         {
             return View();
@@ -242,13 +246,36 @@ namespace 精致的衣橱.Controllers
             };
             return base.Json(msg);
         }
+        [HttpPost]
         [Login]
-        public ActionResult OrderDetails1(int OrderID)
+        public JsonResult DirectBuy(int tol, string uname, string tel, string address,int goodsid,int num)
         {
-            var t=orderdetailsmanager.GetOrderdetailsById(OrderID);
-            //return PartialView(t);
+            var datetime = System.DateTime.Now;
+            int uid = Convert.ToInt32(Session["User_id"]);
+            odersmanager.Order(datetime, tol, uid, uname, tel, address);
+            orderdetailsmanager.DirectBuy(goodsid, datetime,uid, num);
+            Message msg = new Message()
+            {
+                message = "下单成功"
+            };
+            return base.Json(msg);
+        }
+        [Login]
+        public ActionResult OrderDetails1(int? orderid)
+        {
+           
+            var t = orderdetailsmanager.GetOrderdetailsById(orderid);
+            
             return View(t);
         }
+        //public ActionResult OrderDetails1(int? orderid)
+        //{
+        //    var m = from o in db.OrderDetails
+        //            where o.OrderID==orderid
+        //            select o;
+        //    //return PartialView(t);
+        //    return View(m);
+        //}
 
     }
 }
