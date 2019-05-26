@@ -10,13 +10,13 @@ namespace DAL
     public class SqlOrderDetails:IOrderDetails
     {
         yichuEntities db = DbContextFactory.CreateDbContext();
-        
-        public IEnumerable<Models.OrderDetails> GetOrderdetailsById(int? orderid)
+
+        public IEnumerable<Models.OrderDetails> OrderDetails(int? id)
         {
-            var t = from o in db.OrderDetails
-                    where o.OrderID == orderid
-                    select o;
-            return t;
+            var order = from t in db.OrderDetails
+                        where t.OrderID == id
+                        select t;
+            return order;
         }
         public void DirectBuy(int GoodsID, DateTime dateTime, int ID, int Num)
         {

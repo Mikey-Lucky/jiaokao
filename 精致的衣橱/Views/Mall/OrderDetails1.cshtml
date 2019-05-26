@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<Models.OrderDetails>
-@{
+@*@{
     ViewBag.Title = "OrderDetails1";
-    Layout = null;
-}
+  
+}*@
 
 <h2>OrderDetails1</h2>
 <table>
@@ -13,15 +13,13 @@
         <th>商品数量</th>
     </tr>
 
-    @foreach (var item in Model)
-    {
+    @foreach(var item in Model) { 
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.Goods.Name)</td>
+            @*<td>@Model.OrderID</td>*@
             <td><img src="~/Images/GoodsImages/@item.Goods.GoodsImage" /></td>
             <td>@item.Goods.Unitprice</td>
             <td>@item.Count</td>
         </tr>
-        
-
     }
+
 </table>

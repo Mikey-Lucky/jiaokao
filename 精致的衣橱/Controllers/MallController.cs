@@ -178,8 +178,7 @@ namespace 精致的衣橱.Controllers
         //[Login]
         public ActionResult Delete(int CartID)
         {
-            //var ca = db.Cart.Where(u => u.UserID == Convert.ToInt32(Session["User_id"]));
-            //var ca = cartmanager.getcartbyid(CartID).CartID;
+           
             cartmanager.Delete(CartID);
             return Content("<script>alert('删除成功');window.location.href='../Mall/Cart';</script>");
 
@@ -263,19 +262,19 @@ namespace 精致的衣橱.Controllers
         [Login]
         public ActionResult OrderDetails1(int? orderid)
         {
-           
-            var t = orderdetailsmanager.GetOrderdetailsById(orderid);
+
+            var t = orderdetailsmanager.OrderDetails(orderid);
+            
             
             return View(t);
         }
-        //public ActionResult OrderDetails1(int? orderid)
-        //{
-        //    var m = from o in db.OrderDetails
-        //            where o.OrderID==orderid
-        //            select o;
-        //    //return PartialView(t);
-        //    return View(m);
-        //}
+        //点赞
+        [Login]
+       public ActionResult Thumb(int goodsid,int num)
+        {
+            goodsmanager.getThumbnum(goodsid,num);
+            return Content("点赞成功");
+        }
 
     }
 }

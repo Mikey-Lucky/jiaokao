@@ -14,9 +14,9 @@ namespace BLL
     public class OrderDetailsManager
     {
         IOrderDetails p = DataAccess.CreateOrderDetails();
-        public IEnumerable<Models.OrderDetails> GetOrderdetailsById(int? orderid)
+        public IEnumerable<Models.OrderDetails> OrderDetails(int? id)
         {
-            var orderdetails = p.GetOrderdetailsById(orderid);
+            var orderdetails = p.OrderDetails(id);
             return orderdetails;
         }
         public void DirectBuy(int GoodsID, DateTime dateTime, int ID, int Num)
