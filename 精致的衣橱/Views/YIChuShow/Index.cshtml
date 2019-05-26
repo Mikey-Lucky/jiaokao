@@ -45,6 +45,8 @@
                 <input class="control__radio" type="radio" name="grid-type" value="grid--type-d" id="control-grid-d">
                 <label class="control__label" for="control-grid-d">最新视频</label>
             </div>
+            <a href="#">发表笔记</a>
+            <a href="#">上传视频</a>
         </div>
         <main>
             <div class="content content--center">
@@ -66,6 +68,7 @@
                         <div class="grid__item">
                             <a class="grid__link" href="@Url.Action("VideoDetail", "YiChuShow", new {id=@n.VideoID})">
                             <img class="grid__img" src="/Images/Noteimg/@n.Image" alt="Some image" />
+                                <span>@n.likenum</span>
                             </a>
                         </div>
                     }
@@ -86,7 +89,7 @@
                     @foreach (var n in Model.NewVideo)
                     {
                         <div class="grid__item">
-                            <a class="grid__link" href="#">
+                            <a class="grid__link" href="@Url.Action("VideoDetail", "YiChuShow", new {id=@n.VideoID})">
                                 <img class="grid__img" src="/Images/Noteimg/@n.Image" alt="Some image" />
                             </a>
                         </div>

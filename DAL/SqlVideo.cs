@@ -17,7 +17,7 @@ namespace DAL
         public IEnumerable<Video> Gethotvideo(int top)
         {
             var hotvideo = from v in db.Video
-                          orderby v.likenum ascending
+                          orderby v.likenum descending
                           select v;
 
             return hotvideo.Take(top);

@@ -48,7 +48,7 @@ namespace DAL
         public IEnumerable<Note> Gethotnote(int top)
         {
             var hotnote = from note in db.Note
-                          orderby note.likenum ascending
+                          orderby note.likenum descending
                           select note;
             return hotnote.Take(top);
         }
