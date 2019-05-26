@@ -43,6 +43,9 @@
         .right .videointro {
             padding-bottom: 20px;
         }
+        .active {
+            color: antiquewhite;
+        }
     </style>
 </head>
 <body>
@@ -57,8 +60,8 @@
                 </video>
             </div>
             <div class="chaozuo">
-                   <div class="zan">赞</div><span class="zannum">@Model.likenum</span>
-                   <div class="shoucang">收藏</div>
+                   <div id="zan">喜欢</div><span class="zannum">@Model.likenum</span>
+                   @*<div id="shoucang">收藏</div>*@
             </div>
             <div class="commentinput"></div>
             <div class="commentlist"></div>
@@ -84,28 +87,34 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script>
         $(function () {
-            $(document).on('click', '.zan', function () {   //赞     
+            $(document).on('click', '#zan', function () {   //赞     
                 var Videoid = $(".videoid").val();
+                //if ($(this).attr("class")=="active"){
+                //    $(this).attr("class"," ");
+                //}
+                //else
+                //    $(this).attr("class", "active");
+
                 $.ajax({
                     type: "post",
                     url: "/YiChuShow/Zan",
                     data: { "videoid": Videoid },
                     success: function (data) {
-                        $(".zannum").val().replaceWith(data);//有问题
+                        $(".zannum").text(data);
                     }
                 });
             });
-            $(document).on('click', '.shoucang', function () {   //收藏     
-                var Videoid = $(".videoid").val();
-                $.ajax({
-                    type: "post",
-                    url: "/YiChuShow/Select",
-                    data: { "videoid": Videoid },
-                    success: function (data) {
-                        alert(data);
-                    }
-                });
-            });
+            //$(document).on('click', '#shoucang', function () {   //收藏     
+            //    var Videoid = $(".videoid").val();
+            //    $.ajax({
+            //        type: "post",
+            //        url: "/YiChuShow/Select",
+            //        data: { "videoid": Videoid },
+            //        success: function (data) {
+            //            alert("收藏成功");
+            //        }
+            //    });
+            //});
         });
     </script>
 </body>

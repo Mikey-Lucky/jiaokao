@@ -11,5 +11,7 @@ namespace IDAL
     {
         //对视频收藏表进行增删操作
         void VideoSelect(int userid, int videoid);
+        //视频被收藏的总量
+        int videoselectnum(int videoid);
     }
 }

@@ -17,7 +17,11 @@ namespace BLL
         {
             iselect.VideoSelect(userid, videoid);
         }
-        //视频点赞总数
-
+        //视频收藏总数
+       
+        public int videoselectnum(int videoid)
+        {
+            return iselect.videoselectnum(videoid);
+        }
     }
 }

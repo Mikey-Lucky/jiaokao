@@ -10,65 +10,26 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>NoteDetail</title>
+    <style>
+        .notecontent {
+           width: 580px;
+           background-color: antiquewhite;
+        }
+        img {
+            width: 580px;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <h4>Note</h4>
+    <div class="notecontent">
+        <h2>@Model.Title</h2>
+        <span>@Model.Users.UserName</span><span>@Model.Time</span>
         <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Img)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Img)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Title)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.NoteContent)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.NoteContent)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Time)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Time)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.likenum)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.likenum)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Users.Password)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Users.Password)
-            </dd>
-    
-        </dl>
+        @Html.Raw(@Model.NoteContent)
     </div>
     <p>
-        @*@Html.ActionLink("Edit", "Edit", new { id = Model.NoteID }) |*@
         @Html.ActionLink("Back to List", "Index")
     </p>
 </body>
+
 </html>

@@ -35,6 +35,14 @@ namespace 精致的衣橱.Controllers
             var note = notes.NoteDetail(id);
             return View(note);
         }
+        /// <summary>
+        /// 上传视频get
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult UpNote()
+        {
+            return View();
+        }
         //视频详情页
         public ActionResult VideoDetail(int id)
         {
@@ -71,12 +79,14 @@ namespace 精致的衣橱.Controllers
             int a = likes.videolikenum(videoid);
             return a;
         }
-        public string Select(int videoid)
-        {
-            int userid = 1;//用于测试
-            selects.VideoSelect(userid, videoid);
-            return videoid.ToString();
-        }
+        //public int Select(int videoid)
+        //{
+        //    int userid = 1;//用于测试
+        //    selects.VideoSelect(userid, videoid);
+        //    int selectnum = selects.videoselectnum(videoid);
+        //    return selectnum;
+        //}
+  
 
     }
 }

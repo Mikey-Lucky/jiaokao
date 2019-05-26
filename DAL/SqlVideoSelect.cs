@@ -29,5 +29,11 @@ namespace DAL
                 db.SaveChanges();
             }
         }
+        public int videoselectnum(int videoid)
+        {
+            int selectnum = db.VideoSelect.Where(v => v.VideoID == videoid).Count();
+            return selectnum;
+        }
+
     }
 }
