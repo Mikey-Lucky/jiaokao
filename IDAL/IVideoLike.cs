@@ -11,5 +11,7 @@ namespace IDAL
     {
         //对视频点赞表进行增删操作
         void Videolikeclick(int userid, int videoid);
+        //视频点赞数量
+        int videolikenum(int videoid);
     }
 }

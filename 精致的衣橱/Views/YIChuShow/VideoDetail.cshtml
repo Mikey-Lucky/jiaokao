@@ -57,8 +57,8 @@
                 </video>
             </div>
             <div class="chaozuo">
-                   <div class="zan">赞</div>
-                   <a class="shoucang"></a>
+                   <div class="zan">赞</div><span class="zannum">@Model.likenum</span>
+                   <div class="shoucang">收藏</div>
             </div>
             <div class="commentinput"></div>
             <div class="commentlist"></div>
@@ -89,6 +89,17 @@
                 $.ajax({
                     type: "post",
                     url: "/YiChuShow/Zan",
+                    data: { "videoid": Videoid },
+                    success: function (data) {
+                        $(".zannum").val().replaceWith(data);//有问题
+                    }
+                });
+            });
+            $(document).on('click', '.shoucang', function () {   //收藏     
+                var Videoid = $(".videoid").val();
+                $.ajax({
+                    type: "post",
+                    url: "/YiChuShow/Select",
                     data: { "videoid": Videoid },
                     success: function (data) {
                         alert(data);

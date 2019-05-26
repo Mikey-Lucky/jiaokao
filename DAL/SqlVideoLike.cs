@@ -30,5 +30,11 @@ namespace DAL
                 db.SaveChanges();
             }
         }
+
+        public int videolikenum(int videoid)
+        {
+            int likenum = db.VideoLike.Where(v => v.VideoID == videoid).Count();
+            return likenum;
+        }
     }
 }
