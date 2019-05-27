@@ -1,0 +1,44 @@
+﻿
+@model 精致的衣橱.Models.YiChuViewModel
+@{
+    Layout = null;
+}
+<div>
+    @foreach (var c in Model.coatbytemp)
+    {
+        <img src="/Images/Coat/@c.Image" />
+    }
+</div>
+<div>
+    @foreach (var s in Model.shirtbytemp)
+    {
+        <img src="/Images/shirt/@s.Image" />
+    }
+</div>
+<div>
+    @foreach (var n in Model.nethergarmentbytemp)
+    {
+        <img src="/Images/NetherGarment/@n.Image" />
+    }
+</div>
+<div>
+    @foreach (var s in Model.suitbytemp)
+    {
+        <img src="/Images/Suit/@s.Image" />
+    }
+</div>
+为你搭配
+
+<div>
+    @foreach (var a in Model.dapeishangyi)
+    {
+        <img src="/Images/shirt/@a.Image" />
+    }
+</div>
+<div>
+    @foreach (var n in Model.daipeixiyi)
+    {
+        <img src="/Images/NetherGarment/@n.Image" />
+    }
+</div>
+

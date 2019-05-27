@@ -781,6 +781,7 @@
     <Content Include="Views\YIChuShow\VideoDetail.cshtml" />
     <Content Include="Views\YIChuShow\VideoRelative.cshtml" />
     <Content Include="Views\YIChuShow\UpNote.cshtml" />
+    <Content Include="Views\YiChu\TianqiClothes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

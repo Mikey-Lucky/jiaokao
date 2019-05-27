@@ -364,33 +364,11 @@
                   </div>
                   <div id="todayclothes" class="tab-pane">
                       <div id="todayallc">
-                          <div>
-                              @foreach (var c in Model.coatbytemp)
-                              {
-                                  <img src="/Images/Coat/@c.Image" />
-                              }
-                          </div>
-                          <div>
-                              @foreach (var s in Model.shirtbytemp)
-                              {
-                                  <img src="/Images/shirt/@s.Image" />
-                              }
-                          </div>
-                          <div>
-                              @foreach (var n in Model.nethergarmentbytemp)
-                              {
-                                  <img src="/Images/NetherGarment/@n.Image" />
-                              }
-                          </div>
-                          <div>
-                              @foreach (var s in Model.suitbytemp)
-                              {
-                                  <img src="/Images/Suit/@s.Image" />
-                              }
-                          </div>
+                          @Html.Action("TianqiClothes")
                       </div>
                       <div id="todaydapei">
                           <p>为你搭配</p>
+                          @*@Html.Action("dapeiClothes")*@
                       </div>
                   </div>
               </div>
@@ -435,11 +413,11 @@
                                 $('.temperature2').text(center);
                                 
                                     $.ajax({
-                                        url: "/YiChu/Index",
+                                        url: "/YiChu/TianqiClothes",
                                         type: 'POST',
                                         data: { "tianqi": center },
                                         success: function (data, status) {
-                                            console.log(data)
+                                            $("#todayallc").html(data)
                                         },
                                         async: true
                                     });
