@@ -40,9 +40,6 @@ namespace BLL
             var goods = igoods.Dong(top);
             return goods;
         }
-        public void getThumbnum(int goodsid, int num)
-        {
-            igoods.getThumbnum(goodsid,num);
-        }
+        
     }
 }

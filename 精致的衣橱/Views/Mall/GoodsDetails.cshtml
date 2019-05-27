@@ -145,7 +145,7 @@
         var add = $("#Ord_Add");
         var tel = $("#Ord_Tel");
         
-        var price = $("price").val();
+        var price = $("#price").val();
         var numb = $("input[name='number']").val();
         var total = price * numb;
         var GoodsID = $("#GoodsID").val();
@@ -162,7 +162,7 @@
                     "address": add.val(),
                     "tol": total,
                     "goodsid": GoodsID,
-                    "num":numb,
+                    "num":numb
 
                 },
                 traditional: true,

@@ -22,6 +22,7 @@ namespace 精致的衣橱.Controllers
         OdersManager odersmanager = new OdersManager();
         AddressManager addressmanager = new AddressManager();
         OrderDetailsManager orderdetailsmanager = new OrderDetailsManager();
+        GoodsLikeManager goodslikemanager = new GoodsLikeManager();
         public ActionResult Index()
         {
             var g1 = goodsmanager.GetHotGoods(8);
@@ -251,7 +252,7 @@ namespace 精致的衣橱.Controllers
         {
             var datetime = System.DateTime.Now;
             int uid = Convert.ToInt32(Session["User_id"]);
-            odersmanager.Order(datetime, tol, uid, uname, tel, address);
+            //odersmanager.Order(datetime, tol, uid, uname, tel, address);
             orderdetailsmanager.DirectBuy(goodsid, datetime,uid, num);
             Message msg = new Message()
             {
@@ -270,10 +271,15 @@ namespace 精致的衣橱.Controllers
         }
         //点赞
         [Login]
-       public ActionResult Thumb(int goodsid,int num)
+        public int Zan(int goodsid)
         {
-            goodsmanager.getThumbnum(goodsid,num);
-            return Content("点赞成功");
+
+            int userid = Convert.ToInt32(Session["User_id"]);
+            //videos.Videolikeclick(userid,videoid);
+            //likes.Videolikeclick(userid, goodsid);
+            goodslikemanager.GoodsLikeClick(userid,goodsid);
+            int num = goodslikemanager.goodslikenum(goodsid);
+            return num;
         }
 
     }

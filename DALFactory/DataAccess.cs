@@ -90,6 +90,16 @@ namespace DALFactory
             string className = AssemblyName + "." + db + "OrderDetails";
             return (IOrderDetails)Assembly.Load(AssemblyName).CreateInstance(className);
         }
+        //public static IGoodsLike CreateGoodsLike()
+        //{
+        //    string className = AssemblyName + "." + db + "GoodsLike";
+        //    return (IGoodsLike)Assembly.Load(AssemblyName).CreateInstance(className);
+        //}
+        public static IGoodsLike CreateGoodsLike()
+        {
+            string className = AssemblyName + "." + db + "GoodsLike";
+            return (IGoodsLike)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
 
     }
 }

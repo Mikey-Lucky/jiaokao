@@ -53,14 +53,14 @@ namespace DAL
         //                orderby o.Sex
         //                select o;
         //}
-       public void getThumbnum(int goodsid,int num)
-        {
-            var goods = db.Goods.Where(t => t.GoodsID == goodsid).FirstOrDefault();
-            goods.ThumbNum = goods.ThumbNum + num;
-            db.SaveChanges();
-            //int sum=thumb.FirstOrDefault
-            //return thumb.FirstOrDefault();
+        //public void getThumbnum(int goodsid, int userid);
+        //{
+        //    var goods = db.Goods.Where(t => t.GoodsID == goodsid).FirstOrDefault();
+        //    goods.ThumbNum = goods.ThumbNum + num;
+        //    db.SaveChanges();
+        //    //int sum=thumb.FirstOrDefault
+        //    //return thumb.FirstOrDefault();
             
-        }
+        //}
     }
 }
