@@ -50,18 +50,18 @@ namespace DAL
         }
         //下单
         //此处id为CartID
-        public Cart Pay(int? id, int userid,string uname,string tel,string address)
+        public Cart Pay(int? id, int userid, string uname, string tel, string address)
         {
-            
-            var cart = db.Cart.FirstOrDefault(p=>p.CartID==id);
+            //获取CartID=id的详情
+            var cart = db.Cart.FirstOrDefault(p => p.CartID == id);
             cart.Flag = 1;
             //db.Cart.Add(s);
             db.SaveChanges();
             db.Cart_Orders(userid, uname, tel, address);
-            db.SaveChanges();
+                             
             return cart;
-           
+
         }
-        
+
     }
 }

@@ -234,7 +234,7 @@ namespace 精致的衣橱.Controllers
             var datetime = System.DateTime.Now;
             int uid = Convert.ToInt32(Session["User_id"]);
 
-            odersmanager.Order(datetime, total, uid, name, userphone, address);
+            //odersmanager.Order(datetime, total, uid, name, userphone, address);
             for (int i = 0; i < a.Length; i++)
             {
                 odersmanager.Pay(a[i], uid, name, userphone, address);
@@ -259,6 +259,7 @@ namespace 精致的衣橱.Controllers
                 message = "下单成功"
             };
             return base.Json(msg);
+
         }
         [Login]
         public ActionResult OrderDetails1(int? orderid)

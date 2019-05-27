@@ -69,7 +69,7 @@ namespace Models
         public virtual DbSet<note_like> note_like { get; set; }
         public virtual DbSet<video_like> video_like { get; set; }
     
-        public virtual int Cart_Orders(Nullable<int> userID, string userName, string tel, string address)
+        public virtual ObjectResult<Nullable<int>> Cart_Orders(Nullable<int> userID, string userName, string tel, string address)
         {
             var userIDParameter = userID.HasValue ?
                 new ObjectParameter("UserID", userID) :
@@ -87,7 +87,7 @@ namespace Models
                 new ObjectParameter("Address", address) :
                 new ObjectParameter("Address", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cart_Orders", userIDParameter, userNameParameter, telParameter, addressParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Cart_Orders", userIDParameter, userNameParameter, telParameter, addressParameter);
         }
     }
 }
