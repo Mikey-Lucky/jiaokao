@@ -41,7 +41,7 @@ namespace DAL
                            where c.Season == "春季" || c.Season == "秋季"
                            select c;
             }
-            else if (temp >= 20 && temp < 25)
+            else if (temp >= 20 && temp < 24)
             {
                  coat = from c in db.Coat
                            where c.Season == "春季" || c.Season == "夏季"

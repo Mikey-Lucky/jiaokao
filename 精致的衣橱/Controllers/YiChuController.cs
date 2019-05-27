@@ -16,12 +16,12 @@ namespace 精致的衣橱.Controllers
         CoatManager coats = new CoatManager();
         NetherGarmentManager nethers = new NetherGarmentManager();
         ShirtManager shirts = new ShirtManager();
+        YiChuViewModel yichuview = new YiChuViewModel();
         // GET: YiChu
         public ActionResult Index()
         {
-            YiChuViewModel yichuview = new YiChuViewModel();
             /* var temp = Convert.ToInt32(context.Request["weather"]);*///数据获取失败
-            var temp = Request["tianqi"];
+           
            /* int temp = 12;*///需获取前台值
             yichuview.springsuit = suits.ShirtBySeason("春季");
             yichuview.summersuit = suits.ShirtBySeason("夏季");
@@ -39,12 +39,38 @@ namespace 精致的衣橱.Controllers
             yichuview.summershirt = shirts.ShirtBySeason("夏季");
             yichuview.autumnshirt = shirts.ShirtBySeason("秋季");
             yichuview.wintershirt = shirts.ShirtBySeason("冬季");
+           
+            return View(yichuview);
+        }
+        //今日天气推荐分布视图
+        public ActionResult TianqiClothes()
+        {
+            var temp = Request["tianqi"];
+            //var temp = 25;
             yichuview.nethergarmentbytemp = nethers.NetherGarmentByTemp(Convert.ToInt32(temp));
             yichuview.shirtbytemp = shirts.ShirtByTemp(Convert.ToInt32(temp));
             yichuview.coatbytemp = coats.CoatByTemp(Convert.ToInt32(temp));
             yichuview.suitbytemp = suits.SuitByTemp(Convert.ToInt32(temp));
+            yichuview.dapeishangyi = yichuview.shirtbytemp;
+            foreach (var a in yichuview.shirtbytemp)
+            {
+                yichuview.daipeixiyi = nethers.NetherBaiDa(a.Season, a.Color);
+
+            }
+            //ViewData["dp"] = yichuview.shirtbytemp;
+            //Shirt shirt = (Shirt)ViewData["dp"];
+            //yichuview.daipeixiyi= nethers.NetherBaiDa(shirt.Season, shirt.Color);
             return View(yichuview);
+            //return Content(temp);
         }
+        //public ActionResult dapeiClothes()
+        //{
+        //    Shirt shirt = (Shirt)ViewData["dp"];
+
+        //    var ne=nethers.NetherBaiDa(shirt.Season,shirt.Color);
+        //    return View(ne);
+        //}
+
         //GET上传衣服
         public ActionResult AddClothes()
         {
