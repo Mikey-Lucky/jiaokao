@@ -18,6 +18,7 @@ namespace 精致的衣橱.Controllers
         YiChuShowViewModel ycsv = new YiChuShowViewModel();
         VideoLikeManager likes = new VideoLikeManager();
         NoteLikeManager notelikes = new NoteLikeManager();
+        VideoCommentManager vcomments = new VideoCommentManager();
         VideoSelectManager selects = new VideoSelectManager();
         // GET: YIChuShow
         public ActionResult Index()
@@ -73,6 +74,24 @@ namespace 精致的衣橱.Controllers
             var video = videos.VideoDetail(id);
             return View(video);
         }
+        //视频评论展示分布视图
+        public ActionResult VideoComment(int videoid)
+        {
+            var videocomment = vcomments.allvideocomment(videoid);
+            return PartialView(videocomment);
+        }
+        [HttpPost]
+        public ActionResult VideoComment(VideoComment videocomment)
+        {
+            videocomment.Commentcotent = Request["comment"];
+            videocomment.likenum = 0;
+            videocomment.Time = DateTime.Now;
+            videocomment.UserID = 1;
+            videocomment.VideoID =Convert.ToInt32(Request["videoid"]) ;
+            vcomments.AddVideoComment(videocomment);
+            return View();
+        }
+
         //相关笔记分布视图
         public ActionResult VideoRelative(int authorid, string title, string intro)
         {

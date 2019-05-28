@@ -2,20 +2,64 @@
 @{
     Layout = "~/Views/Shared/_UsershowhomeLayout.cshtml";
 }
-<div id="userlike">
+<style>
+    #userlike {
+       
+    }
+    .userhome div {
+        display: inline-block;
+        width: 300px;
+        height:300px;
+        overflow: hidden;
+        background-color:#ffffff;
+    }
+    .userhome div img {
+        width:100%;
+        
+    }
+</style>
+<div id="userlike" class="userhome">
     @foreach (var video in Model.userlikevideo)
     {
-        @video.Video.Image
+        <div>
+            <a href="@Url.Action("VideoDetail", "YiChuShow", new {id=@video.VideoID})">
+                <img  src="/Images/Noteimg/@video.Video.Image" alt="Some image" />
+                <span>@video.Video.likenum</span>
+            </a>
+        </div>
     }
+    <hr />
     @foreach (var note in Model.userlikenote)
     {
-        @note.Note.Img
+        <div>
+            <a href="@Url.Action("NoteDetail", "YiChuShow", new {id=@note.NoteID})">
+                <img src="/Images/Noteimg/@note.Note.Img" alt="Some image" />
+                <span>@note.Note.likenum</span>
+            </a>
+        </div>
     }
 </div>
-<div id="usernote">
-    
+<div id="usernote" class="userhome">
+    @foreach (var note in Model.userupnote)
+    {
+        <div>
+            <a href="@Url.Action("NoteDetail", "YiChuShow", new {id=@note.NoteID})">
+                <img src="/Images/Noteimg/@note.Img" alt="Some image" />
+                <span>@note.likenum</span>
+            </a>
+        </div>
+    }
 </div>
-<div id="uservideo">
-
+<hr />
+<div id="uservideo" class="userhome">
+    @foreach (var video in Model.userupvideo)
+    {
+        <div>
+            <a href="@Url.Action("VideoDetail", "YiChuShow", new {id=@video.VideoID})">
+                <img src="/Images/Noteimg/@video.Image" alt="Some image" />
+                <span>@video.likenum</span>
+            </a>
+        </div>
+    }
 </div>
 

@@ -70,6 +70,7 @@
     <Compile Include="SqlSuit.cs" />
     <Compile Include="SqlUsers.cs" />
     <Compile Include="SqlVideo.cs" />
+    <Compile Include="SqlVideoComment.cs" />
     <Compile Include="SqlVideoLike.cs" />
     <Compile Include="SqlVideoSelect.cs" />
   </ItemGroup>

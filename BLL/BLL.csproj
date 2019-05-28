@@ -55,6 +55,7 @@
     <Compile Include="ShirtManager.cs" />
     <Compile Include="SuitManager.cs" />
     <Compile Include="UsersManager.cs" />
+    <Compile Include="VideoCommentManager.cs" />
     <Compile Include="VideoLikeManager.cs" />
     <Compile Include="VideoManager.cs" />
     <Compile Include="VideoSelectManager.cs" />

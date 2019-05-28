@@ -105,6 +105,11 @@ namespace DALFactory
             string className = AssemblyName + "." + db + "NoteLike";
             return (INoteLike)Assembly.Load(AssemblyName).CreateInstance(className);
         }
+        public static IVideoComment CreateVideoComment()
+        {
+            string className = AssemblyName + "." + db + "VideoComment";
+            return (IVideoComment)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
 
     }
 }

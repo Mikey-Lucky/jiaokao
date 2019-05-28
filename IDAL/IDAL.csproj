@@ -55,6 +55,7 @@
     <Compile Include="ISuit.cs" />
     <Compile Include="IUsers.cs" />
     <Compile Include="IVideo.cs" />
+    <Compile Include="IVideoComment.cs" />
     <Compile Include="IVideoLike.cs" />
     <Compile Include="IVideoSelect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
