@@ -28,20 +28,23 @@ namespace DAL
             foreach (var i in orders)
             {
                 var t = i.OrderTime;
-                if (String.Compare(t.ToString(), dateTime.Ticks.ToString()) == 0)
+                if (t==dateTime)
                 {
-                    var OrderID = i.OrderID;
+                    //var OrderID = i.OrderID;
+                    var order = db.Orders.Where(u => u.OrderTime == dateTime).FirstOrDefault();
+                    var orderid = order.OrderID;
                     var orderdetails = new Models.OrderDetails()
                     {
                         GoodsID = GoodsID,
                         Count = Num,
                         UserID = ID,
-                        OrderID=OrderID
+                        OrderID=orderid
                     };
                     db.OrderDetails.Add(orderdetails);
+                    db.SaveChanges();
                 }
             }
-            db.SaveChanges();
+           
         }
 
 

@@ -32,6 +32,9 @@ namespace DAL
         public int goodslikenum(int goodsid)
         {
             int likenum = db.GoodsLike.Where(g=>g.GoodsID==goodsid).Count();
+            var t = db.Goods.Where(g => g.GoodsID == goodsid).FirstOrDefault();
+            t.ThumbNum = likenum;
+            db.SaveChanges();
             return likenum;
         }
     }

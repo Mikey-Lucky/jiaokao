@@ -4,8 +4,8 @@
   
 }*@
 
-<h2>OrderDetails1</h2>
-<table>
+@*<h2>OrderDetails1</h2>*@
+<table class="table">
     <tr>
         <th>商品名称</th>
         <th>商品图片</th>
@@ -15,7 +15,7 @@
 
     @foreach(var item in Model) { 
         <tr>
-            @*<td>@Model.OrderID</td>*@
+            <td>@item.Goods.Name</td>
             <td><img src="~/Images/GoodsImages/@item.Goods.GoodsImage" /></td>
             <td>@item.Goods.Unitprice</td>
             <td>@item.Count</td>
