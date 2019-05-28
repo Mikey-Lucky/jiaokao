@@ -27,37 +27,73 @@
             margin: 0 auto;
            
         }
+        .file-box {
+            position: relative;
+            display: inline-block;
+        }
+        .file-box img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            top: -30px;
+            left: 0;
+            display: inline-block;
+            border: none;
+        }
+        .file-box .txt,.file-box .file {
+            width: 70px;
+            height: 36px;
+            position: absolute;
+            top: -20px;
+            left: 100px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <div class="content">
+    @*<div class="content">
         <div>
             <h1>完整demo</h1>
-            <input />标题
             
+            <input name="title" />标题
             <script id="editor" type="text/plain">
             </script>
         </div>
-        <div id="btns">
-            <div>
-                <button onclick="getContent()">获得内容</button>
-            </div>
+    </div>*@
+   
+    @using (Html.BeginForm("UpNote", "YiChuShow", FormMethod.Post, new { @class = "PostSendForm", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <input name="title" value="标题"/>
+        <div id="containner">
+            <input type="file" id="imgFile" name="imgfile" onchange="previewFile()"><br>
+            <img src="" height="200" alt="Image preview...">
         </div>
-        <footer>
-            aaa
-        </footer>
-    </div>
+        <script id="container" name="content" type="text/plain">
+        </script>
+        <input type="submit" value="提交" />
+    }
     <script type="text/javascript">
-
-    //实例化编辑器
-    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-    var ue = UE.getEditor('editor');
-    function getContent() {
-        var arr = [];
-        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-        arr.push("内容为：");
-        arr.push(UE.getEditor('editor').getContent());
-        alert(arr.join("\n"));
+     var editor = UE.getEditor('container');
+    function previewFile() {
+        var preview = document.querySelector('img')
+        var fileDom = document.querySelector('input[type=file]')
+        // 获取得到file 对象
+        var file = fileDom.files[0]
+        // 限制上传图片的大小
+        if (file.size > 1024 * 1024 * 2) {
+            alert('图片大小不能超过 2MB!');
+            return false;
+        }
+        // 创建url
+        var imgUrl = window.URL.createObjectURL(file)
+        preview.setAttribute("src", imgUrl)
+        // 更改img url 以后释放 url
+        preview.onload = function () {
+            // console.log('图片加载成功')
+            URL.revokeObjectURL(imgUrl)
+        }
     }
     </script>
 </body>
