@@ -21,5 +21,10 @@ namespace BLL
         {
             return ilike.videolikenum(videoid);
         }
+        //用户喜欢视频的所有数据
+        public IEnumerable<VideoLike> userlikevideo(int userid)
+        {
+            return ilike.userlikevideo(userid);
+        }
     }
 }

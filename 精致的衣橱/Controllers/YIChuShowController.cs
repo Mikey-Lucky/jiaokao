@@ -17,6 +17,7 @@ namespace 精致的衣橱.Controllers
         VideoManager videos = new VideoManager();
         YiChuShowViewModel ycsv = new YiChuShowViewModel();
         VideoLikeManager likes = new VideoLikeManager();
+        NoteLikeManager notelikes = new NoteLikeManager();
         VideoSelectManager selects = new VideoSelectManager();
         // GET: YIChuShow
         public ActionResult Index()
@@ -80,7 +81,12 @@ namespace 精致的衣橱.Controllers
         }
         public ActionResult Userhome()
         {
-            return View();
+            ycsv.userlikenote = notelikes.userlikenote(1);
+            ycsv.userlikevideo = likes.userlikevideo(1);
+            ycsv.userupnote= notes.AllNoteByID(1);
+            ycsv.userupvideo = videos.uservideo(1);
+
+            return View(ycsv);
         }
       
         public ActionResult UserAllNote()

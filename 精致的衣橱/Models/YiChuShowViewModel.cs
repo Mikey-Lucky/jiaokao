@@ -20,6 +20,14 @@ namespace 精致的衣橱.Models
         public IEnumerable<Note> NewNote { get; set; }
         //最新视频
         public IEnumerable<Video> NewVideo { get; set; }
+        //用户喜欢的视频
+        public IEnumerable<VideoLike> userlikevideo { get; set; }
+        //用户喜欢的笔记
+        public IEnumerable<NoteLike> userlikenote { get; set; }
+        //用户发表过的笔记
+        public IEnumerable<Note> userupnote { get; set; }
+        //用户上传过的视频
+        public IEnumerable<Video> userupvideo { get; set; }
 
     }
 }

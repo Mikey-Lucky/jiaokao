@@ -56,7 +56,7 @@
             margin-top: 14px;
         }
 
-            .main .tianqi {
+            /*.main .tianqi {
                 min-height: 800px;
                 width: 255px;
                 background-color: white;
@@ -72,7 +72,7 @@
                 float: right;
                 border: 1px solid rgb(238,238,238);
                 border-radius: 0 1% 1% 0;
-            }
+            }*/
 
         .banner img {
             height: 77px;
@@ -134,9 +134,12 @@
                 <img src="~/Images/HeadImages/1.jpg" />
                 <h2>疯狂的企鹅</h2>
                 <span>女</span>
+                <!--判断用户是否为登入用户，如果是编辑个人信息，不是就显示加关注-->
+                <span>加关注</span>
+                <span>编辑个人信息</span>
                 <div class="h-action">
-                    <span>锁</span>
-                    <a href="#">衣橱圈</a>
+                    <span>关注</span>
+                    <span>粉丝</span>
                 </div>
             </div>
         </div>
@@ -144,15 +147,11 @@
             <ul>
                 <li>
                     <span class="glyphicon glyphicon-home"></span>
-                    <a href="#">秀场</a>
-                </li>
-                <li>
-                    <span class="glyphicon glyphicon-dashboard"></span>
-                    <a href="#">动态</a>
+                    <a href="@Url.Action("Index","YiChuShow")">秀场</a>
                 </li>
                 <li>
                     <span class="glyphicon glyphicon-heart-empty"></span>
-                    <a href="#">收藏</a>
+                    <a href="#">喜欢</a>
                 </li>
                 <li>
                     <span class="glyphicon glyphicon-book"></span>
@@ -167,10 +166,6 @@
     </div>
     <div class="main container">
         @RenderBody()
-        @*<div class="tianqi">
-            <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=55" width="255" height="294" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-        </div>
-        <div class="content"></div>*@
     </div>
 </body>
 </html>

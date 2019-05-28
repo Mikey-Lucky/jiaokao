@@ -1,29 +1,21 @@
-﻿
+﻿@model 精致的衣橱.Models.YiChuShowViewModel
 @{
     Layout = "~/Views/Shared/_UsershowhomeLayout.cshtml";
 }
+<div id="userlike">
+    @foreach (var video in Model.userlikevideo)
+    {
+        @video.Video.Image
+    }
+    @foreach (var note in Model.userlikenote)
+    {
+        @note.Note.Img
+    }
+</div>
+<div id="usernote">
+    
+</div>
+<div id="uservideo">
 
-@*
-            .main .tianqi {
-                min-height: 800px;
-                width: 255px;
-                background-color: white;
-                float: left;
-                border: 1px solid rgb(238,238,238);
-                border-radius: 1% 0 0 1%;
-            }
+</div>
 
-            .main .content {
-                min-height: 800px;
-                width: 1033px;
-                background-color: white;
-                float: right;
-                border: 1px solid rgb(238,238,238);
-                border-radius: 0 1% 1% 0;
-            }
-*@
-
-        <div class="tianqi">
-        </div>
-        <div class="content">
-        </div>

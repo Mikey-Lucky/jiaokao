@@ -12,6 +12,9 @@ namespace DAL
     {
     
         yichuEntities db = DbContextFactory.CreateDbContext();
+
+      
+
         public void Videolikeclick(int userid, int videoid)
         {
             VideoLike like = db.VideoLike.Where(b => b.UserID == userid && b.VideoID == videoid).FirstOrDefault();
@@ -35,6 +38,11 @@ namespace DAL
         {
             int likenum = db.VideoLike.Where(v => v.VideoID == videoid).Count();
             return likenum;
+        }
+        public IEnumerable<VideoLike> userlikevideo(int userid)
+        {
+            var likevideo = db.VideoLike.Where(l => l.UserID == userid);
+            return likevideo;
         }
     }
 }
