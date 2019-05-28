@@ -3186,7 +3186,7 @@
             <End Role="Video" EntitySet="Video" />
             <End Role="VideoTrasmit" EntitySet="VideoTrasmit" />
           </AssociationSet>
-          <FunctionImport Name="Cart_Orders" ReturnType="Collection(Int32)">
+          <FunctionImport Name="Cart_Orders">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
             <Parameter Name="UserName" Mode="In" Type="String" />
             <Parameter Name="Tel" Mode="In" Type="String" />

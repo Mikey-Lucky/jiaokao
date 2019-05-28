@@ -143,7 +143,7 @@ namespace 精致的衣橱.Controllers
             var cart = cartmanager.Cart(userid);
             return View(cart);
         }
-        [Login]
+        //[Login]
         [HttpPost]
         //public ActionResult jrgwc([Bind(Include = "UserID,GoodsID,Count,CartTime,Price,Flag")]Cart cart)
         public ActionResult Cart(int GoodsID, Cart cart)
@@ -229,7 +229,7 @@ namespace 精致的衣橱.Controllers
         //将Buy改成了Order
         [HttpPost]
         [Login]
-        public JsonResult Buy(int[] a, string name, string userphone, string address, int total)
+        public ActionResult Buy(int[] a, string name, string userphone, string address, int total)
         {
             var datetime = System.DateTime.Now;
             int uid = Convert.ToInt32(Session["User_id"]);
@@ -239,6 +239,7 @@ namespace 精致的衣橱.Controllers
             {
                 odersmanager.Pay(a[i], uid, name, userphone, address);
             }
+
             //return Content("<script>alert('添加地址成功');window.location.href='../Mall/Order';<script>");
             Message msg = new Message()
             {
@@ -248,17 +249,23 @@ namespace 精致的衣橱.Controllers
         }
         [HttpPost]
         [Login]
-        public JsonResult DirectBuy(int tol, string uname, string tel, string address,int goodsid,int num)
+        public ActionResult DirectBuy(int total,string uname,string tel,string address,int num,int goodsid)
         {
+
+            //return Redirect("GoodsDetails");
+            
+            
             var datetime = System.DateTime.Now;
             int uid = Convert.ToInt32(Session["User_id"]);
-            //odersmanager.Order(datetime, tol, uid, uname, tel, address);
-            orderdetailsmanager.DirectBuy(goodsid, datetime,uid, num);
+            //int uid = 1;
+            odersmanager.Order(datetime, total, uid, uname, tel, address);
+            orderdetailsmanager.DirectBuy(goodsid, datetime, uid, num);
             Message msg = new Message()
             {
                 message = "下单成功"
             };
             return base.Json(msg);
+
 
         }
         [Login]
@@ -271,13 +278,13 @@ namespace 精致的衣橱.Controllers
             return View(t);
         }
         //点赞
-        [Login]
+        //[Login]
         public int Zan(int goodsid)
         {
 
-            int userid = Convert.ToInt32(Session["User_id"]);
-            //videos.Videolikeclick(userid,videoid);
-            //likes.Videolikeclick(userid, goodsid);
+            //int userid = Convert.ToInt32(Session["User_id"]);
+            int userid = 2;
+           
             goodslikemanager.GoodsLikeClick(userid,goodsid);
             int num = goodslikemanager.goodslikenum(goodsid);
             return num;

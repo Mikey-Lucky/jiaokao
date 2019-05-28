@@ -104,6 +104,9 @@
     #thub{
         font-size:10px;
     }
+    #zan{
+
+    }
 </style>
 <div class="Cooldog_container">
 <div class="Cooldog_content">
@@ -208,7 +211,7 @@
     </div>
     <div class="container">
         <div class="panel-body row" style="text-overflow:ellipsis">
-            @foreach (var g in Model.HotGoods)
+        @foreach (var g in Model.HotGoods)
         {
                 <div class="col-md-3 col-sm-3" style="height:340px;">
                     <a href="#" style="margin-bottom:10px">
@@ -221,12 +224,33 @@
                             <div style="background-color:white;padding-bottom:10px;height:20px;"></div>
                         </div>
                         <div class="col-md-1"></div>
-                        <div class="col-md-1"><img src="~/iconfont/点赞.png" style="height:22px;width:auto" /><label id="thum">@g.ThumbNum</label></div>
+                        <div class="col-md-1"><img src="~/iconfont/点赞.png" style="height:22px;width:auto" class="@g.GoodsID" /><span id="@g.GoodsID">@g.ThumbNum</span></div>
+                        
+                        @*<input type="hidden" value=""*@
+                        <input type="hidden" name="goodsid" id="goodsid" value="@g.GoodsID" readonly="readonly" />
+                        
                     </div>
 
 
 
                 </div>
+
+                <script>
+
+                    $(function () {
+                        $(document).on('click', '.@g.GoodsID', function () {   //赞
+                            var goodsid = $("input[name='goodsid']").val();
+                            $.ajax({
+                                type: "post",
+                                url: "/Mall/Zan",
+                                data: { "goodsid": goodsid },
+                                success: function (data) {
+                                    $("#@g.GoodsID").text(data);
+                                }
+                            });
+                        });
+                    })
+                </script>
         }
             <script>
                     $(function () { $("[data-toggle='tooltip']").tooltip(); });
