@@ -100,6 +100,11 @@ namespace DALFactory
             string className = AssemblyName + "." + db + "GoodsLike";
             return (IGoodsLike)Assembly.Load(AssemblyName).CreateInstance(className);
         }
+        public static INoteLike CreateNoteLike()
+        {
+            string className = AssemblyName + "." + db + "NoteLike";
+            return (INoteLike)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
 
     }
 }

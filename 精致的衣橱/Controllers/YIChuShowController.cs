@@ -17,6 +17,7 @@ namespace 精致的衣橱.Controllers
         VideoManager videos = new VideoManager();
         YiChuShowViewModel ycsv = new YiChuShowViewModel();
         VideoLikeManager likes = new VideoLikeManager();
+        NoteLikeManager notelikes = new NoteLikeManager();
         VideoSelectManager selects = new VideoSelectManager();
         // GET: YIChuShow
         public ActionResult Index()
@@ -43,6 +44,29 @@ namespace 精致的衣橱.Controllers
         {
             return View();
         }
+        //上传视频post页面
+        [HttpPost]
+        [ValidateInput(false)]//富文本编辑器防拦截
+        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]特性用来防止伪造的跨站请求，配合表单中的@Html.AntiForgeryToken()使用
+        //对数据进行增删改时要防止csrf攻击！
+        //该特性表示检测服务器请求是否被篡改。注意：该特性只能用于post请求，get请求无效。
+        public ActionResult UpNote(Note note)
+        {
+            var imgfile = Request.Files["imgfile"];
+            var title = Request["title"];
+            var notecontent = Request["content"];
+            var imgpath= Guid.NewGuid().ToString() + imgfile.FileName;
+            imgfile.SaveAs(Request.MapPath("/Images/Noteimg/" + imgpath));
+            note.Title = title;
+            note.NoteContent = notecontent;
+            note.likenum = 0;
+            note.Time = DateTime.Now;
+            note.Img = "../Noteimg/" + imgpath;
+            note.UserID = 1;
+            notes.AddNote(note);
+            return View();
+        }
         //视频详情页
         public ActionResult VideoDetail(int id)
         {
@@ -57,7 +81,12 @@ namespace 精致的衣橱.Controllers
         }
         public ActionResult Userhome()
         {
-            return View();
+            ycsv.userlikenote = notelikes.userlikenote(1);
+            ycsv.userlikevideo = likes.userlikevideo(1);
+            ycsv.userupnote= notes.AllNoteByID(1);
+            ycsv.userupvideo = videos.uservideo(1);
+
+            return View(ycsv);
         }
       
         public ActionResult UserAllNote()

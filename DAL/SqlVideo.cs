@@ -35,6 +35,7 @@ namespace DAL
                         select v;
             return video.FirstOrDefault();
         }
+
         public IEnumerable<Video> VideoRelative(int authorid, string title, string intro, int top)
         {
             var video = from v in db.Video
@@ -42,6 +43,13 @@ namespace DAL
                         select v;
             return video.Take(top);
         }
-  
+        public IEnumerable<Video> uservideo(int userid)
+        {
+           var video= from v in db.Video
+                      where v.UserID==userid
+                      select v;
+            return video;
+        }
+
     }
 }

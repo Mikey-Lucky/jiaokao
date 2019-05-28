@@ -47,7 +47,6 @@ namespace BLL
         //笔记详情
         public Note NoteDetail(int id)
         {
-
             return inote.GetNoteById(id);
         }
 

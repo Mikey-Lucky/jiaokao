@@ -34,7 +34,13 @@ namespace BLL
         {
             return ivideo.VideoRelative(authorid, title, intro,5);
         }
-    
+        //查询用户所有的视频
+        public IEnumerable<Video> uservideo(int userid)
+        {
+
+            return ivideo.uservideo(userid);
+        }
+
     }
 
 }

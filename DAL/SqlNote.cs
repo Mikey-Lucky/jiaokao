@@ -55,7 +55,7 @@ namespace DAL
 
         public IEnumerable<Note> Getnewnote(int top)
         {
-            return db.Note.OrderByDescending(o => o.Time);
+            return db.Note.OrderByDescending(o => o.Time).Take(top);
         }
 
         public Note GetNoteById(int id)
