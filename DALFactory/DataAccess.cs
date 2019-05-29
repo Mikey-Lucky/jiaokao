@@ -110,11 +110,15 @@ namespace DALFactory
             string className = AssemblyName + "." + db + "VideoComment";
             return (IVideoComment)Assembly.Load(AssemblyName).CreateInstance(className);
         }
-       
         public static IU_Reply_VideoComment CreateU_Reply_VideoComment()
         {
             string className = AssemblyName + "." + db + "U_Reply_VideoComment";
             return (IU_Reply_VideoComment)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
+        public static IGoodsComment CreateGoodsComment()
+        {
+            string className = AssemblyName + "." + db + "GoodsComment";
+            return (IGoodsComment)Assembly.Load(AssemblyName).CreateInstance(className);
         }
     }
 }

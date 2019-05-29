@@ -71,6 +71,14 @@
     #s{
 
     }
+    #tt{
+        height:200px;
+        height:200px;
+        border-radius:3px;
+    }
+    #pl{
+        background-color:red;
+    }
 </style>
 
 
@@ -151,12 +159,20 @@
        }           
      </div>
 </div>
+<hr />
+@using (Html.BeginForm("Comment", "Mall", FormMethod.Post))
+{
+    <div>
+        <textarea name="pinglun" style="border-radius:4px;height:68px;width:798px;display:block;border:1px solid #c03f3c" id="tt"></textarea>
+        <button id="pl">发表评论</button>
+    </div>
+}
 
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 @*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
 <script>
-  
+    $(function (){
         var uname = $("#Name");
         
         var add = $("#Address");
@@ -195,9 +211,26 @@
                 }
             });
         });
-       
+
+
+        var pinglun = $("#tt");
+        $("pl").on("click", function () {
+            $.ajax({
+                type: 'post',
+                url: "/Mall/Comment",
+                data: {
+                    "goodsid":GoodsID.val(),
+                    "text":pinglun.val()
+                },
+                success:function(data){
+                    alert("评论成功");
+                }
+            })
+        }
+
+    )}
 
     //})
 
-
+)
 </script>

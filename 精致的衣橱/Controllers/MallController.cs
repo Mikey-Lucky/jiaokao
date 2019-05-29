@@ -23,6 +23,7 @@ namespace 精致的衣橱.Controllers
         AddressManager addressmanager = new AddressManager();
         OrderDetailsManager orderdetailsmanager = new OrderDetailsManager();
         GoodsLikeManager goodslikemanager = new GoodsLikeManager();
+        GoodsCommentManager goodscommentmanager = new GoodsCommentManager();
         public ActionResult Index()
         {
             var g1 = goodsmanager.GetHotGoods(8);
@@ -40,101 +41,102 @@ namespace 精致的衣橱.Controllers
         }
         public ActionResult GoodsDetails(int id)
         {
-            //Session["GoodsID"] = id;
+            Session["goodsid"] = id;
             var a = db.Goods.Where(p => p.GoodsID == id).FirstOrDefault();
             return View(a);
         }
-        public ActionResult GoodIndex()
-        {
-            //var c1 = from o in db.GGCC
-            //         where o.Season == season
-            //         select o;
-            //var c2 = from o in db.GGCC
-            //         where o.Sex == sex
-            //         select o;
-            //var c3 = from o in db.GGCC
-            //         where o.Style == style
-            //         select o;
-            //var c4 = from o in db.GGCC
-            //         where o.Material == material
-            //         select o;
-            //var c5 = from o in db.GGCC
-            //         where o.Color == color
-            //         select o;
-            //Category1ViewModel cate = new Category1ViewModel();
-            //cate.Season = c1;
-            //cate.Sex = c2;
-            //cate.Style = c3;
-            //cate.Material = c4;
-            //cate.Color = c5;
-            //return View(cate);
-            var goods = ggccmanager.Category();
-            return View(goods);
+        //public ActionResult GoodIndex()
+        //{
 
-        }
+        //    var goods = ggccmanager.Category();
+        //    return View(goods);
 
+        //}
 
-        //public ActionResult GoodsType(string season,string sex,string style,string material,string color,string currentFilter,int ? page)
+        ////有问题
+        //public ActionResult GoodsType(string CategoryName, string Season, string currentFilter, int? page)
         //{
         //    var c1 = ggccmanager.GetGoods();
-
-        //    if(season !=null || sex!=null || style!=null || material!=null || color!=null)
+        //    if (CategoryName != null || Season != null)
         //    {
+
         //        page = 1;
         //    }
-        //    else
+        //    if (CategoryName != null && Season == null)
         //    {
-        //        season = currentFilter;
-        //        sex = currentFilter;
-        //        style = currentFilter;
-        //        material = currentFilter;
-        //        color = currentFilter;
-        //    }
-        //    ViewBag.CurrentFilter = season;
-        //    ViewBag.CurrentFilter = sex;
-        //    ViewBag.CurrentFilter = style;
-        //    ViewBag.CurrentFilter = material;
-        //    ViewBag.CurrntFilter = color;
+        //        CategoryName = currentFilter;
 
-        //    if(season!=null||sex!=null||style!=null||material!=null||color!=null)
-        //    {
-        //        c1 = ggccmanager.GetCategoryByCateName(season,sex,style,material,color);
+        //        ViewBag.CurrentFilter = CategoryName;
+
         //    }
+        //    else if (CategoryName == null && Season != null)
+        //    {
+        //        Season = currentFilter;
+        //        ViewBag.CurrentFilter = Season;
+        //    }
+
         //    int pageSize = 8;
-        //    int pageNumber = (page??1);
-        //    return PartialView(c1.ToPagedList(pageNumber,pageSize));
+        //    int pageNumber = (page ?? 1);
+        //    return PartialView(c1.ToPagedList(pageNumber, pageSize));
         //}
-        //有问题
-        public ActionResult GoodsType(string CategoryName, string Season, string currentFilter, int? page)
+        //public ActionResult GoodsShow(string CateName, string season)
+        //{
+        //    var goods = ggccmanager.GetGoods();
+        //    goods = ggccmanager.GetCategoryByCateName(CateName, season);
+        //    return View(goods);
+        //}
+        //商品的种类导航栏
+        //public ActionResult Nav(string sex, string season, string material, string style, string type)
+        //{
+            
+        //}
+        public ActionResult Category(string sex, string season, string material, string style, string type,string currentFilter1,string currentFilter2, string currentFilter3, string currentFilter4, string currentFilter5,int? page)
         {
-            var c1 = ggccmanager.GetGoods();
-            if (CategoryName != null || Season != null)
+            var c1 = goodsmanager.Getsall();
+            if(sex!=null || season !=null || material!=null || style!=null || type!=null)
             {
-
                 page = 1;
+              
             }
-            if (CategoryName != null && Season == null)
+            if (sex != null && season != null && material != null && style != null && type != null)
             {
-                CategoryName = currentFilter;
-
-                ViewBag.CurrentFilter = CategoryName;
-
+                sex = currentFilter1;
+                ViewBag.Currentfilter1 = sex;
+                season = currentFilter2;
+                ViewBag.Currentfilter2 = season;
+                material = currentFilter3;
+                ViewBag.Currentfilter3 = material;
+                style = currentFilter4;
+                ViewBag.Currentfilter4 = style;
+                type = currentFilter5;
+                ViewBag.Currentfilter5 = type;
             }
-            else if (CategoryName == null && Season != null)
+            if(sex!=null && season!=null && material!=null && season!=null && type!=null)
             {
-                Season = currentFilter;
-                ViewBag.CurrentFilter = Season;
+                c1 = c1.Where(x => x.Sex == sex && x.Season == season && x.Material == material && x.Style == style && x.Type == type);
             }
-
-            int pageSize = 8;
+            int pageSize = 16;
             int pageNumber = (page ?? 1);
-            return PartialView(c1.ToPagedList(pageNumber, pageSize));
+            return View(c1.ToPagedList(pageNumber, pageSize));
+
+
         }
-        public ActionResult GoodsShow(string CateName, string season)
+        public ActionResult Search()
         {
-            var goods = ggccmanager.GetGoods();
-            goods = ggccmanager.GetCategoryByCateName(CateName, season);
-            return View(goods);
+            var sear = Request["search"].ToString();
+            var seagoods = goodsmanager.Search(sear);
+            
+            if (seagoods != null)
+            {
+                //int pageSize = 12;
+                //int pageNum = (page ?? 1);
+                //return PartialView(seagoods.ToPagedList(pageNum, pageSize));
+                return PartialView(seagoods);
+            }
+            
+            else
+                return Content("您查找的商品不存在");
+            
         }
         [Login]
         public ActionResult Cart()
@@ -188,9 +190,39 @@ namespace 精致的衣橱.Controllers
         //{
 
         //}
-        public ActionResult Comment()
+        //商品评论回复
+        //public ActionResult Comment(int goodsid)
+        //{
+            
+        //    var com = goodscommentmanager.Getgoodscommentbyid(goodsid);
+        //    return View(com);
+        //}
+        [HttpPost]
+        //[Login]
+        public ActionResult Comment(int goodsid,string text)
         {
-            return View();
+            goodsid =2;
+            //var text;
+            DateTime datetime = System.DateTime.Now;
+            int thumb = 0;
+            //int id = Convert.ToInt32(Session["User_id"]);
+            int id = 1;
+            if (ModelState.IsValid)
+            {
+                if (text != null)
+                {
+
+                    goodscommentmanager.AddGoodsComment(text,id,goodsid,datetime,thumb);
+                    //var usercomment = goodscommentmanager.Getgoodscommentbyid(goodsid);
+                }
+                //else
+                //{
+                //    return Content("<script>alert('评论不能为空！');history.go(-1)</script>");
+                //}
+                //return View();
+            }
+            return Content(Convert.ToString(goodsid));
+
         }
         [Login]
         public ActionResult Order()
@@ -199,22 +231,7 @@ namespace 精致的衣橱.Controllers
             var order = odersmanager.GetOrdersById(id);
             return View(order);
         }
-        //public ActionResult Addaddress()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //[Login]
-        //public ActionResult Addaddress(string add)
-        //{
-        //    int userid = Convert.ToInt32(Session["User_id"]);
-
-        //    add = Request["dizhi"].ToString();
-        //    addressmanager.Add(userid,add);
-        //    return Content("添加地址成功");
-        //}
-
-        //将Addaddress改成了Order
+       
         [HttpPost]
         [Login]
         public ActionResult Addaddress(string add)

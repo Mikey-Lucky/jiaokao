@@ -40,6 +40,20 @@ namespace BLL
             var goods = igoods.Dong(top);
             return goods;
         }
-        
+        public IEnumerable<Goods> Getsall()
+        {
+            var goods = igoods.Getsall();
+            return goods;
+        }
+        public IEnumerable<Goods> Category(string sex, string season, string material, string style, string type)
+        {
+            var goods = igoods.Category(sex,season,material,style,type);
+            return goods;
+        }
+        public IEnumerable<Goods> Search(string search)
+        {
+            var goods = igoods.Search(search);
+            return goods;
+        }
     }
 }

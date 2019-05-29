@@ -44,6 +44,7 @@
     <Compile Include="CartManager.cs" />
     <Compile Include="CoatManager.cs" />
     <Compile Include="GGCCManager.cs" />
+    <Compile Include="GoodsCommentManager.cs" />
     <Compile Include="GoodsLikeManager.cs" />
     <Compile Include="GoodsManager.cs" />
     <Compile Include="NetherGarmentManager.cs" />

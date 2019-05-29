@@ -60,6 +60,7 @@
     <Compile Include="SqlCoat.cs" />
     <Compile Include="SqlGGCC.cs" />
     <Compile Include="SqlGoods.cs" />
+    <Compile Include="SqlGoodsComment.cs" />
     <Compile Include="SqlGoodsLike.cs" />
     <Compile Include="SqlNetherGarment.cs" />
     <Compile Include="SqlNote.cs" />

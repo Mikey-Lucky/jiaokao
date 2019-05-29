@@ -45,6 +45,7 @@
     <Compile Include="ICoat.cs" />
     <Compile Include="IGGCC.cs" />
     <Compile Include="IGoods.cs" />
+    <Compile Include="IGoodsComment.cs" />
     <Compile Include="IGoodsLike.cs" />
     <Compile Include="INetherGarment.cs" />
     <Compile Include="INote.cs" />

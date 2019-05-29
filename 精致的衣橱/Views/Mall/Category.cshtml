@@ -1,0 +1,98 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Models.Goods>
+@{
+    ViewBag.Title = "Category";
+    //Layout = null;
+}
+<style>
+    ul{
+        display:inline-block;
+    }
+    ul li{
+        list-style:none;
+        
+    }
+    .img{
+        height:200px;
+        width:200px;
+        margin-right:40px;
+
+    }
+    .img:hover{
+        box-shadow: 1px 1px 5px #000000;
+        border:1px solid red;
+        margin-top:-1px;
+    }
+    .name{
+        width:100px;
+        margin:0 auto;
+    }
+    .form{
+        position:relative;
+        left:320px;
+        top:25px;
+        width:550px;
+        height:35px;
+    }
+    .seach{
+        left:0;
+        padding:4px 44px 4px 4px;
+        width:450px;
+        height:25px;
+        border:3px solid red;
+        line-height:25px;
+        font-size:14px;
+    }
+    .btn{
+        width:40px;
+        height:25px;
+        background-color:red;
+        text-align:center;
+    }
+    .fm{
+        margin-bottom:30px;
+    }
+    .dd{
+        width:120px;
+        margin:0 auto;
+    }
+</style>
+<div style="margin:auto 0px">
+    <div class="form">
+        @*<div class="seach"><span class="glyphicon glyphicon-search"></span>*@
+        @using (Html.BeginForm("Search", "Mall", FormMethod.Post, new { }))
+        {
+            <input type="text" class="seach" name="search" placeholder="请输入关键字" />
+            <button value="搜索" class="btn">搜索</button>
+        }
+    </div>
+    <div style="margin-top:56px;">
+        @foreach (var item in Model)
+        {
+            <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" data-title="@item.Name">
+                <ul>
+                    <li><img src="~/Images/GoodsImages/@item.GoodsImage" class="img" /></li>
+
+
+                    <li><span style="color:black">$@item.Unitprice</span></li>
+                    <li><p style="color:black">立即购买</p></li>
+                </ul> 
+                
+            </a>
+           
+        }
+
+        <div>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)of @Model.PageCount</div>
+        @Html.PagedListPager(Model, page => Url.Action("Category", "Mall", new { page, currentFilter1 = ViewBag.Currentfilter1, currentFilter2 = ViewBag.Currentfilter2, currentFilter3 = ViewBag.Currentfilter3, currentFilter4 = ViewBag.Currentfilter4, currentFilter5 = ViewBag.Currentfilter5 }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+    new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "Div1"
+    }))
+    </div>
+    <div id="Div1">
+
+    </div>
+
+</div>

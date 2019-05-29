@@ -763,7 +763,6 @@
     <Content Include="Views\Mall\GoodIndex.cshtml" />
     <Content Include="Views\Mall\GoodsType.cshtml" />
     <Content Include="Views\Mall\GoodsShow.cshtml" />
-    <Content Include="Views\Mall\Comment.cshtml" />
     <Content Include="Views\Mall\Cart.cshtml" />
     <Content Include="Views\Mall\Cart1.cshtml" />
     <Content Include="Views\YIChuShow\Index.cshtml" />
@@ -783,9 +782,11 @@
     <Content Include="Views\YIChuShow\UpNote.cshtml" />
     <Content Include="Views\YiChu\TianqiClothes.cshtml" />
     <Content Include="Views\YIChuShow\VideoComment.cshtml" />
-    <Content Include="Views\YIChuShow\VideoCommentReply.cshtml" />
+	  <Content Include="Views\YIChuShow\VideoCommentReply.cshtml" />
     <Content Include="Views\Shared\_UsershowhomeLayout.cshtml" />
     <Content Include="Views\Shared\_LayoutDaohang.cshtml" />
+	<Content Include="Views\Mall\Category.cshtml" />
+    <Content Include="Views\Mall\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,59 @@
+﻿@*@using PagedList.Mvc;*@
+@model IEnumerable<Models.Goods>
+    @{ 
+
+    }
+
+<style>
+    .container{
+        margin:auto 112px;
+    }
+    ul{
+        display:inline-block;
+    }
+    ul li{
+        list-style:none;
+        
+    }
+    .img{
+        height:200px;
+        width:200px;
+        margin-right:40px;
+
+    }
+    .img:hover{
+        box-shadow: 1px 1px 5px #000000;
+        border:1px solid red;
+        margin-top:-1px;
+    }
+</style>
+
+<div class="container" style="overflow:hidden">
+    @foreach (var item in Model)
+    {
+        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" data-title="@item.Name">
+            <ul>
+                <li><img src="~/Images/GoodsImages/@item.GoodsImage" class="img" /></li>
+
+
+                <li><span style="color:black">$@item.Unitprice</span></li>
+                <li><p style="color:black">立即购买</p></li>
+            </ul>
+
+        </a>
+    }
+</div>
+
+@*@Html.PagedListPager(Model,page=>Url.Action("Search","Mall",new { page, currentFilter =ViewBag.Filter }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+                  new AjaxOptions
+                  {
+                      HttpMethod = "GET",
+                      InsertionMode = InsertionMode.Replace,
+                      UpdateTargetId = "Div1"
+                  }))*@
+
+
+
+
+
