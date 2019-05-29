@@ -11,15 +11,11 @@
     <title>NoteDetail</title>
     <style>
         body {
-           background-image: url('../../Images/yichu/lu.jpg');
-           background-repeat: no-repeat;
-           background-size: cover;
-           /*-webkit-filter: blur(1px);*/ 
-           /*filter: blur(10px);*/
+          background-color: #f2f2f2;
         }
         .container {
             margin: 0 auto;
-            width: 62%;
+            width: 1200px;
             background-color: antiquewhite;
             filter: blur(0px);
         }
@@ -27,15 +23,26 @@
            float: left;
            width: 75%;
            background-color: white;
-           height:800px;
-           overflow-y: scroll;
-            filter: blur(0px);
+           border-right:20px solid #f2f2f2;
+           box-sizing: border-box;
+           margin-top: 20px;
+           /*overflow-y: scroll;*/
+        }
+        .notecontent h2 {
+            color: #222;
+            font-size: 20px;
+            margin-bottom: 30px;
+            margin-top: 4px;
+            padding: 0;
+            border-bottom: none;
+            font-weight: 700;
         }
         .noterelative {
             float: right;
             width: 25%;
             background-color: aqua;
             height:800px;
+            margin-top: 20px;
         }
         img {
             width: 580px;
@@ -45,6 +52,9 @@
 <body>
     <div class="container">
         <div class="notecontent">
+            <p>
+                @Html.ActionLink("返回", "Index")
+            </p>
             <h2>@Model.Title</h2>
             <span>@Model.Users.UserName</span><span>@Model.Time</span>
             <hr />
@@ -52,9 +62,7 @@
         </div>
         <div class="noterelative">
             aaaaaaaaa
-            <p>
-                @Html.ActionLink("Back to List", "Index")
-            </p>
+         
         </div>
     </div>
   
