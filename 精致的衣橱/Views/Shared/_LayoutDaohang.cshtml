@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        .zong-nav {
+           position: fixed;
+           top: 0px;
+           left: 0px;
+           height: 56px;
+           width: 100%;
+           background-color: #fff;
+           z-index: 99;
+           font-family: 'Roboto Mono', monospace;
+           font-size: 18px;
+           /*top: 0px;*/
+        }
+        .container {
+          width: 76%;
+          /*margin-left: auto;
+          margin-right: auto;*/
+        }
+       .zong-nav .nav li {
+           display: inline-block;
+           width: 146px;
+           height: 20px;
+        }
+        .nav li:first-child {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .nav {
+            float: left
+        }
+        .nav li a {
+           text-decoration: none;
+           color:black;
+        }
+        .nav-r {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="zong-nav">
+        <div class="container">
+            <div class="nav">
+                <ul>
+                    <li>精致的衣橱</li>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="@Url.Action("Index","YiChu")">我的衣橱</a></li>
+                    <li><a href="@Url.Action("Index","YiChuShow")">衣橱秀场</a></li>
+                    <li><a href="@Url.Action("Index","Mall")">购物中心</a></li>
+                    <li><a href="#">个性推荐</a></li>
+                </ul>
+            </div>
+            <div class="nav-r">
+                <div class="login-out">
+                    <div class="login">
+                        <a href="#">登陆</a>
+                        <a href="#">注册</a>
+                    </div>
+                    <div class="logout"></div>
+                </div>
+                <div class="zoom"></div>
+            </div>
+        </div>
+    </div>
+    <div style="height:50px;width:100%"></div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

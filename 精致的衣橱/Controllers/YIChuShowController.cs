@@ -20,6 +20,7 @@ namespace 精致的衣橱.Controllers
         NoteLikeManager notelikes = new NoteLikeManager();
         VideoCommentManager vcomments = new VideoCommentManager();
         VideoSelectManager selects = new VideoSelectManager();
+        U_Reply_VideoCommentManager ureplyvideocomment = new U_Reply_VideoCommentManager();
         // GET: YIChuShow
         public ActionResult Index()
         {
@@ -38,14 +39,14 @@ namespace 精致的衣橱.Controllers
             return View(note);
         }
         /// <summary>
-        /// 上传视频get
+        /// 上传笔记get
         /// </summary>
         /// <returns></returns>
         public ActionResult UpNote()
         {
             return View();
         }
-        //上传视频post页面
+        //上传笔记post页面
         [HttpPost]
         [ValidateInput(false)]//富文本编辑器防拦截
         [ValidateAntiForgeryToken]
@@ -74,6 +75,7 @@ namespace 精致的衣橱.Controllers
             var video = videos.VideoDetail(id);
             return View(video);
         }
+
         //视频评论展示分布视图
         public ActionResult VideoComment(int videoid)
         {
@@ -89,10 +91,26 @@ namespace 精致的衣橱.Controllers
             videocomment.UserID = 1;
             videocomment.VideoID =Convert.ToInt32(Request["videoid"]) ;
             vcomments.AddVideoComment(videocomment);
-            return View();
+            return Content("评论成功");
         }
-
-        //相关笔记分布视图
+        //视频评论回复分布视图
+        public ActionResult VideoCommentReply(int commentid)
+        {
+            var urvc= ureplyvideocomment.videocommentreply(commentid);
+            return PartialView(urvc);
+        }
+        [HttpPost]
+        public ActionResult VideoCommentReply(U_Reply_VideoComment urvc)
+        {
+            urvc.VCContent = Request["commentreply"];
+            urvc.VideocommentID = Convert.ToInt32(Request["videocommentid"]);
+            urvc.UserID = 1;
+            urvc.Likenum = 0;
+            urvc.Time = DateTime.Now;
+            ureplyvideocomment.AddVideoCommentReply(urvc);
+            return Content("回复成功");
+        }
+        //相关视频分布视图
         public ActionResult VideoRelative(int authorid, string title, string intro)
         {
             var video = videos.VideoRelative(authorid, title, intro);

@@ -1,6 +1,6 @@
 ﻿@model 精致的衣橱.Models.YiChuShowViewModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
 }
 
 <!DOCTYPE html>
@@ -13,16 +13,38 @@
     <script>document.documentElement.className = 'js';</script>
     <style>
         body {
-            background-color: white;
+            background-color: #f2f2f2;
+            font-size: 20px;
         }
         .control__item {
             display: inline-block;
+            width: 237px;
         }
+        .control__item:hover .control__label{
+                color: black!important;
+                font-size: 24px;
+       }
         main .content{
             margin: 0 auto;
         }
         .control--grids {
-             text-align: left;
+            margin: 6px 140px 2.5em;
+            /*text-align: right;*/
+            background-color: white;
+            border-top: 28px solid #f2f2f2;
+            height: 110px;
+            text-align: center;
+            /*letter-spacing: 10px;*/
+            font-size: 20px;
+            
+        }
+        /*.control__radio {
+            border-right: 10px solid #fff;
+            margin-right: 10px;
+        }*/
+        .control__radio:checked + .control__label {
+            color: #fff;
+            background: #ff006e;
         }
     </style>
 </head>

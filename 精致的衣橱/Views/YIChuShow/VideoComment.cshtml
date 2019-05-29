@@ -1,6 +1,46 @@
 ﻿@model IEnumerable<Models.VideoComment>
-
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+@*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
 @foreach (var c in Model)
 {
-    @c.Commentcotent
+    <p>评论</p>
+        @c.Commentcotent   
+        <button id="@c.VideoCommentID">回复</button>
+    <div id="'list'+@c.VideoCommentID">
+        @Html.Action("VideoCommentReply", new { commentid =@c.VideoCommentID })
+    </div>
+   <div style="visibility:hidden" id="vc">@c.VideoCommentID</div>
 }
+<textarea class="commentreply"></textarea>
+<script>
+          $(function () {
+            $(document).on('click', 'button', function () {   //评论回复
+                var commentreply = $(".commentreply").val();
+                var vcommentid = $(this).attr("id");
+                var listid = "list" + vcommentid;
+                $.ajax({
+                    type: "post",
+                    url: "/YiChuShow/VideoCommentReply",
+                    data: { "commentreply": commentreply ,"videocommentid":vcommentid},
+                        success: function (data) {
+                            alert(data);
+                            $.ajax({
+                                type: "get",
+                                url: "/YiChuShow/VideoCommentReply",
+                                data: { "commentid": vcommentid },
+                                success: function (data) {
+                                    //$("div#(vcommentid)").html(data);
+                                    $("#"+listid).html(data);//get取值存在问题
+                                },
+                                async: true
+                            });
+                        },
+                        async: true
+                    });
+            });
+        });
+</script>
+
+
+
+      
