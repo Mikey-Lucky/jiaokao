@@ -79,6 +79,9 @@
     #pl{
         background-color:red;
     }
+    #p2{
+
+    }
 </style>
 
 
@@ -160,13 +163,17 @@
      </div>
 </div>
 <hr />
-@using (Html.BeginForm("Comment", "Mall", FormMethod.Post))
+@using (Html.BeginForm("Comment", "Mall", FormMethod.Post,new {goodsid=Model.GoodsID }))
 {
     <div>
         <textarea name="pinglun" style="border-radius:4px;height:68px;width:798px;display:block;border:1px solid #c03f3c" id="tt"></textarea>
         <button id="pl">发表评论</button>
     </div>
+   
 }
+<div id="p2">
+    @{Html.RenderAction("Comment", "Mall",new { goodsid=Model.GoodsID});}
+</div>
 
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -223,7 +230,7 @@
                     "text":pinglun.val()
                 },
                 success:function(data){
-                    alert("评论成功");
+                    $("#p2").html(data);
                 }
             })
         }

@@ -191,17 +191,17 @@ namespace 精致的衣橱.Controllers
 
         //}
         //商品评论回复
-        //public ActionResult Comment(int goodsid)
-        //{
-            
-        //    var com = goodscommentmanager.Getgoodscommentbyid(goodsid);
-        //    return View(com);
-        //}
+        public ActionResult Comment(int goodsid)
+        {
+            goodsid = Convert.ToInt32(Session["goodsid"]);
+            var com = goodscommentmanager.Getgoodscommentbyid(goodsid);
+            return View(com);
+        }
         [HttpPost]
-        //[Login]
+        [Login]
         public ActionResult Comment(int goodsid,string text)
         {
-            goodsid =2;
+            //goodsid =2;
             //var text;
             DateTime datetime = System.DateTime.Now;
             int thumb = 0;
@@ -257,7 +257,7 @@ namespace 精致的衣橱.Controllers
                 odersmanager.Pay(a[i], uid, name, userphone, address);
             }
 
-            //return Content("<script>alert('添加地址成功');window.location.href='../Mall/Order';<script>");
+            
             Message msg = new Message()
             {
                 message = "下单成功"
@@ -269,7 +269,7 @@ namespace 精致的衣橱.Controllers
         public ActionResult DirectBuy(int total,string uname,string tel,string address,int num,int goodsid)
         {
 
-            //return Redirect("GoodsDetails");
+            
             
             
             var datetime = System.DateTime.Now;

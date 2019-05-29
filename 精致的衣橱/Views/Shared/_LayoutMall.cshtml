@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        .whole{
+            background-color:azure;
+        }
+        .img{
+            height:50px;
+            width:50px;
+            float:left;
+        }
+        .sousuo{
+            height:50px;
+            width:200px;
+            float:left;
+        }
+        .zi{
+            font-family: 'Roboto Mono', monospace;
+            width:190px;
+            height:36px;
+            border-color:red;
+            border-style:solid;
+        }
+        .btn{
+            float:left;
+            width:80px;
+            height:36px;
+            background-color:#f30213;
+            border:none;
+            color:#fff;
+            font-size:16px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body class="whole">
+    <div>
+        <img src="~/Images/GoodsImages/1.jpg" class="img" />
+        <div class="sousuo">
+            <input type="text" class="zi" name="guanjianzi" placeholder="请输入关键字"/>
+        </div>
+        <span><button class="btn"></button></span>
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
