@@ -55,6 +55,7 @@
     <Compile Include="IShirt.cs" />
     <Compile Include="ISuit.cs" />
     <Compile Include="IUsers.cs" />
+    <Compile Include="IU_Reply_VideoComment.cs" />
     <Compile Include="IVideo.cs" />
     <Compile Include="IVideoComment.cs" />
     <Compile Include="IVideoLike.cs" />

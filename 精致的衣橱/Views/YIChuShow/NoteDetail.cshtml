@@ -1,9 +1,8 @@
 ﻿@model Models.Note
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
 }
-
 <!DOCTYPE html>
 
 <html>
@@ -11,9 +10,32 @@
     <meta name="viewport" content="width=device-width" />
     <title>NoteDetail</title>
     <style>
+        body {
+           background-image: url('../../Images/yichu/lu.jpg');
+           background-repeat: no-repeat;
+           background-size: cover;
+           /*-webkit-filter: blur(1px);*/ 
+           /*filter: blur(10px);*/
+        }
+        .container {
+            margin: 0 auto;
+            width: 62%;
+            background-color: antiquewhite;
+            filter: blur(0px);
+        }
         .notecontent {
-           width: 580px;
-           background-color: antiquewhite;
+           float: left;
+           width: 75%;
+           background-color: white;
+           height:800px;
+           overflow-y: scroll;
+            filter: blur(0px);
+        }
+        .noterelative {
+            float: right;
+            width: 25%;
+            background-color: aqua;
+            height:800px;
         }
         img {
             width: 580px;
@@ -21,15 +43,21 @@
     </style>
 </head>
 <body>
-    <div class="notecontent">
-        <h2>@Model.Title</h2>
-        <span>@Model.Users.UserName</span><span>@Model.Time</span>
-        <hr />
-        @Html.Raw(@Model.NoteContent)
+    <div class="container">
+        <div class="notecontent">
+            <h2>@Model.Title</h2>
+            <span>@Model.Users.UserName</span><span>@Model.Time</span>
+            <hr />
+            @Html.Raw(@Model.NoteContent)
+        </div>
+        <div class="noterelative">
+            aaaaaaaaa
+            <p>
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+  
 </body>
 
 </html>
