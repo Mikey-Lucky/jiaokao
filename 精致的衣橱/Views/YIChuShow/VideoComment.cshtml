@@ -1,15 +1,16 @@
 ﻿@model IEnumerable<Models.VideoComment>
-<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+@*<script src="~/Scripts/jquery-3.1.1.min.js"></script>*@
 @*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
 @foreach (var c in Model)
 {
     <p>评论</p>
         @c.Commentcotent   
         <button id="@c.VideoCommentID">回复</button>
-    <div id="'list'+@c.VideoCommentID">
+    <div>
         @Html.Action("VideoCommentReply", new { commentid =@c.VideoCommentID })
     </div>
    <div style="visibility:hidden" id="vc">@c.VideoCommentID</div>
+  <div style="visibility:hidden" id="v">@c.VideoID</div>
 }
 <textarea class="commentreply"></textarea>
 <script>
@@ -17,7 +18,8 @@
             $(document).on('click', 'button', function () {   //评论回复
                 var commentreply = $(".commentreply").val();
                 var vcommentid = $(this).attr("id");
-                var listid = "list" + vcommentid;
+                //var listid = "list" + vcommentid;
+                var videoid = $("#v").text();
                 $.ajax({
                     type: "post",
                     url: "/YiChuShow/VideoCommentReply",
@@ -26,11 +28,14 @@
                             alert(data);
                             $.ajax({
                                 type: "get",
-                                url: "/YiChuShow/VideoCommentReply",
-                                data: { "commentid": vcommentid },
+                                url: "/YiChuShow/VideoComment",
+                                data: { "videoid": videoid },
                                 success: function (data) {
                                     //$("div#(vcommentid)").html(data);
-                                    $("#"+listid).html(data);//get取值存在问题
+                                    //$("#"+listid).html(data);//get取值存在问题
+                                    @*@Html.Raw(data)*@;
+                                    //console.log(data);
+                                    location.href = "/YiChuShow/VideoDetail/" + videoid
                                 },
                                 async: true
                             });
