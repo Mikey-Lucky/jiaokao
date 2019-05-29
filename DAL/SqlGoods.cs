@@ -46,21 +46,22 @@ namespace DAL
             var goods = db.Goods.Where(u => u.Season == "冬").Take(top);
             return goods;
         }
-        //public IEnumerable<Goods> allgoodsbytype(s)
-        //{
-        //    var goods = from o in db.Goods
-        //                where o.Season=="春"
-        //                orderby o.Sex
-        //                select o;
-        //}
-        //public void getThumbnum(int goodsid, int userid);
-        //{
-        //    var goods = db.Goods.Where(t => t.GoodsID == goodsid).FirstOrDefault();
-        //    goods.ThumbNum = goods.ThumbNum + num;
-        //    db.SaveChanges();
-        //    //int sum=thumb.FirstOrDefault
-        //    //return thumb.FirstOrDefault();
-            
-        //}
+        public IEnumerable<Goods> Getsall()
+        {
+            var goods = db.Goods.ToList();
+            return goods;
+        }
+       public IEnumerable<Goods> Category(string sex,string season,string material,string style,string type)
+        {
+            var goods = db.Goods.Where(u => u.Sex == sex && u.Season==season && u.Material==material && u.Style==style && u.Type==type);
+            return goods;
+        }
+        public IEnumerable<Goods> Search(string search)
+        {
+            var t = from p in db.Goods
+                    where p.Name.Contains(search) || p.Season.Contains(search) || p.Sex.Contains(search) || p.Style.Contains(search) || p.Type.Contains(search) || p.Material.Contains(search)
+                    select p;
+            return t.ToList();
+        }
     }
 }

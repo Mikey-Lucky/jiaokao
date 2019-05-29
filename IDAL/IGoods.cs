@@ -16,7 +16,8 @@ namespace IDAL
         IEnumerable<Goods> ChunQiu(int top);
         IEnumerable<Goods> Xia(int top);
         IEnumerable<Goods> Dong(int top);
-        //IEnumerable<> allgoodsbytype(string sex,string material, string style);
-        //void getThumbnum(int goodsid, int userid);
+        IEnumerable<Goods> Getsall();
+        IEnumerable<Goods> Category(string sex, string season, string material, string style, string type);
+        IEnumerable<Goods> Search(string search);
     }
 }
