@@ -38,6 +38,12 @@ namespace 精致的衣橱.Controllers
             var note = notes.NoteDetail(id);
             return View(note);
         }
+        //相关笔记分布视图
+        public ActionResult NoteRelative(int authorid, string title)
+        {
+            var note = notes.NoteRelative(authorid, title, 5);
+            return PartialView(note);
+        }
         /// <summary>
         /// 上传笔记get
         /// </summary>

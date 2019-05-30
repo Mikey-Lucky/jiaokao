@@ -65,5 +65,13 @@ namespace DAL
                         select n;
             return note.FirstOrDefault();
         }
+
+        public IEnumerable<Note> NoteRelative(int authorid, string title, int top)
+        {
+            var note = from n in db.Note
+                        where (n.NoteContent.Contains(title) || n.Title.Contains(title)  || n.UserID == authorid) && n.Title != title
+                        select n;
+            return note.Take(top);
+        }
     }
 }
