@@ -250,7 +250,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="iconfont\五角星.png" />
     <Content Include="iconfont\点赞.png" />
+    <Content Include="iconfont\衣服.png" />
+    <Content Include="iconfont\订单.png" />
+    <Content Include="iconfont\购物车.png" />
+    <Content Include="iconfont\首页-选中.png" />
     <Content Include="Images\FM\2.1.PNG" />
     <Content Include="Images\GoodsImages\1.1.jpg" />
     <Content Include="Images\GoodsImages\1.2.jpg" />

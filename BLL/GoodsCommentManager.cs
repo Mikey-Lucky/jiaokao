@@ -18,7 +18,7 @@ namespace BLL
             var goodscomment = igc.Getgoodscomment();
             return goodscomment;
         }
-       public GoodsComment Getgoodscommentbyid(int? id)
+        public IEnumerable<GoodsComment> Getgoodscommentbyid(int? id)
         {
             var commentbyid = igc.Getgoodscommentbyid(id);
             return commentbyid;

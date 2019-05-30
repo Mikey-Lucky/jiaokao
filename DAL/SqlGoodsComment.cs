@@ -16,9 +16,9 @@ namespace DAL
             var goodscomment = db.GoodsComment.ToList();
             return goodscomment;
         }
-        public GoodsComment Getgoodscommentbyid(int? id)
+        public IEnumerable<GoodsComment> Getgoodscommentbyid(int? id)
         {
-            var goodscomment = db.GoodsComment.Where(u=>u.GoodsID==id).FirstOrDefault();
+            var goodscomment = db.GoodsComment.Where(u=>u.GoodsID==id);
             return goodscomment;
         }
         public void AddGoodsComment(string com,int userid,int goodsid,DateTime datetime,int num)

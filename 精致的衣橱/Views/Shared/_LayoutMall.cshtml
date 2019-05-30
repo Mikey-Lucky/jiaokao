@@ -5,49 +5,95 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <style>
-        .whole{
+        #whole{
             background-color:azure;
         }
         .img{
+            height:70px;
+            width:70px;
+            float:left;
+        }
+         .img1{
             height:50px;
             width:50px;
             float:left;
+            margin-left:47px;
+            cursor:pointer;
+        }
+         .img2{
+            height:50px;
+            width:50px;
+            float:left;
+            margin-left:47px;
+        }
+          .img3{
+            height:50px;
+            width:50px;
+            float:left;
+            margin-left:47px;
         }
         .sousuo{
             height:50px;
-            width:200px;
+            width:500px;
             float:left;
         }
         .zi{
             font-family: 'Roboto Mono', monospace;
-            width:190px;
-            height:36px;
+            max-width:612px;
+            width:612px;
+            height:50px;
             border-color:red;
             border-style:solid;
+            float:left;
         }
         .btn{
             float:left;
             width:80px;
-            height:36px;
+            height:50px;
             background-color:#f30213;
             border:none;
             color:#fff;
             font-size:16px;
             cursor:pointer;
         }
+        ul li{
+            display:inline;
+            list-style:none;
+        }
     </style>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
-<body class="whole">
-    <div>
-        <img src="~/Images/GoodsImages/1.jpg" class="img" />
-        <div class="sousuo">
-            <input type="text" class="zi" name="guanjianzi" placeholder="请输入关键字"/>
-        </div>
-        <span><button class="btn"></button></span>
-    </div>
+<body class="container" id="whole">
+    <div style="text-align:center">
+        @*<img src="~/Images/GoodsImages/1.jpg" class="img" />*@
+        <img src="~/iconfont/衣服.png" class="img" />
+        <a href="#" title="首页">
+            <img src="~/iconfont/首页-选中.png" class="img1" />
+        </a>
+            <div style="margin-left:200px;position:relative;border-bottom:10px;">
 
-    <div>
+                <input type="text" class="zi" name="guanjianzi" placeholder="请输入关键字" />
+
+                <span><button class="btn">搜索</button></span>
+                <a href="#" title="我的购物车"><img src="~/iconfont/购物车.png" class="img2" /></a>
+                <a href="#" title="我的订单"><img src="~/iconfont/订单.png" class="img3" /></a>
+            </div>
+            <br />
+            <br />
+</div>
+
+    <div style="margin-top:10px">
         @RenderBody()
     </div>
+    <div class="container">
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

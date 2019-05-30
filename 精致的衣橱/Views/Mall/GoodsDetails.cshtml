@@ -1,13 +1,11 @@
 ﻿@model Models.Goods
 @{
-//Layout = "~/Views/Shared/Layoutmall.cshtml";
-
+    
+    Layout = "~/Views/Shared/_LayoutMall.cshtml";
+   
 }
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
+   
 
     ul {
         list-style: none;
@@ -163,14 +161,14 @@
      </div>
 </div>
 <hr />
-@using (Html.BeginForm("Comment", "Mall", FormMethod.Post,new {goodsid=Model.GoodsID }))
-{
+@*@using (Html.BeginForm("Comment", "Mall", FormMethod.Post,new {goodsid=Model.GoodsID }))
+{*@
     <div>
         <textarea name="pinglun" style="border-radius:4px;height:68px;width:798px;display:block;border:1px solid #c03f3c" id="tt"></textarea>
         <button id="pl">发表评论</button>
     </div>
    
-}
+@*}*@
 <div id="p2">
     @{Html.RenderAction("Comment", "Mall",new { goodsid=Model.GoodsID});}
 </div>
@@ -178,18 +176,18 @@
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 @*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
-<script>
+<script type="text/javascript">
     $(function (){
         var uname = $("#Name");
         
         var add = $("#Address");
         var tel = $("#Tel")
        
-       var price = $("input[name='unitprice']");
-       var num = $("input[name='number']");
-       var total =parseInt(price.val()) * parseInt(num.val());
+        var price = $("input[name='unitprice']");
+        var num = $("input[name='number']");
+        var total =parseInt(price.val()) * parseInt(num.val());
        
-       var GoodsID = $("input[name='goods']");
+        var GoodsID = $("input[name='goods']");
         
         $("#Sub").on("click", function () {
             
@@ -221,7 +219,7 @@
 
 
         var pinglun = $("#tt");
-        $("pl").on("click", function () {
+        $("#pl").on("click", function () {
             $.ajax({
                 type: 'post',
                 url: "/Mall/Comment",
@@ -231,13 +229,18 @@
                 },
                 success:function(data){
                     $("#p2").html(data);
-                }
+                    //$(function () {
+                    //    setInterval(function () {
+                    //        $("#p2").load(location.href + " #p2");
+                    //    },8000);
+                    //    })
+                    }
+               
             })
         }
 
-    )}
+    )
+    })
 
-    //})
 
-)
 </script>

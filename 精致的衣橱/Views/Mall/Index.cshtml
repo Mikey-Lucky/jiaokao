@@ -1,6 +1,6 @@
 ﻿@model 精致的衣橱.Models.MallViewModel
 @{
-    Layout = "~/Views/Shared/LayoutMall.cshtml";
+    Layout = "~/Views/Shared/_LayoutMall.cshtml";
 
 }
 <link href="~/Content/Cooldog.css" rel="stylesheet" />
@@ -56,13 +56,32 @@
     box-shadow:inset;
     margin-bottom:20px;
 }*/
+ ul{
+        display:inline-block;
+    }
+    ul li{
+        list-style:none;
+        
+    }
+    .iimg{
+        height:216px;
+        width:226px;
+        margin-right:40px;
+
+    }
+    .iimg:hover{
+        box-shadow: 1px 1px 5px #000000;
+        border:1px solid red;
+        margin-top:-1px;
+    }
 .c1{
-    width:100%;
+    
+    margin-bottom:10px;
 }
 .c1 img {
      
-       width:275px;
-       box-sizing: border-box; 
+       width:  100%;
+       height: 300px; 
 }
 .c1 img:hover{
   
@@ -109,235 +128,343 @@
 
     }
 </style>
-<div class="Cooldog_container">
-<div class="Cooldog_content">
-    <ul>
-        <li class="p1">
-            <a href="#">
-                <img src="~/Images/LunboImages/1.jpg" />
-            </a>
-        </li>
-        <li class="p2">
-            <a href="#">
-                <img src="~/Images/LunboImages/4.jpg" alt="">
-            </a>
-        </li>
-        <li class="p3">
-            <a href="#">
-                <img src="~/Images/LunboImages/3.jpg" alt="">
-            </a>
-        </li>
-        <li class="p4">
-            <a href="#">
-                <img src="~/Images/LunboImages/2.jpg" alt="">
-            </a>
-        </li>
-        <li class="p5">
-            <a href="#">
-                <img src="~/Images/LunboImages/5.jpg" alt="">
-            </a>
-        </li>
-        <li class="p5">
-            <a href="#">
-                <img src="~/Images/LunboImages/6.jpg" alt="">
-            </a>
-        </li>
-        <li class="p5">
-            <a href="#">
-                <img src="~/Images/LunboImages/7.jpg" alt="">
-            </a>
-        </li>
-    </ul>
-</div>
-<a href="javascript:;" class="btn_left">
-    <i class="iconfont icon-zuoyoujiantou"></i>
-</a>
-<a href="javascript:;" class="btn_right">
-    <i class="iconfont icon-zuoyoujiantou-copy-copy"></i>
-</a>
-<a href="javascript:;" class="btn_close">
-    <i class="iconfont icon-icon-test"></i>
-</a>
-<div class="buttons clearfix">
-    <a href="javascript:;" class="color"></a>
-    <a href="javascript:;"></a>
-    <a href="javascript:;"></a>
-    <a href="javascript:;"></a>
-    <a href="javascript:;"></a>
-    <a href="javascript:;"></a>
-    <a href="javascript:;"></a>
-</div>
-</div>
-<br />
-<div class="rexiao"><h2 class="rxz">热销商品</h2></div>
-<div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade in active" id="home">
-        <div class="row">
-            @foreach (var item in Model.NewGoods)
-            {
-
-                <div class="col-md-3 col-sm-3">
-                    <div class="panel panel-default text-center">
-                        <div class="panel-panel-heading">
-                            <h1>@item.Name</h1>
-                        </div>
-                        <div class="panel-body" style="height:225px">
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="@item.Name"><img src="~/Images/GoodsImages/@Html.DisplayFor(Modelitem => item.GoodsImage)" style="height:100%;width:100%" /></a>
-                        </div>
-
-                        <div class="panel-footer">
-                            <h3>@item.Unitprice</h3>
-                            <h4>per clothes</h4>
-                            <a href="@Url.Action("GoodsDetails","Mall",new { id=item.GoodsID})"><h1>立即购买</h1></a>
-                            
-                        </div>
-
-                    </div>
-
-                </div>
-            }
-           
-        </div>
-       
-        
-    </div>
-</div>
-
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h2 class="panel-title" style="font-size: large;">
-            热门商品<span class="label label-danger">最热</span><a href="#"><span style="padding-left:927px;">更多>></span></a>
-        </h2>
-    </div>
-    <div class="container">
-        <div class="panel-body row" style="text-overflow:ellipsis">
-        @foreach (var g in Model.HotGoods)
-        {
-                <div class="col-md-3 col-sm-3" style="height:340px;">
-                    <a href="#" style="margin-bottom:10px">
-                        <img src="~/Images/GoodsImages/@g.GoodsImage" style="width:  100%;height: 300px;" />
+<div class="container">
+    <div class="Cooldog_container">
+        <div class="Cooldog_content">
+            <ul>
+                <li class="p1">
+                    <a href="#">
+                        <img src="~/Images/LunboImages/1.jpg" />
                     </a>
-                    <div class="row">
-                        <div class="col-md-10">
-                            <div class="hottitle">@g.Name</div>
-                            <div class="hotprice">$: @g.Unitprice</div>
-                            <div style="background-color:white;padding-bottom:10px;height:20px;"></div>
-                        </div>
-                        <div class="col-md-1"></div>
-                        <div class="col-md-1"><img src="~/iconfont/点赞.png" style="height:22px;width:auto" class="@g.GoodsID" /><span id="@g.GoodsID">@g.ThumbNum</span></div>
-                        
-                        @*<input type="hidden" value=""*@
-                        <input type="hidden" name="goodsid" id="goodsid" value="@g.GoodsID" readonly="readonly" />
-                        
-                    </div>
+                </li>
+                <li class="p2">
+                    <a href="#">
+                        <img src="~/Images/LunboImages/4.jpg" alt="">
+                    </a>
+                </li>
+                <li class="p3">
+                    <a href="#">
+                        <img src="~/Images/LunboImages/3.jpg" alt="">
+                    </a>
+                </li>
+                <li class="p4">
+                    <a href="#">
+                        <img src="~/Images/LunboImages/2.jpg" alt="">
+                    </a>
+                </li>
+                <li class="p5">
+                    <a href="#">
+                        <img src="~/Images/LunboImages/5.jpg" alt="">
+                    </a>
+                </li>
+                <li class="p5">
+                    <a href="#">
+                        <img src="~/Images/LunboImages/6.jpg" alt="">
+                    </a>
+                </li>
+                <li class="p5">
+                    <a href="#">
+                        <img src="~/Images/LunboImages/7.jpg" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <a href="javascript:;" class="btn_left">
+            <i class="iconfont icon-zuoyoujiantou"></i>
+        </a>
+        <a href="javascript:;" class="btn_right">
+            <i class="iconfont icon-zuoyoujiantou-copy-copy"></i>
+        </a>
+        <a href="javascript:;" class="btn_close">
+            <i class="iconfont icon-icon-test"></i>
+        </a>
+        <div class="buttons clearfix">
+            <a href="javascript:;" class="color"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+    <br />
 
 
 
-                </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title" style="font-size: large;">
+                热门商品<span class="label label-danger">最热</span><a href="#"><span style="padding-left:927px;">更多>></span></a>
+            </h2>
+        </div>
+        <div class="container">
+            <div class="panel-body row" style="text-overflow:ellipsis">
+                @foreach (var g in Model.HotGoods)
+                {
 
-                <script>
+                   
+                        <ul>
+                            <li><a href="@Url.Action("GoodsDetails", "Mall", new { id =g.GoodsID })" data-title="@g.Name" title="@g.Name">@*<a href="#" data-toggle="tooltip" data-placement="bottom" title="@g.Name">*@<img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a>@*</a>*@</li>
 
-                    $(function () {
-                        $(document).on('click', '.@g.GoodsID', function () {   //赞
-                            var goodsid = $("input[name='goodsid']").val();
-                            $.ajax({
-                                type: "post",
-                                url: "/Mall/Zan",
-                                data: { "goodsid": goodsid },
-                                success: function (data) {
-                                    $("#@g.GoodsID").text(data);
-                                }
+
+                            <li><span style="color:black">$@g.Unitprice</span></li>
+                            <li><p style="color:black">立即购买</p></li>
+                            <li><span><img src="~/iconfont/点赞.png" style="height:22px;width:auto;cursor:pointer;float:right" class="@g.GoodsID" /><span id="@g.GoodsID" style="float:right">@g.ThumbNum</span></span></li>
+                        </ul>
+
+                   
+                    <input type="hidden" name="goodsid" value="@g.GoodsID" />
+
+                    <script>
+
+                        $(function () {
+                            $(document).on('click', '.@g.GoodsID', function () {   //赞
+                                var goodsid = $("input[name='goodsid']").val();
+                                $.ajax({
+                                    type: "post",
+                                    url: "/Mall/Zan",
+                                    data: { "goodsid": goodsid },
+                                    success: function (data) {
+                                        $("#@g.GoodsID").text(data);
+                                    }
+                                });
                             });
-                        });
-                    })
-                </script>
-        }
-            <script>
+                        })
+                    </script>
+                }
+                <script>
                     $(function () { $("[data-toggle='tooltip']").tooltip(); });
-            </script>
+                </script>
+            </div>
         </div>
     </div>
-</div>
-<br />
-<br />
-<div class="t">
-    <p>春/秋</p>
-    <a href="#"><span style="padding-left:974px;font-size:19px;">更多>></span></a>
-    @*<div class="goods_change">
-        <span class="goods_prave"><</span>
-        <span class="goods_next">></span>
-    </div>*@
-</div>
-<hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
-<div class="c1">
-    @*<div class="row">
-        @foreach (var item in Model.Chun)
-        {
+    <br />
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title" style="font-size: large;">
+                最新上架<span class="label label-danger">最新</span><a href="#"><span style="padding-left:927px;">更多>></span></a>
+            </h2>
+        </div>
+        <div class="container">
+            <div class="panel-body row" style="text-overflow:ellipsis">
+                @foreach (var g in Model.NewGoods)
+                {
+                    
+                        <ul>
+                            <li>@*<a href="#" data-toggle="tooltip" data-placement="bottom" title="@g.Name">*@<a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" />@*</a>*@ </a></li>
 
-                <div class="col-md-4" style="box-sizing: border-box;">
-                    <a href="#">
-                        <img src="~/Images/GoodsImages/@item.GoodsImage"  />
-                        <div>@item.Name</div>
-                        <div>@item.Unitprice</div>
-                    </a>
-               </div>
-        
 
-        }
-    </div>*@    
-    <ul class="chungoods">
-        @foreach (var item in Model.ChunQiu)
-        {
-            <li>
-                <div style="box-sizing: border-box;">
-                    <a href="#">
-                        <img src="~/Images/GoodsImages/@item.GoodsImage" />
-                        <div>@item.Name</div>
-                        <div>@item.Unitprice</div>
+                            <li><span style="color:black">$@g.Unitprice</span></li>
+                            <li><p style="color:black">立即购买</p></li>
+                            <li>
+                                <img src="~/iconfont/点赞.png" style="height:22px;width:auto;cursor:pointer;float:right" class="@g.GoodsID" />
+                                <span id="@g.GoodsID" style="float:right">@g.ThumbNum</span>
+                            </li>  
+                        </ul>
+                   
+                   
+
+
+
+                            <script>
+
+                                $(function () {
+                                    $(document).on('click', '.@g.GoodsID', function () {   //赞
+                                        var goodsid = $("input[name='goodsid']").val();
+                                        $.ajax({
+                                            type: "post",
+                                            url: "/Mall/Zan",
+                                            data: { "goodsid": goodsid },
+                                            success: function (data) {
+                                                $("#@g.GoodsID").text(data);
+                                            }
+                                        });
+                                    });
+                                })
+                            </script>
+                }
+                <script>
+                    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+                </script>
+            </div>
+        </div>
+    </div>
+    @*<div class="t">
+            <p>春/秋</p>
+            <a href="#"><span style="padding-left:974px;font-size:19px;">更多>></span></a>
+
+        </div>
+        <hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
+        <div class="c1">
+
+            <ul class="chungoods">
+                @foreach (var item in Model.ChunQiu)
+                {
+                    <li>
+                        <div style="box-sizing: border-box;">
+                            <a href="#">
+                                <img src="~/Images/GoodsImages/@item.GoodsImage" />
+                                <div>@item.Name</div>
+                                <div>@item.Unitprice</div>
+                            </a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="t">
+            <p>夏</p>
+        </div>
+        <hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
+        <div class="c1">
+            <ul class="chungoods">
+                @foreach (var item in Model.Xia)
+                {
+                    <li>
+                        <div style="box-sizing: border-box;">
+                            <a href="#">
+                                <img src="~/Images/GoodsImages/@item.GoodsImage" />
+                                <div>@item.Name</div>
+                                <div>@item.Unitprice</div>
+                            </a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="t">
+            <p>冬</p>
+        </div>
+        <hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
+        <div class="c1">
+            <ul class="chungoods">
+                @foreach (var item in Model.Xia)
+                {
+                    <li>
+                        <div style="box-sizing: border-box;">
+                            <a href="#">
+                                <img src="~/Images/GoodsImages/@item.GoodsImage" />
+                                <div>@item.Name</div>
+                                <div>@item.Unitprice</div>
+                            </a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>*@
+
+
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title" style="font-size: large;">
+                四季<span class="label label-danger"></span><a href="#"><span style="padding-left:927px;">更多>></span></a>
+            </h2>
+        </div>
+        <div class="container">
+            <div class="panel-body row" style="text-overflow:ellipsis">
+                @foreach (var g in Model.ChunQiu)
+            {
+                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name">
+                        <ul>
+                            <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
+
+
+                            <li><span style="color:black">$@g.Unitprice</span></li>
+                            <li><p style="color:black">立即购买</p></li>
+                            <li><span><img src="~/iconfont/点赞.png" style="height:22px;width:auto;cursor:pointer;float:right" class="@g.GoodsID" /><span id="@g.GoodsID" style="float:right">@g.ThumbNum</span></span></li>
+                        </ul>
+
                     </a>
-                </div>
-            </li>
-        }   
-    </ul>
-</div>
-<div class="t">
-    <p>夏</p>
-</div>
-<hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
-<div class="c1">
-    <ul class="chungoods">
-        @foreach (var item in Model.Xia)
-        {
-            <li>
-                <div style="box-sizing: border-box;">
-                    <a href="#">
-                        <img src="~/Images/GoodsImages/@item.GoodsImage" />
-                        <div>@item.Name</div>
-                        <div>@item.Unitprice</div>
+
+                    <script>
+
+                        $(function () {
+                            $(document).on('click', '.@g.GoodsID', function () {   //赞
+                                var goodsid = $("input[name='goodsid']").val();
+                                $.ajax({
+                                    type: "post",
+                                    url: "/Mall/Zan",
+                                    data: { "goodsid": goodsid },
+                                    success: function (data) {
+                                        $("#@g.GoodsID").text(data);
+                                    }
+                                });
+                            });
+                        })
+                    </script>
+                }
+                <hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
+                @foreach (var g in Model.Xia)
+            {
+                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name">
+                        <ul>
+                            <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
+
+
+                            <li><span style="color:black">$@g.Unitprice</span></li>
+                            <li><p style="color:black">立即购买</p></li>
+                            <li><span><img src="~/iconfont/点赞.png" style="height:22px;width:auto;cursor:pointer;float:right" class="@g.GoodsID" /><span id="@g.GoodsID" style="float:right">@g.ThumbNum</span></span></li>
+                        </ul>
+
                     </a>
-                </div>
-            </li>
-        }
-    </ul>
-</div>
-<div class="t">
-    <p>冬</p>
-</div>
-<hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
-<div class="c1">
-    <ul class="chungoods">
-        @foreach (var item in Model.Xia)
-        {
-            <li>
-                <div style="box-sizing: border-box;">
-                    <a href="#">
-                        <img src="~/Images/GoodsImages/@item.GoodsImage" />
-                        <div>@item.Name</div>
-                        <div>@item.Unitprice</div>
+
+                    <script>
+
+                        $(function () {
+                            $(document).on('click', '.@g.GoodsID', function () {   //赞
+                                var goodsid = $("input[name='goodsid']").val();
+                                $.ajax({
+                                    type: "post",
+                                    url: "/Mall/Zan",
+                                    data: { "goodsid": goodsid },
+                                    success: function (data) {
+                                        $("#@g.GoodsID").text(data);
+                                    }
+                                });
+                            });
+                        })
+                    </script>
+                }
+                <hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
+                @foreach (var g in Model.Dong)
+            {
+                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name">
+                        <ul>
+                            <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
+
+
+                            <li><span style="color:black">$@g.Unitprice</span></li>
+                            <li><p style="color:black">立即购买</p></li>
+                            <li><span><img src="~/iconfont/点赞.png" style="height:22px;width:auto;cursor:pointer;float:right" class="@g.GoodsID" /><span id="@g.GoodsID" style="float:right">@g.ThumbNum</span></span></li>
+                        </ul>
+
                     </a>
-                </div>
-            </li>
-        }
-    </ul>
+
+                    <script>
+
+                        $(function () {
+                            $(document).on('click', '.@g.GoodsID', function () {   //赞
+                                var goodsid = $("input[name='goodsid']").val();
+                                $.ajax({
+                                    type: "post",
+                                    url: "/Mall/Zan",
+                                    data: { "goodsid": goodsid },
+                                    success: function (data) {
+                                        $("#@g.GoodsID").text(data);
+                                    }
+                                });
+                            });
+                        })
+                    </script>
+                }
+                <script>
+                    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+                </script>
+            </div>
+        </div>
+    </div>
 </div>
