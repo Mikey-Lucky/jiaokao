@@ -526,7 +526,9 @@
     <Content Include="Images\yichu\banner1.jpg" />
     <Content Include="Images\yichu\banner2.jpg" />
     <Content Include="Images\yichu\lu.jpg" />
+    <Content Include="Images\yichu\qqq.ico" />
     <Content Include="Images\yichu\wu.jpg" />
+    <Content Include="Images\yichu\yichu.ico" />
     <Content Include="Images\yichu\麋鹿素材.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -792,8 +794,9 @@
     <Content Include="Views\Shared\_LayoutDaohang.cshtml" />
     <Content Include="Views\Mall\Category.cshtml" />
     <Content Include="Views\Mall\Search.cshtml" />
-    <Content Include="Views\Shared\_LayoutMall.cshtml" />
+	   <Content Include="Views\Shared\_LayoutMall.cshtml" />
     <Content Include="Views\Mall\Comment.cshtml" />
+	 <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

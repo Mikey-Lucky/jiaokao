@@ -49,6 +49,11 @@ namespace BLL
         {
             return inote.GetNoteById(id);
         }
+        //相关的前几条笔记
+        public IEnumerable<Note> NoteRelative(int authorid, string title, int top)
+        {
+            return inote.NoteRelative(authorid,title,top);
+        }
 
     }
 }

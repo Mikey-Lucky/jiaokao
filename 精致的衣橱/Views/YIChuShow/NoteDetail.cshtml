@@ -19,6 +19,16 @@
             background-color: antiquewhite;
             filter: blur(0px);
         }
+        .notehead {
+            height: 78px;
+        }
+        .notehead p,
+        .notehead a {
+              color: #999;  
+        }
+        .notehead a {
+              text-decoration: none;
+        }
         .notecontent {
            float: left;
            width: 75%;
@@ -40,29 +50,91 @@
         .noterelative {
             float: right;
             width: 25%;
-            background-color: aqua;
+            background-color: #f2f2f2;
             height:800px;
             margin-top: 20px;
         }
-        img {
-            width: 580px;
+        /***作者框开始****************************/
+        .author {
+            width: 100%;
+            background-color: #fff;
+            overflow: auto;
         }
+        .authortitle {
+            width: 240px;
+            margin: 14px auto 0px auto;
+            border-bottom: 1px solid #f2f2f2;
+        }
+       
+        .authortitle img {
+            height: 70px;
+            width: 70px;
+        }
+        .authortitle span {
+            font-size: 22px;
+            /*margin-bottom: 15px;*/
+            color: #555;
+        }
+         .authorads {
+            width: 240px;
+            margin: 0px auto 14px auto;
+        }
+        .authorads a{
+            display: block;
+            height: 40px;
+            text-align: center;
+        }
+        /******作者框结束*****************************/
+       /*******视频列表开始***************************/
+        .notelist {
+            background-color: #fff;
+            margin-top: 14px;
+            overflow: auto;
+        }
+        .notere {
+            width: 240px;
+            margin: 14px auto 14px auto;
+            /*border-bottom: 1px solid #f2f2f2;*/
+        }
+       /*******视频列表结束***************************/
     </style>
 </head>
 <body>
     <div class="container">
         <div class="notecontent">
-            <p>
-                @Html.ActionLink("返回", "Index")
-            </p>
-            <h2>@Model.Title</h2>
-            <span>@Model.Users.UserName</span><span>@Model.Time</span>
+            <div class="notehead">
+                <p>
+                    <a href="@Url.Action("Index","YiChuShow")">衣橱秀场</a>@*viewbag传值*@
+                    <span>》笔记详情</span>
+                </p>
+                <h2>@Model.Title</h2>
+            </div>
+            @*<img src="/Images/Noteimg/@Model.Img" style="width: 100%"/>*@
+            @*<span>@Model.Users.UserName</span><span>@Model.Time</span>*@
             <hr />
             @Html.Raw(@Model.NoteContent)
         </div>
         <div class="noterelative">
-            aaaaaaaaa
-         
+           <div class="author">
+               <div class="authortitle">
+                   <img src="/Images/HeadImages/@Model.Users.HeadImage" />
+                  作者：<span>@Model.Users.UserName </span>
+               </div>
+               <div class="authorads">
+                   @*<span>@Model.Users.Address</span>
+                   <span>@Model.Users.Birthday</span>*@
+                   <p>传送门</p>
+                   <a href="#">作者主页</a>
+                   <a href="#">作者关注</a>
+                   <a href="#">作者粉丝</a>
+               </div>
+           </div>
+           <div class="notelist">
+               <div class="notere">
+                   <p>相关推荐</p>
+                   @Html.Action("NoteRelative", new { authorid = @Model.UserID, title = @Model.Title })
+               </div>
+           </div>
         </div>
     </div>
   

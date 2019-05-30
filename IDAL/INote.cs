@@ -23,5 +23,7 @@ namespace IDAL
         void EditNote(Note note);
         //更具笔记id查找上衣
         Note GetNoteById(int id);
+        //查找前几条相关笔记
+        IEnumerable<Note> NoteRelative(int authorid, string title, int top);
     }
 }
