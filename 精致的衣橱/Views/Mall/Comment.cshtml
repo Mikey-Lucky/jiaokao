@@ -1,8 +1,12 @@
 ﻿@model IEnumerable<Models.GoodsComment>
+@{ 
+    Layout = null;
+}
 <div>
     @foreach (var p in Model)
     {
         @p.ComContent
+
         @p.Users.UserName
     }
 </div>

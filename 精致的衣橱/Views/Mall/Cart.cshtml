@@ -1,7 +1,19 @@
 ﻿@model IEnumerable<Models.Cart>
+@{
+
+    Layout = "~/Views/Shared/_LayoutMall.cshtml";
+
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
 <style>
     #buy{
         text-decoration:none;
+    }
+    #gengxing{
+
     }
 </style>
 
@@ -39,7 +51,7 @@
                     <img src="~/Images/GoodsImages/@item.Goods.GoodsImage" style="height:110px;" />
                 </td>
                 <td>
-                    <input type="number" data-Car="@item.CartID" class="in" min="0" max="@item.Goods.TotalStorageAmount" value="@item.Count" style="width:50px;" />
+                    <input type="number" data-Car="@item.CartID" class="in" min="0" max="@item.Goods.TotalStorageAmount" value="@item.Count" style="width:50px;" name="number"/>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Goods.Unitprice)
@@ -51,15 +63,19 @@
                     @*<button type="button" class="bianji">更改</button>*@
                     @*<button type="button" class="delete">删除</button>*@
                    <a href="@Url.Action("Delete","Mall",new { CartID=@item.CartID})">删除</a>|
-                    <a href="@Url.Action("UpdateCartNum", "Mall",new {num=item.Count,CartID=item.CartID})">更新</a>
+                    @*<a href="@Url.Action("UpdateCartNum", "Mall",new {num=item.Count,CartID=item.CartID})">更新</a>*@
+                    <button id="gengxing">更新</button>
+                    <input type="hidden" value="@item.CartID" name="cartid" />
                 </td>
+                
             </tr>
-         }
+            
+                   }
     </table>
     <div style="width:300px;margin-left:900px;">
         <span style="color:palevioletred">总价：</span>
        
-        <input type="text" id="total" readonly style="width:60px;border:none">
+        <input type="text" id="total" readonly style="width:60px;border:none;background-color:azure">
         <a href="@Url.Action("Order", "Mall")" id="#buy">立即购买</a>
        
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">立即下单</button>
@@ -145,95 +161,7 @@
             var name = $("#Order_Name");
             var add = $("#Order_Add");
             var tel = $("#Order_Tel");
-            //var cartid = $("#p");
-        //Session["total"]=total.val();
-
-
-        //    $("#Sub").on("click", function () {
-            
-        //        var check = [];
-        //        for (var i = 0; i < checked.length; i++) {
-        //            if (checked.eq(i).prop("checked")) {
-        //                check.push(parseInt(checked.eq(i).attr("data-id"), 10));
-        //            }
-        //        }
-                //if (check.length > 0) {
-                //    $.ajax({
-                //        type: 'Post',
-                //        dataType: 'json',
-                //        url: "/Mall/Buy",
-                //        data: {
-                //            "cartid": check,
-                //            "Name": name.val(),
-                //            "addressid":
-                //            "tel": tel.val(),
-                //            //"Add": add.val(),
-                //            "Tol": total.val(),
-                //        },
-                //        traditional: true,
-                //        success: function (data) {
-                //            alert(data.Mess);
-                //            window.history.go(0);
-                //        },
-                //        error: function () {
-                //            alert("订单失败");
-                //        }
-                //    });
-                //}
-            //});
-
-        //    $(".bianji").each(function () {
-        //        $(this).click(function () {
-        //            var con = $(this).parents("tr").eq(0).find(".in");
-        //            var ID = $(this).parents("tr").eq(0).find(".in");
-        //            $.ajax({
-        //                type: 'Post',
-        //                dataType: 'json',
-        //                url: '/Mall/UpdateCartNum',
-        //                data: {
-        //                    "num": con.val(),
-        //                    "CartID": ID.attr("data-target"),
-        //                },
-        //                traditional: true,
-        //                success: function (data) {
-        //                    alert(data.Mess);
-        //                    window.history.go(0);
-        //                },
-        //                error: function () {
-        //                    alert("更新失败");
-        //                }
-        //            })
-        //        })
-        //    })
-
-        //    $(".delete").each(function () {
-        //        $(this).click(function () {
-        //            var ID = $(this).parents("tr").eq(0).find(".in").eq(0);
-        //            $.ajax({
-        //                type: 'Post',
-        //                dataType: 'json',
-        //                url: '/Mall/Delete',
-        //                data: {
-        //                    "CartID": ID.attr("data-T"),
-        //                },
-        //                traditional: true,
-        //                success: function (data) {
-        //                    alert(data.Mess);
-        //                    window.history.go(0);
-        //                },
-        //                error: function () {
-        //                    alert("删除失败");
-        //                }
-        //            })
-        //        })
-        //    })
-
-
-
-
-        //})
-        //勾选框
-        //var check = $("input[name="check"]")
+           
             $("#Sub").on("click", function () {
                
                 var check = [];
@@ -267,6 +195,24 @@
                     });
                 }
             });
+            var num = $("input[name='number']");
+            var cartid = $("input[name='cartid']");
+            $("gengxing").on("click", function () {
+                $.ajax({
+                    type: 'post',
+                    url: "/Mall/UpdateCartNum",
+                    data: {
+                        "num": num.val(),
+                        "CartID":cartid.val()
+                    },
+                    traditional: true,
+                    success: function (data) {
+                        alert("更新成功");
+                        location.href = "/Mall/Cart";
+                        //window.history.go(0);
+                    },
+                })
+            })
 
     })
 </script>

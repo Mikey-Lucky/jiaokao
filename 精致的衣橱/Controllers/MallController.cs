@@ -159,7 +159,7 @@ namespace 精致的衣橱.Controllers
             var t = Convert.ToDouble(cartmanager.getgoodsbyid(GoodsID).Unitprice);
             var amount = cartmanager.getgoodsbyid(GoodsID).TotalStorageAmount;
             //var price = t;
-            var Count = Convert.ToInt32(Request.Form["number"]);
+            var Count = Convert.ToInt32(Request["number"]);
             if (amount > Count)
             {
                 int Flag = 0;
@@ -175,7 +175,7 @@ namespace 精致的衣橱.Controllers
         //[Login]
         public ActionResult UpdateCartNum(int num, int CartID)
         {
-            num = Convert.ToInt32(Request["check"]);
+            //num = Convert.ToInt32(Request["number"]);
             cartmanager.Update(num, CartID);
             return Content("<script>alert('更新成功');window.location.href='../Mall/Cart';</script>");
         }

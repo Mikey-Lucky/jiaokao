@@ -15,7 +15,7 @@
         width: 1005px;
         height: 600px;
         margin-left: 360px;
-        margin-top: 20px;
+        margin-top: 77px;
     }
 
     .pic img {
@@ -30,35 +30,6 @@
         margin-top: -300px;
     }
 
-    .comment {
-        width: 700px;
-        height: 60px;
-    }
-
-    .CommentReply {
-        width: 900px;
-        margin: 0 auto;
-    }
-
-        .CommentReply li {
-            margin-bottom: 30px;
-        }
-
-    .pinglun {
-        margin-left: 434px;
-        margin-bottom: 40px;
-    }
-
-    .textA {
-        resize: none;
-        border-radius: 4px;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        height: 68px;
-        width: 798px;
-        display: block;
-        border: 1px solid #c03f3c;
-    }
     #price{
         font-size:24px;
          color:red;
@@ -70,18 +41,25 @@
 
     }
     #tt{
-        height:200px;
-        height:200px;
-        border-radius:3px;
+        border-radius:4px;
+        height:68px;
+        width:515px;
+        display:block;
+        border:1px solid #c03f3c;
+        max-width:515px;
+        
     }
     #pl{
         background-color:red;
+        margin-top:10px;
     }
     #p2{
-
+        margin-left:314px;
     }
 </style>
-
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
 
 <div class="center" id="center">
     <div class="pic">
@@ -161,10 +139,9 @@
      </div>
 </div>
 <hr />
-@*@using (Html.BeginForm("Comment", "Mall", FormMethod.Post,new {goodsid=Model.GoodsID }))
-{*@
-    <div>
-        <textarea name="pinglun" style="border-radius:4px;height:68px;width:798px;display:block;border:1px solid #c03f3c" id="tt"></textarea>
+
+    <div style="margin-top:-200px;margin-left:314px;">
+        <textarea name="pinglun" id="tt"></textarea>
         <button id="pl">发表评论</button>
     </div>
    
@@ -174,8 +151,17 @@
 </div>
 
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-@*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
+
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
     $(function (){
         var uname = $("#Name");
