@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Models.GoodsComment>
+<div>
+    @foreach (var p in Model)
+    {
+        @p.ComContent
+        @p.Users.UserName
+    }
+</div>

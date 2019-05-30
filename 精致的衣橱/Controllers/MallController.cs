@@ -28,9 +28,9 @@ namespace 精致的衣橱.Controllers
         {
             var g1 = goodsmanager.GetHotGoods(8);
             var g2 = goodsmanager.GetNewGoods(10);
-            var g3 = goodsmanager.ChunQiu(12);
-            var g4 = goodsmanager.Xia(12);
-            var g5 = goodsmanager.Dong(12);
+            var g3 = goodsmanager.ChunQiu(8);
+            var g4 = goodsmanager.Xia(8);
+            var g5 = goodsmanager.Dong(8);
             MallViewModel mallviewmodel = new MallViewModel();
             mallviewmodel.HotGoods = g1;
             mallviewmodel.NewGoods = g2;
@@ -138,10 +138,11 @@ namespace 精致的衣橱.Controllers
                 return Content("您查找的商品不存在");
             
         }
-        [Login]
+        //[Login]
         public ActionResult Cart()
         {
-            var userid = Convert.ToInt32(Session["User_id"]);
+            //var userid = Convert.ToInt32(Session["User_id"]);
+            int userid = 1;
             var cart = cartmanager.Cart(userid);
             return View(cart);
         }
@@ -151,7 +152,8 @@ namespace 精致的衣橱.Controllers
         public ActionResult Cart(int GoodsID, Cart cart)
         {
 
-            int id = Convert.ToInt32(Session["User_id"]);
+            //int id = Convert.ToInt32(Session["User_id"]);
+            int id = 1;
             //int Flag = 0;
             var nowtime = System.DateTime.Now;
             var t = Convert.ToDouble(cartmanager.getgoodsbyid(GoodsID).Unitprice);
@@ -170,10 +172,10 @@ namespace 精致的衣橱.Controllers
             }
         }
 
-        [Login]
+        //[Login]
         public ActionResult UpdateCartNum(int num, int CartID)
         {
-            //num = Convert.ToInt32(Request["check"]);
+            num = Convert.ToInt32(Request["check"]);
             cartmanager.Update(num, CartID);
             return Content("<script>alert('更新成功');window.location.href='../Mall/Cart';</script>");
         }
@@ -186,23 +188,21 @@ namespace 精致的衣橱.Controllers
             return Content("<script>alert('删除成功');window.location.href='../Mall/Cart';</script>");
 
         }
-        //public ActionResult DirectBuy()
-        //{
-
-        //}
+        
         //商品评论回复
-        //public ActionResult Comment(int goodsid)
-        //{
-            
-        //    var com = goodscommentmanager.Getgoodscommentbyid(goodsid);
-        //    return View(com);
-        //}
+        public ActionResult Comment(int goodsid)
+        {
+            goodsid = Convert.ToInt32(Session["goodsid"]);
+            var com = goodscommentmanager.Getgoodscommentbyid(goodsid);
+            return View(com);
+        }
         [HttpPost]
         //[Login]
         public ActionResult Comment(int goodsid,string text)
         {
-            goodsid =2;
+            //goodsid =2;
             //var text;
+            //goodsid = Convert.ToInt32(Session["goodsid"]);
             DateTime datetime = System.DateTime.Now;
             int thumb = 0;
             //int id = Convert.ToInt32(Session["User_id"]);
@@ -213,7 +213,7 @@ namespace 精致的衣橱.Controllers
                 {
 
                     goodscommentmanager.AddGoodsComment(text,id,goodsid,datetime,thumb);
-                    //var usercomment = goodscommentmanager.Getgoodscommentbyid(goodsid);
+                    
                 }
                 //else
                 //{
@@ -221,22 +221,25 @@ namespace 精致的衣橱.Controllers
                 //}
                 //return View();
             }
-            return Content(Convert.ToString(goodsid));
+            //return Content("<script>alert('评论成功！')/*;history.go(0)*/</script>");
+            return View();
 
         }
-        [Login]
+        //[Login]
         public ActionResult Order()
         {
-            int id = Convert.ToInt32(Session["User_id"]);
+            //int id = Convert.ToInt32(Session["User_id"]);
+            int id = 1;
             var order = odersmanager.GetOrdersById(id);
             return View(order);
         }
        
         [HttpPost]
-        [Login]
+        //[Login]
         public ActionResult Addaddress(string add)
         {
-            int userid = Convert.ToInt32(Session["User_id"]);
+            //int userid = Convert.ToInt32(Session["User_id"]);
+            int userid = 1;
             add = Request["dizhi"].ToString();
 
             addressmanager.Add(userid, add);
@@ -245,11 +248,12 @@ namespace 精致的衣橱.Controllers
         }
         //将Buy改成了Order
         [HttpPost]
-        [Login]
+        //[Login]
         public ActionResult Buy(int[] a, string name, string userphone, string address, int total)
         {
             var datetime = System.DateTime.Now;
-            int uid = Convert.ToInt32(Session["User_id"]);
+            //int uid = Convert.ToInt32(Session["User_id"]);
+            int uid = 1;
 
             //odersmanager.Order(datetime, total, uid, name, userphone, address);
             for (int i = 0; i < a.Length; i++)
@@ -257,7 +261,7 @@ namespace 精致的衣橱.Controllers
                 odersmanager.Pay(a[i], uid, name, userphone, address);
             }
 
-            //return Content("<script>alert('添加地址成功');window.location.href='../Mall/Order';<script>");
+            
             Message msg = new Message()
             {
                 message = "下单成功"
@@ -265,16 +269,16 @@ namespace 精致的衣橱.Controllers
             return base.Json(msg);
         }
         [HttpPost]
-        [Login]
+        //[Login]
         public ActionResult DirectBuy(int total,string uname,string tel,string address,int num,int goodsid)
         {
 
-            //return Redirect("GoodsDetails");
+            
             
             
             var datetime = System.DateTime.Now;
-            int uid = Convert.ToInt32(Session["User_id"]);
-            //int uid = 1;
+            //int uid = Convert.ToInt32(Session["User_id"]);
+            int uid = 1;
             odersmanager.Order(datetime, total, uid, uname, tel, address);
             orderdetailsmanager.DirectBuy(goodsid, datetime, uid, num);
             Message msg = new Message()
@@ -285,7 +289,7 @@ namespace 精致的衣橱.Controllers
 
 
         }
-        [Login]
+        //[Login]
         public ActionResult OrderDetails1(int? orderid)
         {
 

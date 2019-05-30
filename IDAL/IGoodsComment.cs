@@ -10,7 +10,7 @@ namespace IDAL
     public interface IGoodsComment
     {
         IEnumerable<GoodsComment> Getgoodscomment();
-        GoodsComment Getgoodscommentbyid(int? id);
+        IEnumerable<GoodsComment> Getgoodscommentbyid(int? id);
         void AddGoodsComment(string com, int userid, int goodsid, DateTime datetime, int num);
     }
 }
