@@ -28,6 +28,18 @@ namespace 精致的衣橱.Models
         public IEnumerable<Note> userupnote { get; set; }
         //用户上传过的视频
         public IEnumerable<Video> userupvideo { get; set; }
+        ////用户的所有关注
+        //public IQueryable<U_Attention_U> attention { get; set; }
+        ////用户的所有粉丝
+        //public IQueryable<U_Attention_U> fens { get; set; }
 
+        //用户关注的数量
+        public int attentionnum { get; set; }
+        //用户粉丝的数量
+        public int fensnum { get; set; }
+        //用户性别
+        public string sex { get; set; }
+        //用户信息
+        public Users Userabout { get; set; }
     }
 }

@@ -120,5 +120,10 @@ namespace DALFactory
             string className = AssemblyName + "." + db + "GoodsComment";
             return (IGoodsComment)Assembly.Load(AssemblyName).CreateInstance(className);
         }
+        public static IU_Attention_U CreateU_Attention_U()
+        {
+            string className = AssemblyName + "." + db + "U_Attention_U";
+            return (IU_Attention_U)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
     }
 }

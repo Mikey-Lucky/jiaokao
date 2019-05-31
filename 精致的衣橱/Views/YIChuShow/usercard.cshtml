@@ -1,0 +1,43 @@
+﻿@model 精致的衣橱.Models.YiChuShowViewModel
+     @*@Model.fensnum
+     @Model.attentionnum
+     @Model.sex
+     @Model.Userabout.HeadImage
+     @Model.Userabout.UserName*@
+<style>
+    .zong {
+        width: 200px;
+        height: 300px;
+        display: inline-block;
+    }
+        .zong img {
+            height: 94px;
+            width: 94px;
+            border: 1px solid #f2f2f2;
+            border-radius: 50%;
+        }
+</style>
+<div class="zong" style="background-image:url('/Images/HeadImages/@Model.Userabout.HeadImage')" >
+    <div class="image">
+    <a href="#">
+        <img src="/Images/HeadImages/@Model.Userabout.HeadImage">
+    </a>
+    </div>
+    <div class="profile">
+    <a href="#" class="username">@Model.Userabout.UserName</a>
+    <div class="description">
+        <div class="personal">
+           <div class="meta">@Model.sex</div>
+        </div>
+    </div>
+    <div class="pins">
+        <span class="meta">@Model.fensnum 粉丝</span>
+        <span class="meta">@Model.attentionnum 关注</span>
+    </div>
+    <div class="buttons">
+        <a data-id="yan1141061917" href="#" onclick="return false;" class="followuser btn">
+        <span class="text"> 关注</span>
+        </a>
+     </div>
+    </div>
+</div>

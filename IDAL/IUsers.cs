@@ -16,6 +16,7 @@ namespace IDAL
         bool Login(int? UserID, string PasswordL);
         bool Register(string TrueName, string PasswordR, string Tel);
         string FindPassword(string Tel,string TrueName);
-
+        //通过用户id找到用户信息
+        Users GetUserById(int userid);
     }
 }

@@ -794,9 +794,11 @@
     <Content Include="Views\Shared\_LayoutDaohang.cshtml" />
     <Content Include="Views\Mall\Category.cshtml" />
     <Content Include="Views\Mall\Search.cshtml" />
-	   <Content Include="Views\Shared\_LayoutMall.cshtml" />
+    <Content Include="Views\Shared\_LayoutMall.cshtml" />
     <Content Include="Views\Mall\Comment.cshtml" />
-	 <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
+    <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
+    <Content Include="Views\YIChuShow\Attention.cshtml" />
+    <Content Include="Views\YIChuShow\usercard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

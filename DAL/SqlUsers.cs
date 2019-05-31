@@ -92,5 +92,10 @@ namespace DAL
                 return message;
             }
         }
+
+        public Users GetUserById(int userid)
+        {
+            return db.Users.Where(u => u.UserID == userid).FirstOrDefault();
+        }
     }
 }

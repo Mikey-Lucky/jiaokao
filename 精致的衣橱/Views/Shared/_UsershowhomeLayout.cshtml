@@ -113,28 +113,31 @@
                 <span>加关注</span>
                 <span>编辑个人信息</span>
                 <div class="h-action">
+                    @ViewBag.attentionnum
+                    <a href="@Url.Action("Attention","YiChuShow",new {userid=ViewBag.userid})">关注</a>
                     <span>关注</span>
+                    @ViewBag.fensinum
                     <span>粉丝</span>
                 </div>
             </div>
         </div>
         <nav>
-            <ul>
+            <ul class="tabs">
                 <li>
                     <span class="glyphicon glyphicon-home"></span>
                     <a href="@Url.Action("Index","YiChuShow")">秀场</a>
                 </li>
-                <li>
+                <li class="active">
                     <span class="glyphicon glyphicon-heart-empty"></span>
-                    <a href="#">喜欢</a>
+                    <a href="#userlike">喜欢</a>
                 </li>
                 <li>
                     <span class="glyphicon glyphicon-book"></span>
-                    <a href="#">笔记</a>
+                    <a href="#usernote">笔记</a>
                 </li>
                 <li>
                     <span class="glyphicon glyphicon-facetime-video"></span>
-                    <a href="#">视频</a>
+                    <a href="#uservideo">视频</a>
                 </li>
             </ul>
         </nav>

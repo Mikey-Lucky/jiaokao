@@ -20,6 +20,8 @@ namespace 精致的衣橱.Controllers
         NoteLikeManager notelikes = new NoteLikeManager();
         VideoCommentManager vcomments = new VideoCommentManager();
         VideoSelectManager selects = new VideoSelectManager();
+        U_Attention_UManager attention = new U_Attention_UManager();
+        UsersManager users = new UsersManager();
         U_Reply_VideoCommentManager ureplyvideocomment = new U_Reply_VideoCommentManager();
         // GET: YIChuShow
         public ActionResult Index()
@@ -128,7 +130,8 @@ namespace 精致的衣橱.Controllers
             ycsv.userlikevideo = likes.userlikevideo(1);
             ycsv.userupnote= notes.AllNoteByID(1);
             ycsv.userupvideo = videos.uservideo(1);
-
+            ycsv.attentionnum = attention.attentionnum(1);
+            ycsv.fensnum = attention.fensnum(1);
             return View(ycsv);
         }
       
@@ -151,6 +154,24 @@ namespace 精致的衣橱.Controllers
             int a = likes.videolikenum(videoid);
             return a;
         }
+        //用户的关注
+        public ActionResult Attention(int userid)
+        {
+            var a = attention.attention(userid);
+            return View(a);
+        }
+        //用户信息卡分布视图
+        public ActionResult usercard(int userid)
+        {
+            ycsv.fensnum = attention.fensnum(userid);
+            ycsv.attentionnum = attention.attentionnum(userid);
+            if (users.GetUserById(userid).Sex == null)
+            {
+                ycsv.sex = "保密";
+             } else ycsv.sex = users.GetUserById(userid).Sex;
+            ycsv.Userabout = users.GetUserById(userid);
+            return PartialView(ycsv);
+        }
         //public int Select(int videoid)
         //{
         //    int userid = 1;//用于测试
@@ -158,7 +179,7 @@ namespace 精致的衣橱.Controllers
         //    int selectnum = selects.videoselectnum(videoid);
         //    return selectnum;
         //}
-  
+        
 
     }
 }

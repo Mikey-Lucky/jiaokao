@@ -28,5 +28,10 @@ namespace BLL
             var fwsd = iusers.FindPassword(Tel,TrueName);
             return fwsd;
         }
+        //通过用户id找到用户信息
+        public Users GetUserById(int userid)
+        {
+            return iusers.GetUserById(userid);
+        }
     }
 }

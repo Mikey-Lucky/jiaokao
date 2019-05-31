@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Models.U_Attention_U>
+@{
+    Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Attention</title>
+</head>
+<body>
+    <div> 
+        @foreach (var a in Model)
+        {
+                @Html.Action("usercard", new { userid = a.User2ID })
+        }
+    </div>
+</body>
+</html>

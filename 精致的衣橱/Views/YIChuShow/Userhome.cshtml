@@ -1,6 +1,9 @@
 ﻿@model 精致的衣橱.Models.YiChuShowViewModel
 @{
     Layout = "~/Views/Shared/_UsershowhomeLayout.cshtml";
+    ViewBag.fensinum = Model.fensnum;
+    ViewBag.attentionnum = Model.attentionnum;
+    ViewBag.userid = 1;
 }
 <style>
     #userlike {
@@ -18,48 +21,66 @@
         
     }
 </style>
-<div id="userlike" class="userhome">
-    @foreach (var video in Model.userlikevideo)
-    {
-        <div>
-            <a href="@Url.Action("VideoDetail", "YiChuShow", new {id=@video.VideoID})">
-                <img  src="/Images/Noteimg/@video.Video.Image" alt="Some image" />
-                <span>@video.Video.likenum</span>
-            </a>
-        </div>
-    }
+<div class="tab_container">
+    <div id="userlike" class="userhome tab_content">
+        @foreach (var video in Model.userlikevideo)
+        {
+            <div>
+                <a href="@Url.Action("VideoDetail", "YiChuShow", new {id=@video.VideoID})">
+                    <img src="/Images/Noteimg/@video.Video.Image" alt="Some image" />
+                    <span>@video.Video.likenum</span>
+                </a>
+            </div>
+        }
+        @foreach (var note in Model.userlikenote)
+        {
+            <div>
+                <a href="@Url.Action("NoteDetail", "YiChuShow", new {id=@note.NoteID})">
+                    <img src="/Images/Noteimg/@note.Note.Img" alt="Some image" />
+                    <span>@note.Note.likenum</span>
+                </a>
+            </div>
+        }
+    </div>
+    <div id="usernote" class="userhome tab_content">
+        @foreach (var note in Model.userupnote)
+        {
+            <div>
+                <a href="@Url.Action("NoteDetail", "YiChuShow", new {id=@note.NoteID})">
+                    <img src="/Images/Noteimg/@note.Img" alt="Some image" />
+                    <span>@note.likenum</span>
+                </a>
+            </div>
+        }
+    </div>
     <hr />
-    @foreach (var note in Model.userlikenote)
-    {
-        <div>
-            <a href="@Url.Action("NoteDetail", "YiChuShow", new {id=@note.NoteID})">
-                <img src="/Images/Noteimg/@note.Note.Img" alt="Some image" />
-                <span>@note.Note.likenum</span>
-            </a>
-        </div>
-    }
+    <div id="uservideo" class="userhome tab_content">
+        @foreach (var video in Model.userupvideo)
+        {
+            <div>
+                <a href="@Url.Action("VideoDetail", "YiChuShow", new {id=@video.VideoID})">
+                    <img src="/Images/Noteimg/@video.Image" alt="Some image" />
+                    <span>@video.likenum</span>
+                </a>
+            </div>
+        }
+    </div>
 </div>
-<div id="usernote" class="userhome">
-    @foreach (var note in Model.userupnote)
-    {
-        <div>
-            <a href="@Url.Action("NoteDetail", "YiChuShow", new {id=@note.NoteID})">
-                <img src="/Images/Noteimg/@note.Img" alt="Some image" />
-                <span>@note.likenum</span>
-            </a>
-        </div>
-    }
-</div>
-<hr />
-<div id="uservideo" class="userhome">
-    @foreach (var video in Model.userupvideo)
-    {
-        <div>
-            <a href="@Url.Action("VideoDetail", "YiChuShow", new {id=@video.VideoID})">
-                <img src="/Images/Noteimg/@video.Image" alt="Some image" />
-                <span>@video.likenum</span>
-            </a>
-        </div>
-    }
-</div>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script>
+    $(".tab_content").hide();
+    $("ul.tabs li:first").addClass("active").show();
+    $(".tab_content:first").show();
+    $("ul.tabs li").click(function() {
+        $("ul.tabs li").removeClass("active");
+        $(this).addClass("active");
+        $(".tab_content").hide();
+        var activeTab = $(this).find("a").attr("href");
+        $(activeTab).fadeIn();
+        return false;
+    });
+</script>
+
+
+
 
