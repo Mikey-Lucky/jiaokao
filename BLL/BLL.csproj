@@ -43,6 +43,7 @@
     <Compile Include="AddressManager.cs" />
     <Compile Include="CartManager.cs" />
     <Compile Include="CoatManager.cs" />
+    <Compile Include="ComReplyManager.cs" />
     <Compile Include="GGCCManager.cs" />
     <Compile Include="GoodsCommentManager.cs" />
     <Compile Include="GoodsLikeManager.cs" />

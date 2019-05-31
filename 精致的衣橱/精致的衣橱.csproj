@@ -798,6 +798,7 @@
     <Content Include="Views\Shared\_LayoutMall.cshtml" />
     <Content Include="Views\Mall\Comment.cshtml" />
     <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
+    <Content Include="Views\Mall\Reply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

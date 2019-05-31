@@ -142,7 +142,7 @@
 
     <div style="margin-top:-200px;margin-left:314px;">
         <textarea name="pinglun" id="tt"></textarea>
-        <button id="pl">发表评论</button>
+        <button id="pl" type="button">发表评论</button>
     </div>
    
 @*}*@
@@ -207,19 +207,30 @@
         var pinglun = $("#tt");
         $("#pl").on("click", function () {
             $.ajax({
+
                 type: 'post',
                 url: "/Mall/Comment",
                 data: {
                     "goodsid":GoodsID.val(),
                     "text":pinglun.val()
                 },
+               
                 success:function(data){
-                    $("#p2").html(data);
-                    //$(function () {
-                    //    setInterval(function () {
-                    //        $("#p2").load(location.href + " #p2");
-                    //    },8000);
-                    //    })
+                    
+                    //$('#p2').html(data);
+                    $.ajax({
+                        type:"get",
+                        async: false,
+                        url: "/Mall/Comment",
+                        data: {
+                            "goodsid": GoodsID.val(),
+                            "text": pinglun.val()
+                        },
+                        success:function(data){
+                            $("#p2").html(data);
+                        }
+                    })
+                    
                     }
                
             })
