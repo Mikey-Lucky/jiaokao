@@ -1,8 +1,12 @@
 ﻿@model IEnumerable<Models.Orders>
 @{
-    ViewBag.Title = "Order";
 
+
+    Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
 }
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
 
 @*<!DOCTYPE html>
 <html>
@@ -12,51 +16,50 @@
 <body>*@
    
 
-
- <table class="table">
-    <tr>
-        <th>
-            用户姓名
-        </th>
-        
-        <th>
-            用户地址
-        </th>
-        <th>
-            订单总金额
-        </th>
-        <th>
-            电话号码
-        </th>
-        <th>
-            订单详情
-        </th>
-        
-    </tr>
-    @foreach (var item in Model)
-    {
+<div class="container" style="background-color:azure">
+    <table class="table">
         <tr>
-            <td>
-                
-                @item.UserName
-            </td>
-            <td>
-                
-                @item.Address
-            </td>
-            <td>
+            <th>
+                用户姓名
+            </th>
 
-                @item.TotalAmount
-            </td>
-            <td>
-                @item.Tel
-            </td>
-            <td>
-                <a href="@Url.Action("OrderDetails1","Mall", new { orderid = item.OrderID})">订单详情</a>
-                @*@{ Html.RenderAction("OrderDetails", "Mall", new { OrderID = @item.OrderID });}*@
-            </td>
+            <th>
+                用户地址
+            </th>
+            <th>
+                订单总金额
+            </th>
+            <th>
+                电话号码
+            </th>
+            <th>
+                订单详情
+            </th>
+
         </tr>
-    }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+
+                    @item.UserName
+                </td>
+                <td>
+
+                    @item.Address
+                </td>
+                <td>
+
+                    @item.TotalAmount
+                </td>
+                <td>
+                    @item.Tel
+                </td>
+                <td>
+                    <a href="@Url.Action("OrderDetails1","Mall", new { orderid = item.OrderID})">订单详情</a>
+                    @*@{ Html.RenderAction("OrderDetails", "Mall", new { OrderID = @item.OrderID });}*@
+                </td>
+            </tr>
+        }
     </table>
-@*</body>
-</html>*@
+</div>

@@ -59,6 +59,7 @@
     <Compile Include="SqlAddress.cs" />
     <Compile Include="SqlCart.cs" />
     <Compile Include="SqlCoat.cs" />
+    <Compile Include="SqlComReply.cs" />
     <Compile Include="SqlGGCC.cs" />
     <Compile Include="SqlGoods.cs" />
     <Compile Include="SqlGoodsComment.cs" />

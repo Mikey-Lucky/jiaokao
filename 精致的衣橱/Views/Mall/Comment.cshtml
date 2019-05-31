@@ -1,8 +1,71 @@
 ﻿@model IEnumerable<Models.GoodsComment>
+@{ 
+    Layout = null;
+}
+<style>
+    #tl{
+        height:100px;
+        width:200px;
+        border:1px solid red;
+    }
+    .btn{
+        
+        background-color:red;
+        margin-top:10px;
+    }
+    #p3{
+
+    }
+   
+</style>
 <div>
     @foreach (var p in Model)
     {
         @p.ComContent
+
         @p.Users.UserName
+        <div>
+            <textarea name="huifu" id="tl"></textarea>
+            <button class="btn">回复</button>
+            <input type="hidden" value="@p.GoodsCommentID" name="commentid"/>
+
+        </div>
+        
+        <div id="p3">
+            @{Html.RenderAction("Reply", "Mall", new {commentid=@p.GoodsCommentID});}
+        </div>
     }
 </div>
+<script>
+    $(function () {
+        var hf = $("#tl");
+        var cid = $("input[name='commentid']");
+        $(".btn").on("click", function () {
+            $.ajax({
+                type:'post',
+                url: "/Mall/Reply",
+                data: {
+                    "commentid": cid.val(),
+                    "text":hf.val()
+                        
+                },
+                success: function (data) {
+                    $.ajax({
+                        type: "get",
+                        async: false,
+                        url: "Mall/Reply",
+                        data:{"commentid": cid.val(),
+                            "text":hf.val()},
+                        success: function (data) {
+                            $("#p3").html(data);
+                        },
+                        error: function () {
+                            alert("回复失败");
+                        }
+                            
+                    })
+                }
+            })
+        })
+    })
+</script>

@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Models.ComReply>
+
+@foreach (var item in Model)
+{
+    <div>
+        <a>@item.Users.UserName</a> 回复 <a>@item.GoodsComment.Users.UserName</a><p>&nbsp;&nbsp;@item.RepContent</p>
+    </div>
+}
+

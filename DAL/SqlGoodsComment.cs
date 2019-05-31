@@ -18,7 +18,7 @@ namespace DAL
         }
         public IEnumerable<GoodsComment> Getgoodscommentbyid(int? id)
         {
-            var goodscomment = db.GoodsComment.Where(u=>u.GoodsID==id);
+            var goodscomment = db.GoodsComment.Where(u => u.GoodsID == id).OrderByDescending(u=>u.ComTime);
             return goodscomment;
         }
         public void AddGoodsComment(string com,int userid,int goodsid,DateTime datetime,int num)

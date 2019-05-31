@@ -43,6 +43,7 @@
     <Compile Include="IAddress.cs" />
     <Compile Include="ICart.cs" />
     <Compile Include="ICoat.cs" />
+    <Compile Include="IComReply.cs" />
     <Compile Include="IGGCC.cs" />
     <Compile Include="IGoods.cs" />
     <Compile Include="IGoodsComment.cs" />

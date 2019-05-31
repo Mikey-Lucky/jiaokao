@@ -24,6 +24,7 @@ namespace 精致的衣橱.Controllers
         OrderDetailsManager orderdetailsmanager = new OrderDetailsManager();
         GoodsLikeManager goodslikemanager = new GoodsLikeManager();
         GoodsCommentManager goodscommentmanager = new GoodsCommentManager();
+        ComReplyManager comreplymanager = new ComReplyManager();
         public ActionResult Index()
         {
             var g1 = goodsmanager.GetHotGoods(8);
@@ -45,51 +46,7 @@ namespace 精致的衣橱.Controllers
             var a = db.Goods.Where(p => p.GoodsID == id).FirstOrDefault();
             return View(a);
         }
-        //public ActionResult GoodIndex()
-        //{
-
-        //    var goods = ggccmanager.Category();
-        //    return View(goods);
-
-        //}
-
-        ////有问题
-        //public ActionResult GoodsType(string CategoryName, string Season, string currentFilter, int? page)
-        //{
-        //    var c1 = ggccmanager.GetGoods();
-        //    if (CategoryName != null || Season != null)
-        //    {
-
-        //        page = 1;
-        //    }
-        //    if (CategoryName != null && Season == null)
-        //    {
-        //        CategoryName = currentFilter;
-
-        //        ViewBag.CurrentFilter = CategoryName;
-
-        //    }
-        //    else if (CategoryName == null && Season != null)
-        //    {
-        //        Season = currentFilter;
-        //        ViewBag.CurrentFilter = Season;
-        //    }
-
-        //    int pageSize = 8;
-        //    int pageNumber = (page ?? 1);
-        //    return PartialView(c1.ToPagedList(pageNumber, pageSize));
-        //}
-        //public ActionResult GoodsShow(string CateName, string season)
-        //{
-        //    var goods = ggccmanager.GetGoods();
-        //    goods = ggccmanager.GetCategoryByCateName(CateName, season);
-        //    return View(goods);
-        //}
-        //商品的种类导航栏
-        //public ActionResult Nav(string sex, string season, string material, string style, string type)
-        //{
-            
-        //}
+       
         public ActionResult Category(string sex, string season, string material, string style, string type,string currentFilter1,string currentFilter2, string currentFilter3, string currentFilter4, string currentFilter5,int? page)
         {
             var c1 = goodsmanager.Getsall();
@@ -159,7 +116,7 @@ namespace 精致的衣橱.Controllers
             var t = Convert.ToDouble(cartmanager.getgoodsbyid(GoodsID).Unitprice);
             var amount = cartmanager.getgoodsbyid(GoodsID).TotalStorageAmount;
             //var price = t;
-            var Count = Convert.ToInt32(Request.Form["number"]);
+            var Count = Convert.ToInt32(Request["number"]);
             if (amount > Count)
             {
                 int Flag = 0;
@@ -175,7 +132,7 @@ namespace 精致的衣橱.Controllers
         //[Login]
         public ActionResult UpdateCartNum(int num, int CartID)
         {
-            num = Convert.ToInt32(Request["check"]);
+            
             cartmanager.Update(num, CartID);
             return Content("<script>alert('更新成功');window.location.href='../Mall/Cart';</script>");
         }
@@ -221,7 +178,29 @@ namespace 精致的衣橱.Controllers
                 //}
                 //return View();
             }
-            //return Content("<script>alert('评论成功！')/*;history.go(0)*/</script>");
+            return Content("<script>alert('评论成功！')/*;history.go(0)*/</script>");
+            //return View();
+
+        }
+        public ActionResult Reply(int commentid)
+        {
+            var rep = comreplymanager.Reply(commentid);
+            return View(rep);
+        }
+        [HttpPost]
+        public ActionResult Reply(int commentid,string text)
+        {
+            int userid = 1;
+            var datetime = System.DateTime.Now;
+            if (ModelState.IsValid)
+            {
+                if (text != null)
+                {
+                    comreplymanager.AddComReply(userid, commentid, text, datetime);
+                }
+                else
+                    return Content("回复不能为空");
+            }
             return View();
 
         }

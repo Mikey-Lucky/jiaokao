@@ -251,6 +251,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="iconfont\五角星.png" />
+    <Content Include="iconfont\回到顶部.png" />
     <Content Include="iconfont\点赞.png" />
     <Content Include="iconfont\衣服.png" />
     <Content Include="iconfont\订单.png" />
@@ -796,9 +797,12 @@
     <Content Include="Views\Mall\Search.cshtml" />
     <Content Include="Views\Shared\_LayoutMall.cshtml" />
     <Content Include="Views\Mall\Comment.cshtml" />
-    <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
+	 <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
+    <Content Include="Views\Mall\Reply.cshtml" />
+	 <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
     <Content Include="Views\YIChuShow\Attention.cshtml" />
     <Content Include="Views\YIChuShow\usercard.cshtml" />
+	 <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
