@@ -19,6 +19,7 @@ namespace IDAL
         Cart getcartbyid(int? id);
         Cart whereCartById(int uid, int gid);
         //void GetCartIidByDatetime(DateTime datetime);
+        //IEnumerable<Goods> getgoodsbycartstyle(int userid);
     }
        
 }
