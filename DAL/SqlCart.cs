@@ -106,15 +106,23 @@ namespace DAL
             return shopcar;
         }
         //推荐，根据购物车中的衣服款式推荐
-        //public IEnumerable<Goods> getgoodsbycartstyle(int userid)
-        //{
-        //    var t = from o in db.Goods
-        //            join b in db.Cart on o.GoodsID equals b.GoodsID
-        //            select 
-        //    var goods = from o in db.Goods
-        //                    //join b in db.Goods on o.GoodsID equals b.GoodsID
-        //                    //join b in db.Cart on o.GoodsID equals b.GoodsID
-        //                where o.Season in()
-        //}
+        public IEnumerable<Goods> getgoodsbycartstyle(int userid)
+        {
+            var cart = db.Cart.Where(m => m.UserID == userid);
+            //var r = select * from Goods
+            //        where Season in(
+            //        select Season from Goods
+            //        where Season in (select season from Goods,Cart
+            //        where Goods.GoodsID = Cart.GoodsID and Cart.UserID = 7))
+           //var r = from a in db.Goods
+           //        where a.Type
+           //     (from a in db.Goods
+           //        from b in  cart
+           //        where a.GoodsID==b.GoodsID
+           //        select a.Type)
+                   
+
+
+        }
     }
 }
