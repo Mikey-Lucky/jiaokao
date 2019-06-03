@@ -19,5 +19,11 @@ namespace IDAL
         IEnumerable<Video> VideoRelative(int authorid, string title,string intro,int top);
         //通过用户id找所有视频
         IEnumerable<Video> uservideo(int userid);
+        //添加视频
+        void AddVideo(Video video);
+        //删除视频
+        bool DeleteVideo(int id);
+        //修改视频
+        void EditVideo(Video video);
     }
 }

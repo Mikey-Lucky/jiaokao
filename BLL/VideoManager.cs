@@ -40,7 +40,21 @@ namespace BLL
 
             return ivideo.uservideo(userid);
         }
-
+        //增加视频
+        public void AddVideo(Video video)
+        {
+            ivideo.AddVideo(video);
+        }
+        //删除视频
+        public bool DeleteVideo(int id)
+        {
+            return ivideo.DeleteVideo(id);
+        }
+        //修改视频
+        public void EditVideo(Video video)
+        {
+            ivideo.EditVideo(video);
+        }
     }
 
 }

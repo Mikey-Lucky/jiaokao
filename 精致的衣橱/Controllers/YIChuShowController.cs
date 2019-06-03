@@ -77,6 +77,22 @@ namespace 精致的衣橱.Controllers
             notes.AddNote(note);
             return View();
         }
+        
+        //上传视频get
+        public ActionResult UpVideo()
+        {
+           
+            return View();
+        }
+        //上传视频post
+        [HttpPost]
+        public ActionResult UpVideo(Video video)
+        {
+            var video1 = Request.Files["video"];
+            var videopath = Guid.NewGuid().ToString() + video1.FileName;
+            video1.SaveAs(Request.MapPath("/Images/video/" + videopath));
+            return View();
+        }
         //视频详情页
         public ActionResult VideoDetail(int id)
         {

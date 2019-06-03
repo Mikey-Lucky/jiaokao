@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "UpVideo";
+    Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
+}
+
+<h2>UpVideo</h2>
+@using (Html.BeginForm("UpVideo", "YiChuShow", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <h2>视频文件上传</h2>
+        <input type="file" name="video"  accept="video/*">
+        @*<video controls = "controls" id="video">
+           <source src = "" type = "video/mp4" id="yulan"/>
+        </video >*@
+    <h2>基本信息</h2>
+    <p>标题</p>
+    <input name="title" value="标题" />
+    <p>封面</p>
+        <div id="containner">
+            <input type="file" id="imgFile" name="imgfile" onchange="previewFile()" accept="image/*"><br>
+            <img src="" height="200" alt="Image preview...">
+        </div>
+   <input type="submit" value="提交" />
+   <p>简介</p>
+}
+<script type="text/javascript">
+    function previewFile() {
+        var preview = document.querySelector('img')
+        //var fileDom = document.querySelector('input[type=file]')
+        var fileDom = document.getElementById('imgFile')
+        // 获取得到file 对象
+        var file = fileDom.files[0]
+        // 限制上传图片的大小
+        if (file.size > 1024 * 1024 * 2) {
+            alert('图片大小不能超过 2MB!');
+            return false;
+        }
+        // 创建url
+        var imgUrl = window.URL.createObjectURL(file)
+        preview.setAttribute("src", imgUrl)
+        // 更改img url 以后释放 url
+        preview.onload = function () {
+            // console.log('图片加载成功')
+            URL.revokeObjectURL(imgUrl)
+        }
+    }
+    //function previewFile() {
+    //    var preview = document.getElementById("yulan")
+    //    var fileDom = document.querySelector('input[type=file]')
+    //    // 获取得到file 对象
+    //    var file = fileDom.files[0]
+    //    // 限制上传图片的大小
+    //    //if (file.size > 1024 * 1024 * 2) {
+    //    //    alert('图片大小不能超过 2MB!');
+    //    //    return false;
+    //    //}
+    //    // 创建url
+    //    var videoUrl = window.URL.createObjectURL(file)
+    //    preview.setAttribute("src", videoUrl+".mp4")
+    //    // 更改img url 以后释放 url
+    //    preview.onload = function () {
+    //        // console.log('图片加载成功')
+    //        URL.revokeObjectURL(videoUrl)
+    //    }
+    //}
+    //(function () {
+    //    var video, output;
+    //    var scale = 0.8;
+    //    var initialize = function () {
+    //        output = document.getElementById("output");
+    //        video = document.getElementById("video");
+    //        video.addEventListener('loadeddata', captureImage);
+    //    };
+
+    //    var captureImage = function () {
+    //        var canvas = document.createElement("canvas");
+    //        canvas.width = video.videoWidth * scale;
+    //        canvas.height = video.videoHeight * scale;
+    //        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+    //        var img = document.createElement("img");
+    //        img.src = canvas.toDataURL("image/png");
+    //        output.appendChild(img);
+    //    };
+
+    //    initialize();
+    //})();
+</script>

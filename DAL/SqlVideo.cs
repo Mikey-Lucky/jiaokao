@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IDAL;
 using Models;
+using System.Data.Entity;
 
 namespace DAL
 {
@@ -51,5 +52,28 @@ namespace DAL
             return video;
         }
 
+        public void AddVideo(Video video)
+        {
+            db.Video.Add(video);
+            db.SaveChanges();
+        }
+
+        public bool DeleteVideo(int id)
+        {
+            Video video = db.Video.Where(b => b.VideoID == id).FirstOrDefault();
+            if (video != null)
+            {
+                db.Video.Remove(video);
+                db.SaveChanges();
+                return true;
+            }
+            else return false;
+        }
+
+        public void EditVideo(Video video)
+        {
+            db.Entry(video).State = EntityState.Modified;
+            db.SaveChanges();
+        }
     }
 }
