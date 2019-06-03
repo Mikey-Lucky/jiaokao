@@ -48,5 +48,22 @@ namespace DAL
             int num = db.U_Attention_U.Where(v => v.User1ID == userid).Count();
             return num;
         }
+
+        public string ifattention(int guanzhuzheid, int beiguanzhuid)
+        {
+        
+            U_Attention_U attention = db.U_Attention_U.Where(a => a.User1ID == guanzhuzheid && a.User2ID == beiguanzhuid).FirstOrDefault();
+            if (attention != null)
+            {
+                //不为空表示已经关注
+                return "取消关注";
+            }
+            else if (guanzhuzheid == beiguanzhuid)
+            {
+                //表示为自己
+                return "进入个人中心";
+            }
+              else return "加关注";
+        }
     }
 }

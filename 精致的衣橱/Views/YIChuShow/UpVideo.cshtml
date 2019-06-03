@@ -10,9 +10,6 @@
     @Html.AntiForgeryToken()
     <h2>视频文件上传</h2>
         <input type="file" name="video"  accept="video/*">
-        @*<video controls = "controls" id="video">
-           <source src = "" type = "video/mp4" id="yulan"/>
-        </video >*@
     <h2>基本信息</h2>
     <p>标题</p>
     <input name="title" value="标题" />
@@ -21,8 +18,9 @@
             <input type="file" id="imgFile" name="imgfile" onchange="previewFile()" accept="image/*"><br>
             <img src="" height="200" alt="Image preview...">
         </div>
-   <input type="submit" value="提交" />
    <p>简介</p>
+   <textarea id="intro" name="intro"></textarea>
+   <input type="submit" value="提交" />
 }
 <script type="text/javascript">
     function previewFile() {

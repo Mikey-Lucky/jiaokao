@@ -42,5 +42,10 @@ namespace BLL
         {
             return iattention.attentionnum(userid);
         }
+        //判断用户是否关注某用户
+        public string ifattention(int guanzhuzheid, int beiguanzhuid)
+        {
+            return iattention.ifattention(guanzhuzheid, beiguanzhuid);
+        }
     }
 }

@@ -1,15 +1,12 @@
 ﻿@model 精致的衣橱.Models.YiChuShowViewModel
-     @*@Model.fensnum
-     @Model.attentionnum
-     @Model.sex
-     @Model.Userabout.HeadImage
-     @Model.Userabout.UserName*@
+ 
+
 <style>
    
 </style>
 <div class="zong" style="background-image:url('/Images/HeadImages/@Model.Userabout.HeadImage')" >
     <div class="image">
-    <a class="alink" href="#">
+    <a class="alink" href="@Url.Action("Userhome","YiChuShow",new {userid=@Model.Userabout.UserID })">
         <img src="/Images/HeadImages/@Model.Userabout.HeadImage">
     </a>
     </div>
@@ -25,9 +22,37 @@
         <span class="meta">@Model.attentionnum 关注</span>
     </div>
     <div class="buttons">
-        <a data-id="yan1141061917" href="#" onclick="return false;" class="followuser btn">
+        <a id="@Model.Userabout.UserID" >
         <span class="text"> 关注</span>
         </a>
      </div>
     </div>
 </div>
+
+<script>
+    $(function () {   //评论
+        $.ajax({
+            type: "get",
+            url: "/YiChuShow/ifattention",
+            data: { "guanzhuzheid": 1 ,"beiguanzhuid":@Model.Userabout.UserID},
+            success: function (data) {
+                if (data=="取消关注")
+                {
+                    $("#@Model.Userabout.UserID").attr('href','#');
+                    $("#@Model.Userabout.UserID").find("span").text("取消关注")
+                }
+                else if(data=="进入个人中心")
+                {
+                    $("#@Model.Userabout.UserID").attr('href','#');
+                    $("#@Model.Userabout.UserID").find("span").text("进入个人中心")
+                }
+                else 
+                {
+                    $("#@Model.Userabout.UserID").attr('href','#');
+                    $("#@Model.Userabout.UserID").find("span").text("加关注");
+                }
+            },
+            async: true
+        });
+    });
+</script>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Models.Note>
+
+<style>
+    .wai img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .intro {
+        display: inline-block;
+        width: 160px;
+        font-size: 12px;
+        color: #999;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+        .intro p {
+            line-height: 13px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+            .intro p:first-child {
+                color: #333;
+            }
+
+    a {
+        text-decoration: none;
+        color: #999;
+    }
+</style>
+@foreach (var item in Model)
+{
+    <div class="wai">
+        <a href="@Url.Action("NoteDetail", "YiChuShow",new { id=@item.NoteID})">
+            <img src="/Images/Noteimg/@item.Img" />
+            <div class="intro">
+                <p>@item.Title</p>
+                <p>@item.Time</p>
+                <a href="@Url.Action("Userhome", "YiChuShow", new {id=@item.UserID})">by @item.Users.UserName</a>
+            </div>
+        </a>
+    </div>
+}
