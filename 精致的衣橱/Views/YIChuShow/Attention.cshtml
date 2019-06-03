@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Models.U_Attention_U>
 @{
     Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
+   
 }
 
 <!DOCTYPE html>
@@ -123,13 +124,15 @@
             background-color: #fff;
         }
     </style>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
 </head>
 <body>
     <div class="container"> 
         <div class="nav1"><span>你当前的页面为</span>用户关注页面</div>
         @foreach (var a in Model)
         {
-                @Html.Action("usercard", new { userid = a.User2ID })
+            ViewBag.guanzhuzheid = a.User1ID;
+            @Html.Action("usercard", new { userid = a.User2ID })
         }
     </div>
 </body>

@@ -68,7 +68,8 @@
             </div>
             <a href="@Url.Action("UpNote","YiChuShow")">发表笔记</a>
             <a href="@Url.Action("UpVideo","YiChuShow")">上传视频</a>
-            <a href="@Url.Action("Userhome","YiChuShow")">
+            @******************userid要改成session 用户id**************************@
+            <a href="@Url.Action("Userhome","YiChuShow",new { userid=1})">
                 <img src="~/Images/HeadImages/1.jpg" style="height:50px;width:50px;" />
             </a>
         </div>

@@ -88,9 +88,22 @@ namespace 精致的衣橱.Controllers
         [HttpPost]
         public ActionResult UpVideo(Video video)
         {
+            var imgfile = Request.Files["imgfile"];
             var video1 = Request.Files["video"];
+            var title = Request["title"];
+            var intro = Request["intro"];
             var videopath = Guid.NewGuid().ToString() + video1.FileName;
+            var imgpath= Guid.NewGuid().ToString() + imgfile.FileName;
             video1.SaveAs(Request.MapPath("/Images/video/" + videopath));
+            imgfile.SaveAs(Request.MapPath("/Images/videoimg/" + imgpath));
+            video.Adress = "../video/" + videopath;
+            video.Image= "../videoimg/" + imgpath;
+            video.Intro = intro;
+            video.likenum = 0;
+            video.Time = DateTime.Now;
+            video.Title = title;
+            video.UserID = 1;
+            videos.AddVideo(video);
             return View();
         }
         //视频详情页
@@ -140,14 +153,14 @@ namespace 精致的衣橱.Controllers
             var video = videos.VideoRelative(authorid, title, intro);
             return PartialView(video);
         }
-        public ActionResult Userhome()
+        public ActionResult Userhome(int userid)
         {
-            ycsv.userlikenote = notelikes.userlikenote(1);
-            ycsv.userlikevideo = likes.userlikevideo(1);
-            ycsv.userupnote= notes.AllNoteByID(1);
-            ycsv.userupvideo = videos.uservideo(1);
-            ycsv.attentionnum = attention.attentionnum(1);
-            ycsv.fensnum = attention.fensnum(1);
+            ycsv.userlikenote = notelikes.userlikenote(userid);
+            ycsv.userlikevideo = likes.userlikevideo(userid);
+            ycsv.userupnote= notes.AllNoteByID(userid);
+            ycsv.userupvideo = videos.uservideo(userid);
+            ycsv.attentionnum = attention.attentionnum(userid);
+            ycsv.fensnum = attention.fensnum(userid);
             return View(ycsv);
         }
       
@@ -176,6 +189,12 @@ namespace 精致的衣橱.Controllers
             var a = attention.attention(userid);
             return View(a);
         }
+        //用户的粉丝
+        public ActionResult FenSi(int userid)
+        {
+            var f = attention.fens(userid);
+            return View(f);
+        }
         //用户信息卡分布视图
         public ActionResult usercard(int userid)
         {
@@ -187,6 +206,11 @@ namespace 精致的衣橱.Controllers
              } else ycsv.sex = users.GetUserById(userid).Sex;
             ycsv.Userabout = users.GetUserById(userid);
             return PartialView(ycsv);
+        }
+        //用户是否关注
+        public string ifattention(int guanzhuzheid, int beiguanzhuid)
+        {
+            return attention.ifattention(guanzhuzheid, beiguanzhuid);
         }
         //public int Select(int videoid)
         //{

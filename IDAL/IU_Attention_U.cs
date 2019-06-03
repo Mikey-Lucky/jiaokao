@@ -21,5 +21,7 @@ namespace IDAL
         int fensnum(int userid);
         //用户关注的数量
         int attentionnum(int userid);
+        //判断用户是否关注了某用户
+        string ifattention(int guanzhuzheid, int beiguanzhuid);
     }
 }
