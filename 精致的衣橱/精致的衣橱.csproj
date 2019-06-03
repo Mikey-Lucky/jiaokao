@@ -801,18 +801,14 @@
     <Content Include="Views\Mall\Comment.cshtml" />
     <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
     <Content Include="Views\Mall\Reply.cshtml" />
-    <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
     <Content Include="Views\YIChuShow\Attention.cshtml" />
     <Content Include="Views\YIChuShow\usercard.cshtml" />
-    <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
     <Content Include="Views\GoodsIndex\Create.cshtml" />
     <Content Include="Views\GoodsIndex\Delete.cshtml" />
     <Content Include="Views\GoodsIndex\Details.cshtml" />
     <Content Include="Views\GoodsIndex\Edit.cshtml" />
     <Content Include="Views\GoodsIndex\Index.cshtml" />
     <Content Include="Views\Recommend\Index.cshtml" />
-    <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
-    <Content Include="Views\Recommend\Index1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
