@@ -48,14 +48,30 @@ namespace 精致的衣橱.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "GoodsID,Name,Sex,Season,Material,Style,GoodsImage,Amount,Unitprice,Type,SizeImage,ShangjiaTime,Pageview,TotalStorageAmount,ThumbNum")] Goods goods)
         {
-            if (ModelState.IsValid)
-            {
+            var goodsimage = Request.Files["goodsimage"];
+            
+
+
+            if (goodsimage != null)
+                {
+                string filePath = goodsimage.FileName;
+                string filename = filePath.Substring(filePath.LastIndexOf("\\") + 1);
+                string serverpath = Server.MapPath(@"\..\GoodsImages\") + filename;
+                string relativepath = "../GoodsImages/" + goodsimage;
+                goodsimage.SaveAs(serverpath);
+                goods.GoodsImage = relativepath;
+                }
+                //else
+                //{
+                //    return Content("<script>;alert('请先上传图片！');history.go(-1)</script>");
+                //}
                 db.Goods.Add(goods);
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //return RedirectToAction("Index");
+            return Content("<script>;alert('添加成功');window.location.href='../GoodsIndex/Index'</script>");
+            
 
-            return View(goods);
+            //return View(goods);
         }
 
         // GET: GoodsIndex/Edit/5

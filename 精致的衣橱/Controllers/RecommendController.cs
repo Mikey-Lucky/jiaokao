@@ -17,13 +17,16 @@ namespace 精致的衣橱.Controllers
         CartManager cartmanager = new CartManager();
         //根据购物车中的东西推荐
         //[Login]
-        public ActionResult Index1()
+        public ActionResult RecomGoods()
         {
             int userid = 1;
             var cart = db.Cart.Where(u => u.UserID == userid);
+            var goods = from o in db.Goods
+                        select o;
             if (cart != null)
             {
-                return View(cartmanager.getgoodsbycart(userid));
+                cartmanager.getgoodsbycart(userid);
+                return View(goods);
             }
                 
             return View();

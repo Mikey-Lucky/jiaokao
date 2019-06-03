@@ -808,7 +808,7 @@
     <Content Include="Views\GoodsIndex\Details.cshtml" />
     <Content Include="Views\GoodsIndex\Edit.cshtml" />
     <Content Include="Views\GoodsIndex\Index.cshtml" />
-    <Content Include="Views\Recommend\Index.cshtml" />
+    <Content Include="Views\Recommend\RecomGoods.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
