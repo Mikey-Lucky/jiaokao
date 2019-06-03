@@ -54,5 +54,10 @@ namespace BLL
             var ct = icart.whereCartById(uid,gid);
             return ct;
         }
+        //根据购物车有的东西推荐
+        public IEnumerable<Cart_Goods> getgoodsbycart(int userid)
+        {
+            return icart.getgoodsbycart(userid);
+        }
     }
 }

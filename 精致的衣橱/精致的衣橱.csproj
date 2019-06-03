@@ -209,9 +209,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddressesController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\GoodsIndexController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MallController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RecommendController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\YiChuController.cs" />
     <Compile Include="Controllers\YIChuShowController.cs" />
@@ -799,11 +801,19 @@
     <Content Include="Views\Mall\Comment.cshtml" />
     <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
     <Content Include="Views\Mall\Reply.cshtml" />
-    <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
+     <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
     <Content Include="Views\YIChuShow\Attention.cshtml" />
     <Content Include="Views\YIChuShow\usercard.cshtml" />
-    <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
-    <Content Include="Views\YIChuShow\UpVideo.cshtml" />
+	 
+	    <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
+    <Content Include="Views\GoodsIndex\Create.cshtml" />
+    <Content Include="Views\GoodsIndex\Delete.cshtml" />
+    <Content Include="Views\GoodsIndex\Details.cshtml" />
+    <Content Include="Views\GoodsIndex\Edit.cshtml" />
+    <Content Include="Views\GoodsIndex\Index.cshtml" />
+    <Content Include="Views\Recommend\Index.cshtml" />
+	<Content Include="Views\YIChuShow\NoteRelative.cshtml" />
+    
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Models.Goods>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Season)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Material)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Style)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodsImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unitprice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SizeImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShangjiaTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pageview)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalStorageAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThumbNum)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Season)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Material)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Style)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GoodsImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unitprice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SizeImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShangjiaTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pageview)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalStorageAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThumbNum)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GoodsID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GoodsID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GoodsID })
+        </td>
+    </tr>
+}
+
+</table>

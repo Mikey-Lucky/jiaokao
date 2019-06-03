@@ -69,6 +69,15 @@ namespace Models
         public virtual DbSet<note_like> note_like { get; set; }
         public virtual DbSet<video_like> video_like { get; set; }
     
+        public virtual ObjectResult<Cart_Goods> Cart_Goods(Nullable<int> userid)
+        {
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Cart_Goods>("Cart_Goods", useridParameter);
+        }
+    
         public virtual int Cart_Orders(Nullable<int> userID, string userName, string tel, string address)
         {
             var userIDParameter = userID.HasValue ?
