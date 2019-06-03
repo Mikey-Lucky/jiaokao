@@ -251,8 +251,7 @@ namespace 精致的衣橱.Controllers
         //[Login]
         public ActionResult DirectBuy(int total,string uname,string tel,string address,int num,int goodsid)
         {
-
-            
+             
             
             
             var datetime = System.DateTime.Now;
