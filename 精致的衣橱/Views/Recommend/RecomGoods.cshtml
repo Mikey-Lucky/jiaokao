@@ -4,8 +4,28 @@
 }
 
 <h2>RecomGoods</h2>
-@foreach(var item in Model)
-{
-    @item.Name
-}
-
+<table class="table">
+    <tr>
+        <th>名字</th>
+        <th>季节</th>
+        <th>类型</th>
+        <th>风格</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Season
+            </td>
+            <td>
+                @item.Type
+            </td>
+            <td>
+                @item.Style
+            </td>
+        </tr>
+    }
+</table>

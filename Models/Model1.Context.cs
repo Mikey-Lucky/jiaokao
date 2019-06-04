@@ -69,13 +69,13 @@ namespace Models
         public virtual DbSet<note_like> note_like { get; set; }
         public virtual DbSet<video_like> video_like { get; set; }
     
-        public virtual ObjectResult<Cart_Goods> Cart_Goods(Nullable<int> userid)
+        public virtual ObjectResult<Cart_Goods_Result> Cart_Goods(Nullable<int> userid)
         {
             var useridParameter = userid.HasValue ?
                 new ObjectParameter("userid", userid) :
                 new ObjectParameter("userid", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Cart_Goods>("Cart_Goods", useridParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Cart_Goods_Result>("Cart_Goods", useridParameter);
         }
     
         public virtual int Cart_Orders(Nullable<int> userID, string userName, string tel, string address)
@@ -97,6 +97,15 @@ namespace Models
                 new ObjectParameter("Address", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Cart_Orders", userIDParameter, userNameParameter, telParameter, addressParameter);
+        }
+    
+        public virtual ObjectResult<OrderDetails_Goods_Result> OrderDetails_Goods(Nullable<int> userid)
+        {
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OrderDetails_Goods_Result>("OrderDetails_Goods", useridParameter);
         }
     }
 }

@@ -108,9 +108,9 @@ namespace DAL
         //推荐，根据购物车中的衣服款式推荐
         public IEnumerable<Goods>  getgoodsbycart(int userid)
         {
-            var goods = from o in db.Goods
-                        select o;
-            db.Cart_Goods(userid);
+            //var goods = from o in db.Goods
+              //          select o;
+            var goods= (IEnumerable < Goods > )db.Cart_Goods(userid);
             return goods;
 
         }

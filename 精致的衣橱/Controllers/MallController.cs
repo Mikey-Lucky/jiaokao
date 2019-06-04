@@ -44,7 +44,13 @@ namespace 精致的衣橱.Controllers
         {
             Session["goodsid"] = id;
             var a = db.Goods.Where(p => p.GoodsID == id).FirstOrDefault();
+            var ScanNum = Convert.ToInt32(Request["ScanNam"]);
+            a.Pageview = ScanNum;
+            db.SaveChanges();
+            
+            Session["ScanNum"] = ScanNum;
             return View(a);
+
         }
        
         public ActionResult Category(string sex, string season, string material, string style, string type,string currentFilter1,string currentFilter2, string currentFilter3, string currentFilter4, string currentFilter5,int? page)

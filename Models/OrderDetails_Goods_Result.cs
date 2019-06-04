@@ -11,7 +11,7 @@ namespace Models
 {
     using System;
     
-    public partial class Cart_Goods_Result
+    public partial class OrderDetails_Goods_Result
     {
         public int GoodsID { get; set; }
         public string Name { get; set; }

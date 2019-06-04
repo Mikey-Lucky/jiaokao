@@ -49,17 +49,19 @@ namespace 精致的衣橱.Controllers
         public ActionResult Create([Bind(Include = "GoodsID,Name,Sex,Season,Material,Style,GoodsImage,Amount,Unitprice,Type,SizeImage,ShangjiaTime,Pageview,TotalStorageAmount,ThumbNum")] Goods goods)
         {
             var goodsimage = Request.Files["goodsimage"];
-            
-
+            var imagepath = Guid.NewGuid().ToString() + goodsimage.FileName;
+            goodsimage.SaveAs(Request.MapPath("/Images/GoodsImages/" + imagepath));
 
             if (goodsimage != null)
                 {
-                string filePath = goodsimage.FileName;
-                string filename = filePath.Substring(filePath.LastIndexOf("\\") + 1);
-                string serverpath = Server.MapPath(@"\..\GoodsImages\") + filename;
-                string relativepath = "../GoodsImages/" + goodsimage;
-                goodsimage.SaveAs(serverpath);
-                goods.GoodsImage = relativepath;
+                //string filePath = goodsimage.FileName;
+                //string filename = filePath.Substring(filePath.LastIndexOf("\\") + 1);
+                //string serverpath = Server.MapPath(@"\..\GoodsImages\") + filename;
+                //string relativepath = "../GoodsImages/" + goodsimage;
+                //goodsimage.SaveAs(serverpath);
+                //goods.GoodsImage = relativepath;
+                goods.GoodsImage = "../GoodsImages/" + imagepath;
+
                 }
                 //else
                 //{
