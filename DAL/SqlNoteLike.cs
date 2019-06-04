@@ -11,6 +11,9 @@ namespace DAL
     public class SqlNoteLike : INoteLike
     {
         yichuEntities db = DbContextFactory.CreateDbContext();
+
+
+
         public void Notelikeclick(int userid, int noteid)
         {
             NoteLike like = db.NoteLike.Where(b => b.UserID == userid && b.NoteID == noteid).FirstOrDefault();
@@ -40,6 +43,33 @@ namespace DAL
         {
             var likenote = db.NoteLike.Where(l => l.UserID == userid);
             return likenote;
+        }
+        public void addlike(NoteLike like)
+        {
+            db.NoteLike.Add(like);
+            db.SaveChanges();
+        }
+
+        public bool dellike(int userid, int noteid)
+        {
+            NoteLike like = db.NoteLike.Where(b => b.UserID == userid && b.NoteID == noteid).FirstOrDefault();
+            if (like != null)
+            {
+                db.NoteLike.Remove(like);
+                db.SaveChanges();
+                return true;
+            }
+            else return false;
+        }
+
+        public bool iflike(int userid, int noteid)
+        {
+            NoteLike like = db.NoteLike.Where(a => a.UserID == userid && a.NoteID == noteid).FirstOrDefault();
+            if (like != null)
+            {
+                return true;
+            }
+            else return false;
         }
     }
 }

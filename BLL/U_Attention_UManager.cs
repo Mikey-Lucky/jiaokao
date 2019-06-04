@@ -18,9 +18,9 @@ namespace BLL
             iattention.addattention(attention);
         }
         //取消关注
-        public bool deleteattention(int id)
+        public bool deleteattention(int guanzhuzheid, int beiguanzhuid)
         {
-            return iattention.deleteattention(id);
+            return iattention.deleteattention(guanzhuzheid,beiguanzhuid);
         }
         //用户的关注
         public IQueryable<U_Attention_U> attention(int userid)

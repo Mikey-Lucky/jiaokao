@@ -15,7 +15,12 @@ namespace IDAL
         int Notelikenum(int noteid);
         //通过用户id找到用户的喜欢笔记列表
         IEnumerable<NoteLike> userlikenote(int userid);
-       
+        //判断用户是否点赞了笔记
+        bool iflike (int userid, int noteid);
+        //取消赞
+        bool dellike(int userid, int noteid);
+        //点赞
+        void addlike(NoteLike like);
 
     }
 }

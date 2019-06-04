@@ -30,7 +30,38 @@
 </div>
 
 <script>
-    $(function () {   //评论
+    $(function () {   //关注
+        var active=true;
+        var btn=$("#@Model.Userabout.UserID");
+        btn.click(function(){
+            if(btn.active){
+                $("#@Model.Userabout.UserID").find("span").text("取消关注")
+                //btn.find(span).text("取消关注")
+                //执行加关，显示取关
+                $.ajax({
+                    type: "get",
+                    url: "/YiChuShow/jiaguan",
+                    data: { "guanzhuzheid": 1 ,"beiguanzhuid":@Model.Userabout.UserID},
+                    success: function (data) {
+                            alert(data)
+                    },
+                    async: true
+                });
+                btn.active=false
+            } else {
+                $("#@Model.Userabout.UserID").find("span").text("加关注")
+                $.ajax({
+                    type: "get",
+                    url: "/YiChuShow/quguan",
+                    data: { "guanzhuzheid": 1 ,"beiguanzhuid":@Model.Userabout.UserID},
+                    success: function (data) {
+                        alert(data)
+                    },
+                    async: true
+                });
+                btn.active=true
+            }
+        })
         $.ajax({
             type: "get",
             url: "/YiChuShow/ifattention",
@@ -39,14 +70,16 @@
                 if (data=="取消关注")
                 {
                     $("#@Model.Userabout.UserID").attr('href','#');
+                    $("#@Model.Userabout.UserID").parent().addClass("active")
                     $("#@Model.Userabout.UserID").find("span").text("取消关注")
+
                 }
                 else if(data=="进入个人中心")
                 {
                     $("#@Model.Userabout.UserID").attr('href','#');
                     $("#@Model.Userabout.UserID").find("span").text("进入个人中心")
                 }
-                else 
+                else
                 {
                     $("#@Model.Userabout.UserID").attr('href','#');
                     $("#@Model.Userabout.UserID").find("span").text("加关注");
