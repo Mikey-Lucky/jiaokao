@@ -55,9 +55,11 @@ namespace BLL
             return ct;
         }
         //根据购物车有的东西推荐
-        public IEnumerable<Cart_Goods> getgoodsbycart(int userid)
+        public IEnumerable<Goods> getgoodsbycart(int userid)
+        
         {
             return icart.getgoodsbycart(userid);
+            
         }
     }
 }

@@ -57,10 +57,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.GoodsImage, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.GoodsImage, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GoodsImage, "", new { @class = "text-danger" })
+                @*@Html.EditorFor(model => model.GoodsImage, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.GoodsImage, "", new { @class = "text-danger" })*@
+                <input type="file" name="goodsimage" value="goodsimage" />
             </div>
         </div>
+        @*<label>请选择图片上传</label><span><input type="file" name="goodsimage" value="goodsimage" /></span>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
