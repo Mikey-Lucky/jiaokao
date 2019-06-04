@@ -17,9 +17,9 @@ namespace DAL
             db.U_Attention_U.Add(attention);
             db.SaveChanges();
         }
-        public bool deleteattention(int id)
+        public bool deleteattention(int guanzhuzheid, int beiguanzhuid)
         {
-            U_Attention_U attention = db.U_Attention_U.Where(b => b.U_Attention_UID == id).FirstOrDefault();
+            U_Attention_U attention = db.U_Attention_U.Where(b =>b.User1ID==guanzhuzheid&&b.User2ID==beiguanzhuid).FirstOrDefault();
             if (attention != null)
             {
                 db.U_Attention_U.Remove(attention);

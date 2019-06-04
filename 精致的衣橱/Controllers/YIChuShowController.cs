@@ -77,7 +77,43 @@ namespace 精致的衣橱.Controllers
             notes.AddNote(note);
             return View();
         }
-        
+
+        ////给笔记点赞
+        //public void addnotelike(NoteLike like)
+        //{
+        //    like.NoteID =Convert.ToInt32(Request["noteid"]);
+        //    like.UserID =Convert.ToInt32(Request["userid"]);
+        //    like.Time = DateTime.Now;
+        //    notelikes.addlike(like);
+        //}
+        ////取消笔记点赞
+        //public bool delnotelike(int userid, int noteid)
+        //{
+        //    return notelikes.dellike(userid, noteid);
+        //}
+        //判断是否给笔记点过赞
+        public bool ifnotelike(int userid, int noteid)
+        {
+            return notelikes.iflike(userid, noteid);
+        }
+        //点赞取消赞操作
+        public int notezan(int userid,int noteid)
+        {
+            var a= notelikes.iflike(userid, noteid);
+            if (a == true)
+            {
+                notelikes.dellike(userid, noteid);
+                return notelikes.Notelikenum(noteid);
+            }
+            else {
+                NoteLike like = new NoteLike();
+                like.NoteID =noteid;
+                like.UserID =userid;
+                like.Time = DateTime.Now;
+                notelikes.addlike(like);
+                return notelikes.Notelikenum(noteid);
+            }
+        }
         //上传视频get
         public ActionResult UpVideo()
         {
@@ -173,6 +209,8 @@ namespace 精致的衣橱.Controllers
             ycsv.AllNoteByID = usershuoshuo;
             return View(ycsv);
         }
+       
+
         //点赞取消赞操作
         public int Zan(int videoid)
         {
@@ -211,6 +249,23 @@ namespace 精致的衣橱.Controllers
         public string ifattention(int guanzhuzheid, int beiguanzhuid)
         {
             return attention.ifattention(guanzhuzheid, beiguanzhuid);
+        }
+        //取消关注
+     
+        public string quguan(int guanzhuzheid, int beiguanzhuid)
+        {
+            attention.deleteattention(guanzhuzheid, beiguanzhuid);
+            return "取关成功";
+        }
+        //加关注
+     
+        public string jiaguan(U_Attention_U uau)
+        {
+            uau.User1ID =Convert.ToInt32(Request["guanzhuzheid"]);
+            uau.User2ID = Convert.ToInt32(Request["beiguanzhuid"]);
+            uau.Time = DateTime.Now;
+            attention.addattention(uau);
+            return "关注成功";
         }
         //public int Select(int videoid)
         //{

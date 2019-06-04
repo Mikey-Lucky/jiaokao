@@ -21,11 +21,26 @@ namespace BLL
         {
             return ilike.Notelikenum(noteid);
         }
-
+      
         public IEnumerable<NoteLike> userlikenote(int userid)
         {
 
             return ilike.userlikenote(userid);
+        }
+        //点赞
+        public void addlike(NoteLike like)
+        {
+            ilike.addlike(like);
+        }
+        //取消点赞
+        public bool dellike(int userid, int noteid)
+        {
+            return ilike.dellike(userid, noteid);
+        }
+        //判断是否点赞
+        public bool iflike(int userid, int noteid)
+        {
+            return ilike.iflike(userid, noteid);
         }
     }
 }
