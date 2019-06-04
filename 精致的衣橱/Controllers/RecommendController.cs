@@ -45,7 +45,7 @@ namespace 精致的衣橱.Controllers
                 var goods = goodsmanager.GetNewGoods(20);
                 return View(goods);
             }
-            var scannum = Session["ScanNum"];
+            //var scannum = Session["ScanNum"];
            
             
             return View();

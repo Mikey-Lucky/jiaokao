@@ -255,6 +255,7 @@
     <Content Include="iconfont\五角星.png" />
     <Content Include="iconfont\回到顶部.png" />
     <Content Include="iconfont\点赞.png" />
+    <Content Include="iconfont\背景.PNG" />
     <Content Include="iconfont\衣服.png" />
     <Content Include="iconfont\订单.png" />
     <Content Include="iconfont\购物车.png" />
@@ -811,6 +812,7 @@
     <Content Include="Views\YIChuShow\FenSi.cshtml" />
     <Content Include="Views\YIChuShow\UpVideo.cshtml" />
     <Content Include="Views\Recommend\RecomGoods.cshtml" />
+    <Content Include="Views\Shared\_LayoutRecommend.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
