@@ -55,5 +55,17 @@ namespace BLL
             var goods = igoods.Search(search);
             return goods;
         }
+        public void AddGoods(Goods goods)
+        {
+             igoods.AddGoods(goods);
+        }
+        public void DeleteGoods(Goods goods)
+        {
+            igoods.DeleteGoods(goods);
+        }
+        public void EditGoods(Goods goods)
+        {
+            igoods.EditGoods(goods);
+        }
     }
 }

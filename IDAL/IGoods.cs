@@ -19,5 +19,8 @@ namespace IDAL
         IEnumerable<Goods> Getsall();
         IEnumerable<Goods> Category(string sex, string season, string material, string style, string type);
         IEnumerable<Goods> Search(string search);
+        void AddGoods(Goods goods);
+        void DeleteGoods(Goods goods);
+        void EditGoods(Goods goods);
     }
 }

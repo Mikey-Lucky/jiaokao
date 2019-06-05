@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IDAL;
 using Models;
+using System.Data.Entity;
 
 namespace DAL
 {
@@ -62,6 +63,21 @@ namespace DAL
                     where p.Name.Contains(search) || p.Season.Contains(search) || p.Sex.Contains(search) || p.Style.Contains(search) || p.Type.Contains(search) || p.Material.Contains(search)
                     select p;
             return t.ToList();
+        }
+        public void AddGoods(Goods goods)
+        {
+            db.Goods.Add(goods);
+            db.SaveChanges();
+        }
+        public void DeleteGoods(Goods goods)
+        {
+            db.Goods.Remove(goods);
+            db.SaveChanges();
+        }
+        public void EditGoods(Goods goods)
+        {
+            db.Entry(goods).State = EntityState.Modified;
+            db.SaveChanges();
         }
     }
 }
