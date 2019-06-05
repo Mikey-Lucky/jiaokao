@@ -82,15 +82,22 @@ namespace 精致的衣橱.Controllers
                 data = "验证码输入错误，请重试";
                 return Content("<script>alert('" + data + "')</script>");
             }
-            else if (a && b)
+            else if (a && b )
             {
 
                 Session["User_id"] = UserID;
                 Session["User_image"] = db.Users.Where(m => m.UserID == UserID).FirstOrDefault().HeadImage;
                 Session["User_Name"] = db.Users.Where(m => m.UserID == UserID).FirstOrDefault().UserName;
                 data = "登录成功";
+                if(UserID!=8)
+                { 
                 //return Content("<script>alert(data)</script>");
                 return Content("<script>alert('"+data+"');window.history.go(-1)</script>");
+                }
+                else
+                {
+                    return Content("<script>alert('"+data+ "');window.location.href='../MallManager/Index';</script>");
+                }
 
             }
             else if (!a && b)

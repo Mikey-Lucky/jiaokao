@@ -244,6 +244,7 @@ namespace 精致的衣橱.Controllers
             {
                 odersmanager.Pay(a[i], uid, name, userphone, address);
             }
+            //利用存储过程Cart_Orders实现
             db.Cart_Orders(uid, name, userphone, address);
 
             Message msg = new Message()
@@ -257,8 +258,6 @@ namespace 精致的衣橱.Controllers
         public ActionResult DirectBuy(int total,string uname,string tel,string address,int num,int goodsid)
         {
              
-            
-            
             var datetime = System.DateTime.Now;
             //int uid = Convert.ToInt32(Session["User_id"]);
             int uid = 1;
