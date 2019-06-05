@@ -239,14 +239,13 @@ namespace 精致的衣橱.Controllers
             var datetime = System.DateTime.Now;
             //int uid = Convert.ToInt32(Session["User_id"]);
             int uid = 1;
-
             //odersmanager.Order(datetime, total, uid, name, userphone, address);
             for (int i = 0; i < a.Length; i++)
             {
                 odersmanager.Pay(a[i], uid, name, userphone, address);
             }
+            db.Cart_Orders(uid, name, userphone, address);
 
-            
             Message msg = new Message()
             {
                 message = "下单成功"

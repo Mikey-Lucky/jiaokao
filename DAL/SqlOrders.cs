@@ -52,16 +52,22 @@ namespace DAL
         //此处id为CartID
         public Cart Pay(int? id, int userid, string uname, string tel, string address)
         {
-            //获取CartID=id的详情
             var cart = db.Cart.FirstOrDefault(p => p.CartID == id);
+            if (id!=null)
+            { 
+            //获取CartID=id的详情
+            
             cart.Flag = 1;
             //db.Cart.Add(s);
             db.SaveChanges();
-            db.Cart_Orders(userid, uname, tel, address);
+            }
+            //db.Cart_Orders(userid, uname, tel, address);
                              
             return cart;
 
         }
+        
+
 
     }
 }

@@ -112,6 +112,7 @@ namespace 精致的衣橱.Controllers
         // POST: Orders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        //在数据库层面订单和订单详情实现了级联删除
         public ActionResult DeleteConfirmed(int id)
         {
             Orders orders = db.Orders.Find(id);
@@ -119,9 +120,7 @@ namespace 精致的衣橱.Controllers
             //OrderDetails ordertails = (OrderDetails)db.OrderDetails.Where(t => t.OrderID == id);
             //db.OrderDetails.Remove(ordertails);
             db.SaveChanges();
-            //OrderDetails ordertails = (OrderDetails) db.OrderDetails.Where(t=>t.OrderID==id);
-            //db.OrderDetails.Remove(ordertails);
-            //db.SaveChanges();
+            
 
             return RedirectToAction("Index");
         }

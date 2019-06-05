@@ -883,8 +883,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Goods__4F7CD00D">
-          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+        <Association Name="FK__OrderDeta__Goods__503BEA1C">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Goods">
@@ -895,8 +897,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Order__5070F446">
-          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+        <Association Name="FK__OrderDeta__Order__51300E55">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Orders">
@@ -907,8 +911,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__UserI__5165187F">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+        <Association Name="FK__OrderDeta__UserI__5224328E">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -1452,15 +1458,15 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="NoteTrasmit" EntitySet="NoteTrasmit" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Goods__4F7CD00D" Association="Self.FK__OrderDeta__Goods__4F7CD00D">
+          <AssociationSet Name="FK__OrderDeta__Goods__503BEA1C" Association="Self.FK__OrderDeta__Goods__503BEA1C">
             <End Role="Goods" EntitySet="Goods" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Order__5070F446" Association="Self.FK__OrderDeta__Order__5070F446">
+          <AssociationSet Name="FK__OrderDeta__Order__51300E55" Association="Self.FK__OrderDeta__Order__51300E55">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__UserI__5165187F" Association="Self.FK__OrderDeta__UserI__5165187F">
+          <AssociationSet Name="FK__OrderDeta__UserI__5224328E" Association="Self.FK__OrderDeta__UserI__5224328E">
             <End Role="Users" EntitySet="Users" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
@@ -1681,7 +1687,7 @@
           <NavigationProperty Name="GoodsComment" Relationship="Self.FK__GoodsComm__Goods__2E1BDC42" FromRole="Goods" ToRole="GoodsComment" />
           <NavigationProperty Name="GoodsLike" Relationship="Self.FK__GoodsLike__Goods__398D8EEE" FromRole="Goods" ToRole="GoodsLike" />
           <NavigationProperty Name="Grade" Relationship="Self.FK__Grade__GoodsID__3D5E1FD2" FromRole="Goods" ToRole="Grade" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Goods__4F7CD00D" FromRole="Goods" ToRole="OrderDetails" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Goods__503BEA1C" FromRole="Goods" ToRole="OrderDetails" />
         </EntityType>
         <EntityType Name="Goods_Color">
           <Key>
@@ -1849,9 +1855,9 @@
           <Property Name="Count" Type="Int32" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" />
-          <NavigationProperty Name="Goods" Relationship="Self.FK__OrderDeta__Goods__4F7CD00D" FromRole="OrderDetails" ToRole="Goods" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__OrderDeta__Order__5070F446" FromRole="OrderDetails" ToRole="Orders" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__OrderDeta__UserI__5165187F" FromRole="OrderDetails" ToRole="Users" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__OrderDeta__Goods__503BEA1C" FromRole="OrderDetails" ToRole="Goods" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__OrderDeta__Order__51300E55" FromRole="OrderDetails" ToRole="Orders" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__OrderDeta__UserI__5224328E" FromRole="OrderDetails" ToRole="Users" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -1864,7 +1870,7 @@
           <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Tel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__5070F446" FromRole="Orders" ToRole="OrderDetails" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__51300E55" FromRole="Orders" ToRole="OrderDetails" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Orders__UserID__4CA06362" FromRole="Orders" ToRole="Users" />
         </EntityType>
         <EntityType Name="Privatemessage">
@@ -2005,7 +2011,7 @@
           <NavigationProperty Name="NoteLike" Relationship="Self.FK__NoteLike__UserID__17036CC0" FromRole="Users" ToRole="NoteLike" />
           <NavigationProperty Name="NoteSelect" Relationship="Self.FK__NoteSelec__UserI__1AD3FDA4" FromRole="Users" ToRole="NoteSelect" />
           <NavigationProperty Name="NoteTrasmit" Relationship="Self.FK__NoteTrasm__UserI__1EA48E88" FromRole="Users" ToRole="NoteTrasmit" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__UserI__5165187F" FromRole="Users" ToRole="OrderDetails" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__UserI__5224328E" FromRole="Users" ToRole="OrderDetails" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__UserID__4CA06362" FromRole="Users" ToRole="Orders" />
           <NavigationProperty Name="Privatemessage" Relationship="Self.FK__Privateme__Priva__5535A963" FromRole="Users" ToRole="Privatemessage" />
           <NavigationProperty Name="Privatemessage1" Relationship="Self.FK__Privateme__UserI__5441852A" FromRole="Users" ToRole="Privatemessage" />
@@ -2398,8 +2404,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Goods__4F7CD00D">
-          <End Role="Goods" Type="Self.Goods" Multiplicity="1" />
+        <Association Name="FK__OrderDeta__Goods__503BEA1C">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Goods">
@@ -2614,8 +2622,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Order__5070F446">
-          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+        <Association Name="FK__OrderDeta__Order__51300E55">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Orders">
@@ -2626,8 +2636,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__UserI__5165187F">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+        <Association Name="FK__OrderDeta__UserI__5224328E">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -3024,7 +3036,7 @@
             <End Role="Goods" EntitySet="Goods" />
             <End Role="Grade" EntitySet="Grade" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Goods__4F7CD00D" Association="Self.FK__OrderDeta__Goods__4F7CD00D">
+          <AssociationSet Name="FK__OrderDeta__Goods__503BEA1C" Association="Self.FK__OrderDeta__Goods__503BEA1C">
             <End Role="Goods" EntitySet="Goods" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
@@ -3096,11 +3108,11 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="NoteTrasmit" EntitySet="NoteTrasmit" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Order__5070F446" Association="Self.FK__OrderDeta__Order__5070F446">
+          <AssociationSet Name="FK__OrderDeta__Order__51300E55" Association="Self.FK__OrderDeta__Order__51300E55">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__UserI__5165187F" Association="Self.FK__OrderDeta__UserI__5165187F">
+          <AssociationSet Name="FK__OrderDeta__UserI__5224328E" Association="Self.FK__OrderDeta__UserI__5224328E">
             <End Role="Users" EntitySet="Users" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
