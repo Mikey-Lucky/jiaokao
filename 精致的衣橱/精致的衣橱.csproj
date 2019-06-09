@@ -546,6 +546,7 @@
     </Content>
     <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\cookie.js" />
     <Content Include="Scripts\Cooldog.js" />
     <Content Include="Scripts\DZ.css" />
     <Content Include="Scripts\imagesloaded.pkgd.min.js" />
@@ -821,6 +822,7 @@
     <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Shared\Houtaimall.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

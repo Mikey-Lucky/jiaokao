@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Models;
 using BLL;
 using 精致的衣橱.Models;
+using 精致的衣橱.Attributes;
 
 namespace 精致的衣橱.Controllers
 {
@@ -14,6 +15,7 @@ namespace 精致的衣橱.Controllers
         yichuEntities db = new yichuEntities();
         GoodsManager goodsmanager = new GoodsManager();
         // GET: MallManager
+        [Login]
         public ActionResult Index()
         {
             return View();
