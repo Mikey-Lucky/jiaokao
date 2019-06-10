@@ -208,7 +208,9 @@
     <Compile Include="Attributes\LoginAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddressesController.cs" />
+    <Compile Include="Controllers\ComRepliesController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\GoodsCommentsController.cs" />
     <Compile Include="Controllers\GoodsIndexController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MallController.cs" />
@@ -823,6 +825,16 @@
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Shared\Houtaimall.cshtml" />
+    <Content Include="Views\GoodsComments\Create.cshtml" />
+    <Content Include="Views\GoodsComments\Delete.cshtml" />
+    <Content Include="Views\GoodsComments\Details.cshtml" />
+    <Content Include="Views\GoodsComments\Edit.cshtml" />
+    <Content Include="Views\GoodsComments\Index.cshtml" />
+    <Content Include="Views\ComReplies\Create.cshtml" />
+    <Content Include="Views\ComReplies\Delete.cshtml" />
+    <Content Include="Views\ComReplies\Details.cshtml" />
+    <Content Include="Views\ComReplies\Edit.cshtml" />
+    <Content Include="Views\ComReplies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

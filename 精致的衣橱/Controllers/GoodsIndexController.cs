@@ -49,7 +49,7 @@ namespace 精致的衣橱.Controllers
         public ActionResult Create([Bind(Include = "GoodsID,Name,Sex,Season,Material,Style,GoodsImage,Amount,Unitprice,Type,SizeImage,ShangjiaTime,Pageview,TotalStorageAmount,ThumbNum")] Goods goods)
         {
             var goodsimage = Request.Files["goodsimage"];
-            var imagepath = Guid.NewGuid().ToString() + goodsimage.FileName;
+            var imagepath =  goodsimage.FileName;
             goodsimage.SaveAs(Request.MapPath("/Images/GoodsImages/" + imagepath));
 
             if (goodsimage != null)
@@ -61,8 +61,21 @@ namespace 精致的衣橱.Controllers
                 //goodsimage.SaveAs(serverpath);
                 //goods.GoodsImage = relativepath;
                 goods.GoodsImage = "../GoodsImages/" + imagepath;
+                //var imgfile = Request.Files["imgfile"];
+                //var title = Request["title"];
+                //var notecontent = Request["content"];
+                //var imgpath = Guid.NewGuid().ToString() + imgfile.FileName;
+                //imgfile.SaveAs(Request.MapPath("/Images/Noteimg/" + imgpath));
+                //note.Title = title;
+                //note.NoteContent = notecontent;
+                //note.likenum = 0;
+                //note.Time = DateTime.Now;
+                //note.Img = "../Noteimg/" + imgpath;
+                //note.UserID = 1;
+                //notes.AddNote(note);
+                //return View();
 
-                }
+            }
                 //else
                 //{
                 //    return Content("<script>;alert('请先上传图片！');history.go(-1)</script>");
