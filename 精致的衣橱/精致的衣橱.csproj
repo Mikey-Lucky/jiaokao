@@ -828,6 +828,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\Coat\" />
     <Folder Include="Images\NetherGarment\" />
+    <Folder Include="Scripts\layer\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\Manager\" />
     <Folder Include="Views\Shop\" />
