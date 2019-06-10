@@ -14,6 +14,7 @@ namespace 精致的衣橱.Controllers
     {
 
         NoteManager notes = new NoteManager();
+        NoteCommentManager ncomments = new NoteCommentManager();
         VideoManager videos = new VideoManager();
         YiChuShowViewModel ycsv = new YiChuShowViewModel();
         VideoLikeManager likes = new VideoLikeManager();
@@ -37,8 +38,12 @@ namespace 精致的衣橱.Controllers
         //笔记详情页
         public ActionResult NoteDetail(int id)
         {
-            var note = notes.NoteDetail(id);
-            return View(note);
+            ycsv.notedetail = notes.NoteDetail(id);
+            ycsv.allnotecommentbyid = ncomments.allnotecomment(id);
+            return View(ycsv);
+
+            //var note = notes.NoteDetail(id);
+            //return View(note);
         }
         //相关笔记分布视图
         public ActionResult NoteRelative(int authorid, string title)

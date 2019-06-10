@@ -1,4 +1,4 @@
-﻿@model Models.Note
+﻿@model 精致的衣橱.Models.YiChuShowViewModel
 
 @{
     Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
@@ -54,6 +54,10 @@
             height:800px;
             margin-top: 20px;
         }
+        .notedetail {
+            border-bottom: 40px solid #fff;
+        }
+        
         /***作者框开始****************************/
         .author {
             width: 100%;
@@ -98,27 +102,46 @@
         }
        /*******视频列表结束***************************/
     </style>
+   
 </head>
 <body>
     <div class="container">
         <div class="notecontent">
-            <div class="notehead">
-                <p>
-                    <a href="@Url.Action("Index","YiChuShow")">衣橱秀场</a>@*viewbag传值*@
-                    <span>》笔记详情</span>
-                </p>
-                <h2>@Model.Title</h2>
+            <div class="notedetail">
+                <div class="notehead">
+                    <p>
+                        <a href="@Url.Action("Index","YiChuShow")">衣橱秀场</a>@*viewbag传值*@
+                        <span>》笔记详情</span>
+                    </p>
+                    <h2>@Model.notedetail.Title</h2>
+                </div>
+                @*<img src="/Images/Noteimg/@Model.Img" style="width: 100%"/>*@
+                @*<span>@Model.Users.UserName</span><span>@Model.Time</span>*@
+                <hr />
+                @Html.Raw(@Model.notedetail.NoteContent)
             </div>
-            @*<img src="/Images/Noteimg/@Model.Img" style="width: 100%"/>*@
-            @*<span>@Model.Users.UserName</span><span>@Model.Time</span>*@
+            
+            <div class="buttons">
+                <span class="text"> </span><p style="display: inline">(@Model.notedetail.likenum)</p>
+            </div>
+            <h2>评论</h2>
             <hr />
-            @Html.Raw(@Model.NoteContent)
+       
+            <div class="pinlunkuang">
+                <input id="fabiaopinlun" placeholder="发表评论" />
+            </div>
+            <div id="notecomment">
+                @foreach (var n in Model.allnotecommentbyid)
+                {
+                    @n.Nccontent;
+                }
+            </div>
         </div>
         <div class="noterelative">
            <div class="author">
                <div class="authortitle">
-                   <img src="/Images/HeadImages/@Model.Users.HeadImage" />
-                  作者：<span>@Model.Users.UserName </span>
+                   <img src="/Images/HeadImages/@Model.notedetail.Users.HeadImage" />
+                  作者：<span>@Model.notedetail.Users.UserName </span>
                </div>
                <div class="authorads">
                    @*<span>@Model.Users.Address</span>
@@ -132,18 +155,16 @@
            <div class="notelist">
                <div class="notere">
                    <p>相关推荐</p>
-                   @Html.Action("NoteRelative", new { authorid = @Model.UserID, title = @Model.Title })
+                   @Html.Action("NoteRelative", new { authorid = @Model.notedetail.UserID, title = @Model.notedetail.Title })
                </div>
            </div>
         </div>
+
+
     </div>
-    <div class="buttons">
-        @*<a id="1">*@
-            <span class="text"> </span><p>(@Model.likenum)</p>
-          
-        @*</a>*@
-    </div>
+    
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/layer/layer.js"></script>
     <script>
     $(function () {   //点赞
         var active=true;
@@ -154,7 +175,7 @@
                 $.ajax({
                     type: "get",
                     url: "/YiChuShow/notezan",
-                    data: { "userid": 1 ,"noteid":@Model.NoteID},
+                    data: { "userid": 1 ,"noteid":@Model.notedetail.NoteID},
                     success: function (data) {
                         btn.find("p").html(data)
                     },
@@ -166,7 +187,7 @@
                 $.ajax({
                     type: "get",
                     url: "/YiChuShow/notezan",
-                    data: { "userid": 1 ,"noteid":@Model.NoteID},
+                    data: { "userid": 1 ,"noteid":@Model.notedetail.NoteID},
                     success: function (data) {
                         btn.find("p").html(data)
                     },
@@ -175,10 +196,10 @@
                 btn.active=true
             }
         })
-        $.ajax({
+        $.ajax({//判断用户是否点赞过视频，确定初始化样式
             type: "get",
             url: "/YiChuShow/ifnotelike",
-            data: { "userid": 1 ,"noteid":@Model.NoteID},
+            data: { "userid": 1 ,"noteid":@Model.notedetail.NoteID},
             success: function (data) {
                 if (data==true)
                 {
@@ -194,6 +215,13 @@
             async: true
         });
     });
+   
+        $("#fabiaopinlun").click(function(){
+            var a=layer.prompt({title: '随便写点啥，并确认', formType: 2}, function(text, index){
+                layer.msg('您最后写下了：'+text);
+                });
+        })
+    
       
     </script>
 </body>
