@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SqlNoteComment.cs" />
     <Compile Include="SqlU_Attention_U.cs" />
     <Compile Include="DbContextFactory.cs" />
     <Compile Include="OrderDetails.cs" />

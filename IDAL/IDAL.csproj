@@ -50,6 +50,7 @@
     <Compile Include="IGoodsLike.cs" />
     <Compile Include="INetherGarment.cs" />
     <Compile Include="INote.cs" />
+    <Compile Include="INoteComment.cs" />
     <Compile Include="INoteLike.cs" />
     <Compile Include="IOrderDetails.cs" />
     <Compile Include="IOrders.cs" />

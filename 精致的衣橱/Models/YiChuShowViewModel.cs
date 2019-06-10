@@ -41,5 +41,9 @@ namespace 精致的衣橱.Models
         public string sex { get; set; }
         //用户信息
         public Users Userabout { get; set; }
+        //笔记详情
+        public Note notedetail { get; set; }
+        //笔记评论
+        public IEnumerable<NoteComment> allnotecommentbyid { get; set; }
     }
 }

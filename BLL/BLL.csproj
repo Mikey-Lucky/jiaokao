@@ -49,6 +49,7 @@
     <Compile Include="GoodsLikeManager.cs" />
     <Compile Include="GoodsManager.cs" />
     <Compile Include="NetherGarmentManager.cs" />
+    <Compile Include="NoteCommentManager.cs" />
     <Compile Include="NoteLikeManager.cs" />
     <Compile Include="NoteManager.cs" />
     <Compile Include="OdersManager.cs" />
