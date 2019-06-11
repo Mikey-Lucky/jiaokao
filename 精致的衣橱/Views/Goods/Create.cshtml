@@ -6,10 +6,12 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create","Goods",FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
-    
+
+
+    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", style = "width:50%;" } })
     <div class="form-horizontal">
         <h4>Goods</h4>
         <hr />
@@ -54,15 +56,15 @@
             </div>
         </div>
 
-        <div class="form-group">
+       @*<div class="form-group">
             @Html.LabelFor(model => model.GoodsImage, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.EditorFor(model => model.GoodsImage, new { htmlAttributes = new { @class = "form-control" } })*@
-                @*@Html.ValidationMessageFor(model => model.GoodsImage, "", new { @class = "text-danger" })*@
-                <input type="file" name="goodsimage" value="goodsimage" />
+                @Html.EditorFor(model => model.GoodsImage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GoodsImage, "", new { @class = "text-danger" })
+                
             </div>
-        </div>
-        @*<label>请选择图片上传</label><span><input type="file" name="goodsimage" value="goodsimage" /></span>*@
+        </div>*@
+        <input type="file" name="goodsimage" />
 
         <div class="form-group">
             @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -96,7 +98,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+       <div class="form-group">
             @Html.LabelFor(model => model.ShangjiaTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ShangjiaTime, new { htmlAttributes = new { @class = "form-control" } })
@@ -133,7 +135,7 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-    </div>
+   </div>
 }
 
 <div>

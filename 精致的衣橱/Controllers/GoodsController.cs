@@ -10,17 +10,17 @@ using Models;
 
 namespace 精致的衣橱.Controllers
 {
-    public class GoodsIndexController : Controller
+    public class GoodsController : Controller
     {
         private yichuEntities db = new yichuEntities();
 
-        // GET: GoodsIndex
+        // GET: Goods
         public ActionResult Index()
         {
             return View(db.Goods.ToList());
         }
 
-        // GET: GoodsIndex/Details/5
+        // GET: Goods/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,48 +35,45 @@ namespace 精致的衣橱.Controllers
             return View(goods);
         }
 
-        // GET: GoodsIndex/Create
+        // GET: Goods/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: GoodsIndex/Create
+        // POST: Goods/Create
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GoodsID,Name,Sex,Season,Material,Style,GoodsImage,Amount,Unitprice,Type,SizeImage,ShangjiaTime,Pageview,TotalStorageAmount,ThumbNum")] Goods goods)
+        //[Bind(Include = "GoodsID,Name,Sex,Season,Material,Style,GoodsImage,Amount,Unitprice,Type,SizeImage,ShangjiaTime,Pageview,TotalStorageAmount,ThumbNum")]
+        public ActionResult Create(Goods goods)
         {
-            var goodsimage = Request.Files["goodsimage"];
-            var imagepath = Guid.NewGuid().ToString() + goodsimage.FileName;
-            goodsimage.SaveAs(Request.MapPath("/Images/GoodsImages/" + imagepath));
-
-            if (goodsimage != null)
+            var  goodsimage = Request.Files["goodsimage"];
+            if (ModelState.IsValid)
+            {
+                if (goodsimage != null)
                 {
-                //string filePath = goodsimage.FileName;
-                //string filename = filePath.Substring(filePath.LastIndexOf("\\") + 1);
-                //string serverpath = Server.MapPath(@"\..\GoodsImages\") + filename;
-                //string relativepath = "../GoodsImages/" + goodsimage;
-                //goodsimage.SaveAs(serverpath);
-                //goods.GoodsImage = relativepath;
-                goods.GoodsImage = "../GoodsImages/" + imagepath;
-
+                    string filePath = goodsimage.FileName;
+                    //string filename = filePath.Substring(filePath.LastIndexOf("\\") + 1);
+                    string filename = "../GoodsImages/" + filePath;
+                    //string serverpath = Server.MapPath(@"\Images\GoodsImages\") + filename;
+                    string serverpath = filename;
+                    //string relativepath = "../GoodsImages/" + filename;
+                    //string relativepath = "../GoodsImages/";
+                    goodsimage.SaveAs(serverpath);
+                    goods.GoodsImage = serverpath;
                 }
-                //else
-                //{
-                //    return Content("<script>;alert('请先上传图片！');history.go(-1)</script>");
-                //}
                 db.Goods.Add(goods);
+                
                 db.SaveChanges();
-            //return RedirectToAction("Index");
-            return Content("<script>;alert('添加成功');window.location.href='../GoodsIndex/Index'</script>");
-            
+                return RedirectToAction("Index");
+            }
 
-            //return View(goods);
+            return View(goods);
         }
 
-        // GET: GoodsIndex/Edit/5
+        // GET: Goods/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -91,7 +88,7 @@ namespace 精致的衣橱.Controllers
             return View(goods);
         }
 
-        // POST: GoodsIndex/Edit/5
+        // POST: Goods/Edit/5
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
@@ -100,14 +97,14 @@ namespace 精致的衣橱.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(goods).State = EntityState.Modified;
+                db.Entry(goods).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(goods);
         }
 
-        // GET: GoodsIndex/Delete/5
+        // GET: Goods/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -122,7 +119,7 @@ namespace 精致的衣橱.Controllers
             return View(goods);
         }
 
-        // POST: GoodsIndex/Delete/5
+        // POST: Goods/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

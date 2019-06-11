@@ -208,8 +208,10 @@
     <Compile Include="Attributes\LoginAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddressesController.cs" />
+    <Compile Include="Controllers\ComRepliesController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
-    <Compile Include="Controllers\GoodsIndexController.cs" />
+    <Compile Include="Controllers\GoodsCommentsController.cs" />
+    <Compile Include="Controllers\GoodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MallController.cs" />
     <Compile Include="Controllers\MallManagerController.cs" />
@@ -806,11 +808,6 @@
     <Content Include="Views\Mall\Reply.cshtml" />
     <Content Include="Views\YIChuShow\Attention.cshtml" />
     <Content Include="Views\YIChuShow\usercard.cshtml" />
-    <Content Include="Views\GoodsIndex\Create.cshtml" />
-    <Content Include="Views\GoodsIndex\Delete.cshtml" />
-    <Content Include="Views\GoodsIndex\Details.cshtml" />
-    <Content Include="Views\GoodsIndex\Edit.cshtml" />
-    <Content Include="Views\GoodsIndex\Index.cshtml" />
     <Content Include="Views\YIChuShow\NoteRelative.cshtml" />
     <Content Include="Views\YIChuShow\FenSi.cshtml" />
     <Content Include="Views\YIChuShow\UpVideo.cshtml" />
@@ -823,8 +820,23 @@
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Shared\Houtaimall.cshtml" />
-    <Content Include="Views\YIChuShow\notecomment.cshtml" />
+	  <Content Include="Views\YIChuShow\notecomment.cshtml" />
     <Content Include="Views\YIChuShow\ncreply.cshtml" />
+	    <Content Include="Views\GoodsComments\Create.cshtml" />
+    <Content Include="Views\GoodsComments\Delete.cshtml" />
+    <Content Include="Views\GoodsComments\Details.cshtml" />
+    <Content Include="Views\GoodsComments\Edit.cshtml" />
+    <Content Include="Views\GoodsComments\Index.cshtml" />
+    <Content Include="Views\ComReplies\Create.cshtml" />
+    <Content Include="Views\ComReplies\Delete.cshtml" />
+    <Content Include="Views\ComReplies\Details.cshtml" />
+    <Content Include="Views\ComReplies\Edit.cshtml" />
+    <Content Include="Views\ComReplies\Index.cshtml" />
+    <Content Include="Views\Goods\Create.cshtml" />
+    <Content Include="Views\Goods\Delete.cshtml" />
+    <Content Include="Views\Goods\Details.cshtml" />
+    <Content Include="Views\Goods\Edit.cshtml" />
+    <Content Include="Views\Goods\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

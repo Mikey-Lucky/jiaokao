@@ -250,7 +250,7 @@
                 {
                     
                         <ul>
-                            <li>@*<a href="#" data-toggle="tooltip" data-placement="bottom" title="@g.Name">*@<a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" />@*</a>*@ </a></li>
+                            <li><a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" />@*</a>*@ </a></li>
 
 
                             <li><span style="color:black">$@g.Unitprice</span></li>
@@ -365,9 +365,9 @@
             <div class="panel-body row" style="text-overflow:ellipsis">
                 @foreach (var g in Model.ChunQiu)
             {
-                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name">
+                    @*<a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name">*@
                         <ul>
-                            <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
+                            <li><a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name" data-toggle="tooltip" data-placement="bottom" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
 
 
                             <li><span style="color:black">$@g.Unitprice</span></li>
@@ -375,7 +375,7 @@
                             <li><span><img src="~/iconfont/点赞.png" style="height:22px;width:auto;cursor:pointer;float:right" class="@g.GoodsID" /><span id="@g.GoodsID" style="float:right">@g.ThumbNum</span></span></li>
                         </ul>
 
-                    </a>
+                    @*</a>*@
 
                     <script>
 
@@ -397,9 +397,9 @@
                 <hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
                 @foreach (var g in Model.Xia)
             {
-                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name">
+                    @*<a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name">*@
                         <ul>
-                            <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
+                            <li><a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name" data-toggle="tooltip" data-placement="bottom" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
 
 
                             <li><span style="color:black">$@g.Unitprice</span></li>
@@ -407,7 +407,7 @@
                             <li><span><img src="~/iconfont/点赞.png" style="height:22px;width:auto;cursor:pointer;float:right" class="@g.GoodsID" /><span id="@g.GoodsID" style="float:right">@g.ThumbNum</span></span></li>
                         </ul>
 
-                    </a>
+                    @*</a>*@
 
                     <script>
 
@@ -429,9 +429,9 @@
                 <hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
                 @foreach (var g in Model.Dong)
             {
-                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name">
+                    @*<a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name">*@
                         <ul>
-                            <li><a href="#" data-toggle="tooltip" data-placement="bottom" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
+                            <li><a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name" data-toggle="tooltip" data-placement="bottom" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
 
 
                             <li><span style="color:black">$@g.Unitprice</span></li>
@@ -439,7 +439,7 @@
                             <li><span><img src="~/iconfont/点赞.png" style="height:22px;width:auto;cursor:pointer;float:right" class="@g.GoodsID" /><span id="@g.GoodsID" style="float:right">@g.ThumbNum</span></span></li>
                         </ul>
 
-                    </a>
+                    @*</a>*@
 
                     <script>
 

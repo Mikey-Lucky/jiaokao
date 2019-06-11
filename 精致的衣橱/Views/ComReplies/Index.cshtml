@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Models.ComReply>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Houtaimall.cshtml";
+
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RepContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RepTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodsComment.ComContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.Password)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RepContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RepTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GoodsComment.ComContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Users.Password)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ComReplyID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ComReplyID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ComReplyID })
+        </td>
+    </tr>
+}
+
+</table>

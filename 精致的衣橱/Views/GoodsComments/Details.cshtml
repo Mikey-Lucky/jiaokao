@@ -1,0 +1,90 @@
+﻿@model Models.GoodsComment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GoodsComment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ComContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Video)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Video)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageOrNot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageOrNot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoOrNot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoOrNot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThumbNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThumbNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Goods.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Goods.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Users.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Users.Password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GoodsCommentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
