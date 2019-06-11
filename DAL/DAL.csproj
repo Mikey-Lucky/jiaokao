@@ -73,6 +73,7 @@
     <Compile Include="SqlShirt.cs" />
     <Compile Include="SqlSuit.cs" />
     <Compile Include="SqlUsers.cs" />
+    <Compile Include="SqlU_Reply_NoteComment.cs" />
     <Compile Include="SqlU_Reply_VideoComment.cs" />
     <Compile Include="SqlVideo.cs" />
     <Compile Include="SqlVideoComment.cs" />

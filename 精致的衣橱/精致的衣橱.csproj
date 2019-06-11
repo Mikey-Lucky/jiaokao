@@ -823,6 +823,8 @@
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Shared\Houtaimall.cshtml" />
+    <Content Include="Views\YIChuShow\notecomment.cshtml" />
+    <Content Include="Views\YIChuShow\ncreply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

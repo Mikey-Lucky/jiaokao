@@ -135,5 +135,11 @@ namespace DALFactory
             string className = AssemblyName + "." + db + "NoteComment";
             return (INoteComment)Assembly.Load(AssemblyName).CreateInstance(className);
         }
+        
+        public static IU_Reply_NoteComment CreateU_Reply_NoteComment()
+        {
+            string className = AssemblyName + "." + db + "U_Reply_NoteComment";
+            return (IU_Reply_NoteComment)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
     }
 }

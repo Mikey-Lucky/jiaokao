@@ -101,6 +101,47 @@
             /*border-bottom: 1px solid #f2f2f2;*/
         }
        /*******视频列表结束***************************/
+       /**************评论框开始**************************/
+        .comment {
+            padding: 14px 20px;
+            border-bottom: 1px solid #EDEDED;
+            overflow: hidden;
+            font-size: 14px;
+            position: relative;
+        }
+       .comment .img {
+           float: left;
+         }
+       .img img {
+            width: 50px;
+            height: 50px;
+       }
+       .comment .meta {
+            color: #999;
+            margin: 2px 0 6px 60px;
+       }
+       .comment .text {
+            margin-left: 60px;
+            line-height: 1.2;
+       }
+       .comment .action-buttons {
+            /*visibility: hidden;*/
+            width: 80px;
+            height: 30px;
+            position: absolute;
+            right: 20px;
+            top: 14px;
+        }
+        .reply-button {
+            float: right;
+            /*background: url('../../Images/yichu/qqq.ico') 0 0 no-repeat;*/
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            margin-left: 7px;
+        }
+       /****************评论框结束******************************/
+
     </style>
    
 </head>
@@ -133,7 +174,22 @@
             <div id="notecomment">
                 @foreach (var n in Model.allnotecommentbyid)
                 {
-                    @n.Nccontent;
+                    <div class="comment" style="background-color: transparent;">
+                        <a title="发射米奇" class="img">
+                            <img src="/Images/HeadImages/@n.Users.HeadImage"/>
+                        </a>
+                       <div class="meta">
+                            <a class="author">@n.Users.UserName</a>&nbsp;-&nbsp;<span data-ts="1560236832" class="ts-words"> @n.Time</span>说：
+                       </div>
+                      <div class="text">@n.Nccontent</div>
+                      <div class="action-buttons">
+                           <a  title="回复" class="reply-button" id="@n.NoteCommentID">回复</a>
+                           <a  title="删除" class="delete">删除</a>
+                      </div>
+                      <div class="commentreply">
+                          @Html.Action("ncreply",new { commentid = @n.NoteCommentID })
+                      </div>
+                 </div>
                 }
             </div>
         </div>
@@ -159,8 +215,6 @@
                </div>
            </div>
         </div>
-
-
     </div>
     
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
@@ -215,14 +269,59 @@
             async: true
         });
     });
-   
-        $("#fabiaopinlun").click(function(){
+
+        $("#fabiaopinlun").click(function(){//评论
             var a=layer.prompt({title: '随便写点啥，并确认', formType: 2}, function(text, index){
-                layer.msg('您最后写下了：'+text);
+                //text传到后台
+                $.ajax({
+                    type: "post",
+                    url: "/YiChuShow/notecomment",
+                    data: { "userid": 1 ,"noteid":@Model.notedetail.NoteID,"ccontent":text},
+                    success: function (data) {
+                        //alert(data);
+                        //$('#notecomment').html(data);
+                        layer.msg(data);
+                        $.ajax({
+                            type: "get",
+                            url: "/YiChuShow/notecomment",
+                            data: { "noteid":@Model.notedetail.NoteID},
+                            success: function (data) {
+                                //alert(data);
+                                $('#notecomment').html(data);
+                                //layer.msg(data);
+
+                            },
+                            async: true
+                        });
+                    },
+                    async: true
+                });
+                //layer.msg('评论成功');
+                layer.close(index);
                 });
         })
-    
-      
+        //回复评论reply-button
+        $(".reply-button").click(function(){
+            var commentid = $(this).attr("id");
+            var shua=$(this).parent().next();
+            //var commentid=$(".commentid").val();
+            var a=layer.prompt({title: '随便写点啥，并确认', formType: 2}, function(text, index){
+                //text传到后台
+                $.ajax({
+                    type: "post",
+                    url: "/YiChuShow/ncreply",
+                    data: { "ruserid": 1 ,"commentid":commentid,"rcontent":text},
+                    success: function (data) {
+                        //alert(data);
+                        //now.html(data);
+                        shua.html(data);
+                    },
+                    async: true
+                });
+                //layer.msg(commentid);
+                layer.close(index);
+            });
+        })
     </script>
 </body>
 

@@ -59,6 +59,7 @@
     <Compile Include="SuitManager.cs" />
     <Compile Include="UsersManager.cs" />
     <Compile Include="U_Attention_UManager.cs" />
+    <Compile Include="U_Reply_NoteCommentManager.cs" />
     <Compile Include="U_Reply_VideoCommentManager.cs" />
     <Compile Include="VideoCommentManager.cs" />
     <Compile Include="VideoLikeManager.cs" />

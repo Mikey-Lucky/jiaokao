@@ -1,0 +1,40 @@
+﻿@model 精致的衣橱.Models.YiChuShowViewModel
+
+@foreach (var n in Model.allnotecommentbyid)
+{
+    <div class="comment" style="background-color: transparent;">
+        <a title="发射米奇" class="img">
+            <img src="/Images/HeadImages/@n.Users.HeadImage" />
+        </a>
+        <div class="meta">
+            <a class="author">@n.Users.UserName</a>&nbsp;-&nbsp;<span data-ts="1560236832" class="ts-words"> @n.Time</span>说：
+        </div>
+        <div class="text">@n.Nccontent</div>
+        <div class="action-buttons">
+            <a title="回复" class="reply-button" id="@n.NoteCommentID">回复</a>
+            <a title="删除" class="delete">删除</a>
+        </div>
+        <div class="commentreply">
+            @Html.Action("ncreply", new { commentid = @n.NoteCommentID })
+        </div>
+    </div>
+}
+@*@foreach (var n in Model.allnotecommentbyid)
+{
+    <div class="comment" style="background-color: transparent;">
+        <a href="/kpxocpnhbr/" title="发射米奇" class="img x">
+            <img src="/Images/HeadImages/@n.Users.HeadImage" class="avatar" />
+        </a>
+        <div class="meta">
+            <a href="/kpxocpnhbr/" class="author">@n.Users.UserName</a>&nbsp;-&nbsp;<span data-ts="1560236832" class="ts-words"> @n.Time</span>说：
+        </div>
+        <div class="text">@n.Nccontent</div>
+        <div class="action-buttons">
+            <a data-name="" title="回复" class="reply-button" id="@n.NoteCommentID">回复</a>
+            <a data-url="/pins/969384408/comments/8616404/" title="删除" class="delete">删除</a>
+        </div>
+        <div class="commentreply">
+            @Html.Action("ncreply", new { commentid = @n.NoteCommentID })
+        </div>
+    </div>
+}*@

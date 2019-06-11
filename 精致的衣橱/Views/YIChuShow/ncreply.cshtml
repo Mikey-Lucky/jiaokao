@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Models.U_Reply_NoteComment>
+
+@foreach (var r in Model)
+{
+    @r.Users.UserName<span>回复</span>
+    <div>
+        @r.URNContent
+    </div>
+}

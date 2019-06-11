@@ -13,6 +13,7 @@ namespace 精致的衣橱.Controllers
     public class YIChuShowController : Controller
     {
 
+
         NoteManager notes = new NoteManager();
         NoteCommentManager ncomments = new NoteCommentManager();
         VideoManager videos = new VideoManager();
@@ -23,6 +24,7 @@ namespace 精致的衣橱.Controllers
         VideoSelectManager selects = new VideoSelectManager();
         U_Attention_UManager attention = new U_Attention_UManager();
         UsersManager users = new UsersManager();
+        U_Reply_NoteCommentManager ureplync = new U_Reply_NoteCommentManager();
         U_Reply_VideoCommentManager ureplyvideocomment = new U_Reply_VideoCommentManager();
         // GET: YIChuShow
         public ActionResult Index()
@@ -44,6 +46,54 @@ namespace 精致的衣橱.Controllers
 
             //var note = notes.NoteDetail(id);
             //return View(note);
+        }
+        public ActionResult notecomment(int noteid)
+        {
+            ycsv.allnotecommentbyid = ncomments.allnotecomment(noteid);
+            return PartialView(ycsv);
+        }
+        //笔记评论post
+        [HttpPost]
+        public ActionResult notecomment(int userid,int noteid,string ccontent)
+        {
+            if (ccontent != null)
+            {
+                NoteComment nc = new NoteComment();
+                nc.likenum = 0;
+                nc.Nccontent = ccontent;
+                nc.NoteID = noteid;
+                nc.Time = DateTime.Now;
+                nc.UserID = userid;
+                ncomments.AddNoteComment(nc);
+                ycsv.allnotecommentbyid = ncomments.allnotecomment(noteid);
+                //return PartialView(ycsv);
+                return Content("评论成功");
+            }
+            else return Content("请输入");
+        }
+        //笔记评论回复分布视图
+        public ActionResult ncreply(int commentid)
+        {
+            var r=ureplync.notecommentreply(commentid);
+            return PartialView(r);
+        }
+        [HttpPost]
+        public ActionResult ncreply(int ruserid,int commentid,string rcontent)
+        {
+            if (rcontent!= null)
+            {
+                U_Reply_NoteComment rcomment = new U_Reply_NoteComment();
+                rcomment.Likenum = 0;
+                rcomment.NoteCommentID = commentid;
+                rcomment.Time = DateTime.Now;
+                rcomment.URNContent = rcontent;
+                rcomment.UserID = ruserid;
+                ureplync.AddNoteCommentReply(rcomment);
+                //var r = ureplync.notecommentreply(commentid);
+                var r = ureplync.notecommentreply(commentid);
+                return PartialView(r);
+            }
+            else return Content("请输入");
         }
         //相关笔记分布视图
         public ActionResult NoteRelative(int authorid, string title)

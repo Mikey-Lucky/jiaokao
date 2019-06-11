@@ -58,6 +58,7 @@
     <Compile Include="ISuit.cs" />
     <Compile Include="IUsers.cs" />
     <Compile Include="IU_Attention_U.cs" />
+    <Compile Include="IU_Reply_NoteComment.cs" />
     <Compile Include="IU_Reply_VideoComment.cs" />
     <Compile Include="IVideo.cs" />
     <Compile Include="IVideoComment.cs" />
