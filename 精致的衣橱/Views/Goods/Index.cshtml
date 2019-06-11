@@ -2,10 +2,6 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/Houtaimall.cshtml";
-
-
-@*< a href = "~/Views/Shared/Houtaimall.cshtml" > ~/ Views / Shared / Houtaimall.cshtml </ a >*@
 }
 
 <h2>Index</h2>
@@ -78,7 +74,7 @@
             @Html.DisplayFor(modelItem => item.Style)
         </td>
         <td>
-            <img src="~/Images/GoodsImages/@item.GoodsImage" style="width:100px;height:100px;" />
+            @Html.DisplayFor(modelItem => item.GoodsImage)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Amount)
