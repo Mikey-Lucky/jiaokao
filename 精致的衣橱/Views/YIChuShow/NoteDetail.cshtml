@@ -56,8 +56,12 @@
         }
         .notedetail {
             border-bottom: 40px solid #fff;
+            overflow-x: hidden;
         }
-        
+        /*.notedetail img {
+
+        }*/
+       
         /***作者框开始****************************/
         .author {
             width: 100%;
@@ -89,7 +93,7 @@
             text-align: center;
         }
         /******作者框结束*****************************/
-       /*******视频列表开始***************************/
+       /*******笔记列表开始***************************/
         .notelist {
             background-color: #fff;
             margin-top: 14px;
@@ -100,8 +104,20 @@
             margin: 14px auto 14px auto;
             /*border-bottom: 1px solid #f2f2f2;*/
         }
-       /*******视频列表结束***************************/
+       /*******笔记列表结束***************************/
        /**************评论框开始**************************/
+        .pinlunkuang {
+            height: 100px;
+            width: 100%;
+        }
+         #fabiaopinlun {
+            display: block;
+            margin: 0 auto;
+            border: 1px solid #999;
+            height: 43px;
+            width: 81%;
+         }
+
         .comment {
             padding: 14px 20px;
             border-bottom: 1px solid #EDEDED;
@@ -161,12 +177,12 @@
                 <hr />
                 @Html.Raw(@Model.notedetail.NoteContent)
             </div>
-            
+            <div style="border-top: 14px solid #f5f5f5">
             <div class="buttons">
                 <span class="text"> </span><p style="display: inline">(@Model.notedetail.likenum)</p>
             </div>
             <h2>评论</h2>
-            <hr />
+            @*<hr />*@
        
             <div class="pinlunkuang">
                 <input id="fabiaopinlun" placeholder="发表评论" />
@@ -190,8 +206,10 @@
                           @Html.Action("ncreply",new { commentid = @n.NoteCommentID })
                       </div>
                  </div>
+               
                 }
             </div>
+          </div>
         </div>
         <div class="noterelative">
            <div class="author">
