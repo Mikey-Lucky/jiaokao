@@ -20,7 +20,7 @@
             filter: blur(0px);
         }
         .notehead {
-            height: 78px;
+            height: 100px;
         }
         .notehead p,
         .notehead a {
@@ -61,7 +61,13 @@
         /*.notedetail img {
 
         }*/
-       
+       .notetitle {
+            font-size: 30px;
+            padding: 23px 0px 4px 25px;
+            margin-bottom: 10px;
+            /*font-weight: bold;*/
+            line-height: 100px;
+        }
         /***作者框开始****************************/
         .author {
             width: 100%;
@@ -157,6 +163,55 @@
             margin-left: 7px;
         }
        /****************评论框结束******************************/
+       /*********关于我开始*******/
+       .widget {
+            background-color: #fff;
+            border: 1px solid #e7e7e7;
+            padding: 42px 19px 49px;
+            margin-bottom: 50px;
+        }
+       .widget-title span {
+            position: relative;
+            background-color: #fff;
+            padding: 0 12px;
+            overflow: hidden;
+            z-index: 1;
+        }
+       .widget-title {
+            margin: 0;
+            font-family: "Merriweather";
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            font-size: 14px;
+            line-height: 14px;
+            position: relative;
+            text-align: center;
+        }
+       .shape2 {
+            height: 12px;
+            background: url(assets/images/shape2.png) no-repeat center center;
+            background-color: rgba(0, 0, 0, 0);
+            margin: 20px auto 30px;
+            line-height: 12px;
+            text-align: center;
+            width: 75px;
+            background-color: #617c58;
+        }
+       .about-me img {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        .widget-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            height: 1px;
+            border-top: 1px dashed #e7e7e7;
+            width: 100%;
+        }
+       /************关于我结束**********/
 
     </style>
    
@@ -165,16 +220,16 @@
     <div class="container">
         <div class="notecontent">
             <div class="notedetail">
-                <div class="notehead">
-                    <p>
-                        <a href="@Url.Action("Index","YiChuShow")">衣橱秀场</a>@*viewbag传值*@
+                <div class="notehead" style="border-bottom: 29px solid #f2f2f2;overflow: hidden;">
+                    @*<p>
+                        <a href="@Url.Action("Index","YiChuShow")">衣橱秀场</a>
                         <span>》笔记详情</span>
-                    </p>
-                    <h2>@Model.notedetail.Title</h2>
+                    </p>*@
+                        <span class="notetitle">Title: </span><span style="font-size: 24px;white-space: nowrap;text-overflow: ellipsis">@Model.notedetail.Title</span>
                 </div>
-                @*<img src="/Images/Noteimg/@Model.Img" style="width: 100%"/>*@
+                @*<img src="/Images/Noteimg/@Model.notedetail.Img" style="width: 100%"/>*@
                 @*<span>@Model.Users.UserName</span><span>@Model.Time</span>*@
-                <hr />
+                @*@Model.notedetail.Img*@
                 @Html.Raw(@Model.notedetail.NoteContent)
             </div>
             <div style="border-top: 14px solid #f5f5f5">
@@ -226,6 +281,14 @@
                    <a href="#">作者粉丝</a>
                </div>
            </div>
+           <div class="widget">
+                <h3 class="widget-title"><span>About Me</span></h3>
+                <div class="shape2"></div>
+                <div class="about-me text-center">
+                    <img src="https://demo.amplethemes.com/saraswati-blog/wp-content/uploads/2018/11/photographer-407068_1280-1.jpg" alt="about me">
+                    <p>Lorem Ipsum është një tekst shabllon i industrisë së printimit dhe htypshkronjave.</p>
+                </div><!-- .about-me -->
+            </div>
            <div class="notelist">
                <div class="notere">
                    <p>相关推荐</p>

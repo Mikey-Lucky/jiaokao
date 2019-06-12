@@ -533,10 +533,14 @@
     <Content Include="Images\yichu\744065b6f88e74fa5557db77422fece0.jpg" />
     <Content Include="Images\yichu\banner1.jpg" />
     <Content Include="Images\yichu\banner2.jpg" />
+    <Content Include="Images\yichu\canvas.png" />
     <Content Include="Images\yichu\lu.jpg" />
     <Content Include="Images\yichu\qqq.ico" />
     <Content Include="Images\yichu\wu.jpg" />
     <Content Include="Images\yichu\yichu.ico" />
+    <Content Include="Images\yichu\新品上架.jpg" />
+    <Content Include="Images\yichu\热销商品.jpg" />
+    <Content Include="Images\yichu\热门笔记.jpg" />
     <Content Include="Images\yichu\麋鹿素材.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -820,9 +824,9 @@
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Shared\Houtaimall.cshtml" />
-	  <Content Include="Views\YIChuShow\notecomment.cshtml" />
+    <Content Include="Views\YIChuShow\notecomment.cshtml" />
     <Content Include="Views\YIChuShow\ncreply.cshtml" />
-	    <Content Include="Views\GoodsComments\Create.cshtml" />
+    <Content Include="Views\GoodsComments\Create.cshtml" />
     <Content Include="Views\GoodsComments\Delete.cshtml" />
     <Content Include="Views\GoodsComments\Details.cshtml" />
     <Content Include="Views\GoodsComments\Edit.cshtml" />
