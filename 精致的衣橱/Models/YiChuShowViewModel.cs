@@ -45,5 +45,9 @@ namespace 精致的衣橱.Models
         public Note notedetail { get; set; }
         //笔记评论
         public IEnumerable<NoteComment> allnotecommentbyid { get; set; }
+        //视频详情
+        public Video videodetail { get; set; }
+        //视频评论
+        public IEnumerable<VideoComment> allvideocommentbyid { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Models.Video
+﻿@model 精致的衣橱.Models.YiChuShowViewModel
 
 @{
     Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
@@ -56,9 +56,59 @@
         .active {
             color: antiquewhite;
         }
-        /*#container {
-          
-        }*/
+       
+     /**************评论框开始**************************/
+        .pinlunkuang {
+            height: 100px;
+            width: 100%;
+        }
+         #fabiaopinlun {
+            display: block;
+            margin: 0 auto;
+            border: 1px solid #999;
+            height: 43px;
+            width: 81%;
+         }
+
+        .comment {
+            padding: 14px 20px;
+            border-bottom: 1px solid #EDEDED;
+            overflow: hidden;
+            font-size: 14px;
+            position: relative;
+        }
+       .comment .img {
+           float: left;
+         }
+       .img img {
+            width: 50px;
+            height: 50px;
+       }
+       .comment .meta {
+            color: #999;
+            margin: 2px 0 6px 60px;
+       }
+       .comment .text {
+            margin-left: 60px;
+            line-height: 1.2;
+       }
+       .comment .action-buttons {
+            /*visibility: hidden;*/
+            width: 80px;
+            height: 30px;
+            position: absolute;
+            right: 20px;
+            top: 14px;
+        }
+        .reply-button {
+            float: right;
+            /*background: url('../../Images/yichu/qqq.ico') 0 0 no-repeat;*/
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            margin-left: 7px;
+        }
+       /****************评论框结束******************************/
     </style>
 @*</head>*@
 @*<body>*@
@@ -66,42 +116,69 @@
         <div class="left">
             <div class="videodisplay">
                 <div class="title">
-                 @Html.ActionLink("<", "Index")&nbsp;<h2>@Model.Title</h2>&nbsp;<span>by</span>&nbsp;<a href="@Url.Action("Userhome", "YiChuShow", new {id=@Model.UserID})">@Model.Users.UserName</a>
+                 @Html.ActionLink("<", "Index")&nbsp;<h2>@Model.videodetail.Title</h2>&nbsp;<span>by</span>&nbsp;<a href="@Url.Action("Userhome", "YiChuShow", new {id=@Model.videodetail.UserID})">@Model.videodetail.Users.UserName</a>
                 </div>
                 <video controls autoplay>
-                    <source src="~/Images/video/@Model.Adress" type="video/mp4">
+                    <source src="~/Images/video/@Model.videodetail.Adress" type="video/mp4">
                 </video>
             </div>
             <div class="chaozuo">
-                   <div id="zan">喜欢</div><span class="zannum">@Model.likenum</span>
+                   <div id="zan">喜欢</div><span class="zannum">@Model.videodetail.likenum</span>
             </div>
-            <div class="commentinput">
+            @*<div class="commentinput">
                 <h2>评论</h2>
                 <hr />
                 <textarea id="container"></textarea>
                 <button id="fabiao">发表</button>
             </div>
             <div class="commentlist">
-                @Html.Action("VideoComment", new { videoid = @Model.VideoID})
+                @Html.Action("VideoComment", new { videoid = @Model.videodetail.VideoID})
+            </div>*@
+            <div class="pinlunkuang">
+                <input id="fabiaopinlun" placeholder="发表评论" />
             </div>
+            <div id="videocomment">
+                @foreach (var n in Model.allvideocommentbyid)
+                {
+                    <div class="comment" style="background-color: transparent;">
+                        <a title="发射米奇" class="img">
+                            <img src="/Images/HeadImages/@n.Users.HeadImage" />
+                        </a>
+                        <div class="meta">
+                            <a class="author">@n.Users.UserName</a>&nbsp;-&nbsp;<span data-ts="1560236832" class="ts-words"> @n.Time</span>说：
+                        </div>
+                        <div class="text">@n.Commentcotent</div>
+                        <div class="action-buttons">
+                            <a title="回复" class="reply-button" id="@n.VideoCommentID">回复</a>
+                            <a title="删除" class="delete">删除</a>
+                        </div>
+                        <div class="commentreply">
+                            @Html.Action("VideoCommentReply", new { commentid = @n.VideoCommentID })
+                        </div>
+                    </div>
+
+                }
+            </div>
+
         </div>
         <div class="right">
             <div class="videointro">
                 <h3>视频介绍</h3>
                 <hr />
-                <p>发布时间：@Model.Time</p>
-                <p>视频简介：@Model.Intro</p>
+                <p>发布时间：@Model.videodetail.Time</p>
+                <p>视频简介：@Model.videodetail.Intro</p>
             </div>
             <div class="videorelative">
                 <h3>相关推荐</h3>
                 <hr />
-                @Html.Action("VideoRelative",new { authorid= @Model.UserID, title= @Model.Title, intro= @Model.Intro })
+                @Html.Action("VideoRelative",new { authorid= @Model.videodetail.UserID, title= @Model.videodetail.Title, intro= @Model.videodetail.Intro })
                 
             </div>
         </div>
     </div>
-    <input type="hidden" class="videoid" value="@Model.VideoID" />
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <input type="hidden" class="videoid" value="@Model.videodetail.VideoID" />
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/layer/layer.js"></script>
     @*<script src="~/Scripts/jquery-3.1.1.min.js"></script>*@
     @*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
     <script>
@@ -124,8 +201,59 @@
                     }
                 });
             });
+            $("#fabiaopinlun").click(function(){//评论
+                var a=layer.prompt({title: '随便写点啥，并确认', formType: 2}, function(text, index){
+                    //text传到后台
+                    $.ajax({
+                        type: "post",
+                        url: "/YiChuShow/VideoComment",
+                        data: { "userid": 1 ,"comment": text ,"videoid":@Model.videodetail.VideoID},
+                        success: function (data) {
+                            //alert(data);
+                            //$('#notecomment').html(data);
+                            layer.msg(data);
+                            $.ajax({
+                                type: "get",
+                                url: "/YiChuShow/VideoComment",
+                                data: { "videoid":@Model.videodetail.VideoID},
+                                success: function (data) {
+                                    //alert(data);
+                                    $('#videocomment').html(data);
+                                    //layer.msg(data);
 
-            $(document).on('click', '#fabiao', function () {   //评论     
+                                },
+                                async: true
+                            });
+                        },
+                        async: true
+                    });
+                    //layer.msg('评论成功');
+                    layer.close(index);
+                });
+            })
+            //回复评论reply-button
+            $(".reply-button").click(function(){
+                var commentid = $(this).attr("id");
+                var shua=$(this).parent().next();
+                //var commentid=$(".commentid").val();
+                var a=layer.prompt({title: '随便写点啥，并确认', formType: 2}, function(text, index){
+                    //text传到后台
+                    $.ajax({
+                        type: "post",
+                        url: "/YiChuShow/VideoCommentReply",
+                        data: { "ruserid": 1 ,"commentid":commentid,"rcontent":text},
+                        success: function (data) {
+                            //alert(data);
+                            //now.html(data);
+                            shua.html(data);
+                        },
+                        async: true
+                    });
+                    //layer.msg(commentid);
+                    layer.close(index);
+                });
+            })
+            @*$(document).on('click', '#fabiao', function () {   //评论     
                 var comment = $("#container").val();
                 $.ajax({
                     type: "post",
@@ -145,19 +273,8 @@
                     },
                     async: true
                 });
-            });
+            });*@
 
-            //$(document).on('click', '#shoucang', function () {   //收藏     
-            //    var Videoid = $(".videoid").val();
-            //    $.ajax({
-            //        type: "post",
-            //        url: "/YiChuShow/Select",
-            //        data: { "videoid": Videoid },
-            //        success: function (data) {
-            //            alert("收藏成功");
-            //        }
-            //    });
-            //});
         });
     </script>
 @*</body>
