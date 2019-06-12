@@ -56,6 +56,34 @@
     #p2{
         margin-left:314px;
     }
+    .jiagou{
+        display:inline-block;
+        background:red;
+        width:82px;
+        height:34px;
+        border-radius:4px;
+        text-align:center;
+        padding:7px;
+        color:white;
+        margin-top:7px;
+
+    }
+    .jiagou:hover{
+        color:white;
+        text-decoration:none;
+    }
+    .s{
+        display:inline;
+    }
+    .btn1{
+        width:82px;
+        height:34px;
+        /*margin-bottom:13px;*/
+        margin-right:50px;
+        margin-top:8px;
+        border-radius:5px;
+        
+    }
 </style>
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -91,12 +119,16 @@
                 <div style="margin-top:10px;">
                     <span>库存：</span>
                     <span id="kucun">@Model.Amount</span>
+                  </div>
                     <div style="margin-top:10px;">
-                        <a href="@Url.Action("Cart","Mall",new {GoodsID=Model.GoodsID }) "><button style="background-color:red; color:white;" class="btn btn-default" id="jrgwc" type="submit">加购物车</button></a>
-                        @*<button type="button" style="background-color:red"; color:white;id="Sub" >直接购买</button>*@
-
-                        @*<button style="background-color:red; color:white;" class="btn btn-default" id="buy">直接购买</button>*@
-                        <button type="button" style="background-color:red; color:white;" class="btn btn-default" data-toggle="modal" data-target="#myModal1">直接购买</button>
+                        <div style="margin-top:56px;">
+                            <div align="left" style="float:left;padding-left:17px;">
+                                <a href="@Url.Action("Cart","Mall",new {GoodsID=Model.GoodsID })" class="jiagou">加购物车</a>
+                            </div>
+                            <div align="right">
+                                <button type="button" style="background-color:red; color:white;"  data-toggle="modal" data-target="#myModal1" class="btn1">直接购买</button>
+                            </div>
+                        </div>
                             <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -131,7 +163,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                
                             </div>
 
             
@@ -139,15 +171,17 @@
      </div>
 </div>
 <hr />
-
-    <div style="margin-top:-200px;margin-left:314px;">
+<div>
+        @*<div style="margin-top:-200px;margin-left:314px;">
         <textarea name="pinglun" id="tt"></textarea>
         <button id="pl" type="button">发表评论</button>
-    </div>
+        </div>*@
    
-@*}*@
-<div id="p2">
-    @{Html.RenderAction("Comment", "Mall",new { goodsid=Model.GoodsID});}
+
+        <div id="p2">
+            @*@{Html.RenderAction("Comment", "Mall",new{ goodsid=@Model.GoodsID });}*@
+            @Html.Action("Comment", new { goodsid = @Model.GoodsID }))
+        </div>
 </div>
 
 
@@ -165,77 +199,79 @@
 
 <script type="text/javascript" language="javascript">
     $(function (){
-        var uname = $("#Name");
-        
-        var add = $("#Address");
-        var tel = $("#Tel")
-       
+                    var uname = $("#Name");
+
+                    var add = $("#Address");
+                    var tel = $("#Tel")
+
+
         var price = $("input[name='unitprice']");
-        var num = $("input[name='number']");
-        var total =parseInt(price.val()) * parseInt(num.val());
-       
-        var GoodsID = $("input[name='goods']");
+                    var num = $("input[name='number']");
+                    var total =parseInt(price.val()) * parseInt(num.val());
+
+                    var GoodsID = $("input[name='goods']");
         
         $("#Sub").on("click", function () {
             
             $.ajax({
-                type: 'post',
+                            type: 'post',
                 //dataType: 'json',
                 url: "/Mall/DirectBuy",
                 data: {
-                    "total": total,
+                                "total": total,
                     "uname": uname.val(),
                     "tel": tel.val(),
                     "address":add.val(),
                     "goodsid": GoodsID.val(),
                     "num":num.val()
-                    
+
+
                 },
                 //traditional: true,
                 success: function (data) {
-                    
-                    alert(data.message);
-                    location.href = "/Mall/Order";
-                   
-                },
+
+                                alert(data.message);
+                                location.href = "/Mall/Order";
+
+                            },
                 error: function () {
-                    alert("购物失败");
-                }
-            });
-        });
+                                alert("购物失败");
+                            }
+                        });
+                    });
 
 
-        var pinglun = $("#tt");
-        $("#pl").on("click", function () {
-            $.ajax({
+        //var pinglun = $("#tt");
+        //$("#pl").on("click", function () {
+        //    $.ajax({
 
-                type: 'post',
-                url: "/Mall/Comment",
-                data: {
-                    "goodsid":GoodsID.val(),
-                    "text":pinglun.val()
-                },
+        //        type: 'post',
+        //        url: "/Mall/Comment",
+        //        data: {
+        //            "goodsid":GoodsID.val(),
+        //            "text":pinglun.val()
+        //        },
                
-                success:function(data){
+                //success:function(data){
                     
-                    //$('#p2').html(data);
-                    $.ajax({
-                        type:"get",
-                        async: false,
-                        url: "/Mall/Comment",
-                        data: {
-                            "goodsid": GoodsID.val(),
-                            "text": pinglun.val()
-                        },
-                        success:function(data){
-                            $("#p2").html(data);
-                        }
-                    })
+                //    //$('#p2').html(data);
+                //    $.ajax({
+                //        type:"get",
+                //        //async: false,
+                //        url: "/Mall/Comment",
+                //        data: {
+                //            "goodsid": GoodsID.val(),
+                //            "text": pinglun.val()
+                //        },
+                //        success:function(data){
+                //            $("#p2").html(data);
+                //        }
+                //    })
                     
-                    }
+                //    }
                
-            })
-        }
+        //    })
+        //}
 
     )
     })
@@ -246,96 +282,96 @@
  
 //每浏览一次网页或刷新一次，浏览量就自动加1 -->
 
-       var caution = false
-    function setCookie(name, value, expires, path, domain, secure) {
-        var curCookie = name + "=" + escape(value) +
+    //   var caution = false
+    //function setCookie(name, value, expires, path, domain, secure) {
+    //    var curCookie = name + "=" + escape(value) +
 
-        ((expires) ? "; expires=" + expires.toGMTString() : "") +
+    //    ((expires) ? "; expires=" + expires.toGMTString() : "") +
 
-        ((path) ? "; path=" + path : "") +
+    //    ((path) ? "; path=" + path : "") +
 
-        ((domain) ? "; domain=" + domain : "") +
+    //    ((domain) ? "; domain=" + domain : "") +
 
-        ((secure) ? "; secure" : "")
+    //    ((secure) ? "; secure" : "")
 
-        if (!caution || (name + "=" + escape(value)).length <= 4000)
+    //    if (!caution || (name + "=" + escape(value)).length <= 4000)
 
-            document.cookie = curCookie
+    //        document.cookie = curCookie
 
-        else
+    //    else
 
-            if (confirm("Cookie exceeds 4KB and will be cut!"))
+    //        if (confirm("Cookie exceeds 4KB and will be cut!"))
 
-                document.cookie = curCookie
+    //            document.cookie = curCookie
 
-    }
+    //}
 
-    function getCookie(name) {
+    //function getCookie(name) {
 
-        var prefix = name + "="
+    //    var prefix = name + "="
 
-        var cookieStartIndex = document.cookie.indexOf(prefix)
+    //    var cookieStartIndex = document.cookie.indexOf(prefix)
 
-        if (cookieStartIndex == -1)
+    //    if (cookieStartIndex == -1)
 
-            return null
+    //        return null
 
-        var cookieEndIndex = document.cookie.indexOf(";", cookieStartIndex + prefix.length)
+    //    var cookieEndIndex = document.cookie.indexOf(";", cookieStartIndex + prefix.length)
 
-        if (cookieEndIndex == -1)
+    //    if (cookieEndIndex == -1)
 
-            cookieEndIndex = document.cookie.length
+    //        cookieEndIndex = document.cookie.length
 
-        return (document.cookie.substring(cookieStartIndex + prefix.length, cookieEndIndex))
+    //    return (document.cookie.substring(cookieStartIndex + prefix.length, cookieEndIndex))
 
-    }
+    //}
 
-    function deleteCookie(name, path, domain) {
+    //function deleteCookie(name, path, domain) {
 
-        if (getCookie(name)) {
+    //    if (getCookie(name)) {
 
-            document.cookie = name + "=" +
+    //        document.cookie = name + "=" +
 
-            ((path) ? "; path=" + path : "") +
+    //        ((path) ? "; path=" + path : "") +
 
-            ((domain) ? "; domain=" + domain : "") +
+    //        ((domain) ? "; domain=" + domain : "") +
 
-            "; expires=Thu, 01-Jan-70 00:00:01 GMT"
+    //        "; expires=Thu, 01-Jan-70 00:00:01 GMT"
 
-        }
+    //    }
 
-    }
+    //}
 
-    function fixDate(date) {
+    //function fixDate(date) {
 
-        var base = new Date(0)
+    //    var base = new Date(0)
 
-        var skew = base.getTime()
+    //    var skew = base.getTime()
 
-        if (skew > 0)
+    //    if (skew > 0)
 
-            date.setTime(date.getTime() - skew)
+    //        date.setTime(date.getTime() - skew)
 
-    }
+    //}
 
-    var now = new Date()
+    //var now = new Date()
 
-    fixDate(now)
+    //fixDate(now)
 
-    now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000)
+    //now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000)
 
-    var visits = getCookie("counter")
+    //var visits = getCookie("counter")
 
-    if (!visits)
+    //if (!visits)
 
-        visits = 1
+    //    visits = 1
 
-    else
+    //else
 
-        visits = parseInt(visits) + 1;
+    //    visits = parseInt(visits) + 1;
 
-    setCookie("counter", visits, now);
+    //setCookie("counter", visits, now);
           
-    document.getElementById("num").innerHTML = visits;
+    //document.getElementById("num").innerHTML = visits;
 
 </script>

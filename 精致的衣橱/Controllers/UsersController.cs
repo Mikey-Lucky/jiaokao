@@ -89,10 +89,10 @@ namespace 精致的衣橱.Controllers
                 Session["User_image"] = db.Users.Where(m => m.UserID == UserID).FirstOrDefault().HeadImage;
                 Session["User_Name"] = db.Users.Where(m => m.UserID == UserID).FirstOrDefault().UserName;
                 data = "登录成功";
-                if(UserID!=8)
+                if(UserID != 8)
                 { 
                 //return Content("<script>alert(data)</script>");
-                return Content("<script>alert('"+data+"');window.history.go(-1)</script>");
+                return Content("<script>alert('"+data+"');history.go(-2)</script>");
                 }
                 else
                 {

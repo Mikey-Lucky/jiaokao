@@ -90,12 +90,14 @@
         <a href="#" title="首页">
             <img src="~/iconfont/首页-选中.png" class="img1" />
         </a>
-            <div style="margin-left:200px;position:relative;border-bottom:10px;">
 
-                <input type="text" class="zi" name="guanjianzi" placeholder="请输入关键字" />
+            <div style="margin-left:200px;position:relative;border-bottom:10px;">
+                @using (Html.BeginForm("Search", "Mall", FormMethod.Post)) { 
+                <input type="text" class="zi" name="search" placeholder="请输入关键字" />
 
                 <span><button class="btn">搜索</button></span>
-                <a href="#" title="我的购物车"><img src="~/iconfont/购物车.png" class="img2" /></a>
+                }
+                <a href="@Url.Action("Cart","Mall",new { userid=Session["User_id"]})" title="我的购物车"><img src="~/iconfont/购物车空.png" class="img2" /></a>
                 <a href="#" title="我的订单"><img src="~/iconfont/订单.png" class="img3" /></a>
             </div>
             <br />

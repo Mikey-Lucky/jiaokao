@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Models.GoodsComment>
 @{ 
     Layout = null;
+    string tempid;
 }
 <style>
     #tl{
@@ -16,17 +17,24 @@
     #p3{
 
     }
+    .touxiang{
+        height:70px;
+        width:55px;
+        float:left;
+    }
    
 </style>
-<div>
+@*<div>
     @foreach (var p in Model)
     {
+        tempid = "div" + p.GoodsCommentID.ToString();
+        <img src="~/Images/HeadImages/@p.Users.HeadImage" class="touxiang"/>
         @p.ComContent
 
         @p.Users.UserName
         <div>
             <textarea name="huifu" id="tl"></textarea>
-            <button class="btn">回复</button>
+            <button class="btn" type="button">回复</button>
             <input type="hidden" value="@p.GoodsCommentID" name="commentid"/>
 
         </div>
@@ -35,8 +43,44 @@
             @{Html.RenderAction("Reply", "Mall", new {commentid=@p.GoodsCommentID});}
         </div>
     }
+</div>*@
+
+@using (Html.BeginForm("Comment", "Mall", FormMethod.Post))
+{
+    <textarea name="pinglunkuang" style="resize:none;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;height:68px;width:798px;display:block;border:1px solid #c03f3c;"></textarea>
+    <input type="submit" value="发表评论" />
+}
+<div>
+    
+    @foreach (var item in Model)
+    {
+        tempid = "div" + item.GoodsCommentID;
+        @*<input type="hidden" value="@item.GoodsCommentID" name="commentid" />*@
+        <input type="submit" value="@item.GoodsCommentID" name="commentid" style="visibility: hidden"/>
+        <a><img src="@item.Users.HeadImage" /></a> @item.ComContent
+        @item.ComTime
+        <div style="height:100px;width:200px;background-color:bisque;float:right;margin-right:30px">
+            <button class="btn btn-xs btn-default" onclick="document.getElementById('@tempid').style.display = document.getElementById('@tempid').style.display == '' ? 'none' : ''">回复</button>"
+        </div>
+        <div id="@tempid" style="display:none;height:100px;width:200px;background-color:red">
+            <div>
+                @using (Html.BeginForm("Reply","Mall",new { commentid=item.GoodsCommentID },FormMethod.Post,new { id = "CreateForm", enctype = "multipart/form-data" }))
+                {
+                    <textarea name="huifukuang" placeholder="我要简单说两句"style="resize:none;margin:10px auto;border-radius:4px;height:70px; width:600px;-webkit-border-radius:4px;-moz-border-radius:4px;border:1px solid rgba(0, 0, 0,0.5);"></textarea>
+                    <input type="submit" value="提交" />
+                }
+            </div>
+        </div>
+        foreach (Models.ComReply C in item.ComReply.Where(p => p.GoodsCommentID == item.GoodsCommentID).ToList().AsReadOnly())
+        {
+            <div>
+                <a>@C.Users.UserName</a> 回复 <a>@C.GoodsComment.Users.UserName</a><p>&nbsp;&nbsp;@C.RepContent</p>
+                @C.RepTime
+            </div>
+        }
+    }
 </div>
-<script>
+@*<script>
     $(function () {
         var hf = $("#tl");
         var cid = $("input[name='commentid']");
@@ -59,13 +103,13 @@
                         success: function (data) {
                             $("#p3").html(data);
                         },
-                        error: function () {
-                            alert("回复失败");
-                        }
+                        //error: function () {
+                        //    alert("回复失败");
+                        //}
                             
                     })
                 }
             })
         })
     })
-</script>
+</script>*@
