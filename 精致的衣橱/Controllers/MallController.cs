@@ -27,6 +27,8 @@ namespace 精致的衣橱.Controllers
         ComReplyManager comreplymanager = new ComReplyManager();
         public ActionResult Index()
         {
+           
+
             var g1 = goodsmanager.GetHotGoods(8);
             var g2 = goodsmanager.GetNewGoods(10);
             var g3 = goodsmanager.ChunQiu(8);
@@ -40,15 +42,16 @@ namespace 精致的衣橱.Controllers
             mallviewmodel.Dong = g5;
             return View(mallviewmodel);
         }
+        
         public ActionResult GoodsDetails(int id)
         {
             Session["goodsid"] = id;
             var a = db.Goods.Where(p => p.GoodsID == id).FirstOrDefault();
-            var ScanNum = Convert.ToInt32(Request["ScanNam"]);
-            a.Pageview = ScanNum;
+            
+            
             db.SaveChanges();
             
-            Session["ScanNum"] = ScanNum;
+            
             return View(a);
 
         }
@@ -101,22 +104,22 @@ namespace 精致的衣橱.Controllers
                 return Content("您查找的商品不存在");
             
         }
-        //[Login]
-        public ActionResult Cart()
+        [Login]
+        public ActionResult Cart(int userid)
         {
-            //var userid = Convert.ToInt32(Session["User_id"]);
-            int userid = 1;
+            userid = Convert.ToInt32(Session["User_id"]);
+            
             var cart = cartmanager.Cart(userid);
             return View(cart);
         }
-        //[Login]
+        [Login]
         [HttpPost]
         //public ActionResult jrgwc([Bind(Include = "UserID,GoodsID,Count,CartTime,Price,Flag")]Cart cart)
         public ActionResult Cart(int GoodsID, Cart cart)
         {
 
-            //int id = Convert.ToInt32(Session["User_id"]);
-            int id = 1;
+            int id = Convert.ToInt32(Session["User_id"]);
+            //int id = 1;
             //int Flag = 0;
             var nowtime = System.DateTime.Now;
             var t = Convert.ToDouble(cartmanager.getgoodsbyid(GoodsID).Unitprice);
@@ -135,7 +138,7 @@ namespace 精致的衣橱.Controllers
             }
         }
 
-        //[Login]
+        [Login]
         public ActionResult UpdateCartNum(int num, int CartID)
         {
             
@@ -143,7 +146,7 @@ namespace 精致的衣橱.Controllers
             return Content("<script>alert('更新成功');window.location.href='../Mall/Cart';</script>");
         }
 
-        //[Login]
+        [Login]
         public ActionResult Delete(int CartID)
         {
            
@@ -160,7 +163,7 @@ namespace 精致的衣橱.Controllers
             return View(com);
         }
         [HttpPost]
-        //[Login]
+        [Login]
         public ActionResult Comment(int goodsid,string text)
         {
             //goodsid =2;
@@ -168,8 +171,8 @@ namespace 精致的衣橱.Controllers
             //goodsid = Convert.ToInt32(Session["goodsid"]);
             DateTime datetime = System.DateTime.Now;
             int thumb = 0;
-            //int id = Convert.ToInt32(Session["User_id"]);
-            int id = 1;
+            int id = Convert.ToInt32(Session["User_id"]);
+            
             if (ModelState.IsValid)
             {
                 if (text != null)
@@ -184,7 +187,7 @@ namespace 精致的衣橱.Controllers
                 //}
                 //return View();
             }
-            return Content("<script>alert('评论成功！')/*;history.go(0)*/</script>");
+            return Content("<script>alert('评论成功！')</script>");
             //return View();
 
         }
@@ -194,15 +197,16 @@ namespace 精致的衣橱.Controllers
             return View(rep);
         }
         [HttpPost]
+        [Login]
         public ActionResult Reply(int commentid,string text)
         {
-            int userid = 1;
+            int id = Convert.ToInt32(Session["User_id"]);
             var datetime = System.DateTime.Now;
             if (ModelState.IsValid)
             {
                 if (text != null)
                 {
-                    comreplymanager.AddComReply(userid, commentid, text, datetime);
+                    comreplymanager.AddComReply(id, commentid, text, datetime);
                 }
                 else
                     return Content("回复不能为空");
@@ -213,8 +217,8 @@ namespace 精致的衣橱.Controllers
         //[Login]
         public ActionResult Order()
         {
-            //int id = Convert.ToInt32(Session["User_id"]);
-            int id = 1;
+            int id = Convert.ToInt32(Session["User_id"]);
+            //int id = 1;
             var order = odersmanager.GetOrdersById(id);
             return View(order);
         }
@@ -223,8 +227,8 @@ namespace 精致的衣橱.Controllers
         //[Login]
         public ActionResult Addaddress(string add)
         {
-            //int userid = Convert.ToInt32(Session["User_id"]);
-            int userid = 1;
+            int userid = Convert.ToInt32(Session["User_id"]);
+            //int userid = 1;
             add = Request["dizhi"].ToString();
 
             addressmanager.Add(userid, add);
@@ -237,8 +241,8 @@ namespace 精致的衣橱.Controllers
         public ActionResult Buy(int[] a, string name, string userphone, string address, int total)
         {
             var datetime = System.DateTime.Now;
-            //int uid = Convert.ToInt32(Session["User_id"]);
-            int uid = 1;
+            int uid = Convert.ToInt32(Session["User_id"]);
+            //int uid = 1;
             //odersmanager.Order(datetime, total, uid, name, userphone, address);
             for (int i = 0; i < a.Length; i++)
             {
@@ -259,8 +263,8 @@ namespace 精致的衣橱.Controllers
         {
              
             var datetime = System.DateTime.Now;
-            //int uid = Convert.ToInt32(Session["User_id"]);
-            int uid = 1;
+            int uid = Convert.ToInt32(Session["User_id"]);
+            //int uid = 1;
             odersmanager.Order(datetime, total, uid, uname, tel, address);
             orderdetailsmanager.DirectBuy(goodsid, datetime, uid, num);
             Message msg = new Message()
@@ -281,12 +285,12 @@ namespace 精致的衣橱.Controllers
             return View(t);
         }
         //点赞
-        //[Login]
+        [Login]
         public int Zan(int goodsid)
         {
 
-            //int userid = Convert.ToInt32(Session["User_id"]);
-            int userid = 2;
+            int userid = Convert.ToInt32(Session["User_id"]);
+            //int userid = 2;
            
             goodslikemanager.GoodsLikeClick(userid,goodsid);
             int num = goodslikemanager.goodslikenum(goodsid);

@@ -263,6 +263,7 @@
     <Content Include="iconfont\衣服.png" />
     <Content Include="iconfont\订单.png" />
     <Content Include="iconfont\购物车.png" />
+    <Content Include="iconfont\购物车空.png" />
     <Content Include="iconfont\首页-选中.png" />
     <Content Include="Images\FM\2.1.PNG" />
     <Content Include="Images\GoodsImages\1.1.jpg" />
@@ -820,9 +821,9 @@
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Shared\Houtaimall.cshtml" />
-	  <Content Include="Views\YIChuShow\notecomment.cshtml" />
+    <Content Include="Views\YIChuShow\notecomment.cshtml" />
     <Content Include="Views\YIChuShow\ncreply.cshtml" />
-	    <Content Include="Views\GoodsComments\Create.cshtml" />
+    <Content Include="Views\GoodsComments\Create.cshtml" />
     <Content Include="Views\GoodsComments\Delete.cshtml" />
     <Content Include="Views\GoodsComments\Details.cshtml" />
     <Content Include="Views\GoodsComments\Edit.cshtml" />
