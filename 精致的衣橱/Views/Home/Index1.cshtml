@@ -28,16 +28,18 @@
             max-width: 1373px;
         }
         #manban2 img {
-            height: 297px;
+            max-width: 480px;
+            min-width: 360px;
+            /*height: 297px;*/
         }
         #manban2 .topshadow {
-            height: 40px;
-            width: 200px;
+            /*height: 40px;
+            width: 200px;*/
             /*background-color:rgb(0,0,0);*/
             /*filter: opacity(50%);*/
             background: -webkit-linear-gradient(left,rgba(0,0,0,30%),rgba(0,0,0,0));
             position: absolute;
-            top: -20px;
+            /*top: -20px;*/
             z-index: 2;
             color: #f5f5f5;
         }
@@ -64,9 +66,19 @@
                 line-height: 40px;
         }
         #video img {
-           height: 120px;
-           width: 120px;
-        }
+           /*height: 120px;
+           width: 120px;*/
+          
+		 /*min-height:120px;*/
+		 /*min-width: 120px; 
+         max-height: 120px;*/
+         max-width: 200px;
+         min-height: 120px;
+         /*height: 120px;*/
+         /*min-width: 120px;*/
+         
+		 vertical-align:middle;
+	   }	
         #manban2 .more {
                 font-size:16px;
                 display:block;
@@ -96,20 +108,18 @@
             background-color:aqua;
            
         }*/
-       .hotvideo:hover::after { 
-            position: absolute; 
-        }
         .hotvideo:hover img {
              -webkit-filter: blur(1px); 
             filter: blur(1px);
         }
         .hotvideo:hover::after {
+             position: absolute;
             content: "\25BA";
             display: inline-block;
             line-height:120px;
-            left: 12px;
+            left: 60px;
             height: 120px;
-            text-align: center;
+            top: 0px;
             width: 120px;
             font-size:40px;
             color: rgba(0,0,0,0.5);
@@ -199,7 +209,9 @@
                 @foreach (var v in Model.videos)
                 {
                     <div class="col-md-2 col-sm-4 hotvideo">
-                        <img src="/Images/videoimg/@v.Image"  data-toggle="tooltip" data-placement="right" title="" />
+                        <div style="width: 120px;height: 120px;overflow: hidden">
+                            <img src="/Images/videoimg/@v.Image" data-toggle="tooltip" data-placement="right" title="" />
+                        </div>
                     </div>
                 }
             </div>
@@ -215,12 +227,14 @@
                 @foreach (var n in Model.notes)
                 {
                     
-                    <div class="col-md-3 col-sm-4 " style="height:306px;">
+                    <div class="col-md-3 col-sm-4 " style="height:400px;">
                         <a href="#">
                             <div class="topshadow ">
                                 <span class="glyphicon glyphicon-thumbs-up">&nbsp;@n.likenum</span>
                             </div>
-                            <img src="/Images/Noteimg/@n.Img" style="width:  100%;" />
+                            <div style="width: 300px;height: 370px;overflow: hidden;">
+                                <img src="/Images/Noteimg/@n.Img" />
+                            </div>
                             <span class="label label-default" style="margin-top: -20px;"></span>
                            <!-- <span class="more">@n.Title</span>-->
                             <div class="footshadow">@n.Title</div>
