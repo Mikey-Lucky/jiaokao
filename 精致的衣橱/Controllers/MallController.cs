@@ -42,15 +42,11 @@ namespace 精致的衣橱.Controllers
             mallviewmodel.Dong = g5;
             return View(mallviewmodel);
         }
-        
+        [Login]
         public ActionResult GoodsDetails(int id)
         {
-            Session["goodsid"] = id;
+            Session["goodsid"] = id   ;
             var a = db.Goods.Where(p => p.GoodsID == id).FirstOrDefault();
-            
-            
-            db.SaveChanges();
-            
             
             return View(a);
 
@@ -155,53 +151,62 @@ namespace 精致的衣橱.Controllers
 
         }
         
-        //商品评论回复
+        
         public ActionResult Comment(int goodsid)
         {
-            goodsid = Convert.ToInt32(Session["goodsid"]);
+
+            //int goodsid = Convert.ToInt32(Session["goodsid"]);
             var com = goodscommentmanager.Getgoodscommentbyid(goodsid);
-            return View(com);
+            return PartialView(com);
         }
-        [HttpPost]
+
         [Login]
-        public ActionResult Comment(int goodsid,string text)
+        [HttpPost]
+        
+        public ActionResult Comment()
         {
             //goodsid =2;
             //var text;
-            //goodsid = Convert.ToInt32(Session["goodsid"]);
+            int goodsid = Convert.ToInt32(Session["goodsid"]);
+            
             DateTime datetime = System.DateTime.Now;
             int thumb = 0;
             int id = Convert.ToInt32(Session["User_id"]);
-            
+            string text = Request["pinglunkuang"];
+            //int  goodsid = Convert.ToInt32(Request["commentid"]);
             if (ModelState.IsValid)
             {
                 if (text != null)
                 {
 
-                    goodscommentmanager.AddGoodsComment(text,id,goodsid,datetime,thumb);
-                    
+                    goodscommentmanager.AddGoodsComment(text, id, goodsid, datetime, thumb);
+
                 }
-                //else
-                //{
-                //    return Content("<script>alert('评论不能为空！');history.go(-1)</script>");
-                //}
+                else
+                {
+                    return Content("<script>alert('评论不能为空！');history.go(-1)</script>");
+                }
                 //return View();
             }
-            return Content("<script>alert('评论成功！')</script>");
-            //return View();
+            //return Content("<script>alert('评论成功！')</script>");
+            return View();
 
         }
+        //商品评论回复
         public ActionResult Reply(int commentid)
         {
-            var rep = comreplymanager.Reply(commentid);
-            return View(rep);
+            //var rep = comreplymanager.Reply(commentid);
+            //return View(rep);
+            return View();
         }
-        [HttpPost]
         [Login]
+        [HttpPost]
+        
         public ActionResult Reply(int commentid,string text)
         {
             int id = Convert.ToInt32(Session["User_id"]);
             var datetime = System.DateTime.Now;
+            text = Request.Form["huifukuang"];
             if (ModelState.IsValid)
             {
                 if (text != null)
@@ -211,7 +216,7 @@ namespace 精致的衣橱.Controllers
                 else
                     return Content("回复不能为空");
             }
-            return View();
+            return Content("评论成功"); ;
 
         }
         //[Login]
@@ -236,8 +241,9 @@ namespace 精致的衣橱.Controllers
 
         }
         //将Buy改成了Order
+        [Login]
         [HttpPost]
-        //[Login]
+        
         public ActionResult Buy(int[] a, string name, string userphone, string address, int total)
         {
             var datetime = System.DateTime.Now;
@@ -257,8 +263,9 @@ namespace 精致的衣橱.Controllers
             };
             return base.Json(msg);
         }
+        [Login]
         [HttpPost]
-        //[Login]
+       
         public ActionResult DirectBuy(int total,string uname,string tel,string address,int num,int goodsid)
         {
              
