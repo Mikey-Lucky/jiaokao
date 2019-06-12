@@ -2,7 +2,11 @@
 
 @foreach (var c in Model)
 {
-    <p>回复</p>
-    @c.VCContent
+    <p style="text-indent: 60px">
+        <span>@c.Users.UserName</span>
+        <span style="color: #999">回复</span>
+        <span>@c.VideoComment.Users.UserName :</span>
+        <span>@c.VCContent</span>
+    </p>
 }
 

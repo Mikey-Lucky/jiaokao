@@ -200,15 +200,18 @@ namespace 精致的衣橱.Controllers
         //视频详情页
         public ActionResult VideoDetail(int id)
         {
-            var video = videos.VideoDetail(id);
-            return View(video);
+            ycsv.videodetail = videos.VideoDetail(id);
+            ycsv.allvideocommentbyid = vcomments.allvideocomment(id);
+            //var video = videos.VideoDetail(id);
+            return View(ycsv);
         }
 
         //视频评论展示分布视图
         public ActionResult VideoComment(int videoid)
         {
-            var videocomment = vcomments.allvideocomment(videoid);
-            return PartialView(videocomment);
+            ycsv.allvideocommentbyid= vcomments.allvideocomment(videoid);
+            //var videocomment = vcomments.allvideocomment(videoid);
+            return PartialView(ycsv);
         }
         [HttpPost]
         public ActionResult VideoComment(VideoComment videocomment)
@@ -216,7 +219,7 @@ namespace 精致的衣橱.Controllers
             videocomment.Commentcotent = Request["comment"];
             videocomment.likenum = 0;
             videocomment.Time = DateTime.Now;
-            videocomment.UserID = 1;
+            videocomment.UserID = Convert.ToInt32(Request["userid"]);
             videocomment.VideoID =Convert.ToInt32(Request["videoid"]) ;
             vcomments.AddVideoComment(videocomment);
             return Content("评论成功");
@@ -230,13 +233,14 @@ namespace 精致的衣橱.Controllers
         [HttpPost]
         public ActionResult VideoCommentReply(U_Reply_VideoComment urvc)
         {
-            urvc.VCContent = Request["commentreply"];
-            urvc.VideocommentID = Convert.ToInt32(Request["videocommentid"]);
-            urvc.UserID = 1;
+            urvc.VCContent = Request["rcontent"];
+            urvc.VideocommentID = Convert.ToInt32(Request["commentid"]);
+            urvc.UserID = Convert.ToInt32(Request["ruserid"]);
             urvc.Likenum = 0;
             urvc.Time = DateTime.Now;
             ureplyvideocomment.AddVideoCommentReply(urvc);
-            return Content("回复成功");
+            var a = ureplyvideocomment.videocommentreply(Convert.ToInt32(Request["commentid"]));
+            return PartialView(a);
         }
         //相关视频分布视图
         public ActionResult VideoRelative(int authorid, string title, string intro)
