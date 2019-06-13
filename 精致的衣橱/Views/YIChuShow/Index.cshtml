@@ -18,65 +18,80 @@
         }
         .control__item {
             display: inline-block;
-            width: 237px;
+            width: 255px;
+            height: 300px;
+            /*background-image: url('../../Images/yichu/麋鹿素材.jpg');*/
         }
         .control__item:hover .control__label{
-                color: black!important;
+                color: #d27171!important;
                 font-size: 24px;
        }
+        .control__label ,
+        .control__item a {
+            display: inline-block;
+            width: 265px;
+            /*height: 200px;*/
+            line-height: 232px;
+        }
+       
         main .content{
             margin: 0 auto;
         }
         .control--grids {
-            margin: 6px 140px 2.5em;
+            margin: -21px 0px 2.5em;
             /*text-align: right;*/
             background-color: white;
             border-top: 28px solid #f2f2f2;
-            height: 110px;
+            height: 260px;
             text-align: center;
             /*letter-spacing: 10px;*/
             font-size: 20px;
-            
         }
-        /*.control__radio {
-            border-right: 10px solid #fff;
-            margin-right: 10px;
-        }*/
         .control__radio:checked + .control__label {
             color: #fff;
             background: #ff006e;
         }
+        /********************图片导航开始****************************/
+        /*******************图片导航结束****************************/
     </style>
 </head>
 <body class="loading">
+        @*<img src="~/Images/yichu/火狐截图_2019-06-13T09-06-36.916Z.png" />*@
         <div class="control control--grids">
             <div class="control__item">
                 <input class="control__radio" type="radio" name="grid-type" value="grid--type-a" id="control-grid-a" checked>
-                <label class="control__label" for="control-grid-a">精选笔记</label>
+                <label class="control__label" for="control-grid-a" style="background-image: url('../../Images/banner/1.1.jpg');background-size: cover;color: white;">精选笔记</label>
             </div>
             <div class="control__item">
                 <input class="control__radio" type="radio" name="grid-type" value="grid--type-b" id="control-grid-b">
-                <label class="control__label" for="control-grid-b">精选视频</label>
+                <label class="control__label" for="control-grid-b" style="background-image: url('../../Images/banner/2.1.jpg');background-size: cover;color: white;">精选视频</label>
             </div>
             <div class="control__item">
                 <input class="control__radio" type="radio" name="grid-type" value="grid--type-c" id="control-grid-c">
-                <label class="control__label" for="control-grid-c">最新笔记</label>
+                <label class="control__label" for="control-grid-c" style="background-image: url('../../Images/banner/3.1.jpg');background-size: cover;color: white;">最新笔记</label>
             </div>
             <div class="control__item">
                 <input class="control__radio" type="radio" name="grid-type" value="grid--type-d" id="control-grid-d">
-                <label class="control__label" for="control-grid-d">最新视频</label>
+                <label class="control__label" for="control-grid-d" style="background-image: url('../../Images/banner/4.1.jpg');background-size: cover;color: white;">最新视频</label>
             </div>
-            <a href="@Url.Action("UpNote","YiChuShow")">发表笔记</a>
-            <a href="@Url.Action("UpVideo","YiChuShow")">上传视频</a>
-            @******************userid要改成session 用户id**************************@
-            <a href="@Url.Action("Userhome","YiChuShow",new { userid=1})">
-                <img src="~/Images/HeadImages/1.jpg" style="height:50px;width:50px;" />
-            </a>
-        </div>
+            <div class="control__item">
+                <a href="@Url.Action("UpNote","YiChuShow")" style="background-image: url('../../Images/banner/5.1.jpg');background-size: cover;color: white;">发表笔记</a>
+            </div>
+            <div class="control__item">
+                <a href="@Url.Action("UpVideo","YiChuShow")" style="background-image: url('../../Images/banner/6.1.1.jpg');background-size: cover;color: white;">上传视频</a>
+            </div>
+                @******************userid要改成session 用户id**************************@
+                @*<a href="@Url.Action("Userhome","YiChuShow",new { userid=1})">
+                    <img src="~/Images/HeadImages/1.jpg" style="height:50px;width:50px;" />
+                </a>*@
+            </div>
         <main>
             <div class="content content--center">
+                <img src="~/Images/yichu/热门笔记.jpg" style="display: block;" />
                 <div class="grid grid--type-a">
+                    
                     <div class="grid__sizer"></div>
+                   
                     @foreach (var n in Model.JingXuanNote)
                     {
                         <div class="grid__item">

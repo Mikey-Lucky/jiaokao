@@ -34,7 +34,7 @@
            float: left;
            width: 75%;
            background-color: white;
-           border-right:20px solid #f2f2f2;
+           border-right:60px solid #f2f2f2;
            box-sizing: border-box;
            margin-top: 20px;
            /*overflow-y: scroll;*/
@@ -69,6 +69,16 @@
             /*font-weight: bold;*/
             line-height: 100px;
         }
+       /************导航开始**********************/
+        .zong-nav {
+            height: 80px;
+            border-top: 1px dashed #ccc;
+            border-bottom: 1px dashed #ccc;
+        }
+        .ji {
+            height: 76px;
+        }
+        /************导航结束**********************/
         /***作者框开始****************************/
         .author {
             width: 100%;
@@ -189,9 +199,10 @@
             position: relative;
             text-align: center;
         }
-       .shape2 {
+        .shape2 {
             height: 12px;
-            background: url(assets/images/shape2.png) no-repeat center center;
+            /*background-image: url('../../Images/yichu/shape2.png');*/
+            background: url(../../Images/yichu/shape2.png) no-repeat center center;
             background-color: rgba(0, 0, 0, 0);
             margin: 20px auto 30px;
             line-height: 12px;
@@ -221,7 +232,7 @@
     <div class="container">
         <div class="notecontent">
             <div class="notedetail">
-                <div class="notehead" style="border-bottom: 29px solid #f2f2f2;overflow: hidden;">
+                <div class="notehead" style="border-bottom: 22px solid #f2f2f2;overflow: hidden;">
                     @*<p>
                         <a href="@Url.Action("Index","YiChuShow")">衣橱秀场</a>
                         <span>》笔记详情</span>
@@ -268,31 +279,33 @@
           </div>
         </div>
         <div class="noterelative">
-           <div class="author">
+           @*<div class="author">
                <div class="authortitle">
                    <img src="/Images/HeadImages/@Model.notedetail.Users.HeadImage" />
                   作者：<span>@Model.notedetail.Users.UserName </span>
                </div>
                <div class="authorads">
-                   @*<span>@Model.Users.Address</span>
-                   <span>@Model.Users.Birthday</span>*@
+                   <span>@Model.Users.Address</span>
+                   <span>@Model.Users.Birthday</span>
                    <p>传送门</p>
                    <a href="#">作者主页</a>
                    <a href="#">作者关注</a>
                    <a href="#">作者粉丝</a>
                </div>
-           </div>
+           </div>*@
            <div class="widget">
-                <h3 class="widget-title"><span>About Me</span></h3>
+                <h3 class="widget-title"><span>Author</span></h3>
                 <div class="shape2"></div>
                 <div class="about-me text-center">
-                    <img src="https://demo.amplethemes.com/saraswati-blog/wp-content/uploads/2018/11/photographer-407068_1280-1.jpg" alt="about me">
-                    <p>Lorem Ipsum është një tekst shabllon i industrisë së printimit dhe htypshkronjave.</p>
+                    <img src="/Images/HeadImages/@Model.notedetail.Users.HeadImage" />
+                    <p>作者：@Model.notedetail.Users.UserName</p>
                 </div><!-- .about-me -->
             </div>
-           <div class="notelist">
+           <div class="notelist widget">
+               <h3 class="widget-title"><span>related</span></h3>
+               <div class="shape2"></div>
                <div class="notere">
-                   <p>相关推荐</p>
+                   @*<p>相关推荐</p>*@
                    @Html.Action("NoteRelative", new { authorid = @Model.notedetail.UserID, title = @Model.notedetail.Title })
                </div>
            </div>
