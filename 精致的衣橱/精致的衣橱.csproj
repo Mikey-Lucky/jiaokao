@@ -246,8 +246,10 @@
     <Content Include="Content\Cooldog.css" />
     <Content Include="Content\demo.css" />
     <Content Include="Content\iconfont.css" />
+    <Content Include="Content\main.css" />
     <Content Include="Content\Mall.css" />
     <Content Include="Content\normalize.css" />
+    <Content Include="Content\partner.css" />
     <Content Include="Content\ShopCar.css" />
     <Content Include="Content\shouye.css" />
     <Content Include="Content\xiumi.css" />
