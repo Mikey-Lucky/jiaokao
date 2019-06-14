@@ -13,7 +13,8 @@
            font-family: 'Roboto Mono', monospace;
         }
         .container {
-            max-width: 1319px;
+            max-width: 1500px;
+            width: 80%;
         }
 
         .main {
@@ -29,7 +30,7 @@
             display: inline-block;
             font-size: 19px;
             line-height: 78px;
-            margin-right: 16px;
+            margin-right: 100px;
             position: relative;
                 
        }
@@ -43,7 +44,7 @@
  /*************导航栏结束***********************************/
 
  /******************用户个人信息开始***********************/
-         .banner {
+         /*.banner {
             background-size: cover;
             height: 110px;
             box-sizing: border-box;
@@ -100,49 +101,493 @@
             .h-action span {
                 background-color: rgb(202,220,222);
                 margin-right: 20px;
-            }
+            }*/
 /******************用户个人信息结束***********************/
+/*******************banner开始***********************************************/
+ .banner-wrapper {
+    position: relative;
+    z-index: 3;
+    height: 420px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+}
+ .background-image-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+ .banner-mast {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.2);
+    z-index: 1;
+}
+ .cover-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+}
+ .cover-image-option {
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 280px;
+    height: 120px;
+}
+ /*.image-tip {
+    font-size: .3rem;
+    color: #fff;
+    margin-bottom: 35px;
+}
+ .image-option-wrapper {
+    width: 220px;
+    margin: auto;
+}*/
+ .image-option-button {
+    display: inline-block;
+    width: 100px;
+    cursor: pointer;
+}
+.w_default_button .normal-button {
+    color: #fff;
+    background-color: #46d233;
+}
+.w_default_button .default-button {
+    display: inline-block;
+    border: 1px solid #46d233;
+    padding: 10px 15px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: .16rem;
+    line-height: 18px;
+    color: #46d233;
+    background-color: #fff;
+    cursor: pointer;
+}
+ .image-option-button:last-of-type {
+    float: right;
+}
+ .image-option-button {
+    display: inline-block;
+    width: 100px;
+    cursor: pointer;
+}
+ .banner-user-info {
+    display: inline-block;
+}
+ .banner-user-info {
+    position: absolute;
+    z-index: 5;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+}
+ .user-avatar {
+    display: inline-block;
+}
+ .banner-user-info > * {
+    vertical-align: middle;
+}
+.w_default_avatar {
+    position: relative;
+}
+ .banner-user-info .user-avatar .size-100 {
+    border: 2px solid #fff;
+}
+ .size-100 {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #e2e2e2;
+    font-size: 95px;
+}
+.w_default_avatar .avatar-wrapper {
+    display: inline-block;
+    border-radius: 100%;
+    background-size: 100%;
+    cursor: pointer;
+}
+ .user-info-content {
+    display: inline-block;
+    margin-left: 26px;
+    width: 800px;
+}
+ .banner-user-info > * {
+    vertical-align: middle;
+}
+ .info-top {
+    width: 100%;
+}
+ .info-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: 4px;
+    display: inline-block;
+    max-width: 500px;
+    font-size: .28rem;
+    vertical-align: middle;
+}
+ .follow-button-wrapper {
+    display: inline-block;
+    margin-left: 22px;
+    width: 80px;
+    font-size: .14rem;
+    color: #444;
+    vertical-align: middle;
+    overflow: hidden;
+    background: #46D233;
+}
+.w_pui_follow_button {
+}
+.w_pui_follow_button .cc_follow_btn {
+    font-size: 14px;
+}
+ .follow-button-wrapper .cc_no_attension, #base_user-center .follow-button-wrapper .cc_attension {
+    width: 100%;
+}
+.w_pui_follow_button.cc_topic_green .cc_no_attension {
+    background: #46d233;
+    color: #fff;
+    border: 0;
+}
+.w_pui_follow_button .cc_follow_btn > span {
+    display: block;
+    -webkit-transition-duration: .3s;
+    -ms-transition-duration: .3s;
+    -moz-transition-duration: .3s;
+    transition-duration: .3s;
+    position: relative;
+    width: 78px;
+    height: 30px;
+    line-height: 28px;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.w_pui_follow_button .cc_follow_btn > span i.icon {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 10px;
+}
+.iconfont {
+    font-family: iconfont !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-add::before {
+    content: "\e602";
+}
+.w_pui_follow_button .cc_follow_btn > span i.icon {
+    font-size: 10px;
+}
+ .vw_more {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    margin-left: 10px;
+    width: 30px;
+    height: 28px;
+    position: relative;
+}
+ .vw_send_message {
+    display: block;
+    width: 30px;
+    height: 28px;
+    border: 1px solid #fff;
+    line-height: 30px;
+    padding-top: 12px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition-duration: .3s;
+    -ms-transition-duration: .3s;
+    -moz-transition-duration: .3s;
+    transition-duration: .3s;
+}
+ .vw_send_message > i {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: top;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #fff;
+    -webkit-transition-duration: .3s;
+    -ms-transition-duration: .3s;
+    -moz-transition-duration: .3s;
+    transition-duration: .3s;
+}
+ .info-middle {
+    margin-top: 9px;
+    font-size: .16rem;
+}
+ .social-connect-button:first-of-type {
+    padding-right: 20px;
+    border-right: 1px solid #fff;
+}
+ .social-connect-button {
+    display: inline-block;
+    line-height: 14px;
+    cursor: pointer;
+}
+.social-connect-button:last-of-type {
+    padding-left: 15px;
+}
+.social-connect-button {
+    display: inline-block;
+    line-height: 14px;
+    cursor: pointer;
+}
+.info-bottom {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+}
+ .share-button-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+ .banner-user-info > * {
+    vertical-align: middle;
+}
+.share-button {
+    margin-left: 15px;
+    vertical-align: middle;
+}
+.w_pui_sina_button {
+    display: inline-block;
+}
+/*******************banner结束*********************************************/
+/***************************展示开始*********************************/
+ .works-detail .w_user_works_preview {
+    margin-top: 20px;
+    margin-left: 18px;
+}
+ .works-content .w_user_works_preview {
+    margin-top: 20px;
+    margin-left: 18px;
+}
+ .works-preview {
+    display: block;
+    float: left;
+}
+.w_user_works_preview {
+    display: inline-block;
+    width: 386px;
+    height: 546px;
+    margin: 10px;
+}
+.w_user_works_preview .works-item {
+    display: inline-block;
+    position: relative;
+    width: 386px;
+    height: 546px;
+    background-color: #fff;
+}
+.w_user_works_preview .works-image {
+    position: relative;
+    display: inline-block;
+    width: 386px;
+    height: 386px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #e7eaee;
+    cursor: pointer;
+}
+.w_user_works_preview .works-info {
+    position: relative;
+    padding: 12px 20px 20px;
+    height: 160px;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.w_user_works_preview .works-time {
+    margin-bottom: 10px;
+    font-size: .12rem;
+    color: #999;
+}
+ .works-detail .w_user_works_preview .works-item .cc_shadow {
+    display: none;
+}
+ .w_user_works_preview .image-count {
+    position: absolute;
+    bottom: 16px;
+    right: 10px;
+    padding: 0 7px 3px;
+    height: 28px;
+    font-size: .14rem;
+    line-height: 27px;
+    text-align: center;
+    color: #fff;
+    background-color: rgba(0,0,0,.4);
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.w_user_works_preview .works-item .cc_shadow {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    height: 120px;
+    background: -webkit-linear-gradient(top,rgba(85,85,85,0),rgba(17,17,17,.5));
+    background: -o-linear-gradient(top,rgba(85,85,85,0),rgba(17,17,17,.5));
+    background: -moz-linear-gradient(top,rgba(85,85,85,0),rgba(17,17,17,.5));
+    background: linear-gradient(top,rgba(85,85,85,0),rgba(17,17,17,.5));
+    background: -ms-linear-gradient(top,rgba(85,85,85,0),rgba(17,17,17,.5));
+}
+.w_user_works_preview .works-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 16px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #444;
+}
+.w_user_works_preview .tag-list {
+    width: 100%;
+    margin-top: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.w_user_works_preview .works-count-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    padding: 0 20px;
+    font-size: .14rem;
+    color: #999;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.w_user_works_preview .works-count-info .cc_info_left {
+    padding-bottom: 17px;
+}
+.w_user_works_preview .works-count-info .cc_info_left .cc_left_tag {
+    display: inline-block;
+    height: 24px;
+}
+.w_user_works_preview .works-count-info .cc_info_left .cc_left_tag .iconfont {
+    font-size: 14px;
+    color: #ccc;
+}
+.w_user_works_preview .works-count-info .cc_info_right {
+    position: absolute;
+    right: 10px;
+    bottom: 7px;
+}
+/***************************展示结束*********************************/
     </style>
-    <div class="top container">
-        <div class="banner" >
-            <div class="h-user">
-                <img src="~/Images/HeadImages/1.jpg" />
-                <h2>疯狂的企鹅</h2>
-                <span>女</span>
-                @*判断用户是否为登入用户，如果是编辑个人信息，不是就显示加关注*@
-                <span>加关注</span>
-                <span>编辑个人信息</span>
-                <div class="h-action">
-                    @ViewBag.attentionnum
-                    <a href="@Url.Action("Attention","YiChuShow",new {userid=ViewBag.userid})">关注</a>
-                    <span>关注</span>
-                    @ViewBag.fensinum
-                    <a href="@Url.Action("FenSi","YiChuShow",new {userid=ViewBag.userid})">粉丝</a>
-                    <span>粉丝</span>
+    <div class="banner-wrapper"><!----> 
+    <div class="background-image-wrapper">
+        <div class="banner-mast"></div> 
+        <div class="cover-image" style="background-image: url('../../Images/yichu/banner1.png'); "></div>
+    </div> <!---->  
+    <div class="banner-user-info clearfix">
+        <div class="w_default_avatar user-avatar">
+        <a href="#" target="_self" class="avatar-wrapper size-100" style="background-image: url('../../Images/HeadImages/1.jpg');"></a>  <!----></div> 
+        <div class="user-info-content">
+        <div class="info-top">
+            <span class="info-name">盛一尘</span> <!----> 
+            <div class="w_pui_follow_button follow-button-wrapper cc_topic_green" data-widget_cache_key="1560508324121"><div class="cc_follow_btn">
+                <span class="cc_no_attension">
+                <i class="icon iconfont icon-add"></i> 
+                <span>关注</span>
+                </span>
                 </div>
+            </div> 
+            <div class="vw_more">
+                <a href="javascript:void(0)" class="vw_send_message"><i></i>
+                 <i></i> <i></i>
+                </a> <!---->
+            </div>
+        </div> 
+        <div class="info-middle">
+            <div data-type="following" class="social-connect-button">
+                <a href="@Url.Action("Attention","YiChuShow",new {userid=ViewBag.userid})">关注</a> 
+                <span>@ViewBag.attentionnum</span>
+                </div> 
+            <div data-type="follower" class="social-connect-button">
+                <a href="@Url.Action("FenSi","YiChuShow",new {userid=ViewBag.userid})">粉丝</a> 
+                <span>@ViewBag.fensinum</span>
+             </div>
+        </div> 
+        <div class="info-bottom">WB@盛一尘 WX: XW0328W</div>
+        </div> 
+        <div class="share-button-container"><span>分享：</span> 
+            <div class="w_pui_sina_button share-button" data-widget_cache_key="1560508324121">
+                <a href="javascript:void(0)" class="">
+                <i class="iconfont icon-weibo" style="color: rgb(255, 255, 255); font-size: 0.23rem;"></i>
+                </a>
+            </div> 
+            <div class="w_pui_weixin_button share-button" data-widget_cache_key="1560508324121">
+                <a href="javascript:void(0)" class="">
+                <i class="iconfont icon-weixin" style="color: rgb(255, 255, 255); font-size: 0.23rem;">
+                    </i>
+                </a>
+            </div> 
+            <div class="w_pui_qzone_button share-button" data-widget_cache_key="1560508324121">
+                <a href="javascript:void(0)" class="">
+                <i class="iconfont icon-qzone" style="color: rgb(255, 255, 255); font-size: 0.23rem;"></i>
+                </a>
             </div>
         </div>
+    </div>
+    </div>
+    <div class="top">
         <nav>
-            <ul class="tabs">
-                <li>
-                    <span class="glyphicon glyphicon-home"></span>
-                    <a href="@Url.Action("Index","YiChuShow")">秀场</a>
+            <ul class="tabs" style="text-align: center;">
+                <li>       
+                    <a href="@Url.Action("Index","YiChuShow")">返回秀场</a>
                 </li>
-                <li class="active">
-                    <span class="glyphicon glyphicon-heart-empty"></span>
-                    <a href="#userlike">喜欢</a>
+                <li class="active">      
+                    <a href="#userlike">我的喜欢</a>
                 </li>
-                <li>
-                    <span class="glyphicon glyphicon-book"></span>
-                    <a href="#usernote">笔记</a>
+                <li>   
+                    <a href="#usernote">我的笔记</a>
                 </li>
                 <li>
-                    <span class="glyphicon glyphicon-facetime-video"></span>
-                    <a href="#uservideo">视频</a>
+                    <a href="#uservideo">我的视频</a>
                 </li>
             </ul>
         </nav>
     </div>
+@*class="main container"*@
     <div class="main container">
+       
         @RenderBody()
     </div>
