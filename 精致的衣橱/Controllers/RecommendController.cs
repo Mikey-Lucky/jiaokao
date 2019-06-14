@@ -22,7 +22,7 @@ namespace 精致的衣橱.Controllers
         //[Login]
         public ActionResult RecomGoods()
         {
-            int userid = 7;
+            int userid = 2;
             var cart = db.Cart.Where(u => u.UserID == userid);
             if(cart !=null)
             { 
@@ -49,6 +49,17 @@ namespace 精致的衣橱.Controllers
            
             
             return View();
+        }
+        //获取最新上架的意见商品
+        public ActionResult todaygoods()
+        {
+            //var newgoods = from g in db.Goods
+            //               orderby g.ShangjiaTime ascending
+            //               select g;
+            var goods = db.Goods.OrderByDescending(t => t.ShangjiaTime).Take(1);
+            return PartialView(goods);
+
+
         }
     }
 }
