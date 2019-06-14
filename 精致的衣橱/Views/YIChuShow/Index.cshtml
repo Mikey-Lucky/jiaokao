@@ -51,8 +51,58 @@
             color: #fff;
             background: #ff006e;
         }
-        /********************图片导航开始****************************/
-        /*******************图片导航结束****************************/
+        /********************Title开始****************************/
+        .g-title {
+            width: 100%;
+            overflow: hidden;
+            height: 85px;
+            margin: 26px 0 40px;
+        }
+            .g-title .title {
+                height: 38px;
+                background: url("../../Images/yichu/line-black.png") repeat-x left 18px;
+                width: 526px;
+                margin: 0 auto 10px;
+            }
+        .g-title .links {
+            text-align: center;
+            padding: 10px 0 0;
+            color: #b5b5b5;
+        }
+        .links a {
+           color: #000;
+        }
+        .g-title .title strong.hotnote {
+            background-position: center -6px;
+        }
+        .g-title .title strong.hotvideo {
+            background-position: center -137px;
+        }
+        .g-title .title strong.newnote {
+            background-position: center -77px;
+        }
+        .g-title .title strong.newvideo {
+            background-position: center -216px;
+        }
+            .g-title .title strong {
+                display: block;
+                overflow: hidden;
+                margin: 0 auto;
+                height: 46px;
+                width: 374px;
+                background-image: url('../../Images/yichu/title.png');
+                background-repeat: no-repeat;
+                background-color: #f3f3f3;
+            }
+        .g-title .title strong a {
+            display: block;
+            height: 38px;
+            width: 374px;
+            float: left;
+            overflow: hidden;
+            text-indent: -550px;
+        }
+        /*******************Title结束****************************/
     </style>
 </head>
 <body class="loading">
@@ -60,11 +110,11 @@
         <div class="control control--grids">
             <div class="control__item">
                 <input class="control__radio" type="radio" name="grid-type" value="grid--type-a" id="control-grid-a" checked>
-                <label class="control__label" for="control-grid-a" style="background-image: url('../../Images/banner/1.1.jpg');background-size: cover;color: white;">精选笔记</label>
+                <label class="control__label" for="control-grid-a" style="background-image: url('../../Images/banner/1.1.jpg');background-size: cover;color: white;">热门笔记</label>
             </div>
             <div class="control__item">
                 <input class="control__radio" type="radio" name="grid-type" value="grid--type-b" id="control-grid-b">
-                <label class="control__label" for="control-grid-b" style="background-image: url('../../Images/banner/2.1.jpg');background-size: cover;color: white;">精选视频</label>
+                <label class="control__label" for="control-grid-b" style="background-image: url('../../Images/banner/2.1.jpg');background-size: cover;color: white;">热门视频</label>
             </div>
             <div class="control__item">
                 <input class="control__radio" type="radio" name="grid-type" value="grid--type-c" id="control-grid-c">
@@ -86,54 +136,99 @@
                 </a>*@
             </div>
         <main>
-            <div class="content content--center">
-                <img src="~/Images/yichu/热门笔记.jpg" style="display: block;" />
+            <div class="content content--center">        
                 <div class="grid grid--type-a">
-                    
                     <div class="grid__sizer"></div>
-                   
-                    @foreach (var n in Model.JingXuanNote)
-                    {
-                        <div class="grid__item">
-                            <a class="grid__link" href="@Url.Action("NoteDetail", "YiChuShow", new {id=@n.NoteID})">
-                            <img class="grid__img" src="/Images/Noteimg/@n.Img" alt="Some image" />
-                            </a>
+                    <div class="g-title">
+                        <div class="title">
+                        <strong class="hotnote">
+                            <a href="#">时装</a>
+                         </strong></div>
+                        <div class="links">
+                            <a href="#">首页</a><span>|</span><a href="@Url.Action("Userhome","YiChuShow",new { userid=1})">个人中心</a>
                         </div>
-                    }
+                    </div>
+                    <div style="position: relative">
+                        @foreach (var n in Model.JingXuanNote)
+                        {
+                            <div class="grid__item">
+                                <a class="grid__link" href="@Url.Action("NoteDetail", "YiChuShow", new {id=@n.NoteID})">
+                                    <img class="grid__img" src="/Images/Noteimg/@n.Img" alt="Some image" />
+                                </a>
+                            </div>
+                        }
+                    </div>
                 </div>
+              
                 <div class="grid grid--type-b">
                     <div class="grid__sizer"></div>
-                    @foreach (var n in Model.JingXuanVideo)
-                    {
-                        <div class="grid__item">
-                            <a class="grid__link" href="@Url.Action("VideoDetail", "YiChuShow", new {id=@n.VideoID})">
-                            <img class="grid__img" src="/Images/Noteimg/@n.Image" alt="Some image" />
-                                <span>@n.likenum</span>
-                            </a>
+                    <div class="g-title">
+                        <div class="title">
+                            <strong class="hotvideo">
+                                <a href="#">时装</a>
+                            </strong>
                         </div>
-                    }
+                        <div class="links">
+                            <a href="#">首页</a><span>|</span><a href="#">个人中心</a>
+                        </div>
+                    </div>
+                    <div style="position: relative">
+                        @foreach (var n in Model.JingXuanVideo)
+                        {
+                            <div class="grid__item">
+                                <a class="grid__link" href="@Url.Action("VideoDetail", "YiChuShow", new {id=@n.VideoID})">
+                                    <img class="grid__img" src="/Images/Noteimg/@n.Image" alt="Some image" />
+                                    <span>@n.likenum</span>
+                                </a>
+                            </div>
+                        }
+                    </div>
                 </div>
                 <div class="grid grid--type-c">
                     <div class="grid__sizer"></div>
-                    @foreach (var n in Model.NewNote)
-                    {
-                        <div class="grid__item">
-                            <a class="grid__link" href="@Url.Action("NoteDetail", "YiChuShow", new {id=@n.NoteID})">
-                                <img class="grid__img" src="/Images/Noteimg/@n.Img" alt="Some image" />
-                            </a>
+                    <div class="g-title">
+                        <div class="title">
+                            <strong class="newnote">
+                                <a href="#">时装</a>
+                            </strong>
                         </div>
-                    }
+                        <div class="links">
+                            <a href="#">首页</a><span>|</span><a href="#">个人中心</a>
+                        </div>
+                    </div>
+                    <div style="position: relative">
+                        @foreach (var n in Model.NewNote)
+                        {
+                            <div class="grid__item">
+                                <a class="grid__link" href="@Url.Action("NoteDetail", "YiChuShow", new {id=@n.NoteID})">
+                                    <img class="grid__img" src="/Images/Noteimg/@n.Img" alt="Some image" />
+                                </a>
+                            </div>
+                        }
+                    </div>
                 </div>
                 <div class="grid grid--type-d">
                     <div class="grid__sizer"></div>
-                    @foreach (var n in Model.NewVideo)
-                    {
-                        <div class="grid__item">
-                            <a class="grid__link" href="@Url.Action("VideoDetail", "YiChuShow", new {id=@n.VideoID})">
-                                <img class="grid__img" src="/Images/Noteimg/@n.Image" alt="Some image" />
-                            </a>
+                    <div class="g-title">
+                        <div class="title">
+                            <strong class="newvideo">
+                                <a href="#">时装</a>
+                            </strong>
                         </div>
-                    }
+                        <div class="links">
+                            <a href="#">首页</a><span>|</span><a href="#">个人中心</a>
+                        </div>
+                    </div>
+                    <div style="position: relative">
+                        @foreach (var n in Model.NewVideo)
+                        {
+                            <div class="grid__item">
+                                <a class="grid__link" href="@Url.Action("VideoDetail", "YiChuShow", new {id=@n.VideoID})">
+                                    <img class="grid__img" src="/Images/Noteimg/@n.Image" alt="Some image" />
+                                </a>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </main>
