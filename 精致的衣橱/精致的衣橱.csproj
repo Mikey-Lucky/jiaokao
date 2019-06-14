@@ -245,6 +245,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Cooldog.css" />
     <Content Include="Content\demo.css" />
+    <Content Include="Content\homepage.css" />
     <Content Include="Content\iconfont.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\Mall.css" />
@@ -864,6 +865,7 @@
     <Content Include="Views\Goods\Edit.cshtml" />
     <Content Include="Views\Goods\Index.cshtml" />
     <Content Include="Views\Recommend\todaygoods.cshtml" />
+    <Content Include="Views\Recommend\RecomGoods1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
