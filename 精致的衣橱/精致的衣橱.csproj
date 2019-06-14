@@ -579,6 +579,7 @@
     <Content Include="Scripts\cookie.js" />
     <Content Include="Scripts\Cooldog.js" />
     <Content Include="Scripts\DZ.css" />
+    <Content Include="Scripts\gengduo.js" />
     <Content Include="Scripts\imagesloaded.pkgd.min.js" />
     <Content Include="Scripts\xuimi.js" />
     <Content Include="Scripts\jq22.js" />
