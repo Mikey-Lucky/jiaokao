@@ -143,6 +143,9 @@
 
         #zan {
         }
+        .d{
+
+        }
 </style>
 @*<div class="container" style="position:absolute">
 
@@ -420,6 +423,7 @@
 
 
 @{ int i = 0;}
+
 <div class="outer">
     <div class="inner clearfix">
         <section id="past-lives-head">
@@ -440,33 +444,51 @@
                     @{i++;}
                     <ul>
                         <li>
-                           @if(i<=3)
-                           { 
-                            <div class="live-abstract">
-                                <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
-                                <a href="#" target="_blank">
-                                    <h2 class="la-title">@item.Name</h2>
-                                    <h2 class="la-title"></h2>
-                                </a>
-                                <p class="la-category">
-                                    <span class="price">¥&nbsp; @item.Unitprice</span>
-                                    <span class="category-tag">@item.Type</span>
-                                </p>
-                                <p><a href="#" class="btn btn-default">立即购买</a></p>
-                                <p class="la-anchor-name">@item.Style</p>
-                                <div class="la-bottom">
-                                    <span class="la-bottom-item">
-                                        点赞
-                                    </span>
-                                    <span class="la-bottom-item">
-                                        <a href="#" target="_blank">评论</a>
-                                    </span>
+                            
+                                <div>
+                                    @if (i <= 3)
+                                    {
+                                        <div class="live-abstract">
+                                            <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                            <a href="#" target="_blank">
+                                                <h2 class="la-title">@item.Name</h2>
+                                                <h2 class="la-title"></h2>
+                                            </a>
+                                            <p class="la-category">
+                                                <span class="price">¥&nbsp; @item.Unitprice</span>
+                                                <span class="category-tag">@item.Type</span>
+                                            </p>
+                                            <p><a href="#" class="btn btn-default">立即购买</a></p>
+                                            <p class="la-anchor-name">@item.Style</p>
+                                            <div class="la-bottom">
+                                                <span class="la-bottom-item">
+                                                    点赞
+                                                </span>
+                                                <span class="la-bottom-item">
+                                                    <a href="#" target="_blank">评论</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            @if (i == 3)
+                                            {
+                                                <div id="past-lives-more">
+                                                    <div id="p" style="cursor:pointer">
+                                                        <span>fddss</span>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                    
+
                                 </div>
-                            </div>
-                           }
+                            
+                            
                             <div id="@item.GoodsID" style="display:none">
-                                @if (i > 3 && i<=9)
+                                @if (i > 3 && i <= 9)
                                 {
+
                                     <div class="live-abstract">
                                         <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
                                         <a href="#" target="_blank">
@@ -488,60 +510,90 @@
                                             </span>
                                         </div>
                                     </div>
+
                                 }
-                                 </div>
-                            <div id="@item.GoodsID" style="display:none">
+                            </div>
+                                        @if (i == 9)
+                                        {
+                                            <div id="past-lives-more">
+                                                <div id="t" style="cursor:pointer">
+                                                    <span>11111</span>
+                                                </div>
+                                            </div>
+                                        }
+                            
+                            
+
                                 @if (i > 9 && i <= 18)
                                 {
-                                    <div class="live-abstract">
-                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
-                                        <a href="#" target="_blank">
-                                            <h2 class="la-title">@item.Name</h2>
-                                            <h2 class="la-title"></h2>
-                                        </a>
-                                        <p class="la-category">
-                                            <span class="price">¥&nbsp; @item.Unitprice</span>
-                                            <span class="category-tag">@item.Type</span>
-                                        </p>
-                                        <p><a href="#" class="btn btn-default">立即购买</a></p>
-                                        <p class="la-anchor-name">@item.Style</p>
-                                        <div class="la-bottom">
-                                            <span class="la-bottom-item">
-                                                点赞
-                                            </span>
-                                            <span class="la-bottom-item">
-                                                <a href="#" target="_blank">评论</a>
-                                            </span>
+                                    <div id="@i" style="display:none" class="d">
+                                        
+                                        <div class="live-abstract">
+                                            <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                            <a href="#" target="_blank">
+                                                <h2 class="la-title">@item.Name</h2>
+                                                <h2 class="la-title"></h2>
+                                            </a>
+                                            <p class="la-category">
+                                                <span class="price">¥&nbsp; @item.Unitprice</span>
+                                                <span class="category-tag">@item.Type</span>
+                                            </p>
+                                            <p><a href="#" class="btn btn-default">立即购买</a></p>
+                                            <p class="la-anchor-name">@item.Style</p>
+                                            <div class="la-bottom">
+                                                <span class="la-bottom-item">
+                                                    点赞
+                                                </span>
+                                                <span class="la-bottom-item">
+                                                    <a href="#" target="_blank">评论</a>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 }
-                            </div>
+                                    
+
+
 
 </li>
                     </ul>
                 </div>
                 <script>
-                    
+
                     $(function () {
 
-                        $(".bounce").on("click", function() {
+                        $("#p").on("click", function() {
                             document.getElementById(@item.GoodsID).style.display = "block";
-                            @*if(i==@Model.NewGoods.Count()){
-                                    document.getElementById("bounce").innerHTML="没有更多了";}*@
-                                //document.getElementById("mw-more").innerHTML="更多商品，敬请期待";
-                                        
-                        })
-                        
+                           
 
-                                    })
-                        
+                        })
+
+
+                    })
+                    $(function () {
+
+                        $("#t").on("click", function() {
+                            @*document.getElementById(@i).style.display = "block";*@
+                            $(".d").attr("display", "block");
+
+
+
+                        })
+
+
+                    })
+
+
                 </script>
+                
                         }
-            <div id="past-lives-more">
-                <div class="bounce" style="cursor:pointer">
-                    <span>查看更多</span>
+            
+            
+            @*<div id="past-lives-more">
+                <div id="p" style="cursor:pointer">
+                    <span>fddss</span>
                 </div>
-            </div>
+            </div>*@
         </div>
         @*<template id="past-lives-tp1"*@
         
