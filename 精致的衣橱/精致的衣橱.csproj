@@ -260,8 +260,15 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="iconfont\五角星.png" />
+    <Content Include="iconfont\冬.jpg" />
+    <Content Include="iconfont\四季.png" />
     <Content Include="iconfont\回到顶部.png" />
+    <Content Include="iconfont\夏.png" />
+    <Content Include="iconfont\新品.png" />
+    <Content Include="iconfont\春.png" />
     <Content Include="iconfont\点赞.png" />
+    <Content Include="iconfont\热卖.png" />
+    <Content Include="iconfont\秋.png" />
     <Content Include="iconfont\背景.PNG" />
     <Content Include="iconfont\衣服.png" />
     <Content Include="iconfont\订单.png" />
