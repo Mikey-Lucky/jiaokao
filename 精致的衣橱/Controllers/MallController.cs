@@ -29,8 +29,8 @@ namespace 精致的衣橱.Controllers
         {
            
 
-            var g1 = goodsmanager.GetHotGoods(8);
-            var g2 = goodsmanager.GetNewGoods(12);
+            var g1 = goodsmanager.GetHotGoods(9);
+            var g2 = goodsmanager.GetNewGoods(9);
             var g3 = goodsmanager.ChunQiu(8);
             var g4 = goodsmanager.Xia(8);
             var g5 = goodsmanager.Dong(8);
@@ -42,7 +42,7 @@ namespace 精致的衣橱.Controllers
             mallviewmodel.Dong = g5;
             return View(mallviewmodel);
         }
-        [Login]
+        //[Login]
         public ActionResult GoodsDetails(int id)
         {
             Session["goodsid"] = id   ;
