@@ -92,7 +92,7 @@ namespace 精致的衣橱.Controllers
                 if(UserID != 8)
                 { 
                 //return Content("<script>alert(data)</script>");
-                return Content("<script>alert('"+data+"');history.go(-2)</script>");
+                return Content("<script>alert('"+data+"');history.go(-1)</script>");
                 }
                 else
                 {
