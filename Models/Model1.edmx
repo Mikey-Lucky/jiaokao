@@ -548,7 +548,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ComReply__GoodsC__31EC6D26">
-          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="0..1" />
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ComReply" Type="Self.ComReply" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="GoodsComment">
@@ -788,7 +790,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__NoteComme__NoteI__14270015">
-          <End Role="Note" Type="Self.Note" Multiplicity="1" />
+          <End Role="Note" Type="Self.Note" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Note">
@@ -883,7 +887,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Goods__503BEA1C">
+        <Association Name="FK__OrderDeta__Goods__4F7CD00D">
           <End Role="Goods" Type="Self.Goods" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -897,7 +901,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Order__51300E55">
+        <Association Name="FK__OrderDeta__Order__5070F446">
           <End Role="Orders" Type="Self.Orders" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -911,7 +915,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__UserI__5224328E">
+        <Association Name="FK__OrderDeta__UserI__5165187F">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -1058,7 +1062,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__U_Reply_N__NoteC__236943A5">
-          <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="1" />
+          <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="U_Reply_NoteComment" Type="Self.U_Reply_NoteComment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NoteComment">
@@ -1094,7 +1100,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__U_Reply_V__Video__0C85DE4D">
-          <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="1" />
+          <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="U_Reply_VideoComment" Type="Self.U_Reply_VideoComment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="VideoComment">
@@ -1130,7 +1138,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__VideoComm__Video__7D439ABD">
-          <End Role="Video" Type="Self.Video" Multiplicity="1" />
+          <End Role="Video" Type="Self.Video" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Video">
@@ -1227,12 +1237,6 @@
         </Association>
         <Function Name="Cart_Goods" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userid" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Cart_Orders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="UserID" Type="int" Mode="In" />
-          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
-          <Parameter Name="Tel" Type="nvarchar" Mode="In" />
-          <Parameter Name="Address" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="OrderDetails_Goods" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userid" Type="int" Mode="In" />
@@ -1458,15 +1462,15 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="NoteTrasmit" EntitySet="NoteTrasmit" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Goods__503BEA1C" Association="Self.FK__OrderDeta__Goods__503BEA1C">
+          <AssociationSet Name="FK__OrderDeta__Goods__4F7CD00D" Association="Self.FK__OrderDeta__Goods__4F7CD00D">
             <End Role="Goods" EntitySet="Goods" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Order__51300E55" Association="Self.FK__OrderDeta__Order__51300E55">
+          <AssociationSet Name="FK__OrderDeta__Order__5070F446" Association="Self.FK__OrderDeta__Order__5070F446">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__UserI__5224328E" Association="Self.FK__OrderDeta__UserI__5224328E">
+          <AssociationSet Name="FK__OrderDeta__UserI__5165187F" Association="Self.FK__OrderDeta__UserI__5165187F">
             <End Role="Users" EntitySet="Users" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
@@ -1687,7 +1691,7 @@
           <NavigationProperty Name="GoodsComment" Relationship="Self.FK__GoodsComm__Goods__2E1BDC42" FromRole="Goods" ToRole="GoodsComment" />
           <NavigationProperty Name="GoodsLike" Relationship="Self.FK__GoodsLike__Goods__398D8EEE" FromRole="Goods" ToRole="GoodsLike" />
           <NavigationProperty Name="Grade" Relationship="Self.FK__Grade__GoodsID__3D5E1FD2" FromRole="Goods" ToRole="Grade" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Goods__503BEA1C" FromRole="Goods" ToRole="OrderDetails" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Goods__4F7CD00D" FromRole="Goods" ToRole="OrderDetails" />
         </EntityType>
         <EntityType Name="Goods_Color">
           <Key>
@@ -1855,9 +1859,9 @@
           <Property Name="Count" Type="Int32" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" />
-          <NavigationProperty Name="Goods" Relationship="Self.FK__OrderDeta__Goods__503BEA1C" FromRole="OrderDetails" ToRole="Goods" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__OrderDeta__Order__51300E55" FromRole="OrderDetails" ToRole="Orders" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__OrderDeta__UserI__5224328E" FromRole="OrderDetails" ToRole="Users" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__OrderDeta__Goods__4F7CD00D" FromRole="OrderDetails" ToRole="Goods" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__OrderDeta__Order__5070F446" FromRole="OrderDetails" ToRole="Orders" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__OrderDeta__UserI__5165187F" FromRole="OrderDetails" ToRole="Users" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -1870,7 +1874,7 @@
           <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Tel" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__51300E55" FromRole="Orders" ToRole="OrderDetails" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__Order__5070F446" FromRole="Orders" ToRole="OrderDetails" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Orders__UserID__4CA06362" FromRole="Orders" ToRole="Users" />
         </EntityType>
         <EntityType Name="Privatemessage">
@@ -2011,7 +2015,7 @@
           <NavigationProperty Name="NoteLike" Relationship="Self.FK__NoteLike__UserID__17036CC0" FromRole="Users" ToRole="NoteLike" />
           <NavigationProperty Name="NoteSelect" Relationship="Self.FK__NoteSelec__UserI__1AD3FDA4" FromRole="Users" ToRole="NoteSelect" />
           <NavigationProperty Name="NoteTrasmit" Relationship="Self.FK__NoteTrasm__UserI__1EA48E88" FromRole="Users" ToRole="NoteTrasmit" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__UserI__5224328E" FromRole="Users" ToRole="OrderDetails" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__UserI__5165187F" FromRole="Users" ToRole="OrderDetails" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__UserID__4CA06362" FromRole="Users" ToRole="Orders" />
           <NavigationProperty Name="Privatemessage" Relationship="Self.FK__Privateme__Priva__5535A963" FromRole="Users" ToRole="Privatemessage" />
           <NavigationProperty Name="Privatemessage1" Relationship="Self.FK__Privateme__UserI__5441852A" FromRole="Users" ToRole="Privatemessage" />
@@ -2261,7 +2265,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ComReply__GoodsC__31EC6D26">
-          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="0..1" />
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ComReply" Type="Self.ComReply" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="GoodsComment">
@@ -2404,7 +2410,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Goods__503BEA1C">
+        <Association Name="FK__OrderDeta__Goods__4F7CD00D">
           <End Role="Goods" Type="Self.Goods" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -2515,7 +2521,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__NoteComme__NoteI__14270015">
-          <End Role="Note" Type="Self.Note" Multiplicity="1" />
+          <End Role="Note" Type="Self.Note" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Note">
@@ -2575,7 +2583,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__U_Reply_N__NoteC__236943A5">
-          <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="1" />
+          <End Role="NoteComment" Type="Self.NoteComment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="U_Reply_NoteComment" Type="Self.U_Reply_NoteComment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NoteComment">
@@ -2622,7 +2632,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__Order__51300E55">
+        <Association Name="FK__OrderDeta__Order__5070F446">
           <End Role="Orders" Type="Self.Orders" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -2636,7 +2646,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__UserI__5224328E">
+        <Association Name="FK__OrderDeta__UserI__5165187F">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -2783,7 +2793,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__U_Reply_V__Video__0C85DE4D">
-          <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="1" />
+          <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="U_Reply_VideoComment" Type="Self.U_Reply_VideoComment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="VideoComment">
@@ -2867,7 +2879,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__VideoComm__Video__7D439ABD">
-          <End Role="Video" Type="Self.Video" Multiplicity="1" />
+          <End Role="Video" Type="Self.Video" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="VideoComment" Type="Self.VideoComment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Video">
@@ -3036,7 +3050,7 @@
             <End Role="Goods" EntitySet="Goods" />
             <End Role="Grade" EntitySet="Grade" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Goods__503BEA1C" Association="Self.FK__OrderDeta__Goods__503BEA1C">
+          <AssociationSet Name="FK__OrderDeta__Goods__4F7CD00D" Association="Self.FK__OrderDeta__Goods__4F7CD00D">
             <End Role="Goods" EntitySet="Goods" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
@@ -3108,11 +3122,11 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="NoteTrasmit" EntitySet="NoteTrasmit" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Order__51300E55" Association="Self.FK__OrderDeta__Order__51300E55">
+          <AssociationSet Name="FK__OrderDeta__Order__5070F446" Association="Self.FK__OrderDeta__Order__5070F446">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__UserI__5224328E" Association="Self.FK__OrderDeta__UserI__5224328E">
+          <AssociationSet Name="FK__OrderDeta__UserI__5165187F" Association="Self.FK__OrderDeta__UserI__5165187F">
             <End Role="Users" EntitySet="Users" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
@@ -3204,36 +3218,13 @@
             <End Role="Video" EntitySet="Video" />
             <End Role="VideoTrasmit" EntitySet="VideoTrasmit" />
           </AssociationSet>
-          <FunctionImport Name="Cart_Goods" ReturnType="Collection(yichuModel.Cart_Goods_Result)">
+          <FunctionImport Name="Cart_Goods">
             <Parameter Name="userid" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Cart_Orders">
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
-            <Parameter Name="UserName" Mode="In" Type="String" />
-            <Parameter Name="Tel" Mode="In" Type="String" />
-            <Parameter Name="Address" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="OrderDetails_Goods" ReturnType="Collection(yichuModel.OrderDetails_Goods_Result)">
             <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="Cart_Goods_Result">
-          <Property Type="Int32" Name="GoodsID" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="Sex" Nullable="true" MaxLength="2" />
-          <Property Type="String" Name="Season" Nullable="true" MaxLength="2" />
-          <Property Type="String" Name="Material" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Style" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="GoodsImage" Nullable="true" />
-          <Property Type="Int32" Name="Amount" Nullable="true" />
-          <Property Type="Double" Name="Unitprice" Nullable="true" />
-          <Property Type="String" Name="Type" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="SizeImage" Nullable="true" />
-          <Property Type="DateTime" Name="ShangjiaTime" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Pageview" Nullable="true" />
-          <Property Type="Int32" Name="TotalStorageAmount" Nullable="true" />
-          <Property Type="Int32" Name="ThumbNum" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="OrderDetails_Goods_Result">
           <Property Type="Int32" Name="GoodsID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="150" />
@@ -3754,28 +3745,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Cart_Goods" FunctionName="yichuModel.Store.Cart_Goods">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="yichuModel.Cart_Goods_Result">
-                <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="Season" ColumnName="Season" />
-                <ScalarProperty Name="Material" ColumnName="Material" />
-                <ScalarProperty Name="Style" ColumnName="Style" />
-                <ScalarProperty Name="GoodsImage" ColumnName="GoodsImage" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Unitprice" ColumnName="Unitprice" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="SizeImage" ColumnName="SizeImage" />
-                <ScalarProperty Name="ShangjiaTime" ColumnName="ShangjiaTime" />
-                <ScalarProperty Name="Pageview" ColumnName="Pageview" />
-                <ScalarProperty Name="TotalStorageAmount" ColumnName="TotalStorageAmount" />
-                <ScalarProperty Name="ThumbNum" ColumnName="ThumbNum" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Cart_Orders" FunctionName="yichuModel.Store.Cart_Orders" />
+          <FunctionImportMapping FunctionImportName="Cart_Goods" FunctionName="yichuModel.Store.Cart_Goods" />
           <FunctionImportMapping FunctionImportName="OrderDetails_Goods" FunctionName="yichuModel.Store.OrderDetails_Goods">
             <ResultMapping>
               <ComplexTypeMapping TypeName="yichuModel.OrderDetails_Goods_Result">

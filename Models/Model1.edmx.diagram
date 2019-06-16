@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f7cb1d0959b44ebf8d52c0ef2a14215c" Name="Diagram1">
+      <Diagram DiagramId="7ea6d919e4d44df7bb5824be561bf0b5" Name="Diagram1">
         <EntityTypeShape EntityType="yichuModel.Address" Width="1.5" PointX="3" PointY="29" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Cart" Width="1.5" PointX="3" PointY="44.375" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Coat" Width="1.5" PointX="5.25" PointY="80.5" IsExpanded="true" />
@@ -66,7 +66,7 @@
         <AssociationConnector Association="yichuModel.FK__GoodsComm__Goods__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__GoodsLike__Goods__398D8EEE" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Grade__GoodsID__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__OrderDeta__Goods__503BEA1C" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__OrderDeta__Goods__4F7CD00D" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Goods_Siz__SizeI__276EDEB3" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__GoodsComm__Goods__35BCFE0A" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__GoodsComm__UserI__2D27B809" ManuallyRouted="false" />
@@ -84,8 +84,8 @@
         <AssociationConnector Association="yichuModel.FK__NoteLike__UserID__17036CC0" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__NoteSelec__UserI__1AD3FDA4" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__NoteTrasm__UserI__1EA48E88" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__OrderDeta__Order__51300E55" ManuallyRouted="false" />
-        <AssociationConnector Association="yichuModel.FK__OrderDeta__UserI__5224328E" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__OrderDeta__Order__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="yichuModel.FK__OrderDeta__UserI__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Orders__UserID__4CA06362" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Privateme__Priva__5535A963" ManuallyRouted="false" />
         <AssociationConnector Association="yichuModel.FK__Privateme__UserI__5441852A" ManuallyRouted="false" />
