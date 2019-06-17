@@ -1,8 +1,9 @@
 ﻿@model Models.Goods
 @{
-    
-    Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
-   
+
+    //Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
+    Layout = null;
+
 }
 <style>
    
@@ -78,13 +79,15 @@
     .btn1{
         width:82px;
         height:34px;
-        /*margin-bottom:13px;*/
+        
         margin-right:50px;
         margin-top:8px;
         border-radius:5px;
         
     }
 </style>
+<script src="~/Scripts/main.js"></script>
+<link href="~/Content/main.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
@@ -103,12 +106,12 @@
             <div style="width:100%;height:40px;background-color:lavenderblush;">
                 <span style="color:darkgoldenrod;font-size:18px;height:40px;line-height:40px;display:inline-block;">价格：</span>
                 <span>￥@Model.Unitprice</span>
-                @*<p>@Model.GoodsID</p>*@
+               
                 <input type="hidden" name="price" value="@Model.Unitprice" />
                 <input type="hidden" name="goods" value="@Model.GoodsID" />
                 @Html.Hidden("Price", Model.Unitprice);
                 <input type="hidden" value="@Model.Unitprice" name="unitprice" />
-                @*<input type="text" name="zongjia" value="@Model.Unitprice * @total" readonly="readonly" />*@
+               
             </div>
             <h4 style="color:dimgray">江浙沪顺丰包邮</h4>
             <div style="height:40px;width:100%;margin-top:20px;">
@@ -172,20 +175,35 @@
 </div>
 <hr />
 <div>
-        @*<div style="margin-top:-200px;margin-left:314px;">
-        <textarea name="pinglun" id="tt"></textarea>
-        <button id="pl" type="button">发表评论</button>
-        </div>*@
-   
+       
 
         <div id="p2">
-            @*@{Html.RenderAction("Comment", "Mall",new{ goodsid=@Model.GoodsID });}*@
+            
             @Html.Action("Comment", new { goodsid = @Model.GoodsID }))
         </div>
 </div>
 
 
 
+@*<div style="height:3287px;width:100%;background-color:antiquewhite">
+    <div style="width:1024px;height:2600px; margin:0 auto;position:relative;">
+        <div style="width:698px;height:678px;float:left">
+            <div style="background:#fff;padding:16px 20px;margin-bottom:16px;width:100%;height:100%;">
+                <div style="padding:4px">
+                    <img src="~/Images/GoodsImages/1.1.jpg" style="width:100%;height:80%"/>
+                </div>
+            </div>
+        </div>
+        <div style="width:300px;height:480px;float:left;">
+            <div style="background:#fff;padding:16px 20px;width:100%;height:100%">
+                <div style="padding:4px;margin:0 auto;text-align:center">
+                    sadfsfsd
+                </div>
+            </div> 
+        </div>
+    </div>
+    
+</div>*@
 
 
 
@@ -194,7 +212,6 @@
 
 
 
-<input id="num" name="ScanNam" type="hidden" />
 
 
 <script type="text/javascript" language="javascript">
@@ -215,7 +232,7 @@
             
             $.ajax({
                             type: 'post',
-                //dataType: 'json',
+                
                 url: "/Mall/DirectBuy",
                 data: {
                                 "total": total,
@@ -227,7 +244,7 @@
 
 
                 },
-                //traditional: true,
+               
                 success: function (data) {
 
                                 alert(data.message);
@@ -241,137 +258,8 @@
                     });
 
 
-        //var pinglun = $("#tt");
-        //$("#pl").on("click", function () {
-        //    $.ajax({
-
-        //        type: 'post',
-        //        url: "/Mall/Comment",
-        //        data: {
-        //            "goodsid":GoodsID.val(),
-        //            "text":pinglun.val()
-        //        },
-               
-                //success:function(data){
-                    
-                //    //$('#p2').html(data);
-                //    $.ajax({
-                //        type:"get",
-                //        //async: false,
-                //        url: "/Mall/Comment",
-                //        data: {
-                //            "goodsid": GoodsID.val(),
-                //            "text": pinglun.val()
-                //        },
-                //        success:function(data){
-                //            $("#p2").html(data);
-                //        }
-                //    })
-                    
-                //    }
-               
-        //    })
-        //}
-
-    )
-    })
-
+        
     
-
-
- 
-//每浏览一次网页或刷新一次，浏览量就自动加1 -->
-
-    //   var caution = false
-    //function setCookie(name, value, expires, path, domain, secure) {
-    //    var curCookie = name + "=" + escape(value) +
-
-    //    ((expires) ? "; expires=" + expires.toGMTString() : "") +
-
-    //    ((path) ? "; path=" + path : "") +
-
-    //    ((domain) ? "; domain=" + domain : "") +
-
-    //    ((secure) ? "; secure" : "")
-
-    //    if (!caution || (name + "=" + escape(value)).length <= 4000)
-
-    //        document.cookie = curCookie
-
-    //    else
-
-    //        if (confirm("Cookie exceeds 4KB and will be cut!"))
-
-    //            document.cookie = curCookie
-
-    //}
-
-    //function getCookie(name) {
-
-    //    var prefix = name + "="
-
-    //    var cookieStartIndex = document.cookie.indexOf(prefix)
-
-    //    if (cookieStartIndex == -1)
-
-    //        return null
-
-    //    var cookieEndIndex = document.cookie.indexOf(";", cookieStartIndex + prefix.length)
-
-    //    if (cookieEndIndex == -1)
-
-    //        cookieEndIndex = document.cookie.length
-
-    //    return (document.cookie.substring(cookieStartIndex + prefix.length, cookieEndIndex))
-
-    //}
-
-    //function deleteCookie(name, path, domain) {
-
-    //    if (getCookie(name)) {
-
-    //        document.cookie = name + "=" +
-
-    //        ((path) ? "; path=" + path : "") +
-
-    //        ((domain) ? "; domain=" + domain : "") +
-
-    //        "; expires=Thu, 01-Jan-70 00:00:01 GMT"
-
-    //    }
-
-    //}
-
-    //function fixDate(date) {
-
-    //    var base = new Date(0)
-
-    //    var skew = base.getTime()
-
-    //    if (skew > 0)
-
-    //        date.setTime(date.getTime() - skew)
-
-    //}
-
-    //var now = new Date()
-
-    //fixDate(now)
-
-    //now.setTime(now.getTime() + 365 * 24 * 60 * 60 * 1000)
-
-    //var visits = getCookie("counter")
-
-    //if (!visits)
-
-    //    visits = 1
-
-    //else
-
-    //    visits = parseInt(visits) + 1;
-
-    //setCookie("counter", visits, now);
-          
-    //document.getElementById("num").innerHTML = visits;
+    })
 
 </script>

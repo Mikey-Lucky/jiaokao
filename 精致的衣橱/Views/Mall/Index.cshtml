@@ -137,14 +137,42 @@
             cursor: pointer;
         }
 
-        #thub {
-            font-size: 10px;
-        }
-
-        #zan {
-        }
+        
         .d{
 
+        }
+        .h{
+            line-height:0;
+            position:relative;
+            height:200px;
+            width:200px;
+        }
+        .h1{
+            height:200px;
+            width:200px;
+            border-radius:100%;
+            overflow:hidden;
+            margin:auto 519px;
+            margin-bottom:22px;
+        }
+        .h2{
+            position:absolute;
+            /*left:0;
+            right:0;*/
+            top:80px;
+            width: 135px;
+            height: 42px;
+            line-height: 42px;
+            color: red;
+            font-size: 13px;
+            margin: 0 auto;
+            z-index: 1;
+            display:none;
+            margin: 0 auto;
+        }
+        .h1:hover .h2{
+            
+            display: block;
         }
         
 </style>
@@ -213,214 +241,7 @@
     </div>*@
 
 
-@*<div class="panel panel-default">
-        <div class="panel-heading">
-            <h2 class="panel-title" style="font-size: large;">
-                热门商品<span class="label label-danger">最热</span><a href="#"><span style="padding-left:927px;">更多>></span></a>
-            </h2>
-        </div>
-        <div class="container">
-            <div class="panel-body row" style="text-overflow:ellipsis">
-                @foreach (var g in Model.HotGoods)
-                {
-                      <ul>
-                            <li><a href="@Url.Action("GoodsDetails", "Mall", new { id =g.GoodsID })" data-title="@g.Name" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
-                            <li><span style="color:black">$@g.Unitprice</span></li>
-                            <li><p style="color:black">立即购买</p></li>
-                            <li><span><img src="~/iconfont/点赞.png" style="height:22px;width:auto;cursor:pointer;float:right" class="@g.GoodsID" /><span id="@g.GoodsID" style="float:right">@g.ThumbNum</span></span></li>
-                       </ul>
 
-                    <input type="hidden" name="goodsid" value="@g.GoodsID" />
-
-                    <script>
-
-                        $(function () {
-                            $(document).on('click', '.@g.GoodsID', function () {   //赞
-                                var goodsid = $("input[name='goodsid']").val();
-                                $.ajax({
-                                    type: "post",
-                                    url: "/Mall/Zan",
-                                    data: { "goodsid": goodsid },
-                                    success: function (data) {
-                                        $("#@g.GoodsID").text(data);
-                                    }
-                                });
-                            });
-                        })
-                    </script>
-                }
-                <script>
-                    $(function () { $("[data-toggle='tooltip']").tooltip(); });
-                </script>
-            </div>
-        </div>
-    </div>
-    <br />
-    <br />
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h2 class="panel-title" style="font-size: large;">
-                最新上架<span class="label label-danger">最新</span><a href="#"><span style="padding-left:927px;">更多>></span></a>
-            </h2>
-        </div>
-        <div class="container">
-            <div class="panel-body row" style="text-overflow:ellipsis">
-                @foreach (var g in Model.NewGoods)
-                {
-
-                        <ul>
-                            <li><a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
-
-
-                            <li><span style="color:black">$@g.Unitprice</span></li>
-                            <li><p style="color:black">立即购买</p></li>
-                            <li>
-                                <img src="~/iconfont/点赞.png" style="height:22px;width:auto;cursor:pointer;float:right" class="@g.GoodsID" />
-                                <span id="@g.GoodsID" style="float:right">@g.ThumbNum</span>
-                            </li>
-                        </ul>
-
-
-
-
-
-                            <script>
-
-                                $(function () {
-                                    $(document).on('click', '.@g.GoodsID', function () {   //赞
-                                        var goodsid = $("input[name='goodsid']").val();
-                                        $.ajax({
-                                            type: "post",
-                                            url: "/Mall/Zan",
-                                            data: { "goodsid": goodsid },
-                                            success: function (data) {
-                                                $("#@g.GoodsID").text(data);
-                                            }
-                                        });
-                                    });
-                                })
-                            </script>
-                }
-                <script>
-                    $(function () { $("[data-toggle='tooltip']").tooltip(); });
-                </script>
-            </div>
-        </div>
-    </div>*@
-
-
-
-
-@*<div class="panel panel-default">
-        <div class="panel-heading">
-            <h2 class="panel-title" style="font-size: large;">
-                四季<span class="label label-danger"></span><a href="#"><span style="padding-left:927px;">更多>></span></a>
-            </h2>
-        </div>
-        <div class="container">
-            <div class="panel-body row" style="text-overflow:ellipsis">
-                @foreach (var g in Model.ChunQiu)
-            {
-
-                        <ul>
-                            <li><a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name" data-toggle="tooltip" data-placement="bottom" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
-
-
-                            <li><span style="color:black">$@g.Unitprice</span></li>
-                            <li><p style="color:black">立即购买</p></li>
-                            <li><span><img src="~/iconfont/点赞.png" style="height:22px;width:auto;cursor:pointer;float:right" class="@g.GoodsID" /><span id="@g.GoodsID" style="float:right">@g.ThumbNum</span></span></li>
-                        </ul>
-
-
-
-                    <script>
-
-                        $(function () {
-                            $(document).on('click', '.@g.GoodsID', function () {   //赞
-                                var goodsid = $("input[name='goodsid']").val();
-                                $.ajax({
-                                    type: "post",
-                                    url: "/Mall/Zan",
-                                    data: { "goodsid": goodsid },
-                                    success: function (data) {
-                                        $("#@g.GoodsID").text(data);
-                                    }
-                                });
-                            });
-                        })
-                    </script>
-                }
-                <hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
-                @foreach (var g in Model.Xia)
-            {
-
-                        <ul>
-                            <li><a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name" data-toggle="tooltip" data-placement="bottom" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
-
-
-                            <li><span style="color:black">$@g.Unitprice</span></li>
-                            <li><p style="color:black">立即购买</p></li>
-                            <li><span><img src="~/iconfont/点赞.png" style="height:22px;width:auto;cursor:pointer;float:right" class="@g.GoodsID" /><span id="@g.GoodsID" style="float:right">@g.ThumbNum</span></span></li>
-                        </ul>
-
-
-
-                    <script>
-
-                        $(function () {
-                            $(document).on('click', '.@g.GoodsID', function () {   //赞
-                                var goodsid = $("input[name='goodsid']").val();
-                                $.ajax({
-                                    type: "post",
-                                    url: "/Mall/Zan",
-                                    data: { "goodsid": goodsid },
-                                    success: function (data) {
-                                        $("#@g.GoodsID").text(data);
-                                    }
-                                });
-                            });
-                        })
-                    </script>
-                }
-                <hr style="border-top: 3px solid #DD3B44; width: 100%; margin-top: 20px; margin-bottom: 20px;" />
-                @foreach (var g in Model.Dong)
-            {
-
-                        <ul>
-                            <li><a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })" data-title="@g.Name" data-toggle="tooltip" data-placement="bottom" title="@g.Name"><img src="~/Images/GoodsImages/@g.GoodsImage" class="iimg" /></a></li>
-
-
-                            <li><span style="color:black">$@g.Unitprice</span></li>
-                            <li><p style="color:black">立即购买</p></li>
-                            <li><span><img src="~/iconfont/点赞.png" style="height:22px;width:auto;cursor:pointer;float:right" class="@g.GoodsID" /><span id="@g.GoodsID" style="float:right">@g.ThumbNum</span></span></li>
-                        </ul>
-
-
-
-                    <script>
-
-                        $(function () {
-                            $(document).on('click', '.@g.GoodsID', function () {   //赞
-                                var goodsid = $("input[name='goodsid']").val();
-                                $.ajax({
-                                    type: "post",
-                                    url: "/Mall/Zan",
-                                    data: { "goodsid": goodsid },
-                                    success: function (data) {
-                                        $("#@g.GoodsID").text(data);
-                                    }
-                                });
-                            });
-                        })
-                    </script>
-                }
-                <script>
-                    $(function () { $("[data-toggle='tooltip']").tooltip(); });
-                </script>
-            </div>
-        </div>
-    </div>*@
-@*</div>*@
 
 
 @{ int i = 0;}
@@ -620,8 +441,9 @@
         
         
         @*热销商品*@
-        <div>
-            <img src="~/iconfont/热卖.png" style="height:200px;width:200px;border-radius:100%;overflow:hidden;margin:auto 519px;margin-bottom:22px;" />
+        <div class="h">
+            <img src="~/iconfont/热卖.png" class="h1" />
+            <div class="h2">热销商品</div>
         </div>
         <div id="past-lives" class="live-group">
 

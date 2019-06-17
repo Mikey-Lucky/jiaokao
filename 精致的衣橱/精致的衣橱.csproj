@@ -259,6 +259,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="iconfont\heart %281%29.png" />
+    <Content Include="iconfont\heart.png" />
     <Content Include="iconfont\五角星.png" />
     <Content Include="iconfont\冬.jpg" />
     <Content Include="iconfont\四季.png" />
