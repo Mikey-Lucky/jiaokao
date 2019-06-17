@@ -17,6 +17,16 @@
 <body>
     <!--导航-->
     <style>
+        .userinfobox {
+           margin-left: 80px;
+        }
+        .userinfobox img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            vertical-align: baseline;
+            
+        }
         .nav {
             font-family: 'Roboto Mono', monospace;
         }
@@ -222,9 +232,22 @@
                             <li><a href="@Url.Action("Index","Mall")">商城</a></li>
                             <li><a href="#">个性推荐</a></li>
                             <li class="logo">JZYC</li>
+                            @if (Session["User_id"] != null)
+                            {
+                                <li class="zhuxiaobox" style="display: none;"><span class="iconfont zhuxiao">&#xe610;</span></li>
+                                <li  class="userinfobox"><a href="@Url.Action("Index","YiChu",new {Users_id = @Session["Users_id"]})"><img class="daohangimg" src="/Images/HeadImages/@Session["User_image"]" /></a></li>
+                            }
+                            else
+                            {
+                                <li class="userinfobox " >
+                                   <a href="@Url.Action("RegisterLogin", "Users")">
+                                   <img class="daohangimg" src="~/Images/yichu/wode.png"/>
+                                    </a>
+                                </li>
+                            }
                         </ul>
                     </div>
-                    <div class="nav-r">
+                    @*<div class="nav-r">
                         <div class="login-out">
                             <div class="login">
                                 <a href="#">登陆</a>
@@ -232,8 +255,8 @@
                             </div>
                             <div class="logout"></div>
                         </div>
-                        <div class="zoom"></div>
-                    </div>
+                        <div class="zoom"></div> 
+                    </div>*@
                 </div>
                 <div class="yichu">
                     <div class="leftdoor">
