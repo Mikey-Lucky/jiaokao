@@ -24,7 +24,7 @@
     }
    
 </style>
-@*<div>
+<div>
     @foreach (var p in Model)
     {
         tempid = "div" + p.GoodsCommentID.ToString();
@@ -39,13 +39,13 @@
 
         </div>
         
-        <div id="p3">
+        @*<div id="p3">
             @{Html.RenderAction("Reply", "Mall", new {commentid=@p.GoodsCommentID});}
-        </div>
+        </div>*@
     }
-</div>*@
+</div>
 
-@using (Html.BeginForm("Comment", "Mall", FormMethod.Post))
+@*@using (Html.BeginForm("Comment", "Mall", FormMethod.Post))
 {
     <textarea name="pinglunkuang" style="resize:none;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;height:68px;width:798px;display:block;border:1px solid #c03f3c;"></textarea>
     <input type="submit" value="发表评论" />
@@ -55,7 +55,7 @@
     @foreach (var item in Model)
     {
         tempid = "div" + item.GoodsCommentID;
-        @*<input type="hidden" value="@item.GoodsCommentID" name="commentid" />*@
+        
         <input type="submit" value="@item.GoodsCommentID" name="commentid" style="visibility: hidden"/>
         <a><img src="@item.Users.HeadImage" /></a> @item.ComContent
         @item.ComTime
@@ -79,8 +79,8 @@
             </div>
         }
     }
-</div>
-@*<script>
+</div>*@
+<script>
     $(function () {
         var hf = $("#tl");
         var cid = $("input[name='commentid']");
@@ -112,4 +112,4 @@
             })
         })
     })
-</script>*@
+</script>
