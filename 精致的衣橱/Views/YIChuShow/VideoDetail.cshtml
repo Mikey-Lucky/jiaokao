@@ -207,7 +207,7 @@
                     $.ajax({
                         type: "post",
                         url: "/YiChuShow/VideoComment",
-                        data: { "userid": 1 ,"comment": text ,"videoid":@Model.videodetail.VideoID},
+                        data: { "comment": text ,"videoid":@Model.videodetail.VideoID},
                         success: function (data) {
                             //alert(data);
                             //$('#notecomment').html(data);
@@ -241,7 +241,7 @@
                     $.ajax({
                         type: "post",
                         url: "/YiChuShow/VideoCommentReply",
-                        data: { "ruserid": 1 ,"commentid":commentid,"rcontent":text},
+                        data: { "commentid":commentid,"rcontent":text},
                         success: function (data) {
                             //alert(data);
                             //now.html(data);

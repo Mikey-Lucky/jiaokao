@@ -7,6 +7,7 @@ using Models;
 using BLL;
 using 精致的衣橱.Models;
 using System.Web.Script.Serialization;
+using 精致的衣橱.Attributes;
 
 namespace 精致的衣橱.Controllers
 {
@@ -27,6 +28,7 @@ namespace 精致的衣橱.Controllers
         U_Reply_NoteCommentManager ureplync = new U_Reply_NoteCommentManager();
         U_Reply_VideoCommentManager ureplyvideocomment = new U_Reply_VideoCommentManager();
         // GET: YIChuShow
+      
         public ActionResult Index()
         {
            
@@ -54,7 +56,7 @@ namespace 精致的衣橱.Controllers
         }
         //笔记评论post
         [HttpPost]
-        public ActionResult notecomment(int userid,int noteid,string ccontent)
+        public ActionResult notecomment(int noteid,string ccontent)
         {
             if (ccontent != null)
             {
@@ -63,7 +65,7 @@ namespace 精致的衣橱.Controllers
                 nc.Nccontent = ccontent;
                 nc.NoteID = noteid;
                 nc.Time = DateTime.Now;
-                nc.UserID = userid;
+                nc.UserID =Convert.ToInt32(Session["User_id"]);
                 ncomments.AddNoteComment(nc);
                 ycsv.allnotecommentbyid = ncomments.allnotecomment(noteid);
                 //return PartialView(ycsv);
@@ -78,7 +80,7 @@ namespace 精致的衣橱.Controllers
             return PartialView(r);
         }
         [HttpPost]
-        public ActionResult ncreply(int ruserid,int commentid,string rcontent)
+        public ActionResult ncreply(int commentid,string rcontent)
         {
             if (rcontent!= null)
             {
@@ -87,7 +89,7 @@ namespace 精致的衣橱.Controllers
                 rcomment.NoteCommentID = commentid;
                 rcomment.Time = DateTime.Now;
                 rcomment.URNContent = rcontent;
-                rcomment.UserID = ruserid;
+                rcomment.UserID =Convert.ToInt32(Session["User_id"]);
                 ureplync.AddNoteCommentReply(rcomment);
                 //var r = ureplync.notecommentreply(commentid);
                 var r = ureplync.notecommentreply(commentid);
@@ -128,7 +130,7 @@ namespace 精致的衣橱.Controllers
             note.likenum = 0;
             note.Time = DateTime.Now;
             note.Img = "../Noteimg/" + imgpath;
-            note.UserID = 1;
+            note.UserID =Convert.ToInt32(Session["User_id"]);
             notes.AddNote(note);
             return View();
         }
@@ -219,7 +221,7 @@ namespace 精致的衣橱.Controllers
             videocomment.Commentcotent = Request["comment"];
             videocomment.likenum = 0;
             videocomment.Time = DateTime.Now;
-            videocomment.UserID = Convert.ToInt32(Request["userid"]);
+            videocomment.UserID = Convert.ToInt32(Session["User_id"]);
             videocomment.VideoID =Convert.ToInt32(Request["videoid"]) ;
             vcomments.AddVideoComment(videocomment);
             return Content("评论成功");
@@ -235,7 +237,7 @@ namespace 精致的衣橱.Controllers
         {
             urvc.VCContent = Request["rcontent"];
             urvc.VideocommentID = Convert.ToInt32(Request["commentid"]);
-            urvc.UserID = Convert.ToInt32(Request["ruserid"]);
+            urvc.UserID = Convert.ToInt32(Session["User_id"]);
             urvc.Likenum = 0;
             urvc.Time = DateTime.Now;
             ureplyvideocomment.AddVideoCommentReply(urvc);
@@ -256,6 +258,7 @@ namespace 精致的衣橱.Controllers
             ycsv.userupvideo = videos.uservideo(userid);
             ycsv.attentionnum = attention.attentionnum(userid);
             ycsv.fensnum = attention.fensnum(userid);
+            ycsv.Userabout = users.GetUserById(userid);
             return View(ycsv);
         }
       

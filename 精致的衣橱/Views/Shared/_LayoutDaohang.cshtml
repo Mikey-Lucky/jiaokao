@@ -6,6 +6,17 @@
     <title>@ViewBag.Title</title>
     <link rel="shortcut icon" href="~/Images/yichu/qqq.ico" />
     <style>
+        /*.userinfobox {
+           margin-left: 80px;
+        }*/
+        .daohangimg {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            vertical-align: baseline;
+            background-color: #f5f5f5;
+            
+        }
         .zong-nav {
            position: fixed;
            top: 0px;
@@ -55,17 +66,27 @@
                 <ul>
                     <li>精致的衣橱</li>
                     <li><a href="@Url.Action("Index1","Home")">首页</a></li>
-                    <li><a href="@Url.Action("Index","YiChu")">我的衣橱</a></li>
+                    <li><a href="@Url.Action("Index","YiChu",new {Userid= @Session["User_id"]})">我的衣橱</a></li>
                     <li><a href="@Url.Action("Index","YiChuShow")">衣橱秀场</a></li>
                     <li><a href="@Url.Action("Index","Mall")">购物中心</a></li>
                     <li><a href="#">个性推荐</a></li>
+                
                 </ul>
             </div>
             <div class="nav-r">
                 <div class="login-out">
                     <div class="login">
-                        <a href="#">登陆</a>
-                        <a href="#">注册</a>
+                        @if (Session["User_id"] != null)
+                        {
+                          
+                                <a href="@Url.Action("Index","YiChu",new {Userid= @Session["User_id"]})"><img class="daohangimg" src="/Images/HeadImages/@Session["User_image"]" style="height:50px;width:50px;" /></a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("RegisterLogin", "Users")">
+                                <img class="daohangimg" src="~/Images/yichu/wode.png" />
+                            </a>
+                        }
                     </div>
                     <div class="logout"></div>
                 </div>

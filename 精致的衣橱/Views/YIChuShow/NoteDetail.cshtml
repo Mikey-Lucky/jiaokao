@@ -324,7 +324,7 @@
                 $.ajax({
                     type: "get",
                     url: "/YiChuShow/notezan",
-                    data: { "userid": 1 ,"noteid":@Model.notedetail.NoteID},
+                    data: { "noteid":@Model.notedetail.NoteID},
                     success: function (data) {
                         btn.find("p").html(data)
                     },
@@ -405,7 +405,7 @@
                 $.ajax({
                     type: "post",
                     url: "/YiChuShow/ncreply",
-                    data: { "ruserid": 1 ,"commentid":commentid,"rcontent":text},
+                    data: { "commentid":commentid,"rcontent":text},
                     success: function (data) {
                         //alert(data);
                         //now.html(data);

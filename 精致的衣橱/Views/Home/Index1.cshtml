@@ -25,6 +25,7 @@
             width: 50px;
             border-radius: 50%;
             vertical-align: baseline;
+            background-color: #f5f5f5;
             
         }
         .nav {
@@ -227,7 +228,7 @@
                     <div class="nav">
                         <ul>
                             <li><a href="#">首页</a></li>
-                            <li><a href="@Url.Action("Index","YiChu")">我的衣橱</a></li>
+                            <li><a href="@Url.Action("Index","YiChu",new {Userid= @Session["User_id"]})">我的衣橱</a></li>
                             <li><a href="@Url.Action("Index","YiChuShow")">衣橱秀</a></li>
                             <li><a href="@Url.Action("Index","Mall")">商城</a></li>
                             <li><a href="#">个性推荐</a></li>
@@ -235,7 +236,7 @@
                             @if (Session["User_id"] != null)
                             {
                                 <li class="zhuxiaobox" style="display: none;"><span class="iconfont zhuxiao">&#xe610;</span></li>
-                                <li  class="userinfobox"><a href="@Url.Action("Index","YiChu",new {Users_id = @Session["Users_id"]})"><img class="daohangimg" src="/Images/HeadImages/@Session["User_image"]" /></a></li>
+                                <li  class="userinfobox"><a href="@Url.Action("Index","YiChu",new {Userid= @Session["User_id"]})"><img class="daohangimg" src="/Images/HeadImages/@Session["User_image"]" /></a></li>
                             }
                             else
                             {

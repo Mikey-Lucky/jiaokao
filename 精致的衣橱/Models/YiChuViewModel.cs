@@ -8,6 +8,8 @@ namespace 精致的衣橱.Models
 {
     public class YiChuViewModel
     {
+        //用户详情
+        public Users Userabout { get; set; }
         //春季上单衣
         public IEnumerable<Shirt> springshirt { get; set; }
         //夏季上单衣

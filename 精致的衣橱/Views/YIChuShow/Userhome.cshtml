@@ -3,7 +3,9 @@
     Layout = "~/Views/Shared/_UsershowhomeLayout.cshtml";
     ViewBag.fensinum = Model.fensnum;
     ViewBag.attentionnum = Model.attentionnum;
-    ViewBag.userid = 1;
+    ViewBag.userid = Model.Userabout.UserID;
+    ViewBag.userimg = Model.Userabout.HeadImage;
+    ViewBag.username = Model.Userabout.UserName;
 }
 <style>
     #userlike {
@@ -38,8 +40,8 @@
                         </div>
                     </a>
                     <div class="works-info">
-                        <div class="works-time">20小时前</div>
-                        <div class="works-title">容颜</div>
+                        <div class="works-time">@video.Time</div>
+                        <div class="works-title">@video.Video.Title</div>
                         <div class="tag-list"></div>
                         <div class="works-count-info">
                             <div class="cc_info_left">
@@ -98,17 +100,17 @@
                         </div>
                     </a>
                     <div class="works-info">
-                        <div class="works-time">20小时前</div>
-                        <div class="works-title">容颜</div>
+                        <div class="works-time">@note.Time</div>
+                        <div class="works-title">@note.Note.Title</div>
                         <div class="tag-list"></div>
-                        <div class="works-count-info">
+                        @*<div class="works-count-info">
                             <div class="cc_info_left">
                                 <div class="cc_left_tag">
                                     <span class="iconfont icon-view"></span>
                                     <span>131334</span>
                                     <span class="iconfont icon-discuss comment-font"></span>
                                     <span>50</span>
-                                </div> <!---->
+                                </div> 
                             </div>
                             <div class="cc_info_right">
                                 <div class="w_like_button like-count-info" data-widget_cache_key="1560515131118">
@@ -118,7 +120,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
                 <section class="cover-container" style="display: none;" data-widget_cache_key="1560515131118">
@@ -160,17 +162,17 @@
                         </div>
                     </a>
                     <div class="works-info">
-                        <div class="works-time">20小时前</div>
-                        <div class="works-title">容颜</div>
+                        <div class="works-time">@note.Time</div>
+                        <div class="works-title">@note.Title</div>
                         <div class="tag-list"></div>
-                        <div class="works-count-info">
+                        @*<div class="works-count-info">
                             <div class="cc_info_left">
                                 <div class="cc_left_tag">
                                     <span class="iconfont icon-view"></span>
                                     <span>131334</span>
                                     <span class="iconfont icon-discuss comment-font"></span>
                                     <span>50</span>
-                                </div> <!---->
+                                </div> 
                             </div>
                             <div class="cc_info_right">
                                 <div class="w_like_button like-count-info" data-widget_cache_key="1560515131118">
@@ -180,7 +182,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
                 <section class="cover-container" style="display: none;" data-widget_cache_key="1560515131118">
@@ -223,17 +225,17 @@
                         </div>
                     </a>
                     <div class="works-info">
-                        <div class="works-time">20小时前</div>
-                        <div class="works-title">容颜</div>
+                        <div class="works-time">@video.Time</div>
+                        <div class="works-title">@video.Title</div>
                         <div class="tag-list"></div>
-                        <div class="works-count-info">
+                        @*<div class="works-count-info">
                             <div class="cc_info_left">
                                 <div class="cc_left_tag">
                                     <span class="iconfont icon-view"></span>
                                     <span>131334</span>
                                     <span class="iconfont icon-discuss comment-font"></span>
                                     <span>50</span>
-                                </div> <!---->
+                                </div> 
                             </div>
                             <div class="cc_info_right">
                                 <div class="w_like_button like-count-info" data-widget_cache_key="1560515131118">
@@ -243,7 +245,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
                 <section class="cover-container" style="display: none;" data-widget_cache_key="1560515131118">

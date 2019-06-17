@@ -145,7 +145,7 @@
                             <a href="#">时装</a>
                          </strong></div>
                         <div class="links">
-                            <a href="#">首页</a><span>|</span><a href="@Url.Action("Userhome","YiChuShow",new { userid=1})">个人中心</a>
+                            <a href="#">首页</a><span>|</span><a href="@Url.Action("Userhome","YiChuShow",new { userid=Session["User_id"]})">个人中心</a>
                         </div>
                     </div>
                     <div style="position: relative">

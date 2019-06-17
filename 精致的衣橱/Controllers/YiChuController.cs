@@ -6,10 +6,11 @@ using System.Web.Mvc;
 using Models;
 using BLL;
 using 精致的衣橱.Models;
-
+using 精致的衣橱.Attributes;
 
 namespace 精致的衣橱.Controllers
 {
+   
     public class YiChuController : Controller
     {
         SuitManager suits = new SuitManager();
@@ -17,12 +18,15 @@ namespace 精致的衣橱.Controllers
         NetherGarmentManager nethers = new NetherGarmentManager();
         ShirtManager shirts = new ShirtManager();
         YiChuViewModel yichuview = new YiChuViewModel();
+        UsersManager users = new UsersManager();
         // GET: YiChu
-        public ActionResult Index()
+        [Login]
+        public ActionResult Index(int Userid)
         {
             /* var temp = Convert.ToInt32(context.Request["weather"]);*///数据获取失败
-           
-           /* int temp = 12;*///需获取前台值
+
+            /* int temp = 12;*///需获取前台值
+            yichuview.Userabout = users.GetUserById(Userid);
             yichuview.springsuit = suits.ShirtBySeason("春季");
             yichuview.summersuit = suits.ShirtBySeason("夏季");
             yichuview.autumnsuit = suits.ShirtBySeason("秋季");

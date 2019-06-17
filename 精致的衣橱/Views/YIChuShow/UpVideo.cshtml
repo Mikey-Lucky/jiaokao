@@ -3,28 +3,105 @@
     ViewBag.Title = "UpVideo";
     Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
 }
+<style>
+    body {
+        background-color: #f5f5f5;
+    }
+ /************************上传图片开始************************/
+         * { margin: 0; padding: 0; } 
+         .upload { 
+             display: inline-block; 
+             width: 200px; 
+             height: 200px; 
+             line-height: 60px; 
+             background: #fff; 
+             position: relative; 
+             text-align: center; } 
+         /*input 标签有默认的宽高border,outline*/
+          .upload> input { 
+              position: absolute; 
+              top: 0; 
+              left: 0; 
+              width: 100%; 
+              height: 100%; 
+              /*透明度为0*/ opacity: 0; 
+              cursor: pointer; 
+          }
+ /******************上传图片结束*****************************/
+    .top {
+        width: 80%;
+        height: 250px;
+        overflow: hidden;
+        margin: 20px auto;
+        background-color: #fff;
+    }
+    .video {
+        width: 80%;
+        margin: 20px auto;
+        background-color: #fff;
+    }
+    .left {
+        float: left;
+        margin: 28px;
+    }
+    .right{
+        float: left;
 
+    }
+    .right input,
+    .right textarea {
+            margin-top: 28px;
+            width: 470px;
+            font-size: 16px;
+            border: 1px solid #c9c9c9;
+            border-radius: 4px;
+    }
+        .right textarea {
+            margin-top: 14px;
+            height: 160px;
+         }
+     .button {
+            display: block;
+            width: 80%;
+            height: 30px;
+            background-color: #fff;
+            border: 0px;
+            margin: 0px auto;
+        }
+</style>
 <h2>UpVideo</h2>
 @using (Html.BeginForm("UpVideo", "YiChuShow", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @Html.AntiForgeryToken()
-    <h2>视频文件上传</h2>
-        <input type="file" name="video"  accept="video/*">
-    <h2>基本信息</h2>
-    <p>标题</p>
-    <input name="title" value="标题" />
-    <p>封面</p>
-        <div id="containner">
-            <input type="file" id="imgFile" name="imgfile" onchange="previewFile()" accept="image/*"><br>
-            <img src="" height="200" alt="Image preview...">
+    <div class="top">
+        <div class="left">
+            <div class="upload">
+                @*<p style="text-align: left">上传封面</p>*@
+                <img id="imgpre" src="~/Images/yichu/placeholder-img.jpg" style="height:200px;width:200px;" alt="Image preview...">
+                <input type="file" id="imgFile" name="imgfile" onchange="previewFile()">
+            </div>
         </div>
-   <p>简介</p>
-   <textarea id="intro" name="intro"></textarea>
-   <input type="submit" value="提交" />
+        <div class="right">
+            <input name="title" value="请输入标题" />
+            <br />
+            <textarea id="intro" name="intro" placeholder="视频详情的简介，点击右侧更换视频封面"></textarea>
+        </div>
+    </div>
+
+    @Html.AntiForgeryToken()
+    <div class="video">
+        <h2>视频文件上传</h2>
+        <input type="file" name="video" accept="video/*">
+        @*<p>封面</p>
+            <div id="containner">
+                <input type="file" id="imgFile" name="imgfile" onchange="previewFile()" accept="image/*"><br>
+                <img src="" height="200" alt="Image preview...">
+            </div>*@
+    </div>
+   <input class="button" type="submit" value="提交" />
 }
 <script type="text/javascript">
     function previewFile() {
-        var preview = document.querySelector('img')
+        var preview = document.getElementById('imgpre')
         //var fileDom = document.querySelector('input[type=file]')
         var fileDom = document.getElementById('imgFile')
         // 获取得到file 对象
@@ -43,44 +120,4 @@
             URL.revokeObjectURL(imgUrl)
         }
     }
-    //function previewFile() {
-    //    var preview = document.getElementById("yulan")
-    //    var fileDom = document.querySelector('input[type=file]')
-    //    // 获取得到file 对象
-    //    var file = fileDom.files[0]
-    //    // 限制上传图片的大小
-    //    //if (file.size > 1024 * 1024 * 2) {
-    //    //    alert('图片大小不能超过 2MB!');
-    //    //    return false;
-    //    //}
-    //    // 创建url
-    //    var videoUrl = window.URL.createObjectURL(file)
-    //    preview.setAttribute("src", videoUrl+".mp4")
-    //    // 更改img url 以后释放 url
-    //    preview.onload = function () {
-    //        // console.log('图片加载成功')
-    //        URL.revokeObjectURL(videoUrl)
-    //    }
-    //}
-    //(function () {
-    //    var video, output;
-    //    var scale = 0.8;
-    //    var initialize = function () {
-    //        output = document.getElementById("output");
-    //        video = document.getElementById("video");
-    //        video.addEventListener('loadeddata', captureImage);
-    //    };
-
-    //    var captureImage = function () {
-    //        var canvas = document.createElement("canvas");
-    //        canvas.width = video.videoWidth * scale;
-    //        canvas.height = video.videoHeight * scale;
-    //        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-    //        var img = document.createElement("img");
-    //        img.src = canvas.toDataURL("image/png");
-    //        output.appendChild(img);
-    //    };
-
-    //    initialize();
-    //})();
 </script>
