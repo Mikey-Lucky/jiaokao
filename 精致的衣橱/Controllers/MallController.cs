@@ -43,6 +43,11 @@ namespace 精致的衣橱.Controllers
             return View(mallviewmodel);
         }
         //[Login]
+
+
+
+
+
         public ActionResult GoodsDetails(int id)
         {
             Session["goodsid"] = id   ;
