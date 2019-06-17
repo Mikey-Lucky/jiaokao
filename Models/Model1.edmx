@@ -1238,6 +1238,12 @@
         <Function Name="Cart_Goods" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userid" Type="int" Mode="In" />
         </Function>
+        <Function Name="Cart_Orders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Tel" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="OrderDetails_Goods" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userid" Type="int" Mode="In" />
         </Function>
@@ -3218,13 +3224,36 @@
             <End Role="Video" EntitySet="Video" />
             <End Role="VideoTrasmit" EntitySet="VideoTrasmit" />
           </AssociationSet>
-          <FunctionImport Name="Cart_Goods">
+          <FunctionImport Name="Cart_Goods" ReturnType="Collection(yichuModel.Cart_Goods_Result)">
             <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Cart_Orders">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Tel" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="OrderDetails_Goods" ReturnType="Collection(yichuModel.OrderDetails_Goods_Result)">
             <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="Cart_Goods_Result">
+          <Property Type="Int32" Name="GoodsID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Sex" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Season" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Material" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Style" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="GoodsImage" Nullable="true" />
+          <Property Type="Int32" Name="Amount" Nullable="true" />
+          <Property Type="Double" Name="Unitprice" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="SizeImage" Nullable="true" />
+          <Property Type="DateTime" Name="ShangjiaTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Pageview" Nullable="true" />
+          <Property Type="Int32" Name="TotalStorageAmount" Nullable="true" />
+          <Property Type="Int32" Name="ThumbNum" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="OrderDetails_Goods_Result">
           <Property Type="Int32" Name="GoodsID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="150" />
@@ -3745,7 +3774,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Cart_Goods" FunctionName="yichuModel.Store.Cart_Goods" />
+          <FunctionImportMapping FunctionImportName="Cart_Goods" FunctionName="yichuModel.Store.Cart_Goods">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="yichuModel.Cart_Goods_Result">
+                <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+                <ScalarProperty Name="GoodsImage" ColumnName="GoodsImage" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Unitprice" ColumnName="Unitprice" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="SizeImage" ColumnName="SizeImage" />
+                <ScalarProperty Name="ShangjiaTime" ColumnName="ShangjiaTime" />
+                <ScalarProperty Name="Pageview" ColumnName="Pageview" />
+                <ScalarProperty Name="TotalStorageAmount" ColumnName="TotalStorageAmount" />
+                <ScalarProperty Name="ThumbNum" ColumnName="ThumbNum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Cart_Orders" FunctionName="yichuModel.Store.Cart_Orders" />
           <FunctionImportMapping FunctionImportName="OrderDetails_Goods" FunctionName="yichuModel.Store.OrderDetails_Goods">
             <ResultMapping>
               <ComplexTypeMapping TypeName="yichuModel.OrderDetails_Goods_Result">
