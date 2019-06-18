@@ -26,7 +26,7 @@ namespace DAL
 
         public IEnumerable<Video> Getnewvideo(int top)
         {
-            return db.Video.OrderByDescending(o => o.Time); 
+            return db.Video.OrderByDescending(o => o.Time).Take(top); 
         }
 
         public Video GetVideoById(int id)

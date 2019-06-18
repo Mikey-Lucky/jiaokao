@@ -371,7 +371,7 @@
                 $.ajax({
                     type: "post",
                     url: "/YiChuShow/notecomment",
-                    data: { "userid": 1 ,"noteid":@Model.notedetail.NoteID,"ccontent":text},
+                    data: { "noteid":@Model.notedetail.NoteID,"ccontent":text},
                     success: function (data) {
                         //alert(data);
                         //$('#notecomment').html(data);

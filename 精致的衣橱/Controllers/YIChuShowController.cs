@@ -35,7 +35,7 @@ namespace 精致的衣橱.Controllers
             ycsv.JingXuanNote = notes.GetHotNote(30);
             ycsv.JingXuanVideo = videos.GetHotVideo(30);
             ycsv.NewNote = notes.Getnewnote(30);
-            ycsv.NewVideo = videos.GetHotVideo(30);
+            ycsv.NewVideo = videos.Getnewvideo(30);
 
             return View(ycsv);
         }
@@ -179,7 +179,7 @@ namespace 精致的衣橱.Controllers
         }
         //上传视频post
         [HttpPost]
-        public ActionResult UpVideo(Video video)
+        public ActionResult UpVideo(Video videor)
         {
             var imgfile = Request.Files["imgfile"];
             var video1 = Request.Files["video"];
@@ -189,14 +189,15 @@ namespace 精致的衣橱.Controllers
             var imgpath= Guid.NewGuid().ToString() + imgfile.FileName;
             video1.SaveAs(Request.MapPath("/Images/video/" + videopath));
             imgfile.SaveAs(Request.MapPath("/Images/videoimg/" + imgpath));
-            video.Adress = "../video/" + videopath;
-            video.Image= "../videoimg/" + imgpath;
-            video.Intro = intro;
-            video.likenum = 0;
-            video.Time = DateTime.Now;
-            video.Title = title;
-            video.UserID = 1;
-            videos.AddVideo(video);
+
+            videor.Adress = "../video/" + videopath;
+            videor.Image = "../videoimg/" + imgpath;
+            videor.Intro = intro;
+            videor.likenum = 0;
+            videor.Time = DateTime.Now;
+            videor.Title = title;
+            videor.UserID =Convert.ToInt32(Session["User_id"]);
+            videos.AddVideo(videor);
             return View();
         }
         //视频详情页
@@ -250,6 +251,7 @@ namespace 精致的衣橱.Controllers
             var video = videos.VideoRelative(authorid, title, intro);
             return PartialView(video);
         }
+        [Login]
         public ActionResult Userhome(int userid)
         {
             ycsv.userlikenote = notelikes.userlikenote(userid);
@@ -260,6 +262,18 @@ namespace 精致的衣橱.Controllers
             ycsv.fensnum = attention.fensnum(userid);
             ycsv.Userabout = users.GetUserById(userid);
             return View(ycsv);
+        }
+        //删除视频
+        public string delvideo(int videoid)
+        {
+            videos.DeleteVideo(videoid);
+            return "删除成功";
+        }
+        //删除笔记
+        public string delnote(int noteid)
+        {
+            notes.DeleteNote(noteid);
+            return "删除成功";
         }
       
         public ActionResult UserAllNote()

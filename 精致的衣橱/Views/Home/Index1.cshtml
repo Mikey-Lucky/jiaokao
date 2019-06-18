@@ -231,7 +231,7 @@
                             <li><a href="@Url.Action("Index","YiChu",new {Userid= @Session["User_id"]})">我的衣橱</a></li>
                             <li><a href="@Url.Action("Index","YiChuShow")">衣橱秀</a></li>
                             <li><a href="@Url.Action("Index","Mall")">商城</a></li>
-                            <li><a href="#">个性推荐</a></li>
+                            <li><a href="@Url.Action("RecomGoods","Recommend")">个性推荐</a></li>
                             <li class="logo">JZYC</li>
                             @if (Session["User_id"] != null)
                             {

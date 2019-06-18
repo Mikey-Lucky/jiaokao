@@ -35,31 +35,18 @@
                         <div class="cc_shadow"></div>
                         <!---->
                         <div class="image-count">
-                            <span>17</span>
-                            @*<span class="iconfont icon-group image-count-font"></span>*@
+                                <span>@video.Video.likenum</span>   
                         </div>
                     </a>
                     <div class="works-info">
                         <div class="works-time">@video.Time</div>
                         <div class="works-title">@video.Video.Title</div>
-                        <div class="tag-list"></div>
-                        <div class="works-count-info">
-                            <div class="cc_info_left">
-                                <div class="cc_left_tag">
-                                    <span class="iconfont icon-view"></span>
-                                    <span>131334</span>
-                                    <span class="iconfont icon-discuss comment-font"></span>
-                                    <span>50</span>
-                                </div> <!---->
-                            </div>
-                            <div class="cc_info_right">
-                                <div class="w_like_button like-count-info" data-widget_cache_key="1560515131118">
-                                    <div class="like-button-wrapper light-color">
-                                        <div class="iconfont icon-zan like-font"></div>
-                                        <span class="like-count">565</span>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="tag-list">
+                            @if (Convert.ToInt32(Session["User_id"]) == video.Video.UserID)
+                            {
+                                <span class="delvideo">删除</span>
+                                <input class="videoid" style="display: none" value="@video.VideoID"/>
+                            }
                         </div>
                     </div>
                 </div>
@@ -78,72 +65,33 @@
                     </form>
                 </section>
             </div>
-            @*<div>
-                <a href="@Url.Action("VideoDetail", "YiChuShow", new {id=@video.VideoID})">
-                    <img src="/Images/Noteimg/@video.Video.Image" alt="Some image" />
-                    <span>@video.Video.likenum</span>
-                </a>
-            </div>*@
         }
         @foreach (var note in Model.userlikenote)
         {
             <div class="w_user_works_preview works-preview">
                 <div class="works-item">
-                    <a target="_blank" href="@Url.Action("VideoDetail", "YiChuShow", new {id=@note.NoteID})" class="works-image" style="background-image: url('../../Images/Noteimg/@note.Note.Img');">
+                    <a target="_blank" href="@Url.Action("NoteDetail", "YiChuShow", new {id=@note.NoteID})" class="works-image" style="background-image: url('../../Images/Noteimg/@note.Note.Img');">
                         <!---->
                         <!---->
                         <div class="cc_shadow"></div>
                         <!---->
                         <div class="image-count">
-                            <span>17</span>
-                            @*<span class="iconfont icon-group image-count-font"></span>*@
+                                <span>@note.Note.likenum</span>
                         </div>
                     </a>
                     <div class="works-info">
                         <div class="works-time">@note.Time</div>
                         <div class="works-title">@note.Note.Title</div>
-                        <div class="tag-list"></div>
-                        @*<div class="works-count-info">
-                            <div class="cc_info_left">
-                                <div class="cc_left_tag">
-                                    <span class="iconfont icon-view"></span>
-                                    <span>131334</span>
-                                    <span class="iconfont icon-discuss comment-font"></span>
-                                    <span>50</span>
-                                </div> 
-                            </div>
-                            <div class="cc_info_right">
-                                <div class="w_like_button like-count-info" data-widget_cache_key="1560515131118">
-                                    <div class="like-button-wrapper light-color">
-                                        <div class="iconfont icon-zan like-font"></div>
-                                        <span class="like-count">565</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>*@
+                        <div class="tag-list">
+                            @if (Convert.ToInt32(Session["User_id"]) == note.Note.UserID)
+                            {
+                                <span class="delnote">删除</span>
+                                <input class="noteid" style="display: none" value="@note.NoteID"/>
+                            }
+                        </div>
                     </div>
                 </div>
-                <section class="cover-container" style="display: none;" data-widget_cache_key="1560515131118">
-                    <form class="cover-content">
-                        <!---->
-                        <div class="form-content"></div> <!---->
-                        <div class="promise-option">
-                            <div class="w_default_button promise-button" data-widget_cache_key="1560515131118">
-                                <button type="button" class="default-button default-button">取消</button>
-                            </div>
-                            <div class="w_default_button promise-button" data-widget_cache_key="1560515131118_1">
-                                <button type="submit" class="default-button normal-button">确定</button>
-                            </div>
-                        </div>
-                    </form>
-                </section>
             </div>
-            @*<div>
-                <a href="@Url.Action("NoteDetail", "YiChuShow", new {id=@note.NoteID})">
-                    <img src="/Images/Noteimg/@note.Note.Img" alt="Some image" />
-                    <span>@note.Note.likenum</span>
-                </a>
-            </div>*@
         }
     </div>
     <div id="usernote" class="userhome tab_content">
@@ -151,61 +99,28 @@
         {
             <div class="w_user_works_preview works-preview">
                 <div class="works-item">
-                    <a target="_blank" href="@Url.Action("VideoDetail", "YiChuShow", new {id=@note.NoteID})" class="works-image" style="background-image: url('../../Images/Noteimg/@note.Img');">
+                    <a target="_blank" href="@Url.Action("NoteDetail", "YiChuShow", new {id=@note.NoteID})" class="works-image" style="background-image: url('../../Images/Noteimg/@note.Img');">
                         <!---->
                         <!---->
                         <div class="cc_shadow"></div>
                         <!---->
-                        <div class="image-count">
-                            <span>17</span>
-                            @*<span class="iconfont icon-group image-count-font"></span>*@
+                        <div class="image-count">      
+                                <span>@note.likenum</span>
                         </div>
                     </a>
                     <div class="works-info">
                         <div class="works-time">@note.Time</div>
                         <div class="works-title">@note.Title</div>
-                        <div class="tag-list"></div>
-                        @*<div class="works-count-info">
-                            <div class="cc_info_left">
-                                <div class="cc_left_tag">
-                                    <span class="iconfont icon-view"></span>
-                                    <span>131334</span>
-                                    <span class="iconfont icon-discuss comment-font"></span>
-                                    <span>50</span>
-                                </div> 
-                            </div>
-                            <div class="cc_info_right">
-                                <div class="w_like_button like-count-info" data-widget_cache_key="1560515131118">
-                                    <div class="like-button-wrapper light-color">
-                                        <div class="iconfont icon-zan like-font"></div>
-                                        <span class="like-count">565</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>*@
+                        <div class="tag-list">
+                            @if (Convert.ToInt32(Session["User_id"]) == note.UserID)
+                            {
+                                <span class="delnote">删除</span>
+                                <input class="noteid" style="display: none" value="@note.NoteID" />
+                            }
+                        </div>
                     </div>
                 </div>
-                <section class="cover-container" style="display: none;" data-widget_cache_key="1560515131118">
-                    <form class="cover-content">
-                        <!---->
-                        <div class="form-content"></div> <!---->
-                        <div class="promise-option">
-                            <div class="w_default_button promise-button" data-widget_cache_key="1560515131118">
-                                <button type="button" class="default-button default-button">取消</button>
-                            </div>
-                            <div class="w_default_button promise-button" data-widget_cache_key="1560515131118_1">
-                                <button type="submit" class="default-button normal-button">确定</button>
-                            </div>
-                        </div>
-                    </form>
-                </section>
             </div>
-            @*<div>
-                <a href="@Url.Action("NoteDetail", "YiChuShow", new {id=@note.NoteID})">
-                    <img src="/Images/Noteimg/@note.Img" alt="Some image" />
-                    <span>@note.likenum</span>
-                </a>
-            </div>*@
         }
     </div>
     <hr />
@@ -219,56 +134,23 @@
                         <!---->
                         <div class="cc_shadow"></div>
                         <!---->
-                        <div class="image-count">
-                            <span>17</span>
-                            @*<span class="iconfont icon-group image-count-font"></span>*@
+                        <div class="image-count">  
+                                <span>@video.likenum</span>
                         </div>
                     </a>
                     <div class="works-info">
                         <div class="works-time">@video.Time</div>
                         <div class="works-title">@video.Title</div>
-                        <div class="tag-list"></div>
-                        @*<div class="works-count-info">
-                            <div class="cc_info_left">
-                                <div class="cc_left_tag">
-                                    <span class="iconfont icon-view"></span>
-                                    <span>131334</span>
-                                    <span class="iconfont icon-discuss comment-font"></span>
-                                    <span>50</span>
-                                </div> 
-                            </div>
-                            <div class="cc_info_right">
-                                <div class="w_like_button like-count-info" data-widget_cache_key="1560515131118">
-                                    <div class="like-button-wrapper light-color">
-                                        <div class="iconfont icon-zan like-font"></div>
-                                        <span class="like-count">565</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>*@
+                        <div class="tag-list">
+                            @if (Convert.ToInt32(Session["User_id"]) == video.UserID)
+                            {
+                                <span class="delvideo">删除</span>
+                                <input class="videoid" style="display: none" value="@video.VideoID">
+                            }
+                        </div>
                     </div>
                 </div>
-                <section class="cover-container" style="display: none;" data-widget_cache_key="1560515131118">
-                    <form class="cover-content">
-                        <!---->
-                        <div class="form-content"></div> <!---->
-                        <div class="promise-option">
-                            <div class="w_default_button promise-button" data-widget_cache_key="1560515131118">
-                                <button type="button" class="default-button default-button">取消</button>
-                            </div>
-                            <div class="w_default_button promise-button" data-widget_cache_key="1560515131118_1">
-                                <button type="submit" class="default-button normal-button">确定</button>
-                            </div>
-                        </div>
-                    </form>
-                </section>
             </div>
-            @*<div>
-                <a href="@Url.Action("VideoDetail", "YiChuShow", new {id=@video.VideoID})">
-                    <img src="/Images/Noteimg/@video.Image" alt="Some image" />
-                    <span>@video.likenum</span>
-                </a>
-            </div>*@
         }
     </div>
 </div>
@@ -284,6 +166,32 @@
         var activeTab = $(this).find("a").attr("href");
         $(activeTab).fadeIn();
         return false;
+    });
+    //删除笔记
+    $(".delnote").click(function () {
+        var noteid = $(this).next().val();
+        $.ajax({
+            type: "get",
+            url: "/YiChuShow/delnote",
+            data: { "noteid":noteid},
+            success: function (data) {
+                alert(data);
+            },
+            async: true
+        });
+    })
+    //删除视频
+    $(".delvideo").click(function () {
+        var videoid = $(this).next().val();
+        $.ajax({
+            type: "get",
+            url: "/YiChuShow/delvideo",
+            data: { "videoid": videoid },
+            success: function (data) {
+                alert(data);
+            },
+            async: true
+        });
     });
 </script>
 
