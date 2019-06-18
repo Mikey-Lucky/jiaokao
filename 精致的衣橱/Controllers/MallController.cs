@@ -205,14 +205,15 @@ namespace 精致的衣橱.Controllers
             return View(rep);
 
         }
-        [Login]
+        //[Login]
         [HttpPost]
         
         public ActionResult Reply(int commentid,string text)
         {
-            int id = Convert.ToInt32(Session["User_id"]);
+            //int id = Convert.ToInt32(Session["User_id"]);
+            int id = 2;
             var datetime = System.DateTime.Now;
-            text = Request.Form["huifukuang"];
+            
             if (ModelState.IsValid)
             {
                 if (text != null)
