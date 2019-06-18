@@ -9,11 +9,7 @@
         width:200px;
         border:1px solid red;
     }
-    .btn{
-        
-        background-color:red;
-        margin-top:10px;
-    }
+   
     #p3{
 
     }
@@ -33,7 +29,7 @@
 
         @p.Users.UserName
         <div>
-            <textarea name="huifu" id="tl"></textarea>
+            <input name="huifu"style="resize:none;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;height:68px;width:798px;display:block;border:1px solid #c03f3c;" id="tl">
             <button class="btn" type="button">回复</button>
             <input type="hidden" value="@p.GoodsCommentID" name="commentid"/>
 
@@ -80,7 +76,7 @@
         }
     }
 </div>*@
-<script>
+@*<script>
     $(function () {
         var hf = $("#tl");
         var cid = $("input[name='commentid']");
@@ -103,13 +99,11 @@
                         success: function (data) {
                             $("#p3").html(data);
                         },
-                        //error: function () {
-                        //    alert("回复失败");
-                        //}
+                        
                             
                     })
                 }
             })
         })
     })
-</script>
+</script>*@

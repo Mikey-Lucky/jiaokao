@@ -50,13 +50,8 @@
         max-width:515px;
         
     }
-    #pl{
-        background-color:red;
-        margin-top:10px;
-    }
-    #p2{
-        margin-left:314px;
-    }
+    
+   
     .jiagou{
         display:inline-block;
         background:red;
@@ -174,17 +169,19 @@
      </div>
 </div>
 <hr />
-<div>
+<div id="p1">
        
 
-        <div id="p2">
+        @*<div id="p2">
             
             @Html.Action("Comment", new { goodsid = @Model.GoodsID }))
-        </div>
+        </div>*@
+    <input name="pingluntextarea" style="resize:none;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;height:68px;width:798px;display:block;border:1px solid #c03f3c;" value="" class="t">
+    <button class="btn1">提交</button>
 </div>
-
-
-
+<div id="p2">
+        @Html.Action("Comment", "Mall", new { goodsid = Model.GoodsID })
+  </div>
 @*<div style="height:3287px;width:100%;background-color:antiquewhite">
     <div style="width:1024px;height:2600px; margin:0 auto;position:relative;">
         <div style="width:698px;height:678px;float:left">
@@ -235,7 +232,7 @@
                 
                 url: "/Mall/DirectBuy",
                 data: {
-                                "total": total,
+                     "total": total,
                     "uname": uname.val(),
                     "tel": tel.val(),
                     "address":add.val(),
@@ -256,7 +253,44 @@
                             }
                         });
                     });
+        var text = $(".t");
+        //var text = "dsfsdf";
 
+        $(".btn1").on("click", function () {
+
+            $.ajax({
+                type: 'post',
+
+                url: "/Mall/Comment",
+                data: {
+                    "pinglun":text.val(),
+                    "goodsid":@Model.GoodsID,
+                },
+
+                success: function (data) {
+                    //alert(data.message)
+                    $.ajax({
+                        type:'get',
+                    
+                        url: "/Mall/Comment",
+                        data: {
+                            "goodsid":@Model.GoodsID,
+                        },
+                        success: function (data) {
+                            $('#p2').html(data);
+                        },
+                        //async: true
+                       
+                });
+
+                },
+                //async: true
+                //error: function () {
+                //    alert("购物失败");
+                //}
+                
+            });
+        });
 
         
     
