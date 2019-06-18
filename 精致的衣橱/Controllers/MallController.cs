@@ -156,7 +156,7 @@ namespace 精致的衣橱.Controllers
 
         }
         
-        
+        //[Login]
         public ActionResult Comment(int goodsid)
         {
 
@@ -165,44 +165,45 @@ namespace 精致的衣橱.Controllers
             return PartialView(com);
         }
 
-        [Login]
+        //[Login]
         [HttpPost]
         
-        public ActionResult Comment()
+        public ActionResult Comment(string pinglun,int goodsid)
         {
             //goodsid =2;
             //var text;
-            int goodsid = Convert.ToInt32(Session["goodsid"]);
+            
             
             DateTime datetime = System.DateTime.Now;
             int thumb = 0;
-            int id = Convert.ToInt32(Session["User_id"]);
-            string text = Request["pinglunkuang"];
+            //int id = Convert.ToInt32(Session["User_id"]);
+            int id = 2;
+            //string text = Request["pinglunkuang"];
             //int  goodsid = Convert.ToInt32(Request["commentid"]);
-            if (ModelState.IsValid)
-            {
-                if (text != null)
-                {
 
-                    goodscommentmanager.AddGoodsComment(text, id, goodsid, datetime, thumb);
+            //pinglun = "sdsad";
+            //goodsid = 3;
+            goodscommentmanager.AddGoodsComment(pinglun, id, goodsid, datetime, thumb);
+           
+            //Message msg = new Message()
+            //{
+            //    message = "评论成功"
+            //};
+            return Content("评论成功");
+            //return base.Json(msg);
+            //return Content(pinglun);
 
-                }
-                else
-                {
-                    return Content("<script>alert('评论不能为空！');history.go(-1)</script>");
-                }
-                //return View();
-            }
+
             //return Content("<script>alert('评论成功！')</script>");
-            return View();
+
 
         }
         //商品评论回复
         public ActionResult Reply(int commentid)
         {
-            //var rep = comreplymanager.Reply(commentid);
-            //return View(rep);
-            return View();
+            var rep = comreplymanager.Reply(commentid);
+            return View(rep);
+
         }
         [Login]
         [HttpPost]
