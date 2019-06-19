@@ -12,10 +12,10 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <style>
-        body {
+        /*body {
             background-image: url('../../Images/yichu/wu.jpg');
             background-size: cover;
-        }
+        }*/
         ul {
            margin-top: 39px;
            margin-bottom: 10px;
@@ -189,12 +189,14 @@
           </div>
           <div class="main-r">
               <div class="daohang">
-                  <h2 style="display: inline-block;">Clothes</h2>
-                  <div class="search"><!--搜索-->
+                  <!-- 天气 -->
+                  <!-- weather widget start --><a target="_blank" href="https://ibooked.cn/weather/nanchang-19216"><img src="https://w.bookcdn.com/weather/picture/32_19216_1_17_95a5a6_250_7f8c8d_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=2&domid=588&anc_id=45982" alt="booked.net" /></a><!-- weather widget end -->
+                  @*<h2 style="display: inline-block;">Clothes</h2>*@
+                  @*<div class="search">搜索
                       <span class="glyphicon glyphicon-search"></span>
                       <input placeholder="输入你想查询衣服" />
                       <span></span>
-                  </div>
+                  </div>*@
                   <a href="@Url.Action("AddClothes","YiChu")">
                       <span class="glyphicon glyphicon-plus add">
                       </span>
@@ -380,10 +382,10 @@
               </div>
       </div>
     <!--获取天气-->
-            <button id="getw">查询天气</button>
+            @*<button id="getw">查询天气</button>
             <p class="temperature"></p>
-            <p class="temperature1"></p>
-            <p class="temperature2"></p>
+            <p class="temperature1"></p>*@
+            @*<p class="temperature2"></p>*@
             <script>
                 $(function () {
                     // Ajax请求：一般在刷新页面中的局部数据时，会使用ajax请求。该请求不会去重新刷新或请求这个页面中的所有数据，而只是动态的修改一部分数据。
@@ -410,7 +412,7 @@
                                 var tem = weather_data['temperature'];
                                 var temnum = tem.split("~");
                                 var center = parseInt((parseInt(temnum[0]) + parseInt(temnum[1])) * 0.5);
-                                $('.temperature2').text(center);
+                                //$('.temperature2').text(center);
                                 
                                     $.ajax({
                                         url: "/YiChu/TianqiClothes",

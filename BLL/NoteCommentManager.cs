@@ -22,5 +22,10 @@ namespace BLL
 
             return inotecomment.allnotecomment(noteid);
         }
+        //删除笔记评论
+        public bool delnotec(int notecid)
+        {
+            return inotecomment.delnotec(notecid);
+        }
     }
 }

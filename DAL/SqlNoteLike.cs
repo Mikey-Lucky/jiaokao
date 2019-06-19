@@ -65,7 +65,7 @@ namespace DAL
         public bool iflike(int userid, int noteid)
         {
             NoteLike like = db.NoteLike.Where(a => a.UserID == userid && a.NoteID == noteid).FirstOrDefault();
-            if (like != null)
+            if (like!=null)
             {
                 return true;
             }

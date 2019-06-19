@@ -25,5 +25,18 @@ namespace DAL
                           select c;
             return comment;
         }
+        //删除笔记评论
+        public bool delnotec(int notecid)
+        {
+         
+            NoteComment nc = db.NoteComment.Where(b => b.NoteCommentID == notecid).FirstOrDefault();
+            if (nc != null)
+            {
+                db.NoteComment.Remove(nc);
+                db.SaveChanges();
+                return true;
+            }
+            else return false;
+        }
     }
 }

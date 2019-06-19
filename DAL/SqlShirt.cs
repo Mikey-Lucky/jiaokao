@@ -12,40 +12,40 @@ namespace DAL
     public class SqlShirt : IShirt
     {
         yichuEntities db = DbContextFactory.CreateDbContext();
-        public IQueryable<Shirt> ShirtBySeason(string season)
+        public IQueryable<Shirt> ShirtBySeason(string season,int userid)
         {
             var shirt = from s in db.Shirt
-                        where s.Season == season
+                        where s.Season == season&&s.Wardrobe.Userid==userid
                         select s;
             return shirt;
         }
 
-        public IQueryable<Shirt> ShirtByTemp(int temp)
+        public IQueryable<Shirt> ShirtByTemp(int temp, int userid)
         {
             IQueryable<Shirt> shirt;
             if (temp < 5)
             {
                 shirt = from c in db.Shirt
-                        where c.Season == "冬季"
+                        where c.Season == "冬季"&&c.Wardrobe.Userid==userid
                        select c;
             }
             else if (temp >= 5 && temp < 20)
             {
                 shirt = from c in db.Shirt
-                        where c.Season == "春季" || c.Season == "秋季"
+                        where (c.Season == "春季" && c.Wardrobe.Userid == userid)||( c.Season == "秋季" &&c.Wardrobe.Userid == userid)
                        select c;
             }
             else if (temp >= 20 && temp < 25)
             {
                 shirt = from c in db.Shirt
-                        where c.Season == "春季" || c.Season == "夏季"
-                       select c;
+                        where (c.Season == "春季" || c.Season == "夏季")&& c.Wardrobe.Userid == userid
+                        select c;
             }
             else
             {
                 shirt = from c in db.Shirt
-                        where c.Season == "夏季"
-                       select c;
+                        where c.Season == "夏季" && c.Wardrobe.Userid == userid
+                        select c;
             }
             return shirt;
         }

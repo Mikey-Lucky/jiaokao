@@ -23,5 +23,17 @@ namespace DAL
             db.VideoComment.Add(videocomment);
             db.SaveChanges();
         }
+        public bool delvideoc(int videocid)
+        {
+
+            VideoComment nc = db.VideoComment.Where(b => b.VideoCommentID == videocid).FirstOrDefault();
+            if (nc != null)
+            {
+                db.VideoComment.Remove(nc);
+                db.SaveChanges();
+                return true;
+            }
+            else return false;
+        }
     }
 }

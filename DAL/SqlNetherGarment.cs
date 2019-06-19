@@ -20,40 +20,40 @@ namespace DAL
 
       
 
-        public IQueryable<NetherGarment> NetherGarmentBySeason(string season)
+        public IQueryable<NetherGarment> NetherGarmentBySeason(string season,int userid)
         {
             var nether = from n in db.NetherGarment
-                        where n.Season == season
+                        where n.Season == season&&n.Wardrobe.Userid==userid
                         select n;
             return nether;
         }
 
-        public IQueryable<NetherGarment> NetherGarmentByTemp(int temp)
+        public IQueryable<NetherGarment> NetherGarmentByTemp(int temp,int userid)
         {
             IQueryable<NetherGarment> nether;
             if (temp < 5)
             {
                 nether = from c in db.NetherGarment
-                       where c.Season == "冬季"
+                       where c.Season == "冬季"&&c.Wardrobe.Userid==userid
                        select c;
             }
             else if (temp >= 5 && temp < 20)
             {
                 nether = from c in db.NetherGarment
-                       where c.Season == "春季" || c.Season == "秋季"
-                       select c;
+                       where (c.Season == "春季" || c.Season == "秋季") && c.Wardrobe.Userid == userid
+                         select c;
             }
             else if (temp >= 20 && temp < 25)
             {
                 nether = from c in db.NetherGarment
-                       where c.Season == "春季" || c.Season == "夏季"
-                       select c;
+                       where (c.Season == "春季" || c.Season == "夏季") && c.Wardrobe.Userid == userid
+                         select c;
             }
             else
             {
                 nether = from c in db.NetherGarment
-                       where c.Season == "夏季"
-                       select c;
+                       where c.Season == "夏季" && c.Wardrobe.Userid == userid
+                         select c;
             }
             return nether;
         }

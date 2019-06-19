@@ -24,5 +24,10 @@ namespace BLL
         {
             ivideocomment.AddVideoComment(videocomment);
         }
+        //删除视频评论
+        public bool delvideoc(int videocid)
+        {
+            return ivideocomment.delvideoc(videocid);
+        }
     }
 }

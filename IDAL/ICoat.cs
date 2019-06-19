@@ -10,9 +10,9 @@ namespace IDAL
     public interface ICoat
     {
         //通过季节找外套
-        IQueryable<Coat> CoatBySeason(string season);
+        IQueryable<Coat> CoatBySeason(string season,int userid);
         //通过温度找外套
-        IQueryable<Coat> CoatByTemp(int temp);
+        IQueryable<Coat> CoatByTemp(int temp,int userid);
         //添加上衣
         void AddCoat(Coat coat);
     }

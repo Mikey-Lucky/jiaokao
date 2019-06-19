@@ -73,6 +73,16 @@ namespace 精致的衣橱.Controllers
             }
             else return Content("请输入");
         }
+        //删除笔记评论
+        public string delnotec(int notecid)
+        {
+            var a=ncomments.delnotec(notecid);
+            if (a)
+            {
+                return "删除成功";
+            }
+            else return "删除失败";
+        }
         //笔记评论回复分布视图
         public ActionResult ncreply(int commentid)
         {
@@ -149,13 +159,20 @@ namespace 精致的衣橱.Controllers
         //    return notelikes.dellike(userid, noteid);
         //}
         //判断是否给笔记点过赞
-        public bool ifnotelike(int userid, int noteid)
+        public string ifnotelike(int noteid)
         {
-            return notelikes.iflike(userid, noteid);
+            var userid = Convert.ToInt32(Session["User_id"]);
+            if (notelikes.iflike(userid, noteid) == true)
+            {
+                return "取消点赞";
+            }
+            else return "点赞";
+            //return notelikes.iflike(userid, noteid);
         }
         //点赞取消赞操作
-        public int notezan(int userid,int noteid)
+        public int notezan( int noteid)
         {
+            var userid =Convert.ToInt32(Session["User_id"]);
             var a= notelikes.iflike(userid, noteid);
             if (a == true)
             {
@@ -208,7 +225,16 @@ namespace 精致的衣橱.Controllers
             //var video = videos.VideoDetail(id);
             return View(ycsv);
         }
-
+        //删除笔记评论
+        public string delvideoc(int videocid)
+        {
+            var a = vcomments.delvideoc(videocid);
+            if (a)
+            {
+                return "删除成功";
+            }
+            else return "删除失败";
+        }
         //视频评论展示分布视图
         public ActionResult VideoComment(int videoid)
         {
