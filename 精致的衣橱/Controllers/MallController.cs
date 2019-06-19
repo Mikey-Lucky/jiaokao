@@ -50,7 +50,7 @@ namespace 精致的衣橱.Controllers
 
         public ActionResult GoodsDetails(int id)
         {
-            Session["goodsid"] = id   ;
+            //Session["goodsid"] = id   ;
             var a = db.Goods.Where(p => p.GoodsID == id).FirstOrDefault();
             
             return View(a);
@@ -106,27 +106,28 @@ namespace 精致的衣橱.Controllers
             
         }
         [Login]
-        public ActionResult Cart(int userid)
+        public ActionResult Cart()
         {
-            userid = Convert.ToInt32(Session["User_id"]);
-            
+            //userid = Convert.ToInt32(Session["User_id"]);
+            int userid = Convert.ToInt32(Session["User_id"]);
             var cart = cartmanager.Cart(userid);
             return View(cart);
         }
         [Login]
         [HttpPost]
         //public ActionResult jrgwc([Bind(Include = "UserID,GoodsID,Count,CartTime,Price,Flag")]Cart cart)
-        public ActionResult Cart(int GoodsID, Cart cart)
+        public ActionResult Cart(int GoodsID,int Count)
         {
 
             int id = Convert.ToInt32(Session["User_id"]);
-            //int id = 1;
+            
             //int Flag = 0;
             var nowtime = System.DateTime.Now;
             var t = Convert.ToDouble(cartmanager.getgoodsbyid(GoodsID).Unitprice);
+            
             var amount = cartmanager.getgoodsbyid(GoodsID).TotalStorageAmount;
             //var price = t;
-            var Count = Convert.ToInt32(Request["number"]);
+            //var Count = Convert.ToInt32(Request["number"]);
             if (amount > Count)
             {
                 int Flag = 0;
@@ -183,20 +184,24 @@ namespace 精致的衣橱.Controllers
 
             //pinglun = "sdsad";
             //goodsid = 3;
-            goodscommentmanager.AddGoodsComment(pinglun, id, goodsid, datetime, thumb);
-           
-            //Message msg = new Message()
-            //{
-            //    message = "评论成功"
-            //};
-            return Content("评论成功");
-            //return base.Json(msg);
-            //return Content(pinglun);
-
-
-            //return Content("<script>alert('评论成功！')</script>");
-
-
+            if (pinglun != "")
+            {
+                goodscommentmanager.AddGoodsComment(pinglun, id, goodsid, datetime, thumb);
+                Message msg = new Message()
+                {
+                    message = "评论成功"
+                };
+                return base.Json(msg);
+            }
+            else
+            {
+                Message msg = new Message()
+                {
+                    message = "评论不能为空！"
+                };
+                return base.Json(msg);
+            }
+               
         }
         //商品评论回复
         public ActionResult Reply(int commentid)
@@ -216,14 +221,27 @@ namespace 精致的衣橱.Controllers
             
             if (ModelState.IsValid)
             {
-                if (text != null)
+                if (text != "")
                 {
                     comreplymanager.AddComReply(id, commentid, text, datetime);
+                    Message msg = new Message()
+                    {
+                        message = "回复成功"
+                    };
+                    return base.Json(msg);
                 }
                 else
-                    return Content("回复不能为空");
+                {
+                    Message msg = new Message()
+                    {
+                        message = "回复不能为空！"
+                    };
+                    return base.Json(msg);
+                }
+                    
             }
-            return Content("评论成功"); ;
+            return View();
+            
 
         }
         //[Login]

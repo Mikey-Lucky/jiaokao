@@ -460,7 +460,7 @@
                                 @if (j <= 3)
                                 {
                                     <div class="live-abstract">
-                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                         <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
