@@ -27,22 +27,22 @@ namespace 精致的衣橱.Controllers
 
             /* int temp = 12;*///需获取前台值
             yichuview.Userabout = users.GetUserById(Userid);
-            yichuview.springsuit = suits.ShirtBySeason("春季");
-            yichuview.summersuit = suits.ShirtBySeason("夏季");
-            yichuview.autumnsuit = suits.ShirtBySeason("秋季");
-            yichuview.wintersuit = suits.ShirtBySeason("冬季");
-            yichuview.springcoat = coats.CoatBySeason("春季");
-            yichuview.summercoat = coats.CoatBySeason("夏季");
-            yichuview.autumncoat = coats.CoatBySeason("秋季");
-            yichuview.wintercoat = coats.CoatBySeason("冬季");
-            yichuview.springnethergarment = nethers.NetherBySeason("春季");
-            yichuview.summernethergarment = nethers.NetherBySeason("夏季");
-            yichuview.autumnnethergarment = nethers.NetherBySeason("秋季");
-            yichuview.winternethergarment = nethers.NetherBySeason("冬季");
-            yichuview.springshirt = shirts.ShirtBySeason("春季");
-            yichuview.summershirt = shirts.ShirtBySeason("夏季");
-            yichuview.autumnshirt = shirts.ShirtBySeason("秋季");
-            yichuview.wintershirt = shirts.ShirtBySeason("冬季");
+            yichuview.springsuit = suits.ShirtBySeason("春季",Userid);
+            yichuview.summersuit = suits.ShirtBySeason("夏季", Userid);
+            yichuview.autumnsuit = suits.ShirtBySeason("秋季", Userid);
+            yichuview.wintersuit = suits.ShirtBySeason("冬季", Userid);
+            yichuview.springcoat = coats.CoatBySeason("春季", Userid);
+            yichuview.summercoat = coats.CoatBySeason("夏季", Userid);
+            yichuview.autumncoat = coats.CoatBySeason("秋季", Userid);
+            yichuview.wintercoat = coats.CoatBySeason("冬季", Userid);
+            yichuview.springnethergarment = nethers.NetherBySeason("春季", Userid);
+            yichuview.summernethergarment = nethers.NetherBySeason("夏季", Userid);
+            yichuview.autumnnethergarment = nethers.NetherBySeason("秋季", Userid);
+            yichuview.winternethergarment = nethers.NetherBySeason("冬季", Userid);
+            yichuview.springshirt = shirts.ShirtBySeason("春季", Userid);
+            yichuview.summershirt = shirts.ShirtBySeason("夏季", Userid);
+            yichuview.autumnshirt = shirts.ShirtBySeason("秋季", Userid);
+            yichuview.wintershirt = shirts.ShirtBySeason("冬季", Userid);
            
             return View(yichuview);
         }
@@ -50,11 +50,12 @@ namespace 精致的衣橱.Controllers
         public ActionResult TianqiClothes()
         {
             var temp = Request["tianqi"];
+            var userid =Convert.ToInt32(Session["User_id"]);
             //var temp = 25;
-            yichuview.nethergarmentbytemp = nethers.NetherGarmentByTemp(Convert.ToInt32(temp));
-            yichuview.shirtbytemp = shirts.ShirtByTemp(Convert.ToInt32(temp));
-            yichuview.coatbytemp = coats.CoatByTemp(Convert.ToInt32(temp));
-            yichuview.suitbytemp = suits.SuitByTemp(Convert.ToInt32(temp));
+            yichuview.nethergarmentbytemp = nethers.NetherGarmentByTemp(Convert.ToInt32(temp),userid);
+            yichuview.shirtbytemp = shirts.ShirtByTemp(Convert.ToInt32(temp), userid);
+            yichuview.coatbytemp = coats.CoatByTemp(Convert.ToInt32(temp), userid);
+            yichuview.suitbytemp = suits.SuitByTemp(Convert.ToInt32(temp), userid);
             yichuview.dapeishangyi = yichuview.shirtbytemp;
             foreach (var a in yichuview.shirtbytemp)
             {

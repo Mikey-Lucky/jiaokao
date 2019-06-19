@@ -13,15 +13,15 @@ namespace BLL
     {
          INetherGarment inether = DataAccess.CreateNetherGarment();
         //通过季节查询下装
-        public IQueryable<NetherGarment> NetherBySeason(string season)
+        public IQueryable<NetherGarment> NetherBySeason(string season,int userid)
         {
-            var nether = inether.NetherGarmentBySeason(season);
+            var nether = inether.NetherGarmentBySeason(season,userid);
             return nether;
         }
         //通过温度找下装
-        public IQueryable<NetherGarment> NetherGarmentByTemp(int temp)
+        public IQueryable<NetherGarment> NetherGarmentByTemp(int temp,int userid)
         {
-            return inether.NetherGarmentByTemp(temp);
+            return inether.NetherGarmentByTemp(temp,userid);
         }
         //添加下衣
         public void AddNether(NetherGarment nether)

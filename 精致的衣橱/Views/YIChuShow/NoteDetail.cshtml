@@ -267,7 +267,12 @@
                       <div class="text">@n.Nccontent</div>
                       <div class="action-buttons">
                            <a  title="回复" class="reply-button" id="@n.NoteCommentID">回复</a>
-                           <a  title="删除" class="delete">删除</a>
+                           @if (Convert.ToInt32(Session["User_id"]) == @n.UserID)
+                           {
+                               <a class="delnotec delete">删除</a>
+                                <input class="notecid" style="display: none" value="@n.NoteCommentID" />
+                           }
+                           @*<a  title="删除" class="delete">删除</a>*@
                       </div>
                       <div class="commentreply">
                           @Html.Action("ncreply",new { commentid = @n.NoteCommentID })
@@ -315,12 +320,33 @@
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
     <script src="~/Scripts/layer/layer.js"></script>
     <script>
-    $(function () {   //点赞
-        var active=true;
-        var btn=$(".buttons");
-        btn.click(function(){
+        $(function () {   //点赞
+            var active=true;
+            var btn=$(".buttons");
+            $.ajax({//判断用户是否点赞过视频，确定初始化样式
+                type: "get",
+                url: "/YiChuShow/ifnotelike",
+                data: { "noteid":@Model.notedetail.NoteID},
+                success: function (data) {
+                    //alert(data);
+                    if (data=="取消点赞")
+                    {
+                        btn.addClass("active")
+                        btn.find("span").text(data)
+                        btn.active=true
+                    }
+                    else
+                    {
+                        btn.find("span").text(data)
+                        btn.active=false
+                    }
+                },
+                async: true
+            });
+     
+            btn.click(function(){
             if(btn.active){
-                btn.find("span").text("取消点赞")
+                btn.find("span").text("点赞")
                 $.ajax({
                     type: "get",
                     url: "/YiChuShow/notezan",
@@ -332,11 +358,11 @@
                 });
                 btn.active=false
             } else {
-                btn.find("span").text("点赞")
+                btn.find("span").text("取消点赞")
                 $.ajax({
                     type: "get",
                     url: "/YiChuShow/notezan",
-                    data: { "userid": 1 ,"noteid":@Model.notedetail.NoteID},
+                    data: { "noteid":@Model.notedetail.NoteID},
                     success: function (data) {
                         btn.find("p").html(data)
                     },
@@ -345,24 +371,7 @@
                 btn.active=true
             }
         })
-        $.ajax({//判断用户是否点赞过视频，确定初始化样式
-            type: "get",
-            url: "/YiChuShow/ifnotelike",
-            data: { "userid": 1 ,"noteid":@Model.notedetail.NoteID},
-            success: function (data) {
-                if (data==true)
-                {
-                    btn.addClass("active")
-                    btn.find("span").text("取消点赞")
-
-                }
-                else
-                {
-                    btn.find("span").text("点赞")
-                }
-            },
-            async: true
-        });
+       
     });
 
         $("#fabiaopinlun").click(function(){//评论
@@ -415,6 +424,19 @@
                 });
                 //layer.msg(commentid);
                 layer.close(index);
+            });
+        })
+        //删除笔记评论
+        $(".delnotec").click(function () {
+            var notecid = $(this).next().val();
+            $.ajax({
+                type: "get",
+                url: "/YiChuShow/delnotec",
+                data: { "notecid":notecid},
+                success: function (data) {
+                    alert(data);
+                },
+                async: true
             });
         })
     </script>

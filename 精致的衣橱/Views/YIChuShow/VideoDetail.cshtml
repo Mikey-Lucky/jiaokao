@@ -150,7 +150,11 @@
                         <div class="text">@n.Commentcotent</div>
                         <div class="action-buttons">
                             <a title="回复" class="reply-button" id="@n.VideoCommentID">回复</a>
-                            <a title="删除" class="delete">删除</a>
+                            @if (Convert.ToInt32(Session["User_id"]) == @n.UserID)
+                            {
+                                <a class="delvideoc delete">删除</a>
+                                <input class="videocid" style="display: none" value="@n.VideoCommentID" />
+                            }
                         </div>
                         <div class="commentreply">
                             @Html.Action("VideoCommentReply", new { commentid = @n.VideoCommentID })
@@ -276,6 +280,19 @@
             });*@
 
         });
+        //删除视频评论
+        $(".delvideoc").click(function () {
+            var videocid = $(this).next().val();
+            $.ajax({
+                type: "get",
+                url: "/YiChuShow/delvideoc",
+                data: { "videocid":videocid},
+                success: function (data) {
+                    alert(data);
+                },
+                async: true
+            });
+        })
     </script>
 @*</body>
 </html>*@

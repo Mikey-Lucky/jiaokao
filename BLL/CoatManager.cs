@@ -18,15 +18,15 @@ namespace BLL
             icoat.AddCoat(coat);
         }
         //通过季节查询外套
-        public IQueryable<Coat> CoatBySeason(string season)
+        public IQueryable<Coat> CoatBySeason(string season,int userid)
         {
-            var coat = icoat.CoatBySeason(season);
+            var coat = icoat.CoatBySeason(season,userid);
             return coat;
         }
         //通过温度查询外套
-        public IQueryable<Coat> CoatByTemp(int temp)
+        public IQueryable<Coat> CoatByTemp(int temp,int userid)
         {
-            return icoat.CoatByTemp(temp);
+            return icoat.CoatByTemp(temp,userid);
         }
     }
 }

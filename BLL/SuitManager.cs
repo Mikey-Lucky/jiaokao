@@ -18,15 +18,15 @@ namespace BLL
             isuit.AddSuit(suit);
         }
         //通过季节查询套装
-        public IQueryable<Suit> ShirtBySeason(string season)
+        public IQueryable<Suit> ShirtBySeason(string season,int userid)
         {
-            var suit = isuit.SuitBySeason(season);
+            var suit = isuit.SuitBySeason(season,userid);
             return suit;
         }
         //通过气温查询套装
-        public IQueryable<Suit> SuitByTemp(int temp)
+        public IQueryable<Suit> SuitByTemp(int temp,int userid)
         {
-            return isuit.SuitByTemp(temp);
+            return isuit.SuitByTemp(temp,userid);
         }
     }
 }

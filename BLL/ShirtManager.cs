@@ -13,14 +13,14 @@ namespace BLL
     {
         IShirt ishirt = DataAccess.CreateShirt();
         //通过季节查询上衣
-        public IQueryable<Shirt> ShirtBySeason(string season)
+        public IQueryable<Shirt> ShirtBySeason(string season,int userid)
         {
-            var shirt = ishirt.ShirtBySeason(season);
+            var shirt = ishirt.ShirtBySeason(season,userid);
             return shirt;
         }
         //通过气温查询上衣
-        public IQueryable<Shirt> ShirtByTemp(int temp) {
-            return ishirt.ShirtByTemp(temp);
+        public IQueryable<Shirt> ShirtByTemp(int temp,int userid) {
+            return ishirt.ShirtByTemp(temp,userid);
         }
         //添加上衣
         public void AddShirt(Shirt shirt)

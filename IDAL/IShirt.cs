@@ -10,9 +10,9 @@ namespace IDAL
     public interface IShirt
     {
         //根据季节找出上衣
-        IQueryable<Shirt> ShirtBySeason(string season);
+        IQueryable<Shirt> ShirtBySeason(string season,int userid);
         //根据温度找上衣
-        IQueryable<Shirt> ShirtByTemp(int temp);
+        IQueryable<Shirt> ShirtByTemp(int temp, int userid);
         //添加上衣
         void AddShirt(Shirt shirt);
         //更具id查找上衣
