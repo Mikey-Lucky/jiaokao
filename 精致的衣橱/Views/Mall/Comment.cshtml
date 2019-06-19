@@ -18,6 +18,15 @@
         width:55px;
         float:left;
     }
+    .btn2{
+        width:82px;
+        height:34px;
+
+        margin-right:50px;
+        margin-top:8px;
+        border-radius:5px;
+
+    }
    
 </style>
 <div>
@@ -29,15 +38,16 @@
 
         @p.Users.UserName
         <div>
-            <input name="huifu"style="resize:none;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;height:68px;width:798px;display:block;border:1px solid #c03f3c;" id="tl">
-            <button class="btn" type="button">回复</button>
+            <input name="huifu"style="border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;height:68px;width:798px;display:block;border:1px solid #c03f3c;" id="tl">
+            <button class="btn2" type="button">回复</button>
             <input type="hidden" value="@p.GoodsCommentID" name="commentid"/>
 
         </div>
-        
-        @*<div id="p3">
-            @{Html.RenderAction("Reply", "Mall", new {commentid=@p.GoodsCommentID});}
-        </div>*@
+
+        <div id="p3">
+            @*@{Html.RenderAction("Reply", "Mall", new {commentid=@p.GoodsCommentID});}*@
+            @Html.Action("Reply", "Mall", new { commentid = @p.GoodsCommentID });
+        </div>
     }
 </div>
 
@@ -76,34 +86,44 @@
         }
     }
 </div>*@
-@*<script>
+<script>
     $(function () {
-        var hf = $("#tl");
-        var cid = $("input[name='commentid']");
-        $(".btn").on("click", function () {
+        var com= $("input[name='commentid']");
+        var hf = $("input[name='huifu']");
+        $(".btn2").on("click", function () {
+
             $.ajax({
-                type:'post',
+                type: 'post',
+
                 url: "/Mall/Reply",
                 data: {
-                    "commentid": cid.val(),
+                    "commentid":com.val(),
                     "text":hf.val()
-                        
                 },
+
                 success: function (data) {
+                    alert("评论成功");
                     $.ajax({
-                        type: "get",
-                        async: false,
-                        url: "Mall/Reply",
-                        data:{"commentid": cid.val(),
-                            "text":hf.val()},
-                        success: function (data) {
-                            $("#p3").html(data);
+                        type:'get',
+                    
+                        url: "/Mall/Reply",
+                        data: {
+                            "commentid":com,
                         },
-                        
-                            
-                    })
-                }
-            })
-        })
+                        success: function (data) {
+                            $('#p3').html(data);
+                        },
+                        //async: true
+                       
+                    });
+
+                },
+                //async: true
+                //error: function () {
+                //    alert("购物失败");
+                //}
+                
+            });
+        });
     })
-</script>*@
+</script>

@@ -886,6 +886,7 @@
     <Content Include="Views\Goods\Index.cshtml" />
     <Content Include="Views\Recommend\todaygoods.cshtml" />
     <Content Include="Views\Recommend\RecomGoods1.cshtml" />
+    <Content Include="Views\Mall\Reply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
