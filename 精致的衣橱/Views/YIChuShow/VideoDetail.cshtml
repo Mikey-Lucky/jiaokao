@@ -190,12 +190,6 @@
         $(function () {
             $(document).on('click', '#zan', function () {   //赞     
                 var Videoid = $(".videoid").val();
-                //if ($(this).attr("class")=="active"){
-                //    $(this).attr("class"," ");
-                //}
-                //else
-                //    $(this).attr("class", "active");
-
                 $.ajax({
                     type: "post",
                     url: "/YiChuShow/Zan",

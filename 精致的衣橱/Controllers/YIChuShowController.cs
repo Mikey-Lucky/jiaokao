@@ -318,7 +318,6 @@ namespace 精致的衣橱.Controllers
         {
 
             int userid = 1;//测试用
-            //videos.Videolikeclick(userid,videoid);
             likes.Videolikeclick(userid, videoid);
             int a = likes.videolikenum(videoid);
             return a;
