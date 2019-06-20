@@ -1,8 +1,8 @@
 ﻿@model Models.Goods
 @{
 
-    //Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
-    Layout = null;
+Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
+//Layout = null;
 
 }
 <style>
@@ -80,6 +80,9 @@
         border-radius:5px;
         
     }
+    #pp{
+        margin:auto 285px;
+    }
 </style>
 <script src="~/Scripts/main.js"></script>
 <link href="~/Content/main.css" rel="stylesheet" />
@@ -95,8 +98,8 @@
    
 
     <div class="details">
-        @using (Html.BeginForm("Cart", "Mall", FormMethod.Post))
-        {
+        @*@using (Html.BeginForm("Cart", "Mall", FormMethod.Post))
+        {*@
             <h3>@Model.Name</h3>
             <div style="width:100%;height:40px;background-color:lavenderblush;">
                 <span style="color:darkgoldenrod;font-size:18px;height:40px;line-height:40px;display:inline-block;">价格：</span>
@@ -121,13 +124,14 @@
                     <div style="margin-top:10px;">
                         <div style="margin-top:56px;">
                             <div align="left" style="float:left;padding-left:17px;">
-                                <a href="@Url.Action("Cart","Mall",new {GoodsID=Model.GoodsID })" class="jiagou">加购物车</a>
+                                <button  class="jiagou">加购物车</button>
+                                @*href="@Url.Action("Cart","Mall",new {GoodsID=Model.GoodsID })"*@
                             </div>
                             <div align="right">
                                 <button type="button" style="background-color:red; color:white;"  data-toggle="modal" data-target="#myModal1" class="btn1">直接购买</button>
                             </div>
                         </div>
-                            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="margin-top:50px;">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -165,23 +169,20 @@
                             </div>
 
             
-       }           
+       @*}*@           
      </div>
 </div>
 <hr />
-<div id="p1">
-       
+<div id="pp">
+    <div id="p1">
 
-        @*<div id="p2">
-            
-            @Html.Action("Comment", new { goodsid = @Model.GoodsID }))
-        </div>*@
-    <input name="pingluntextarea" style="resize:none;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;height:68px;width:798px;display:block;border:1px solid #c03f3c;" value="" class="t">
-    <button class="btn1">提交</button>
-</div>
-<div id="p2">
+        <input name="pingluntextarea" style="resize:none;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;height:68px;width:623px;display:block;border:1px solid #c03f3c;" value="" class="t">
+        <button class="btn1">提交</button>
+    </div>
+    <div id="p2">
         @Html.Action("Comment", "Mall", new { goodsid = Model.GoodsID })
-  </div>
+    </div>
+</div>
 @*<div style="height:3287px;width:100%;background-color:antiquewhite">
     <div style="width:1024px;height:2600px; margin:0 auto;position:relative;">
         <div style="width:698px;height:678px;float:left">
@@ -213,10 +214,10 @@
 
 <script type="text/javascript" language="javascript">
     $(function (){
-                    var uname = $("#Name");
+        var uname = $("#Name");
 
-                    var add = $("#Address");
-                    var tel = $("#Tel")
+        var add = $("#Address");
+        var tel = $("#Tel")
 
 
         var price = $("input[name='unitprice']");
@@ -224,15 +225,15 @@
         var total =parseInt(price.val()) * parseInt(num.val());
 
         var GoodsID = $("input[name='goods']");
-        
+
         $("#Sub").on("click", function () {
-            
+
             $.ajax({
-                            type: 'post',
-                
+                type: 'post',
+
                 url: "/Mall/DirectBuy",
                 data: {
-                     "total": total,
+                    "total": total,
                     "uname": uname.val(),
                     "tel": tel.val(),
                     "address":add.val(),
@@ -241,18 +242,18 @@
 
 
                 },
-               
+
                 success: function (data) {
 
-                                alert(data.message);
-                                location.href = "/Mall/Order";
+                    alert(data.message);
+                    location.href = "/Mall/Order";
 
-                            },
+                },
                 error: function () {
-                                alert("购物失败");
-                            }
-                        });
-                    });
+                    alert("购物失败");
+                }
+            });
+        });
         var text = $(".t");
         //var text = "dsfsdf";
 
@@ -267,11 +268,13 @@
                     "goodsid":@Model.GoodsID,
                 },
 
+
+
                 success: function (data) {
-                    //alert(data.message)
+                    //alert(data.message);
                     $.ajax({
                         type:'get',
-                    
+
                         url: "/Mall/Comment",
                         data: {
                             "goodsid":@Model.GoodsID,
@@ -280,20 +283,31 @@
                             $('#p2').html(data);
                         },
                         //async: true
-                       
-                });
+
+                    });
 
                 },
-                //async: true
-                //error: function () {
-                //    alert("购物失败");
-                //}
                 
+
             });
         });
+        var num = $("input[name='number']");
+        $(".jiagou").on("click",function(){
+            $.ajax({
+                type: 'post',
 
-        
-    
+                url: "/Mall/Cart",
+                data: {
+                    "GoodsID":@Model.GoodsID,
+                    "Count":num.val()
+                },
+                success:function(data){
+                    
+                    location.href="/Mall/Cart"
+                },
+
+            })
+
+        })
     })
-
 </script>

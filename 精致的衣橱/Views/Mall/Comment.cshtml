@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Models.GoodsComment>
 @{ 
     Layout = null;
-    string tempid;
+    
 }
 <style>
     #tl{
@@ -14,9 +14,11 @@
 
     }
     .touxiang{
-        height:70px;
-        width:55px;
+        height:60px;
+        width:60px;
         float:left;
+        border-radius:50px;
+        /*margin-top:43px;*/
     }
     .btn2{
         width:82px;
@@ -32,23 +34,34 @@
 <div>
     @foreach (var p in Model)
     {
-        tempid = "div" + p.GoodsCommentID.ToString();
-        <img src="~/Images/HeadImages/@p.Users.HeadImage" class="touxiang"/>
-        @p.ComContent
 
-        @p.Users.UserName
-        <div>
-            <input name="huifu"style="border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;height:68px;width:798px;display:block;border:1px solid #c03f3c;" id="tl">
-            <button class="btn2" type="button">回复</button>
-            <input type="hidden" value="@p.GoodsCommentID" name="commentid"/>
-
+        <div style="margin-left:20px;margin-top:43px;">
+            <img src="~/Images/HeadImages/@p.Users.HeadImage" class="touxiang" />
         </div>
 
-        <div id="p3">
-            @*@{Html.RenderAction("Reply", "Mall", new {commentid=@p.GoodsCommentID});}*@
-            @Html.Action("Reply", "Mall", new { commentid = @p.GoodsCommentID });
-        </div>
+
+            <div>
+                <span>@p.Users.UserName:</span>
+                <span> @p.ComContent</span>
+                <span><button id="btn3" type="button" onclick="document.getElementById('@p.GoodsCommentID').style.display=document.getElementById('@p.GoodsCommentID').style.display=='' ? 'none' : '',document.getElementById('btn3').style.display='none'" style="margin-left:426px;">回复</button></span>
+            </div>
+
+            <div id="@p.GoodsCommentID" style="display:none">
+                <input name="huifu" style="border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;height:68px;width:623px;border:1px solid #c03f3c;" id="tl">
+                <button class="btn2" type="button">回复</button>
+                <input type="hidden" value="@p.GoodsCommentID" name="commentid" />
+
+            </div>
+
+
+            <div id="p3">
+
+                @Html.Action("Reply", "Mall", new { commentid = p.GoodsCommentID })
+
+            </div>
+      
     }
+    
 </div>
 
 @*@using (Html.BeginForm("Comment", "Mall", FormMethod.Post))
@@ -90,8 +103,11 @@
     $(function () {
         var com= $("input[name='commentid']");
         var hf = $("input[name='huifu']");
+        
+        
+        
         $(".btn2").on("click", function () {
-
+            
             $.ajax({
                 type: 'post',
 
@@ -100,9 +116,9 @@
                     "commentid":com.val(),
                     "text":hf.val()
                 },
-
+                
                 success: function (data) {
-                    alert("评论成功");
+                    alert(data.message);
                     $.ajax({
                         type:'get',
                     
@@ -111,7 +127,7 @@
                             "commentid":com,
                         },
                         success: function (data) {
-                            $('#p3').html(data);
+                            $("#p3").html(data);
                         },
                         //async: true
                        

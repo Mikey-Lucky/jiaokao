@@ -57,6 +57,22 @@
              height:50px;
              width:100%;
         }
+        /*#tx {
+        width: 101px;
+        height: 50px;
+        float: right;
+        margin-top: -50px;
+        /*border: 1px solid #ffffff;*/
+        /*border: none;
+        margin-right: 120px;
+        border-radius: 10px;
+    }*/
+
+    /*#zx {
+        
+        right: -80px;
+        top: -10px;
+    }*/
     </style>
 </head>
 <body>
@@ -70,16 +86,20 @@
                     <li><a href="@Url.Action("Index","YiChuShow")">衣橱秀场</a></li>
                     <li><a href="@Url.Action("Index","Mall")">购物中心</a></li>
                     <li><a href="@Url.Action("RecomGoods","Recommend")">个性推荐</a></li>
+                    <li></li>
                 
                 </ul>
             </div>
+            
+            
             <div class="nav-r">
                 <div class="login-out">
                     <div class="login">
                         @if (Session["User_id"] != null)
                         {
                           
-                                <a href="@Url.Action("Index","YiChu",new {Userid= @Session["User_id"]})"><img class="daohangimg" src="/Images/HeadImages/@Session["User_image"]" style="height:50px;width:50px;" /></a>
+                                <a href="@Url.Action("Index","YiChu",new {Userid= @Session["User_id"]})"><img class="daohangimg" src="/Images/HeadImages/@Session["User_image"]" style="height:50px;width:50px;" id="pc" /></a>
+                                @*<button id="zx">注销</button>*@
                         }
                         else
                         {
@@ -100,3 +120,31 @@
     </div>
 </body>
 </html>
+
+
+
+
+
+
+@*<script>
+            //function complete() {
+            //    window.location.reload();
+    //}
+    $(function () {
+        $("#zx").on("click", function () {
+
+            var x = document.getElementById("pc").getAttribute("src");
+            if (x == "/Images/HeadImages/@Session["User_image"]") {
+                document.getElementById("pc").src = "~/iconfont/圆圈.png";
+            }
+            //<img src="~/iconfont/圆圈.png" />
+            document.getElementById("pc").title = "点击登录";
+
+        })
+
+    })
+
+    
+
+</script>*@
+
