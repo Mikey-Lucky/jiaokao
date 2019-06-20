@@ -4,31 +4,58 @@
     Layout = null;
 }
 <div>
-    @foreach (var c in Model.coatbytemp)
+    @if (Model.coatbytemp.FirstOrDefault() != null)
     {
-        <img src="/Images/Coat/@c.Image" />
+        <span>外套</span>
     }
+    <div class="ml">
+        @foreach (var c in Model.coatbytemp)
+        {
+            <img src="/Images/Coat/@c.Image" />
+        }
+    </div>
 </div>
 <div>
-    @foreach (var s in Model.shirtbytemp)
+    @if (Model.shirtbytemp.FirstOrDefault() != null)
     {
-        <img src="/Images/shirt/@s.Image" />
+        <span>上单衣</span>
     }
+    <div class="ml">
+        @foreach (var s in Model.shirtbytemp)
+        {
+            <img src="/Images/shirt/@s.Image" />
+        }
+    </div>
 </div>
 <div>
-    @foreach (var n in Model.nethergarmentbytemp)
+    @if (Model.nethergarmentbytemp.FirstOrDefault() != null)
     {
-        <img src="/Images/NetherGarment/@n.Image" />
+        <span>下装</span>
     }
+    <div class="ml">
+        @foreach (var n in Model.nethergarmentbytemp)
+        {
+            <img src="/Images/NetherGarment/@n.Image" />
+        }
+    </div>
 </div>
-<div>
-    @foreach (var s in Model.suitbytemp)
+<div >
+    @if (Model.suitbytemp.FirstOrDefault() != null)
     {
-        <img src="/Images/Suit/@s.Image" />
+        <span>套装</span>
     }
+    <div class="ml">
+        @foreach (var s in Model.suitbytemp)
+        {
+            <img src="/Images/Suit/@s.Image" />
+        }
+    </div>
 </div>
-为你搭配
 
+@if (Model.dapeishangyi.FirstOrDefault() != null)
+{
+    <span>为你搭配</span>
+}
 <div>
     @foreach (var a in Model.dapeishangyi)
     {

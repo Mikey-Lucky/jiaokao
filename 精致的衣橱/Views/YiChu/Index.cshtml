@@ -69,7 +69,8 @@
         /*左侧布局结束*/
         /*右侧布局开始*/
         .main-r {
-            height: 100%;
+            min-height: 800px;
+            /*height: 100%;*/
             width: 79.9%;
             float: right;
             background-color: #f5f5f5;
@@ -84,7 +85,15 @@
             }
              .category li {
                display: inline-block;
+               width: 100px;
+
             }
+           .category li a {
+               color: #000;
+               font-family: 'Roboto Mono', monospace;
+               font-size: 18px;
+           }
+
                 .add {/*添加*/
                 width: 54px;
                 background-color: rgb(202,220,222);
@@ -92,7 +101,8 @@
                 color: white;
                 text-align: center;
                 line-height: 56px;
-                margin-left: 566px;
+                /*margin-left: 566px;*/
+                margin: 10px;
                 }
                 /*搜索开始*/
                 .search {
@@ -125,13 +135,14 @@
             /*导航结束*/
             /*内容布局开始*/
               .tab-pane img {
-               height: 100px;
-               width: 100px;
+               height: 200px;
+               width: 200px;
+               margin-top: 10px;
               }
               
               .tab-pane span {/*衣种标签*/
                display: inline-block;
-               width: 18px;
+               width: 56px;
                color: white;
                background-color: rgb(202,220,222);
                text-align: center;
@@ -147,17 +158,34 @@
             }
               #todayallc div {
                  
-                  width: 400px;
-                  height:100px;
-                  overflow-x: auto;
+                  /*width: 400px;
+                  height:100px;*/
+                  /*overflow-x: auto;*/
               }
             /*内容布局结束*/   
-        /*右侧布局结束*/  
+        /*右侧布局结束*/
+        .ml {
+            margin-left: 38px;
+        }
     </style>
 </head>
 <body>
+    <div class="daohang">
+        @*<h2 style="display: inline-block;">Clothes</h2>*@
+        @*<div class="search">搜索
+                <span class="glyphicon glyphicon-search"></span>
+                <input placeholder="输入你想查询衣服" />
+                <span></span>
+            </div>*@
+        <a href="@Url.Action("AddClothes","YiChu")">
+            <span class="glyphicon glyphicon-plus add">
+            </span>
+        </a>
+    </div>
       <div class="main">
           <div class="main-l">
+              <!-- 天气 -->
+             
               <h2>YiChu</h2>
               <div class="userinfo">
                   <img src="/Images/HeadImages/@Model.Userabout.HeadImage"/>
@@ -185,178 +213,201 @@
                       </li>
                   </ul>
               </div> 
-              <div id="footer"></div>
+              @*<div id="footer">
+              </div>*@
           </div>
           <div class="main-r">
-              <div class="daohang">
-                  <!-- 天气 -->
-                  <!-- weather widget start --><a target="_blank" href="https://ibooked.cn/weather/nanchang-19216"><img src="https://w.bookcdn.com/weather/picture/32_19216_1_17_95a5a6_250_7f8c8d_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=2&domid=588&anc_id=45982" alt="booked.net" /></a><!-- weather widget end -->
-                  @*<h2 style="display: inline-block;">Clothes</h2>*@
-                  @*<div class="search">搜索
-                      <span class="glyphicon glyphicon-search"></span>
-                      <input placeholder="输入你想查询衣服" />
-                      <span></span>
-                  </div>*@
-                  <a href="@Url.Action("AddClothes","YiChu")">
-                      <span class="glyphicon glyphicon-plus add">
-                      </span>
-                  </a>
-              </div>
+           
               <div class="content tab-content" id="yichuContent">
                   <div id="myclothes" class="tab-pane in active">
                       <div class="category">
                           <ul id="myTab">
                               <li class="active">
-                                  <a href="#spring" data-toggle="tab">春</a>
+                                  <a href="#spring" data-toggle="tab">春Spring</a>
                               </li>
                               <li>
-                                  <a href="#summer" data-toggle="tab">夏</a>
+                                  <a href="#summer" data-toggle="tab">夏Summer</a>
                               </li>
                               <li>
-                                  <a href="#autumn" data-toggle="tab">秋</a>
+                                  <a href="#autumn" data-toggle="tab">秋Autumn</a>
                               </li>
                               <li>
-                                  <a href="#winter" data-toggle="tab">冬</a>
+                                  <a href="#winter" data-toggle="tab">冬Winter</a>
                               </li>
                           </ul>
                       </div>
                       <div class="content tab-content" id="myTabContent">
                           <div class="tab-pane in active" id="spring">
                               <div>
-                                  <span>外套<span class="glyphicon glyphicon-plus" style="background-color:aliceblue;display:inline-block;width:100%;height:10px;"></span></span>
-                                  @foreach (var c in Model.springcoat) {
-                              <img src="/Images/Coat/@c.Image" />
-                             }
+                                  @if (Model.springcoat != null)
+                                  { <span>外套</span>}
+                                  <div class="ml"> 
+                                      @foreach (var c in Model.springcoat)
+                                      {
+                                          <img src="/Images/Coat/@c.Image" />
+                                      }
+                                  </div>
                               </div>
                               <div>
                                   <span>上单衣</span>
-                                  @foreach (var s in Model.springshirt)
-                                  {
-                                    <a href="@Url.Action("ShirtDetail", "YiChu", new {id=@s.ShirtID})">
-                                        @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
-                                        <img src="/Images/shirt/@s.Image" />
-                                    </a>
-                                  }
+                                  <div class="ml">
+                                      @foreach (var s in Model.springshirt)
+                                      {
+                                          <a href="@Url.Action("ShirtDetail", "YiChu", new {id=@s.ShirtID})">
+                                              @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
+                                              <img src="/Images/shirt/@s.Image" />
+                                          </a>
+                                      }
+                                  </div>
                               </div>
                               <div>
                                   <span>下装</span>
-                                  @foreach (var n in Model.springnethergarment)
-                              {
-                              <img src="/Images/NetherGarment/@n.Image" />
-                              }
+                                  <div class="ml">
+                                      @foreach (var n in Model.springnethergarment)
+                                      {
+                                          <img src="/Images/NetherGarment/@n.Image" />
+                                      }
+                                  </div>
                               </div>
                               <div>
                                   <span>套装</span>
-                                  @foreach (var s in Model.springsuit) {
-                              <img src="/Images/Suit/@s.Image" />
-                          }
-                              </div>
-                              <p>春天</p>
+                                  <div class="ml">
+                                      @foreach (var s in Model.springsuit)
+                                      {
+                                          <img src="/Images/Suit/@s.Image" />
+                                      }
+                                  </div>
+                              </div>   
                           </div>
                           <div class="tab-pane " id="summer">
                               <div>
-                                  <span>外套</span>
-                                  @foreach (var c in Model.summercoat)
-                          {
-                              <img src="/Images/Coat/@c.Image" />
-                          }
+                                  @if (Model.summercoat.FirstOrDefault()!=null)
+                                  {
+                                      <span>外套</span>
+                                  }
+                                  <div class="ml">
+                                      @foreach (var c in Model.summercoat)
+                                      {
+
+                                          <img src="/Images/Coat/@c.Image" />
+                                      }
+                                  </div>
+
                               </div>
                               <div>
-                                  <span>上单衣</span>
-                                  @foreach (var s in Model.summershirt)
-                                  {
-                                    <a href="@Url.Action("ShirtDetail", "YiChu", new {id=@s.ShirtID})">
-                                        @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
-                                        <img src="/Images/shirt/@s.Image" />
-                                    </a>
+                                  @if (Model.summershirt.FirstOrDefault() != null)
+                                  { 
+                                       <span>上单衣</span>
                                   }
+                                  <div class="ml">
+                                      @foreach (var s in Model.summershirt)
+                                      {
+                                          <a href="@Url.Action("ShirtDetail", "YiChu", new {id=@s.ShirtID})">
+                                              <img src="/Images/shirt/@s.Image" />
+                                          </a>
+                                      }
+                                  </div>
                               </div>
                               <div>
                                   <span>下装</span>
-                                  @foreach (var n in Model.summernethergarment)
-                              {
-                              <img src="/Images/NetherGarment/@n.Image" />
-                              }
+                                  <div class="ml">
+                                      @foreach (var n in Model.summernethergarment)
+                                      {
+                                          <img src="/Images/NetherGarment/@n.Image" />
+                                      }
+                                  </div>
                               </div>
                               <div>
                                   <span>套装</span>
-                                  @foreach (var s in Model.summersuit)
-                          {
-                              <img src="/Images/Suit/@s.Image" />
-                          }
+                                  <div class="ml">
+                                      @foreach (var s in Model.summersuit)
+                                      {
+                                          <img src="/Images/Suit/@s.Image" />
+                                      }
+                                  </div>
                               </div>
-
-                              <p>夏天</p>
                           </div>
                           <div class="tab-pane " id="autumn">
-                           <div>
-                           <span>外套</span>
-                          @foreach (var c in Model.autumncoat)
-                          {
-                              <img src="/Images/Coat/@c.Image" />
-                          }
+                              <div>
+                                   <span>外套</span>
+                                  <div class="ml">
+                                      @foreach (var c in Model.autumncoat)
+                                      {
+                                          <img src="/Images/Coat/@c.Image" />
+                                      }
+                                  </div>
                               </div>
                               <div>
-                               <span>上单衣</span>
-                                 
-                               @foreach (var s in Model.autumnshirt)
-                                  {
-                                    <a href="@Url.Action("ShirtDetail", "YiChu", new {id=@s.ShirtID})">
-                                        @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
-                                        <img src="/Images/shirt/@s.Image" />
-                                    </a>
-                                  }
+                                   <span>上单衣</span> 
+                                  <div class="ml">
+                                      @foreach (var s in Model.autumnshirt)
+                                      {
+                                          <a href="@Url.Action("ShirtDetail", "YiChu", new {id=@s.ShirtID})">
+                                              @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
+                                              <img src="/Images/shirt/@s.Image" />
+                                          </a>
+                                      }
+                                  </div>
                               </div>
                               <div>
-                                  <span>下装</span>
-                               @foreach (var n in Model.autumnnethergarment)
-                              {
-                              <img src="/Images/NetherGarment/@n.Image" />
-                              }
+                                   <span>下装</span>
+                                  <div class="ml">
+                                      @foreach (var n in Model.autumnnethergarment)
+                                      {
+                                          <img src="/Images/NetherGarment/@n.Image" />
+                                      }
+                                  </div>
                               </div>
-                              <p>秋天</p>
                               <div>
                                   <span>套装</span>
-                              @foreach (var s in Model.autumnsuit)
-                              {
-                                  <img src="/Images/Suit/@s.Image" />
-                              }
+                                  <div class="ml">
+                                      @foreach (var s in Model.autumnsuit)
+                                      {
+                                          <img src="/Images/Suit/@s.Image" />
+                                      }
+                                  </div>
                               </div>
                           </div>
                           <div class="tab-pane " id="winter">
                               <div>
                                   <span>外套</span>
-                                  @foreach (var c in Model.wintercoat)
-                          {
-                              <img src="/Images/Coat/@c.Image" />
-                          }
+                                  <div class="ml">
+                                      @foreach (var c in Model.wintercoat)
+                                      {
+                                          <img src="/Images/Coat/@c.Image" />
+                                      }
+                                  </div>
                               </div>
                               <div>
                                   <span>上单衣</span>
-                                  @foreach (var s in Model.wintershirt)
-                                  {
-                                    <a href="@Url.Action("ShirtDetail", "YiChu", new {id=@s.ShirtID})">
-                                        @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
-                                        <img src="/Images/shirt/@s.Image" />
-                                    </a>
-                                  }
+                                  <div class="ml">
+                                      @foreach (var s in Model.wintershirt)
+                                      {
+                                          <a href="@Url.Action("ShirtDetail", "YiChu", new {id=@s.ShirtID})">
+                                              @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
+                                              <img src="/Images/shirt/@s.Image" />
+                                          </a>
+                                      }
+                                  </div>
                               </div>
                               <div>
                                   <span>下装</span>
-                                  @foreach (var n in Model.autumnnethergarment)
-                              {
-                              <img src="/Images/NetherGarment/@n.Image" />
-                              }
+                                  <div class="ml">
+                                      @foreach (var n in Model.autumnnethergarment)
+                                      {
+                                          <img src="/Images/NetherGarment/@n.Image" />
+                                      }
+                                  </div>
                               </div>
-                              <p>冬天</p>
                               <div>
                                   <span>套装</span>
-                                  @foreach (var s in Model.wintersuit)
-                          {
-                              <img src="/Images/Suit/@s.Image" />
-                          }
+                                  <div class="ml">
+                                      @foreach (var s in Model.wintersuit)
+                                      {
+                                          <img src="/Images/Suit/@s.Image" />
+                                      }
+                                  </div>
                               </div>
-
                           </div>
                       </div>
                       <script>
@@ -368,10 +419,10 @@
                       <div id="todayallc">
                           @Html.Action("TianqiClothes")
                       </div>
-                      <div id="todaydapei">
+                      @*<div id="todaydapei">
                           <p>为你搭配</p>
-                          @*@Html.Action("dapeiClothes")*@
-                      </div>
+                          @Html.Action("dapeiClothes")
+                      </div>*@
                   </div>
               </div>
                   <script>
@@ -381,6 +432,11 @@
                   </script>
               </div>
       </div>
+    <!-- 天气 -->
+    <script type="text/javascript">
+                   WIDGET = {FID: 'VFxh36VQLy'}
+    </script>
+    <script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"></script>
     <!--获取天气-->
             @*<button id="getw">查询天气</button>
             <p class="temperature"></p>

@@ -21,8 +21,8 @@
            margin-left: 80px;
         }
         .userinfobox img {
-            height: 50px;
-            width: 50px;
+            height: 53px;
+            width: 53px;
             border-radius: 50%;
             vertical-align: baseline;
             background-color: #f5f5f5;
@@ -30,6 +30,7 @@
         }
         .nav {
             font-family: 'Roboto Mono', monospace;
+            width: 1350px;
         }
         .nav li {
             font-size: 22px;
@@ -235,8 +236,17 @@
                             <li class="logo">JZYC</li>
                             @if (Session["User_id"] != null)
                             {
-                                <li class="zhuxiaobox" style="display: none;"><span class="iconfont zhuxiao">&#xe610;</span></li>
-                                <li  class="userinfobox"><a href="@Url.Action("Index","YiChu",new {Userid= @Session["User_id"]})"><img class="daohangimg" src="/Images/HeadImages/@Session["User_image"]" /></a></li>
+                                @*<li class="zhuxiaobox" style="display: none;"><span class="iconfont zhuxiao">&#xe610;</span></li>*@
+                                <li  class="userinfobox">
+                                <a href="@Url.Action("Index","YiChu",new {Userid= @Session["User_id"]})">
+                                    <img class="daohangimg" src="/Images/HeadImages/@Session["User_image"]" />
+                                </a> 
+                                    <span style="font-size: 16px;"><a href="@Url.Action("RegisterLogin", "Users")" style="color:#f5f5f5">切换账号</a></span>
+                                </li>
+                                @*<li>
+                                    
+                                </li>*@
+                                   
                             }
                             else
                             {
