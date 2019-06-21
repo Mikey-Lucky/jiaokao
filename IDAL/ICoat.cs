@@ -13,7 +13,9 @@ namespace IDAL
         IQueryable<Coat> CoatBySeason(string season,int userid);
         //通过温度找外套
         IQueryable<Coat> CoatByTemp(int temp,int userid);
-        //添加上衣
+        //添加外套
         void AddCoat(Coat coat);
+        //根据id删除外套
+        void DeleteCoatById(int id);
     }
 }

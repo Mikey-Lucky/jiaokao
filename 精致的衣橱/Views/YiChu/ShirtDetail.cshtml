@@ -1,4 +1,7 @@
 ﻿@model Models.Shirt
+@{
+    Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
+}
 
 <div>
     <h4>Shirt</h4>
@@ -39,31 +42,20 @@
         <dt>
             @Html.DisplayNameFor(model => model.Image)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Image)
-            @Html.EditorFor(model => model.Image)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Time)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Time)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Wardrobe.WardrobeID)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Wardrobe.WardrobeID)
         </dd>
-
     </dl>
 </div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ShirtID })*@ |
-    @Html.ActionLink("Back to List", "Index")
-</p>

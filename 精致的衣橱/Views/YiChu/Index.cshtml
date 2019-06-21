@@ -177,6 +177,7 @@
                 <input placeholder="输入你想查询衣服" />
                 <span></span>
             </div>*@
+        @*<img src="~/Images/yichu/1.jpg" />*@
         <a href="@Url.Action("AddClothes","YiChu")">
             <span class="glyphicon glyphicon-plus add">
             </span>
@@ -184,8 +185,6 @@
     </div>
       <div class="main">
           <div class="main-l">
-              <!-- 天气 -->
-             
               <h2>YiChu</h2>
               <div class="userinfo">
                   <img src="/Images/HeadImages/@Model.Userabout.HeadImage"/>
@@ -214,6 +213,7 @@
                   </ul>
               </div> 
               @*<div id="footer">
+                  
               </div>*@
           </div>
           <div class="main-r">
@@ -245,6 +245,8 @@
                                       @foreach (var c in Model.springcoat)
                                       {
                                           <img src="/Images/Coat/@c.Image" />
+                                        <a class="delcoat">删除</a>
+                                        <input class="coatid" style="display: none" value="@c.CoatID">
                                       }
                                   </div>
                               </div>
@@ -257,6 +259,8 @@
                                               @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
                                               <img src="/Images/shirt/@s.Image" />
                                           </a>
+                                          <a class="delshirt">删除</a>
+                                          <input class="shirtid" style="display: none" value="@s.ShirtID">
                                       }
                                   </div>
                               </div>
@@ -266,6 +270,8 @@
                                       @foreach (var n in Model.springnethergarment)
                                       {
                                           <img src="/Images/NetherGarment/@n.Image" />
+                                          <a class="delne">删除</a>
+                                          <input class="neid" style="display: none" value="@n.NetherGarmentID">
                                       }
                                   </div>
                               </div>
@@ -275,6 +281,8 @@
                                       @foreach (var s in Model.springsuit)
                                       {
                                           <img src="/Images/Suit/@s.Image" />
+                                        <a class="delsuit">删除</a>
+                                        <input class="suitid" style="display: none" value="@s.SuitID">
                                       }
                                   </div>
                               </div>   
@@ -290,6 +298,8 @@
                                       {
 
                                           <img src="/Images/Coat/@c.Image" />
+                                        <a class="delcoat">删除</a>
+                                            <input class="coatid" style="display: none" value="@c.CoatID">
                                       }
                                   </div>
 
@@ -305,6 +315,8 @@
                                           <a href="@Url.Action("ShirtDetail", "YiChu", new {id=@s.ShirtID})">
                                               <img src="/Images/shirt/@s.Image" />
                                           </a>
+                                        <a class="delshirt">删除</a>
+                                        <input class="shirtid" style="display: none" value="@s.ShirtID">
                                       }
                                   </div>
                               </div>
@@ -314,6 +326,8 @@
                                       @foreach (var n in Model.summernethergarment)
                                       {
                                           <img src="/Images/NetherGarment/@n.Image" />
+                                        <a class="delne">删除</a>
+                                            <input class="neid" style="display: none" value="@n.NetherGarmentID">
                                       }
                                   </div>
                               </div>
@@ -323,6 +337,9 @@
                                       @foreach (var s in Model.summersuit)
                                       {
                                           <img src="/Images/Suit/@s.Image" />
+                                        <a class="delsuit">删除</a>
+                                        <input class="suitid" style="display: none" value="@s.SuitID">
+                                       
                                       }
                                   </div>
                               </div>
@@ -334,6 +351,8 @@
                                       @foreach (var c in Model.autumncoat)
                                       {
                                           <img src="/Images/Coat/@c.Image" />
+                                          <a class="delcoat">删除</a>
+                                         <input class="coatid" style="display: none" value="@c.CoatID">
                                       }
                                   </div>
                               </div>
@@ -346,6 +365,8 @@
                                               @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
                                               <img src="/Images/shirt/@s.Image" />
                                           </a>
+                                        <a class="delshirt">删除</a>
+                                        <input class="shirtid" style="display: none" value="@s.ShirtID">
                                       }
                                   </div>
                               </div>
@@ -355,6 +376,8 @@
                                       @foreach (var n in Model.autumnnethergarment)
                                       {
                                           <img src="/Images/NetherGarment/@n.Image" />
+                                        <a class="delne">删除</a>
+                                            <input class="neid" style="display: none" value="@n.NetherGarmentID">
                                       }
                                   </div>
                               </div>
@@ -364,6 +387,9 @@
                                       @foreach (var s in Model.autumnsuit)
                                       {
                                           <img src="/Images/Suit/@s.Image" />
+                                        <a class="delsuit">删除</a>
+                                        <input class="suitid" style="display: none" value="@s.SuitID">
+
                                       }
                                   </div>
                               </div>
@@ -375,6 +401,8 @@
                                       @foreach (var c in Model.wintercoat)
                                       {
                                           <img src="/Images/Coat/@c.Image" />
+                                           <a class="delcoat">删除</a>
+                                            <input class="coatid" style="display: none" value="@c.CoatID">
                                       }
                                   </div>
                               </div>
@@ -387,6 +415,8 @@
                                               @*@Html.ActionLink("ShirtDetail", "ShirtDetail", new { id =@s.ShirtID})*@
                                               <img src="/Images/shirt/@s.Image" />
                                           </a>
+                                        <a class="delshirt">删除</a>
+                                        <input class="shirtid" style="display: none" value="@s.ShirtID">
                                       }
                                   </div>
                               </div>
@@ -396,6 +426,8 @@
                                       @foreach (var n in Model.autumnnethergarment)
                                       {
                                           <img src="/Images/NetherGarment/@n.Image" />
+                                        <a class="delne">删除</a>
+                                            <input class="neid" style="display: none" value="@n.NetherGarmentID">
                                       }
                                   </div>
                               </div>
@@ -405,6 +437,8 @@
                                       @foreach (var s in Model.wintersuit)
                                       {
                                           <img src="/Images/Suit/@s.Image" />
+                                           <a class="delsuit">删除</a>
+                                            <input class="suitid" style="display: none" value="@s.SuitID">
                                       }
                                   </div>
                               </div>
@@ -438,10 +472,6 @@
     </script>
     <script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"></script>
     <!--获取天气-->
-            @*<button id="getw">查询天气</button>
-            <p class="temperature"></p>
-            <p class="temperature1"></p>*@
-            @*<p class="temperature2"></p>*@
             <script>
                 $(function () {
                     // Ajax请求：一般在刷新页面中的局部数据时，会使用ajax请求。该请求不会去重新刷新或请求这个页面中的所有数据，而只是动态的修改一部分数据。
@@ -485,21 +515,59 @@
                             async: true
                         });
                 })
-                    //$("#chufa").click(function () {
-                    //    $.ajax({
-                    //        url: '/YiChu/Index',
-                    //        type: 'Post',
-                    //        data: 'weather=27',
-                    //        error: function (data, status) {
-                    //            console.log('请求失败：', status, data);
-                    //        },
-                    //        success: function (data, status) {
-                    //            // 请求成功，得到json数据，解析json数据，将数据展示到页面中。
-                    //            console.log('请求成功：', data);
-                    //        },
-                    //        async: true
-                    //    });
-                    //})     
+                  
+                //删除上衣
+                $(".delshirt").click(function () {
+                    var shirtid = $(this).next().val();
+                    $.ajax({
+                        type: "get",
+                        url: "/YiChu/delshirt",
+                        data: { "shirtid": shirtid },
+                        success: function (data) {
+                            alert(data);
+                        },
+                        async: true
+                    });
+                })
+                //删除外套
+                $(".delcoat").click(function () {
+                    var coatid = $(this).next().val();
+                    $.ajax({
+                        type: "get",
+                        url: "/YiChu/delcoat",
+                        data: { "coatid": coatid },
+                        success: function (data) {
+                            alert(data);
+                        },
+                        async: true
+                    });
+                })
+                //删除下装
+                $(".delne").click(function () {
+                    var neid = $(this).next().val();
+                    $.ajax({
+                        type: "get",
+                        url: "/YiChu/delne",
+                        data: { "neid": neid },
+                        success: function (data) {
+                            alert(data);
+                        },
+                        async: true
+                    });
+                })
+                //删除套装
+                $(".delsuit").click(function () {
+                    var suitid = $(this).next().val();
+                    $.ajax({
+                        type: "get",
+                        url: "/YiChu/delsuit",
+                        data: { "suitid": suitid },
+                        success: function (data) {
+                            alert(data);
+                        },
+                        async: true
+                    });
+                })
     </script>
 </body>
 </html>

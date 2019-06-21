@@ -28,5 +28,9 @@ namespace BLL
         {
             return isuit.SuitByTemp(temp,userid);
         }
+        public void DeleteSuitById(int id)
+        {
+            isuit.DeleteSuitById(id);
+        }
     }
 }
