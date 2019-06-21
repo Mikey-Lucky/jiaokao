@@ -460,8 +460,8 @@
                                 @if (j <= 3)
                                 {
                                     <div class="live-abstract">
-                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/43.jpg)"></a>
-                                        <img src="~/Images/GoodsImages/43.jpg" />
+                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
+
                                         <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
@@ -637,7 +637,7 @@
         <img src="~/iconfont/春.png" style="height:150px;width:150px;"/>
         <div id="past-lives" class="live-group">
 
-            @foreach (var item in Model.HotGoods)
+            @foreach (var item in Model.ChunQiu)
             {
                 <div>
                     @{i++;}
@@ -766,7 +766,7 @@
         <img src="~/iconfont/夏.png" style="height:150px;width:150px;" />
         <div id="past-lives" class="live-group">
 
-            @foreach (var item in Model.HotGoods)
+            @foreach (var item in Model.Xia)
             {
                 <div>
                     @{i++;}
@@ -843,7 +843,7 @@
         <img src="~/iconfont/秋.png" style="height:150px;width:150px;" />
         <div id="past-lives" class="live-group">
 
-            @foreach (var item in Model.HotGoods)
+            @foreach (var item in Model.Dong)
             {
                 <div>
                     @{i++;}
@@ -920,7 +920,7 @@
         <img src="~/iconfont/冬.jpg" style="height:150px;width:150px;" />
         <div id="past-lives" class="live-group">
 
-            @foreach (var item in Model.HotGoods)
+            @foreach (var item in Model.Dong)
             {
                 <div>
                     @{i++;}
