@@ -221,6 +221,17 @@
             color: #000;
         }
         /*************热门商品结束***********************/
+        .foot li {
+            display: inline-block;
+            list-style-image: url(../shouyeimg/logo.png);
+            height: 100px;
+            width: 100px;
+            line-height: 50px;
+            margin-left: 37px;
+        }
+            .foot li a {
+                color: #000;
+            }
     </style>
         <!-- 首页第一块板块 -->
         <div class="shouyeban1 ">
@@ -258,38 +269,30 @@
                             }
                         </ul>
                     </div>
-                    @*<div class="nav-r">
-                        <div class="login-out">
-                            <div class="login">
-                                <a href="#">登陆</a>
-                                <a href="#">注册</a>
-                            </div>
-                            <div class="logout"></div>
+                </div>
+                <a href="@Url.Action("Index","YiChu",new {Userid= @Session["User_id"]})">
+                    <div class="yichu">
+                        <div class="leftdoor">
+                            <img src="~/shouyeimg/leftzheng.jpg" />
+                            <img src="~/shouyeimg/fan.jpg" />
                         </div>
-                        <div class="zoom"></div> 
-                    </div>*@
-                </div>
-                <div class="yichu">
-                    <div class="leftdoor">
-                        <img src="~/shouyeimg/leftzheng.jpg" />
-                        <img src="~/shouyeimg/fan.jpg" />
+                        <div class="rightdoor">
+                            <img src="~/shouyeimg/rightzheng.jpg" />
+                            <img src="~/shouyeimg/fan.jpg" />
+                        </div>
+                        <div class="dandoor">
+                            <img src="~/shouyeimg/danzheng.jpg" />
+                            <img src="~/shouyeimg/fan.jpg" />
+                        </div>
                     </div>
-                    <div class="rightdoor">
-                        <img src="~/shouyeimg/rightzheng.jpg" />
-                        <img src="~/shouyeimg/fan.jpg" />
-                    </div>
-                    <div class="dandoor">
-                        <img src="~/shouyeimg/danzheng.jpg" />
-                        <img src="~/shouyeimg/fan.jpg" />
-                    </div>
-                </div>
+                </a>
             </div>
             <div class="foot">
                 <ul>
-                    <li>热门笔记</li>
-                    <li>热门视频</li>
-                    <li>新品上架</li>
-                    <li>热销商品</li>
+                    <li><a href="#note">热门笔记</a> </li>
+                    <li><a href="#video">热门视频</a> </li>
+                    <li><a href="#xs">新品上架</a></li>
+                    <li><a href="#rs">热销商品</a></li>
                 </ul>
             </div>
         </div>
@@ -298,22 +301,24 @@
         <div class="panel panel-default" id="video">
             <div class="panel-heading">
                 <h3 class="panel-title" >
-                    热门视频<span style="padding-left:950px;">更多>></span>
+                    热门视频<span style="padding-left:950px;"><a href="@Url.Action("Index","YiChuShow")" style="color: #000">更多>></a></span>
                 </h3>
             </div>
             <div class="panel-body row " >
                 @foreach (var v in Model.videos)
                 {
-                    <div class="col-md-2 col-sm-4 hotvideo">
-                        <div style="width: 120px;height: 120px;overflow: hidden">
-                            <img src="/Images/videoimg/@v.Image" data-toggle="tooltip" data-placement="right" title="" />
+                    <a href="@Url.Action("VideoDetail", "YiChuShow", new {id=@v.VideoID})">
+                        <div class="col-md-2 col-sm-4 hotvideo">
+                            <div style="width: 120px;height: 120px;overflow: hidden">
+                                <img src="/Images/videoimg/@v.Image" data-toggle="tooltip" data-placement="right" title="" />
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 }
             </div>
         </div>
         <!-- 热门笔记-->
-        <div class="panel panel-default">
+        <div id="note" class="panel panel-default">
             <div class="panel-heading">
                 <div id="inner-header" class="">
                     <div class="container">
@@ -334,7 +339,7 @@
                 {
                     
                     <div class="col-md-3 col-sm-4 " style="height:400px;">
-                        <a href="#">
+                        <a href="@Url.Action("NoteDetail", "YiChuShow", new {id=@n.NoteID})">
                             @*<div class="topshadow ">
                                 <span class="glyphicon glyphicon-thumbs-up">&nbsp;@n.likenum</span>
                             </div>*@
@@ -350,7 +355,7 @@
             </div>
         </div>
         <!-- 热门商品-->
-        <div class="panel panel-default">
+        <div id="rs" class="panel panel-default">
                 <div class="panel-heading">
                             <div id="inner-header" class="">
                                 <div class="container">
@@ -371,7 +376,7 @@
                     {
                         <div class="col-md-4 col-sm-4 col-xs-12 rst-item-box-post">
                             <div class="rst-item-inner-box-post">
-                                <a href="#">
+                                <a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })">
                                     <div class="fully-figcaption">
                                         <img alt="" src="/Images/Noteimg/@g.GoodsImage" />
                                         <div class="rst-title-box">
@@ -391,7 +396,7 @@
                 </div>
             </div>
         <!-- 新品上架-->
-        <div class="panel panel-default">
+        <div id="xs" class="panel panel-default">
                 <div class="panel-heading">
                     <div id="inner-header" class="">
                         <div class="container">
@@ -408,7 +413,7 @@
                     @foreach (var g in Model.newgoods)
                     {
                         <div class="col-md-2 col-sm-4 goods" style="height:340px;">
-                                <a href="#">
+                                <a href="@Url.Action("GoodsDetails", "Mall", new { id = @g.GoodsID })">
                                 <img src="/Images/Noteimg/@g.GoodsImage" style="width:  100%;height: 300px;" />
                                 <span class="label label-default" style="margin-top: -20px;">@g.Style</span>
                                 <span>@g.Name</span>
@@ -426,60 +431,105 @@
         </div>
         <br />
         <hr />
-        <h2>友情连接</h2>
-        <br />
-        <br />
-        <div class="row" style="color: #000000;">
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">哈哈网</a>
-            </div>
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">欸嘿嘿网</a>
-            </div>
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">韩娱网</a>
-            </div>
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">爱豆</a>
-            </div>
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">u五五零零</a>
-            </div>
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">迟迟但是</a>
-            </div>
-            <br />
-            <br />
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">隐隐音乐</a>
-            </div>
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">风景画</a>
-            </div>
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">嘎嘎嘎</a>
-            </div>
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">凤飞飞</a>
-            </div>
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">反反复复</a>
-            </div>
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">报告会</a>
-            </div>
-            <br />
-            <br />
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">哈哈哈</a>
-            </div>
-            <div class="col-md-2">
-                <a href="#" style="color: #000000;font-size: medium;">咯咯咯</a>
-            </div>
-        </div>
-        <hr />
+     
+      
         <footer>
-            Copyright ©2019 精致的衣橱 lq wjk
+            <style>
+                #index_footer {
+                    background: #333;
+                    padding: 25px 0 0;
+                }
+                .wrapper-996 {
+    width: 996px;
+}
+.wrapper {
+    position: relative;
+    margin: 0 auto;
+    border: 0;
+}
+#index_footer .column {
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+}
+#index_footer .column > a.title {
+    font-size: 16px;
+    color: #ddd;
+    padding-bottom: 20px;
+}
+#index_footer .column > a {
+    color: #bbb;
+    display: block;
+    padding-bottom: 15px;
+    text-decoration: none;
+}
+#index_footer .follow-us {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: 1px solid #555;
+        border-top-width: 1px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+    border-width: 0 1px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    width: 248px;
+}
+#index_footer .wrapper.wrapper-996.bottom {
+    background-color: #000;
+    color: #999;
+    margin-top: 30px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#index_footer .wrapper.wrapper-996.bottom .divider {
+    color: #555;
+}
+#index_footer .wrapper.wrapper-996.bottom a {
+    color: #999;
+}
+            </style>
+            <div id="index_footer">
+            <div class="wrapper wrapper-996">
+                <div class="column">
+                <a href="#" class="title">精致的衣橱首页</a>
+                <a href="#" rel="nofollow">衣橱秀场</a>
+                <a href="#">商城</a>
+                <a href="#" rel="nofollow">个性推荐</a>
+                </div>
+                <div class="column">
+                <a class="title">联系与合作</a>
+                <a href="#" rel="nofollow">联系我们</a>
+                <a href="#" rel="nofollow">用户反馈</a>
+                <a href="#" rel="nofollow">精致衣橱 LOGO 标准文档</a>
+                </div>
+                <div class="column">
+                <a class="title">移动客户端</a>
+                <a href="#" rel="nofollow">精致 iPhone 版 木有</a>
+                <a href="#" rel="nofollow">精致 Android 版 木有</a>
+                <a href="#" rel="nofollow">精致 HD 木有</a>
+                </div>
+                <div class="column follow-us">
+                <a class="title">关注我们</a>
+                <a href="#" target="_blank" rel="nofollow">新浪微博：你猜</a>
+                <a>联系客服：<span class="qiyu chat">在线客服</span></a>
+                <a class="weixin">官方微信：<img src="/img/about/about_footer_code.png" data-baiduimageplus-ignore="1">
+                <img src="/img/about/weixin_huaban.png" data-baiduimageplus-ignore="1" class="code">
+                </a>
+                </div>
+                </div>
+                <div class="wrapper wrapper-996 bottom">© 工作室3522A &nbsp;&nbsp;<span class="divider">|</span>&nbsp;&nbsp;<img src="/img/ic_record.png" alt="备案图标" style="margin-right: 3px;" data-baiduimageplus-ignore="1">
+                <a target="_blank" href="#">浙公网安备 33010602001880号 &nbsp;&nbsp;</a>
+                <span class="divider">|</span>&nbsp;&nbsp;<a target="_blank" href="#">备案信息: 浙B2-20110282-7</a>
+                </div>
+            </div>
         </footer>
         <br />
 
