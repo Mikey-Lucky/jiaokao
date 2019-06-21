@@ -272,7 +272,7 @@
                                     @if (i <= 3)
                                     {
                                         <div class="live-abstract">
-                                            <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                            <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                             <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                                 <h2 class="la-title">@item.Name</h2>
                                                 <h2 class="la-title"></h2>
@@ -313,7 +313,7 @@
                                 {
 
                                     <div class="live-abstract">
-                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                         <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
@@ -355,7 +355,7 @@
                                     <div class="@i" id ="@i"style="display:none">
                                         <div >
                                             <div class="live-abstract">
-                                                <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                                <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                                 <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                                     <h2 class="la-title">@item.Name</h2>
                                                     <h2 class="la-title"></h2>
@@ -460,7 +460,8 @@
                                 @if (j <= 3)
                                 {
                                     <div class="live-abstract">
-                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
+                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/43.jpg)"></a>
+                                        <img src="~/Images/GoodsImages/43.jpg" />
                                         <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
@@ -501,7 +502,7 @@
                                 {
 
                                     <div class="live-abstract">
-                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                         <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
@@ -543,7 +544,7 @@
                                 <div  id="@j" style="display:none">
                                     
                                         <div class="live-abstract">
-                                            <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                            <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                             <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                                 <h2 class="la-title">@item.Name</h2>
                                                 <h2 class="la-title"></h2>
@@ -645,7 +646,7 @@
                             @if (i <= 3)
                             {
                                 <div class="live-abstract">
-                                    <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                    <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                     <a href="#" target="_blank">
                                         <h2 class="la-title">@item.Name</h2>
                                         <h2 class="la-title"></h2>
@@ -670,7 +671,7 @@
                                 @if (i > 3 && i <= 9)
                                 {
                                     <div class="live-abstract">
-                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                         <a href="#" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
@@ -696,7 +697,7 @@
                                 @if (i > 9 && i <= 18)
                                 {
                                     <div class="live-abstract">
-                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                         <a href="#" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
@@ -722,7 +723,7 @@
                                 @if (i >18)
                                 {
                                     <div class="live-abstract">
-                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                         <a href="#" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
@@ -774,7 +775,7 @@
                             @if (i <= 3)
                             {
                                 <div class="live-abstract">
-                                    <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                    <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                     <a href="#" target="_blank">
                                         <h2 class="la-title">@item.Name</h2>
                                         <h2 class="la-title"></h2>
@@ -799,7 +800,7 @@
                                 @if (i > 3 && i <= 3 * i)
                                 {
                                     <div class="live-abstract">
-                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                         <a href="#" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
@@ -851,7 +852,7 @@
                             @if (i <= 3)
                             {
                                 <div class="live-abstract">
-                                    <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                    <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                     <a href="#" target="_blank">
                                         <h2 class="la-title">@item.Name</h2>
                                         <h2 class="la-title"></h2>
@@ -876,7 +877,7 @@
                                 @if (i > 3 && i <= 3 * i)
                                 {
                                     <div class="live-abstract">
-                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                         <a href="#" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
@@ -928,7 +929,7 @@
                             @if (i <= 3)
                             {
                                 <div class="live-abstract">
-                                    <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                    <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                     <a href="#" target="_blank">
                                         <h2 class="la-title">@item.Name</h2>
                                         <h2 class="la-title"></h2>
@@ -953,7 +954,7 @@
                                 @if (i > 3 && i <= 3 * i)
                                 {
                                     <div class="live-abstract">
-                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/1.2.jpg)"></a>
+                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
                                         <a href="#" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
