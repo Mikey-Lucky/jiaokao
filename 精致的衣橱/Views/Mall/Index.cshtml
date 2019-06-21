@@ -1,7 +1,7 @@
 ﻿@model 精致的衣橱.Models.MallViewModel
 @{
-    //Layout = "~/Views/Shared/_LayoutMall.cshtml";
-    Layout = null;
+Layout = "~/Views/Shared/_LayoutMall.cshtml";
+
 
 }
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -174,11 +174,20 @@
             
             display: block;
         }
+        /*.nav-r{
+            margin-top:-59px;
+        }*/
+        .la-bottom-item{
+            width:37%;
+        }
+        #zannum{
+            font-size:20px;
+        }
         
 </style>
-@*<div class="container" style="position:absolute">
+<div class="container" style="position:relative">
 
-        <div class="Cooldog_container">
+        <div class="Cooldog_container" style="margin-left:25px;">
             <div class="Cooldog_content">
                 <ul>
                     <li class="p1">
@@ -238,7 +247,7 @@
             </div>
         </div>
         <br />
-    </div>*@
+    </div>
 
 
 
@@ -246,24 +255,31 @@
 
 @{ int i = 0;}
 @{ int j = 0;}
+@{ int a = 0;}
+@{ int b = 0;}
+@{ int c = 0;}
 
-<div class="outer">
+@*<div class="outer" style="margin-top:20px;">*@
+<div style="position:relative;background-color:#f7f7f7;margin-top:20px;">
     <div class="inner clearfix">
-        <section id="past-lives-head">
-            <div>
-                <h1>AllGoods</h1>
-            </div>
-        </section>
+       
+       
         @*最新商品*@
-        <div>
-            <img src="~/iconfont/新品.png" style="height:200px;width:200px;border-radius:100%;overflow:hidden;margin:auto 519px;margin-bottom:22px;" />
-            
+        <div style="text-align:center;position:relative;margin-bottom:50px;">
+            <div style="font-size:0;width:300px;height:1px;background-color:#d9d9d9;position:absolute;left:50%;top:14px;z-index:1;margin-left:-415px;margin-top:25px;">
+
+            </div>
+            <div style="z-index:2;font-size:50px;">最新上架</div>
+            <div style="font-size:0;width:300px;height:1px;background-color:#d9d9d9;position:absolute;left:50%;top:14px;z-index:1;margin-left:113px;margin-top:25px;">
+
+            </div>
         </div>
         <div id="past-lives" class="live-group">
             
             @foreach (var item in Model.NewGoods)
             {
                 <div>
+                    <input type="hidden" value="@item.GoodsID" class="goodsid" />
                     @{i++;}
                     <ul>
                         <li>
@@ -284,24 +300,33 @@
                                             <p><a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" class="btn btn-default">立即购买</a></p>
                                             <p class="la-anchor-name">@item.Style</p>
                                             <div class="la-bottom">
-                                                <span class="la-bottom-item">
-                                                    点赞
+                                                <span style="position:relative;display:inline-block;width:37%;line-height:38px;font-size:14px;" id="@item.GoodsID">
+                                                    <img src="~/iconfont/点赞.png" style="cursor:pointer;width:30px;height:30px;" />
                                                 </span>
+                                                <span class="@item.GoodsID">@item.ThumbNum</span>
+                                                <span style="margin-left:10px;">|</span>
                                                 <span class="la-bottom-item">
-                                                    <a href="#" target="_blank">评论</a>
+                                                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">评论</a>
                                                 </span>
                                             </div>
+                                            
                                         </div>
-                                        <div>
-                                            @if (i == 3)
-                                            {
-                                                <div id="past-lives-more">
-                                                    <div id="p" style="cursor:pointer">
-                                                        <span>查看更多</span>
-                                                    </div>
-                                                </div>
-                                            }
-                                        </div>
+                                        <script>
+                                            $(function () {
+                                               $("#@item.GoodsID").on("click", function ()  {   //赞
+                                                    var goodsid = $(".goodsid").val();
+                                                    $.ajax({
+                                                        type: "post",
+                                                        url: "/Mall/Zan",
+                                                        data: { "goodsid": goodsid },
+                                                        success: function (data) {
+                                                            $(".@item.GoodsID").text(data);
+                                                        }
+                                                    });
+                                                })
+                                            })
+                                        </script>
+                                        
                                     }
                                     
 
@@ -309,7 +334,7 @@
                             
                             
                             <div id="@item.GoodsID" style="display:none">
-                                @if (i > 3 && i <= 9)
+                                @if (i > 3 )
                                 {
 
                                     <div class="live-abstract">
@@ -322,18 +347,20 @@
                                             <span class="price">¥&nbsp; @item.Unitprice</span>
                                             <span class="category-tag">@item.Type</span>
                                         </p>
-                                        <p><a href="#" class="btn btn-default">立即购买</a></p>
+                                        <p><a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" class="btn btn-default">立即购买</a></p>
                                         <p class="la-anchor-name">@item.Style</p>
                                         <div class="la-bottom">
-                                            <span class="la-bottom-item">
-                                                点赞
+                                            <span style="position:relative;display:inline-block;width:37%;line-height:38px;font-size:14px;" id="@item.GoodsID">
+                                                <img src="~/iconfont/点赞.png" style="cursor:pointer;width:30px;height:30px;" />
                                             </span>
+                                            <span class="@item.GoodsID">@item.ThumbNum</span>
+                                            <span style="margin-left:10px;">|</span>
                                             <span class="la-bottom-item">
                                                 <a href="#" target="_blank">评论</a>
                                             </span>
                                         </div>
                                     </div>
-                                    <div>
+                                    @*<div>
                                         @if (i == 9)
                                         {
                                             <div id="past-lives-more">
@@ -342,53 +369,13 @@
                                                 </div>
                                             </div>
                                         }
-                                    </div>
+                                    </div>*@
+                                    
                                 }
                             </div>                                    
 
                                         
-                            
-                            
-                            
-                                @if (i > 9)
-                                {
-                                    <div class="@i" id ="@i"style="display:none">
-                                        <div >
-                                            <div class="live-abstract">
-                                                <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
-                                                <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
-                                                    <h2 class="la-title">@item.Name</h2>
-                                                    <h2 class="la-title"></h2>
-                                                </a>
-                                                <p class="la-category">
-                                                    <span class="price">¥&nbsp; @item.Unitprice</span>
-                                                    <span class="category-tag">@item.Type</span>
-                                                </p>
-                                                <p><a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" class="btn btn-default">立即购买</a></p>
-                                                <p class="la-anchor-name">@item.Style</p>
-                                                <div class="la-bottom">
-                                                    <span class="la-bottom-item">
-                                                        点赞
-                                                    </span>
-                                                    <span class="la-bottom-item">
-                                                        <a href="#" target="_blank">评论</a>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        @if (i == Model.NewGoods.Count())
-                                        {
-                                            <div id="past-lives-more">
-                                                <div id="s" style="cursor:pointer;display:none">
-                                                    <span>没有更多了</span>
-                                                </div>
-                                            </div>
-                                        }
-                                    </div>
-                                }
-                                    
+                           
 
 
                                 
@@ -401,39 +388,64 @@
                 </div>
                 <script>
 
-                    $(function () {
+                    //$(function () {
 
-                        $("#p").on("click", function() {
+                        @*$("#p").on("click", function() {
                             document.getElementById(@item.GoodsID).style.display = "block";
                             $("#p").hide();
                             $("#t").show();
 
-                        })
+                        })*@
 
 
                     //})
                     //$(function () {
 
-                        $("#t").on("click", function() {
+                        @*$("#t").on("click", function() {
 
                             $("#t").hide();
-                            
+
                             $("#@i").show();
-                            $("#s").show();
+                            $("#s").show();*@
                             @*document.getElementById(@i).style.display = "block";*@
 
 
 
 
-                        })
+                    //    })
 
 
+                    //})
+                    $(function () {
+                           $("#@item.GoodsID").on("click", function ()  {   //赞
+                                   var goodsid = $(".goodsid").val();
+                                   $.ajax({
+                                           type: "post",
+                                           url: "/Mall/Zan",
+                                           data: { "goodsid": goodsid },
+                                           success: function (data) {
+                                           $(".@item.GoodsID").text(data);
+                                            }
+                                     });
+                               })
+                   
+               
+                    $("#new").on("click", function () {
+                        document.getElementById(@item.GoodsID).style.display="block";
+                        document.getElementById("new").innerHTML="更多商品，敬请期待";
+                        //document.getElementById("mw-more").href="javascript:showdiv()";
                     })
 
+                    })
 
                 </script>
                 
                         }
+            <div id="past-lives-more">
+                <div id="new" style="cursor:pointer">
+                    <span>查看更多</span>
+                </div>
+            </div>
             
             
            
@@ -441,9 +453,14 @@
         
         
         @*热销商品*@
-        <div class="h">
-            <img src="~/iconfont/热卖.png" class="h1" />
-            <div class="h2">热销商品</div>
+        <div style="text-align:center;position:relative;margin-bottom:50px;">
+            <div style="font-size:0;width:300px;height:1px;background-color:#d9d9d9;position:absolute;left:50%;top:14px;z-index:1;margin-left:-415px;margin-top:25px;">
+
+            </div>
+            <div style="z-index:2;font-size:50px;">热销商品</div>
+            <div style="font-size:0;width:300px;height:1px;background-color:#d9d9d9;position:absolute;left:50%;top:14px;z-index:1;margin-left:113px;margin-top:25px;">
+
+            </div>
         </div>
         <div id="past-lives" class="live-group">
 
@@ -452,6 +469,7 @@
             @foreach (var item in Model.HotGoods)
             {
                 <div>
+                    <input type="hidden" value="@item.GoodsID" class="goodsid" />
                     @{j++;}
                     <ul>
                         <li>
@@ -473,24 +491,17 @@
                                         <p><a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" class="btn btn-default">立即购买</a></p>
                                         <p class="la-anchor-name">@item.Style</p>
                                         <div class="la-bottom">
-                                            <span class="la-bottom-item">
-                                                点赞
+                                            <span style="position:relative;display:inline-block;width:37%;line-height:38px;font-size:14px;" id="@item.GoodsID">
+                                                <img src="~/iconfont/点赞.png" style="cursor:pointer;width:30px;height:30px;" />
                                             </span>
+                                            <span class="@item.GoodsID">@item.ThumbNum</span>
+                                            <span style="margin-left:10px;">|</span>
                                             <span class="la-bottom-item">
-                                                <a href="#" target="_blank">评论</a>
+                                                <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">评论</a>
                                             </span>
                                         </div>
                                     </div>
-                                        <div>
-                                            @if (j == 3)
-                                            {
-                                                <div id="past-lives-more">
-                                                    <div id="a" style="cursor:pointer">
-                                                        <span>查看更多</span>
-                                                    </div>
-                                                </div>
-                                            }
-                                        </div>
+                                        
                                 }
 
 
@@ -498,7 +509,7 @@
 
 
                             <div id="@item.GoodsID" style="display:none">
-                                @if (j > 3 && j <= 9)
+                                @if (j > 3)
                                 {
 
                                     <div class="live-abstract">
@@ -514,74 +525,19 @@
                                         <p><a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" class="btn btn-default">立即购买</a></p>
                                         <p class="la-anchor-name">@item.Style</p>
                                         <div class="la-bottom">
-                                            <span class="la-bottom-item">
-                                                点赞
+                                            <span style="position:relative;display:inline-block;width:37%;line-height:38px;font-size:14px;" id="@item.GoodsID">
+                                                <img src="~/iconfont/点赞.png" style="cursor:pointer;width:30px;height:30px;" />
                                             </span>
+                                            <span class="@item.GoodsID">@item.ThumbNum</span>
+                                            <span style="margin-left:10px;">|</span>
                                             <span class="la-bottom-item">
-                                                <a href="#" target="_blank">评论</a>
+                                                <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">评论</a>
                                             </span>
                                         </div>
                                     </div>
-                                    <div>
-                                        @if (j == 9)
-                                        {
-                                            <div id="past-lives-more">
-                                                <div id="b" style="cursor:pointer;display:none">
-                                                    <span>查看更多</span>
-                                                </div>
-                                            </div>
-                                        }
-                                    </div>
+                                    
                                 }
                             </div>
-
-
-
-
-
-                            @if (j > 9)
-                            {
-                                <div  id="@j" style="display:none">
-                                    
-                                        <div class="live-abstract">
-                                            <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
-                                            <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
-                                                <h2 class="la-title">@item.Name</h2>
-                                                <h2 class="la-title"></h2>
-                                            </a>
-                                            <p class="la-category">
-                                                <span class="price">¥&nbsp; @item.Unitprice</span>
-                                                <span class="category-tag">@item.Type</span>
-                                            </p>
-                                            <p><a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" class="btn btn-default">立即购买</a></p>
-                                            <p class="la-anchor-name">@item.Style</p>
-                                            <div class="la-bottom">
-                                                <span class="la-bottom-item">
-                                                    点赞
-                                                </span>
-                                                <span class="la-bottom-item">
-                                                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">评论</a>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                               
-                                    <div>
-                                        @if (j == Model.HotGoods.Count())
-                                        {
-                                            <div id="past-lives-more">
-                                                <div id="c" style="cursor:pointer;display:none">
-                                                    <span>没有更多了</span>
-                                                </div>
-                                            </div>
-                                        }
-                                    </div>
-                            }
-
-
-
-
-
 
 
 
@@ -592,28 +548,25 @@
 
                     $(function () {
 
-                        $("#a").on("click", function () {
-                            document.getElementById(@item.GoodsID).style.display = "block";
-                            $("#a").hide();
-                            $("#b").show();
+                      
+                            $("#@item.GoodsID").on("click", function () {   //赞
+                                var goodsid = $(".goodsid").val();
+                                $.ajax({
+                                    type: "post",
+                                    url: "/Mall/Zan",
+                                    data: { "goodsid": goodsid },
+                                    success: function (data) {
+                                        $(".@item.GoodsID").text(data);
+                                    }
+                                });
+                            })
+                       
 
-                        });
-
-
-
-                        $("#b").on("click", function () {
-
-                            $("#b").hide();
-
-                            $("#@j").show();
-                            document.getElementById(c).style.display = "block";
-                            @*document.getElementById(@i).style.display = "block";*@
-
-
-
-
+                        $("#bounce").on("click", function () {
+                            document.getElementById(@item.GoodsID).style.display="block";
+                            document.getElementById("bounce").innerHTML="更多商品，敬请期待";
+                            //document.getElementById("mw-more").href="javascript:showdiv()";
                         })
-
 
                     })
 
@@ -628,26 +581,37 @@
 
   
         
-        @*<section id="past-lives-more">
-            <div id="bounce" style="margin:auto 420px;cursor:pointer;">
+        <section id="past-lives-more">
+            <div id="bounce" style="margin:auto 532px;cursor:pointer;">
                 <span>查看更多</span>
             </div>
-        </section>*@
-        <img src="~/iconfont/四季.png" style="height:200px;width:200px;border-radius:100%;overflow:hidden;margin:auto 519px;margin-bottom:22px;" />
-        <img src="~/iconfont/春.png" style="height:150px;width:150px;"/>
+        </section>
+        <p style="font-size:16px;">四季</p>
+        <div style="text-align:center;position:relative;margin-bottom:50px;">
+            <div style="font-size:0;width:300px;height:1px;background-color:#d9d9d9;position:absolute;left:50%;top:14px;z-index:1;margin-left:-415px;margin-top:25px;">
+
+            </div>
+            <div style="z-index:2;font-size:50px;">春</div>
+            <div style="font-size:0;width:300px;height:1px;background-color:#d9d9d9;position:absolute;left:50%;top:14px;z-index:1;margin-left:113px;margin-top:25px;">
+
+            </div>
+        </div>
+        
         <div id="past-lives" class="live-group">
 
             @foreach (var item in Model.ChunQiu)
             {
+               
                 <div>
-                    @{i++;}
+                    <input type="hidden" value="@item.GoodsID" class="goodsid" />
+                    @{a++;}
                     <ul>
                         <li>
-                            @if (i <= 3)
+                            @if (a <= 3)
                             {
                                 <div class="live-abstract">
-                                    <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
-                                    <a href="#" target="_blank">
+                                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
+                                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                         <h2 class="la-title">@item.Name</h2>
                                         <h2 class="la-title"></h2>
                                     </a>
@@ -655,24 +619,26 @@
                                         <span class="price">¥&nbsp; @item.Unitprice</span>
                                         <span class="category-tag">@item.Type</span>
                                     </p>
-                                    <p><a href="#" class="btn btn-default">立即购买</a></p>
+                                    <p><a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" class="btn btn-default">立即购买</a></p>
                                     <p class="la-anchor-name">@item.Style</p>
                                     <div class="la-bottom">
-                                        <span class="la-bottom-item">
-                                            点赞
+                                        <span style="position:relative;display:inline-block;width:37%;line-height:38px;font-size:14px;" id="@item.GoodsID">
+                                            <img src="~/iconfont/点赞.png" style="cursor:pointer;width:30px;height:30px;" />
                                         </span>
+                                        <span class="@item.GoodsID">@item.ThumbNum</span>
+                                        <span style="margin-left:10px;">|</span>
                                         <span class="la-bottom-item">
-                                            <a href="#" target="_blank">评论</a>
+                                            <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">评论</a>
                                         </span>
                                     </div>
                                 </div>
                             }
-                            <div id="@item.GoodsID" style="display:block">
-                                @if (i > 3 && i <= 9)
+                            <div id="@item.GoodsID" style="display:none">
+                                @if (a > 3) 
                                 {
                                     <div class="live-abstract">
-                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
-                                        <a href="#" target="_blank">
+                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
+                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
                                         </a>
@@ -680,71 +646,23 @@
                                             <span class="price">¥&nbsp; @item.Unitprice</span>
                                             <span class="category-tag">@item.Type</span>
                                         </p>
-                                        <p><a href="#" class="btn btn-default">立即购买</a></p>
+                                        <p><a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" class="btn btn-default">立即购买</a></p>
                                         <p class="la-anchor-name">@item.Style</p>
                                         <div class="la-bottom">
-                                            <span class="la-bottom-item">
-                                                点赞
+                                            <span style="position:relative;display:inline-block;width:37%;line-height:38px;font-size:14px;" id="@item.GoodsID">
+                                                <img src="~/iconfont/点赞.png" style="cursor:pointer;width:30px;height:30px;" />
                                             </span>
+                                            <span class="@item.GoodsID">@item.ThumbNum</span>
+                                            <span style="margin-left:10px;">|</span>
                                             <span class="la-bottom-item">
-                                                <a href="#" target="_blank">评论</a>
+                                                <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">评论</a>
                                             </span>
                                         </div>
                                     </div>
                                 }
                             </div>
-                            <div id="@item.GoodsID" style="display:block">
-                                @if (i > 9 && i <= 18)
-                                {
-                                    <div class="live-abstract">
-                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
-                                        <a href="#" target="_blank">
-                                            <h2 class="la-title">@item.Name</h2>
-                                            <h2 class="la-title"></h2>
-                                        </a>
-                                        <p class="la-category">
-                                            <span class="price">¥&nbsp; @item.Unitprice</span>
-                                            <span class="category-tag">@item.Type</span>
-                                        </p>
-                                        <p><a href="#" class="btn btn-default">立即购买</a></p>
-                                        <p class="la-anchor-name">@item.Style</p>
-                                        <div class="la-bottom">
-                                            <span class="la-bottom-item">
-                                                点赞
-                                            </span>
-                                            <span class="la-bottom-item">
-                                                <a href="#" target="_blank">评论</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                            <div id="@item.GoodsID" style="display:block">
-                                @if (i >18)
-                                {
-                                    <div class="live-abstract">
-                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
-                                        <a href="#" target="_blank">
-                                            <h2 class="la-title">@item.Name</h2>
-                                            <h2 class="la-title"></h2>
-                                        </a>
-                                        <p class="la-category">
-                                            <span class="price">¥&nbsp; @item.Unitprice</span>
-                                            <span class="category-tag">@item.Type</span>
-                                        </p>
-                                        <p><a href="#" class="btn btn-default">立即购买</a></p>
-                                        <p class="la-anchor-name">@item.Style</p>
-                                        <div class="la-bottom">
-                                            <span class="la-bottom-item">
-                                                点赞
-                                            </span>
-                                            <span class="la-bottom-item">
-                                                <a href="#" target="_blank">评论</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
+                            
+                            
 
                         </li>
                     </ul>
@@ -752,31 +670,60 @@
                 <script>
 
                     $(function () {
+                        $("#@item.GoodsID").on("click", function () {   //赞
+                            var goodsid = $(".goodsid").val();
+                            $.ajax({
+                                type: "post",
+                                url: "/Mall/Zan",
+                                data: { "goodsid": goodsid },
+                                success: function (data) {
+                                    $(".@item.GoodsID").text(data);
+                                }
+                            });
+                        })
+                       
 
-                            $("#bounce").on("click", function() {
-                                        document.getElementById(@item.GoodsID).style.display = "block";
+                        $("#chun").on("click", function () {
+                            document.getElementById(@item.GoodsID).style.display="block";
+                            document.getElementById("chun").innerHTML="更多商品，敬请期待";
+                            
+                        })
 
-                                    })
 
-                                    })
+                           
+                   })
 
                 </script>
                         }
         </div>
-        <img src="~/iconfont/夏.png" style="height:150px;width:150px;" />
+        <section id="past-lives-more">
+            <div id="chun" style="margin:auto 532px;cursor:pointer;">
+                <span>查看更多</span>
+            </div>
+        </section>
+        <div style="text-align:center;position:relative;margin-bottom:50px;">
+            <div style="font-size:0;width:300px;height:1px;background-color:#d9d9d9;position:absolute;left:50%;top:14px;z-index:1;margin-left:-415px;margin-top:25px;">
+
+            </div>
+            <div style="z-index:2;font-size:50px;">夏</div>
+            <div style="font-size:0;width:300px;height:1px;background-color:#d9d9d9;position:absolute;left:50%;top:14px;z-index:1;margin-left:113px;margin-top:25px;">
+
+            </div>
+        </div>
         <div id="past-lives" class="live-group">
 
             @foreach (var item in Model.Xia)
             {
                 <div>
-                    @{i++;}
+                    <input type="hidden" value="@item.GoodsID" class="goodsid" />
+                    @{b++;}
                     <ul>
                         <li>
-                            @if (i <= 3)
+                            @if (b <= 3)
                             {
                                 <div class="live-abstract">
-                                    <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
-                                    <a href="#" target="_blank">
+                                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
+                                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                         <h2 class="la-title">@item.Name</h2>
                                         <h2 class="la-title"></h2>
                                     </a>
@@ -784,24 +731,26 @@
                                         <span class="price">¥&nbsp; @item.Unitprice</span>
                                         <span class="category-tag">@item.Type</span>
                                     </p>
-                                    <p><a href="#" class="btn btn-default">立即购买</a></p>
+                                    <p><a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" class="btn btn-default">立即购买</a></p>
                                     <p class="la-anchor-name">@item.Style</p>
                                     <div class="la-bottom">
-                                        <span class="la-bottom-item">
-                                            点赞
+                                        <span style="position:relative;display:inline-block;width:37%;line-height:38px;font-size:14px;" id="@item.GoodsID">
+                                            <img src="~/iconfont/点赞.png" style="cursor:pointer;width:30px;height:30px;" />
                                         </span>
+                                        <span class="@item.GoodsID">@item.ThumbNum</span>
+                                        <span style="margin-left:10px;">|</span>
                                         <span class="la-bottom-item">
-                                            <a href="#" target="_blank">评论</a>
+                                            <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">评论</a>
                                         </span>
                                     </div>
                                 </div>
                             }
-                            <div id="@item.GoodsID" style="display:block">
-                                @if (i > 3 && i <= 3 * i)
+                            <div id="@item.GoodsID" style="display:none">
+                                @if (c > 3)
                                 {
                                     <div class="live-abstract">
-                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
-                                        <a href="#" target="_blank">
+                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
+                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
                                         </a>
@@ -809,14 +758,16 @@
                                             <span class="price">¥&nbsp; @item.Unitprice</span>
                                             <span class="category-tag">@item.Type</span>
                                         </p>
-                                        <p><a href="#" class="btn btn-default">立即购买</a></p>
+                                        <p><a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" class="btn btn-default">立即购买</a></p>
                                         <p class="la-anchor-name">@item.Style</p>
                                         <div class="la-bottom">
-                                            <span class="la-bottom-item">
-                                                点赞
+                                            <span style="position:relative;display:inline-block;width:37%;line-height:38px;font-size:14px;" id="@item.GoodsID">
+                                                <img src="~/iconfont/点赞.png" style="cursor:pointer;width:30px;height:30px;" />
                                             </span>
+                                            <span class="@item.GoodsID">@item.ThumbNum</span>
+                                            <span style="margin-left:10px;">|</span>
                                             <span class="la-bottom-item">
-                                                <a href="#" target="_blank">评论</a>
+                                                <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">评论</a>
                                             </span>
                                         </div>
                                     </div>
@@ -830,30 +781,57 @@
 
                     $(function () {
 
-                            $("#bounce").on("click", function() {
-                                        document.getElementById(@item.GoodsID).style.display = "block";
+                             $(function () {
+                        $("#@item.GoodsID").on("click", function () {   //赞
+                            var goodsid = $(".goodsid").val();
+                            $.ajax({
+                                type: "post",
+                                url: "/Mall/Zan",
+                                data: { "goodsid": goodsid },
+                                success: function (data) {
+                                    $(".@item.GoodsID").text(data);
+                                }
+                            });
+                        })
 
-                                    })
+
+                        $("#xia").on("click", function () {
+                            @*document.getElementById(@item.GoodsID).style.display="block";*@
+                            $("#@item.GoodsID").show();
+                            document.getElementById("xia").innerHTML="更多商品，敬请期待";
+
+                        })
+
+
+
+                   })
+
 
                                     })
 
                 </script>
                         }
         </div>
-        <img src="~/iconfont/秋.png" style="height:150px;width:150px;" />
+        <section id="past-lives-more">
+            <div id="xia" style="margin:auto 532px;cursor:pointer;">
+                <span>查看更多</span>
+            </div>
+        </section>
+       
         <div id="past-lives" class="live-group">
 
             @foreach (var item in Model.Dong)
             {
                 <div>
-                    @{i++;}
+                    <input type="hidden" value="@item.GoodsID" class="goodsid" />
+                    @{c++;}
                     <ul>
                         <li>
-                            @if (i <= 3)
+                            @if (c <= 3)
                             {
                                 <div class="live-abstract">
-                                    <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
-                                    <a href="#" target="_blank">
+                                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
+                                    <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                         <h2 class="la-title">@item.Name</h2>
                                         <h2 class="la-title"></h2>
                                     </a>
@@ -861,24 +839,26 @@
                                         <span class="price">¥&nbsp; @item.Unitprice</span>
                                         <span class="category-tag">@item.Type</span>
                                     </p>
-                                    <p><a href="#" class="btn btn-default">立即购买</a></p>
+                                    <p><a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" class="btn btn-default">立即购买</a></p>
                                     <p class="la-anchor-name">@item.Style</p>
                                     <div class="la-bottom">
-                                        <span class="la-bottom-item">
-                                            点赞
+                                        <span style="position:relative;display:inline-block;width:37%;line-height:38px;font-size:14px;" id="@item.GoodsID">
+                                            <img src="~/iconfont/点赞.png" style="cursor:pointer;width:30px;height:30px;" />
                                         </span>
+                                        <span class="@item.GoodsID">@item.ThumbNum</span>
+                                        <span style="margin-left:10px;">|</span>
                                         <span class="la-bottom-item">
-                                            <a href="#" target="_blank">评论</a>
+                                            <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">评论</a>
                                         </span>
                                     </div>
                                 </div>
                             }
-                            <div id="@item.GoodsID" style="display:block">
-                                @if (i > 3 && i <= 3 * i)
+                            <div id="@item.GoodsID" style="display:none">
+                                @if (c > 3 )
                                 {
                                     <div class="live-abstract">
-                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
-                                        <a href="#" target="_blank">
+                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
+                                        <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">
                                             <h2 class="la-title">@item.Name</h2>
                                             <h2 class="la-title"></h2>
                                         </a>
@@ -886,14 +866,16 @@
                                             <span class="price">¥&nbsp; @item.Unitprice</span>
                                             <span class="category-tag">@item.Type</span>
                                         </p>
-                                        <p><a href="#" class="btn btn-default">立即购买</a></p>
+                                        <p><a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" class="btn btn-default">立即购买</a></p>
                                         <p class="la-anchor-name">@item.Style</p>
                                         <div class="la-bottom">
-                                            <span class="la-bottom-item">
-                                                点赞
+                                            <span style="position:relative;display:inline-block;width:37%;line-height:38px;font-size:14px;" id="@item.GoodsID">
+                                                <img src="~/iconfont/点赞.png" style="cursor:pointer;width:30px;height:30px;" />
                                             </span>
+                                            <span class="@item.GoodsID">@item.ThumbNum</span>
+                                            <span style="margin-left:10px;">|</span>
                                             <span class="la-bottom-item">
-                                                <a href="#" target="_blank">评论</a>
+                                                <a href="@Url.Action("GoodsDetails", "Mall", new { id = @item.GoodsID })" target="_blank">评论</a>
                                             </span>
                                         </div>
                                     </div>
@@ -907,97 +889,44 @@
 
                     $(function () {
 
-                            $("#bounce").on("click", function() {
-                                        document.getElementById(@item.GoodsID).style.display = "block";
+                             $(function () {
+                        $("#@item.GoodsID").on("click", function () {   //赞
+                            var goodsid = $(".goodsid").val();
+                            $.ajax({
+                                type: "post",
+                                url: "/Mall/Zan",
+                                data: { "goodsid": goodsid },
+                                success: function (data) {
+                                    $(".@item.GoodsID").text(data);
+                                }
+                            });
+                        })
 
-                                    })
+
+                        $("#dong").on("click", function () {
+                            document.getElementById(@item.GoodsID).style.display="block";
+                            document.getElementById("dong").innerHTML="更多商品，敬请期待";
+
+                        })
+
+
+
+                   })
+
 
                                     })
 
                 </script>
                         }
         </div>
-        <img src="~/iconfont/冬.jpg" style="height:150px;width:150px;" />
-        <div id="past-lives" class="live-group">
-
-            @foreach (var item in Model.Dong)
-            {
-                <div>
-                    @{i++;}
-                    <ul>
-                        <li>
-                            @if (i <= 3)
-                            {
-                                <div class="live-abstract">
-                                    <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
-                                    <a href="#" target="_blank">
-                                        <h2 class="la-title">@item.Name</h2>
-                                        <h2 class="la-title"></h2>
-                                    </a>
-                                    <p class="la-category">
-                                        <span class="price">¥&nbsp; @item.Unitprice</span>
-                                        <span class="category-tag">@item.Type</span>
-                                    </p>
-                                    <p><a href="#" class="btn btn-default">立即购买</a></p>
-                                    <p class="la-anchor-name">@item.Style</p>
-                                    <div class="la-bottom">
-                                        <span class="la-bottom-item">
-                                            点赞
-                                        </span>
-                                        <span class="la-bottom-item">
-                                            <a href="#" target="_blank">评论</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            }
-                            <div id="@item.GoodsID" style="display:block">
-                                @if (i > 3 && i <= 3 * i)
-                                {
-                                    <div class="live-abstract">
-                                        <a href="#" target="_blank" class="la-img" style="background-image:url(../../Images/GoodsImages/@item.GoodsImage)"></a>
-                                        <a href="#" target="_blank">
-                                            <h2 class="la-title">@item.Name</h2>
-                                            <h2 class="la-title"></h2>
-                                        </a>
-                                        <p class="la-category">
-                                            <span class="price">¥&nbsp; @item.Unitprice</span>
-                                            <span class="category-tag">@item.Type</span>
-                                        </p>
-                                        <p><a href="#" class="btn btn-default">立即购买</a></p>
-                                        <p class="la-anchor-name">@item.Style</p>
-                                        <div class="la-bottom">
-                                            <span class="la-bottom-item">
-                                                点赞
-                                            </span>
-                                            <span class="la-bottom-item">
-                                                <a href="#" target="_blank">评论</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-
-                        </li>
-                    </ul>
-                </div>
-                <script>
-
-                    $(function () {
-
-                            $("#bounce").on("click", function() {
-                                        document.getElementById(@item.GoodsID).style.display = "block";
-
-                                    })
-
-                                    })
-
-                </script>
-                        }
-            
+        <section id="past-lives-more">
+            <div id="dong" style="margin:auto 532px;cursor:pointer;">
+                <span>查看更多</span>
+            </div>
+        </section>
+       
         </div>
     </div>
-</div>
-
 
 
 

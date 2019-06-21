@@ -79,17 +79,20 @@
             margin-right: 120px;
             border-radius: 10px;
         }
+         .nav-r{
+            margin-top:-59px;
+        }
     </style>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body class="container" id="whole">
+<body>
     <div style="text-align:center">
-        @*<img src="~/Images/GoodsImages/1.jpg" class="img" />*@
-        <img src="~/iconfont/衣服.png" class="img" />
+       
+        @*<img src="~/iconfont/衣服.png" class="img" />
         <a href="#" title="首页">
             <img src="~/iconfont/首页-选中.png" class="img1" />
-        </a>
+        </a>*@
 
             <div style="margin-left:200px;position:relative;border-bottom:10px;">
                 @using (Html.BeginForm("Search", "Mall", FormMethod.Post)) { 
@@ -97,8 +100,10 @@
 
                 <span><button class="btn">搜索</button></span>
                 }
+                <a href="@Url.Action("Order","Mall")" title="我的订单"><img src="~/iconfont/订单 (1).png" class="img3" /></a>
                 <a href="@Url.Action("Cart","Mall",new { userid=Session["User_id"]})" title="我的购物车"><img src="~/iconfont/购物车空.png" class="img2" /></a>
-                <a href="#" title="我的订单"><img src="~/iconfont/订单.png" class="img3" /></a>
+                <div style="position:absolute;margin-left:888px;font-size:20px;">@Html.Action("Cartnum", "Mall")</div>
+                
             </div>
             <br />
             <br />

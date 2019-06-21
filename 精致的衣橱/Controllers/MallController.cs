@@ -31,9 +31,9 @@ namespace 精致的衣橱.Controllers
 
             var g1 = goodsmanager.GetHotGoods(9);
             var g2 = goodsmanager.GetNewGoods(9);
-            var g3 = goodsmanager.ChunQiu(8);
-            var g4 = goodsmanager.Xia(8);
-            var g5 = goodsmanager.Dong(8);
+            var g3 = goodsmanager.ChunQiu(15);
+            var g4 = goodsmanager.Xia(15);
+            var g5 = goodsmanager.Dong(15);
             MallViewModel mallviewmodel = new MallViewModel();
             mallviewmodel.HotGoods = g1;
             mallviewmodel.NewGoods = g2;
@@ -138,6 +138,24 @@ namespace 精致的衣橱.Controllers
             {
                 return Content("<script>alert('加入购物车失败')</script>");
             }
+        }
+        public ActionResult Cartnum(int? userid)
+        {
+            userid = Convert.ToInt32(Session["User_id"]);
+            int num = 0;
+            if (userid != null)
+            {
+                foreach(var i in db.Cart.Where(u => u.UserID == userid))
+                {
+                    num = num + i.Count;
+                }
+                return Content(num.ToString());
+            }
+            else
+            {
+                return Content(0.ToString());
+            }
+
         }
 
         [Login]
@@ -244,7 +262,7 @@ namespace 精致的衣橱.Controllers
             
 
         }
-        //[Login]
+        [Login]
         public ActionResult Order()
         {
             int id = Convert.ToInt32(Session["User_id"]);

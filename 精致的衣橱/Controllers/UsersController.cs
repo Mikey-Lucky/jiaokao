@@ -96,7 +96,7 @@ namespace 精致的衣橱.Controllers
                 }
                 else
                 {
-                    return Content("<script>alert('"+data+ "');window.location.href='../MallManager/Index';</script>");
+                    return Content("<script>alert('"+data+ "');window.location.href='../Orders/index';</script>");
                 }
 
             }
