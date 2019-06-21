@@ -54,15 +54,12 @@ namespace 精致的衣橱.Controllers
             {
                 if (goodsimage != null)
                 {
-                    string filePath = goodsimage.FileName;
-                    //string filename = filePath.Substring(filePath.LastIndexOf("\\") + 1);
-                    string filename = "../GoodsImages/" + filePath;
-                    //string serverpath = Server.MapPath(@"\Images\GoodsImages\") + filename;
-                    string serverpath = filename;
-                    //string relativepath = "../GoodsImages/" + filename;
-                    //string relativepath = "../GoodsImages/";
-                    goodsimage.SaveAs(serverpath);
-                    goods.GoodsImage = serverpath;
+                    string filePath = Guid.NewGuid().ToString() + goodsimage.FileName;
+                    
+                    
+                   
+                    goodsimage.SaveAs(Request.MapPath("/Images/GoodsImages/" + filePath));
+                    goods.GoodsImage = "../GoodsImages/"+filePath;
                 }
                 db.Goods.Add(goods);
                 

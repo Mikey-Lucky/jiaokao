@@ -64,8 +64,15 @@
                 
             </div>
         </div>*@
-        <input type="file" name="goodsimage" />
-
+@using (Html.BeginForm("Create", "Goods", FormMethod.Post, new { @class = "PostSendForm", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @*<script id="container" name="content" type="text/plain">
+    </script>*@
+    <img id="imgpre" src="~/Images/yichu/上传图片(1).png" style="height:200px;width:200px;" alt="Image preview...">
+        <input type="file" id="imgFile" name="imgfile" onchange="previewFile()">
+        <button type="submit">上传</button>
+}
         <div class="form-group">
             @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -141,3 +148,24 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+<script>
+    function previewFile() {
+        var preview = document.getElementById('imgpre')
+        var fileDom = document.querySelector('input[type=file]')
+        // 获取得到file 对象
+        var file = fileDom.files[0]
+        // 限制上传图片的大小
+        if (file.size > 1024 * 1024 * 2) {
+            alert('图片大小不能超过 2MB!');
+            return false;
+        }
+        // 创建url
+        var imgUrl = window.URL.createObjectURL(file)
+        preview.setAttribute("src", imgUrl)
+        // 更改img url 以后释放 url
+        preview.onload = function () {
+            // console.log('图片加载成功')
+            URL.revokeObjectURL(imgUrl)
+        }
+    }
+</script>
