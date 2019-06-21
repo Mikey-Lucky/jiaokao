@@ -126,5 +126,15 @@ namespace DAL
             }
             return nether;
         }
+
+        public void DeleteNeById(int id)
+        {
+            NetherGarment ne = db.NetherGarment.Where(s => s.NetherGarmentID == id).FirstOrDefault();
+            if (ne != null)
+            {
+                db.NetherGarment.Remove(ne);
+            }
+            db.SaveChanges();
+        }
     }
 }

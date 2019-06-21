@@ -17,6 +17,8 @@ namespace IDAL
         void AddNether(NetherGarment nether);
         //可以与某颜色上单衣搭配的下衣，传入季节和颜色参数
         IQueryable<NetherGarment> NetherBaiDa(string season, string color);
+        //根据id删除下装
+        void DeleteNeById(int id);
 
     }
 }

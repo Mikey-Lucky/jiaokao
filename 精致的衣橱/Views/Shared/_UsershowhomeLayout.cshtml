@@ -523,10 +523,13 @@
         <div class="user-info-content">
         <div class="info-top">
             <span class="info-name">@ViewBag.username</span> <!----> 
-            <div class="w_pui_follow_button follow-button-wrapper cc_topic_green" data-widget_cache_key="1560508324121"><div class="cc_follow_btn">
+            <div class="w_pui_follow_button follow-button-wrapper cc_topic_green" data-widget_cache_key="1560508324121">
+                <div class="cc_follow_btn">
+                 @*@if()*@
                 <span class="cc_no_attension">
-                <i class="icon iconfont icon-add"></i> 
-                <span>关注</span>
+                <span class="guanzhu" style="display: none">关注</span>
+                <span class="quxiaoguanzhu" style="display: none">取消关注</span>
+                <span class="ziji" style="display: none">偶是帅</span>
                 </span>
                 </div>
             </div> 
@@ -580,3 +583,56 @@
        
         @RenderBody()
     </div>
+<script>
+  $.ajax({
+        type: "get",
+        url: "/YiChuShow/ifattention",
+        data: { "beiguanzhuid":@ViewBag.userid},
+        success: function (data) {
+        if (data=="取消关注")
+        {
+
+            //alert(data);
+            $(".quxiaoguanzhu").css('display','block');
+        }
+        else if(data=="进入个人中心")
+        {
+            $(".ziji").css('display','block');
+            //alert(data);
+           
+        }
+        else
+        {
+            //alert(data);
+            $(".guanzhu").css('display','block');
+        }
+        },
+        async: true
+  });
+    $(".quxiaoguanzhu").click(function(){
+        $(".quxiaoguanzhu").css('display','none');
+        $(".guanzhu").css('display','block');
+        $.ajax({
+            type: "get",
+            url: "/YiChuShow/quguan",
+            data: { "guanzhuzheid": 1 ,"beiguanzhuid":@Model.Userabout.UserID},
+            success: function (data) {
+                alert(data)
+            },
+            async: true
+        });
+    })
+    $(".guanzhu").click(function(){
+        $(".guanzhu").css('display','none');
+        $(".quxiaoguanzhu").css('display','block');
+        $.ajax({
+            type: "get",
+            url: "/YiChuShow/jiaguan",
+            data: { "guanzhuzheid": 1 ,"beiguanzhuid":@Model.Userabout.UserID},
+            success: function (data) {
+                alert(data)
+            },
+            async: true
+        });
+    })
+</script>

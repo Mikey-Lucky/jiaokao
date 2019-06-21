@@ -28,5 +28,9 @@ namespace BLL
         {
             return icoat.CoatByTemp(temp,userid);
         }
+        public void DeleteCoatById(int id)
+        {
+            icoat.DeleteCoatById(id);
+        }
     }
 }

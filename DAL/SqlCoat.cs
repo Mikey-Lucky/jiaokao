@@ -54,5 +54,15 @@ namespace DAL
             }
             return coat;
         }
+
+        public void DeleteCoatById(int id)
+        {
+            Coat coat = db.Coat.Where(s => s.CoatID == id).FirstOrDefault();
+            if (coat != null)
+            {
+                db.Coat.Remove(coat);
+            }
+            db.SaveChanges();
+        }
     }
 }

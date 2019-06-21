@@ -15,5 +15,8 @@ namespace IDAL
         IQueryable<Suit> SuitByTemp(int temp,int userid);
         //添加套装
         void AddSuit(Suit suit);
+        //根据id删除套装
+        void DeleteSuitById(int id);
+
     }
 }

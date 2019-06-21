@@ -347,8 +347,9 @@ namespace 精致的衣橱.Controllers
             return PartialView(ycsv);
         }
         //用户是否关注
-        public string ifattention(int guanzhuzheid, int beiguanzhuid)
+        public string ifattention(int beiguanzhuid)
         {
+            int guanzhuzheid = Convert.ToInt32(Session["User_id"]);
             return attention.ifattention(guanzhuzheid, beiguanzhuid);
         }
         //取消关注

@@ -18,6 +18,16 @@ namespace DAL
             db.SaveChanges();
         }
 
+        public void DeleteSuitById(int id)
+        {
+            Suit suit = db.Suit.Where(s => s.SuitID == id).FirstOrDefault();
+            if (suit != null)
+            {
+                db.Suit.Remove(suit);
+            }
+            db.SaveChanges();
+        }
+
         public IQueryable<Suit> SuitBySeason(string season,int userid)
         {
             var suit = from s in db.Suit

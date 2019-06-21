@@ -33,5 +33,9 @@ namespace BLL
         {
             return inether.NetherBaiDa(season, color);
         }
+        public void DeleteNeById(int id)
+        {
+            inether.DeleteNeById(id);
+        }
     }
 }
