@@ -28,7 +28,6 @@ namespace 精致的衣橱.Controllers
         public ActionResult Index()
         {
            
-
             var g1 = goodsmanager.GetHotGoods(9);
             var g2 = goodsmanager.GetNewGoods(9);
             var g3 = goodsmanager.ChunQiu(15);

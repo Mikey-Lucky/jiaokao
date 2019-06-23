@@ -34,7 +34,8 @@ namespace DAL
         }
         public IEnumerable<Goods> ChunQiu(int top)
         {
-            var goods = db.Goods.Where(u => u.Season == "春").Take(top);
+
+            var goods = db.Goods.Where(o => o.Season == "春").Take(top);
             return goods;
         }
         public IEnumerable<Goods> Xia(int top)
