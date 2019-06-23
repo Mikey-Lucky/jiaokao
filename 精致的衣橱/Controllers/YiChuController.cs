@@ -56,11 +56,16 @@ namespace 精致的衣橱.Controllers
             yichuview.shirtbytemp = shirts.ShirtByTemp(Convert.ToInt32(temp), userid);
             yichuview.coatbytemp = coats.CoatByTemp(Convert.ToInt32(temp), userid);
             yichuview.suitbytemp = suits.SuitByTemp(Convert.ToInt32(temp), userid);
-            yichuview.dapeishangyi = yichuview.shirtbytemp;
-            foreach (var a in yichuview.shirtbytemp)
-            {
-                yichuview.daipeixiyi = nethers.NetherBaiDa(a.Season, a.Color);
+            yichuview.dapeishangyi = yichuview.shirtbytemp.First();
+            //foreach (var a in yichuview.shirtbytemp)
+            //{
+            //    yichuview.daipeixiyi = nethers.NetherBaiDa(a.Season, a.Color);
 
+            //}
+            if (yichuview.shirtbytemp.First() != null)
+            {
+                var a = yichuview.shirtbytemp.First();
+                yichuview.daipeixiyi = nethers.NetherBaiDa(a.Season, a.Color).First();
             }
             //ViewData["dp"] = yichuview.shirtbytemp;
             //Shirt shirt = (Shirt)ViewData["dp"];

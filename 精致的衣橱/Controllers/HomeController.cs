@@ -18,7 +18,7 @@ namespace 精致的衣橱.Controllers
         {
             var note=notes.GetHotNote(8);
             var video = videos.GetHotVideo(6);
-            var hgood = goods.GetHotGoods(6);
+            var hgood = goods.GetHotGoods(3);
             var ngood = goods.GetNewGoods(6);
             HomeIndexViewModel homeindexviewmodel = new HomeIndexViewModel();
             homeindexviewmodel.notes = note;
@@ -31,7 +31,7 @@ namespace 精致的衣橱.Controllers
         {
             var note = notes.GetHotNote(8);
             var video = videos.GetHotVideo(6);
-            var hgood = goods.GetHotGoods(6);
+            var hgood = goods.GetHotGoods(3);
             var ngood = goods.GetNewGoods(6);
             HomeIndexViewModel homeindexviewmodel = new HomeIndexViewModel();
             homeindexviewmodel.notes = note;
