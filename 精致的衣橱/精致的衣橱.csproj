@@ -298,6 +298,9 @@
     <Content Include="Images\banner\8.jpg" />
     <Content Include="Images\banner\9.jpg" />
     <Content Include="Images\FM\2.1.PNG" />
+    <Content Include="Images\GoodsImages\43.jpg" />
+    <Content Include="Images\GoodsImages\54.jpg" />
+    <Content Include="Images\GoodsImages\56.jpg" />
     <Content Include="Images\HeadImages\2.jpg" />
     <Content Include="Images\HeadImages\3.jpg" />
     <Content Include="Images\HeadImages\4.jpg" />
@@ -772,7 +775,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Coat\" />
-    <Folder Include="Images\GoodsImages\" />
     <Folder Include="Images\NetherGarment\" />
     <Folder Include="Scripts\layer\" />
     <Folder Include="Views\Default\" />

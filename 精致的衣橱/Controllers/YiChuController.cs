@@ -159,7 +159,7 @@ namespace 精致的衣橱.Controllers
                     img.SaveAs(Request.MapPath("/Images/Suit/" + path));
                     break;
             }
-            return Content(color + path);
+            return Content("<script>alert('添加成功');history.go(-1);</script>");
         }
         //上衣详情
         public ActionResult ShirtDetail(int id)
