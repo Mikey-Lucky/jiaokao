@@ -15,7 +15,7 @@ namespace DAL
         public IEnumerable<Goods> GetHotGoods(int top)
         {
             var hotgoods = from good in db.Goods
-                           orderby good.Amount ascending
+                           orderby good.Amount descending
                            select good;
             return hotgoods.Take(top);
             //var hotgoods = from o in db.Goods_Color

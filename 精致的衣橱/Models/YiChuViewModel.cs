@@ -50,7 +50,10 @@ namespace 精致的衣橱.Models
         public IQueryable<NetherGarment> nethergarmentbytemp { get; set; }
         //根据温度找出的套装
         public IQueryable<Suit> suitbytemp { get; set; }
-        public IQueryable<Shirt> dapeishangyi { get; set; }
-        public IQueryable<NetherGarment> daipeixiyi { get; set; }
+        //public IQueryable<Shirt> dapeishangyi { get; set; }
+
+        //public IQueryable<NetherGarment> daipeixiyi { get; set; }
+        public Shirt dapeishangyi { get; set; }
+        public NetherGarment daipeixiyi { get; set; }
     }
 }

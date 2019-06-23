@@ -52,20 +52,14 @@
     </div>
 </div>
 
-@if (Model.dapeishangyi.FirstOrDefault() != null)
+@if (Model.dapeishangyi != null)
 {
     <span>为你搭配</span>
 }
-<div>
-    @foreach (var a in Model.dapeishangyi)
-    {
-        <img src="/Images/shirt/@a.Image" />
-    }
+<div class="ml">
+    <img src="/Images/shirt/@Model.dapeishangyi.Image" />
+
+    <img src="/Images/NetherGarment/@Model.daipeixiyi.Image" /> 
 </div>
-<div>
-    @foreach (var n in Model.daipeixiyi)
-    {
-        <img src="/Images/NetherGarment/@n.Image" />
-    }
-</div>
+
 
