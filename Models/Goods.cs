@@ -42,6 +42,7 @@ namespace Models
         public Nullable<int> Pageview { get; set; }
         public Nullable<int> TotalStorageAmount { get; set; }
         public Nullable<int> ThumbNum { get; set; }
+        public string GoodsDetails { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Cart { get; set; }

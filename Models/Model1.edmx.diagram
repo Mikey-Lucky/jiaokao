@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c7d8e201c76948c496a627e9251e5f96" Name="Diagram1">
+      <Diagram DiagramId="31ff33ae3aeb4afb9866f333ae50c5f8" Name="Diagram1">
         <EntityTypeShape EntityType="yichuModel.Address" Width="1.5" PointX="3" PointY="29" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Cart" Width="1.5" PointX="3" PointY="44.375" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Coat" Width="1.5" PointX="5.25" PointY="80.5" IsExpanded="true" />
@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="yichuModel.Color" Width="1.5" PointX="0.75" PointY="31.875" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.ComReply" Width="1.5" PointX="6" PointY="41.625" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Coordinate" Width="1.5" PointX="7.5" PointY="85.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="yichuModel.Goods" Width="1.5" PointX="0.75" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="yichuModel.Goods" Width="1.5" PointX="0.75" PointY="35" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Goods_Color" Width="1.5" PointX="3" PointY="36.625" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.Goods_Size" Width="1.5" PointX="6" PointY="35.625" IsExpanded="true" />
         <EntityTypeShape EntityType="yichuModel.GoodsComment" Width="1.5" PointX="3" PointY="39.875" IsExpanded="true" />

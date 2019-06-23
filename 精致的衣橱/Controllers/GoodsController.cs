@@ -49,11 +49,25 @@ namespace 精致的衣橱.Controllers
         //[Bind(Include = "GoodsID,Name,Sex,Season,Material,Style,GoodsImage,Amount,Unitprice,Type,SizeImage,ShangjiaTime,Pageview,TotalStorageAmount,ThumbNum")]
         public ActionResult Create(Goods goods)
         {
-            var  goodsimage = Request.Files["goodsimage"];
+            var  goodsimage = Request.Files["imgfile"];
+            var name = Request["name"].ToString();
+            var sex = Request["sex"].ToString();
+            var season = Request["season"].ToString();
+            var material = Request["material"].ToString();
+            var type = Request["type"].ToString();
+            //var sex = Request["sex"].ToString();
+            var time = System.DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 if (goodsimage != null)
                 {
+                    goods.Name = name;
+                    goods.Sex = sex;
+                    goods.Season = season;
+                    goods.Material = material;
+                    goods.Type = type;
+                    goods.ShangjiaTime = time;
                     string filePath = Guid.NewGuid().ToString() + goodsimage.FileName;
                     
                     
