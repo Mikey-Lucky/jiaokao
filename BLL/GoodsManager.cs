@@ -27,7 +27,7 @@ namespace BLL
         }
         public  IEnumerable<Goods> ChunQiu(int top)
         {
-            var goods = igoods.Xia(top);
+            var goods = igoods.ChunQiu(top);
             return goods;
         }
         public IEnumerable<Goods> Xia(int top)
