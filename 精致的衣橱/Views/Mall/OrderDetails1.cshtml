@@ -14,9 +14,9 @@
     </tr>
 
     @foreach(var item in Model) { 
-        <tr>
+        <tr>io
             <td>@item.Goods.Name</td>
-            <td><img src="~/Images/GoodsImages/@item.Goods.GoodsImage" /></td>
+            <td><img src="~/Images/GoodsImages/@item.Goods.GoodsImage" style="width:100px;height:100px;"/></td>
             <td>@item.Goods.Unitprice</td>
             <td>@item.Count</td>
         </tr>
