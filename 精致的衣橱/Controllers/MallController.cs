@@ -174,7 +174,7 @@ namespace 精致的衣橱.Controllers
 
         }
         
-        //[Login]
+        [Login]
         public ActionResult Comment(int goodsid)
         {
 
@@ -183,7 +183,7 @@ namespace 精致的衣橱.Controllers
             return PartialView(com);
         }
 
-        //[Login]
+        [Login]
         [HttpPost]
         
         public ActionResult Comment(string pinglun,int goodsid)
@@ -194,8 +194,8 @@ namespace 精致的衣橱.Controllers
             
             DateTime datetime = System.DateTime.Now;
             int thumb = 0;
-            //int id = Convert.ToInt32(Session["User_id"]);
-            int id = 2;
+            int id = Convert.ToInt32(Session["User_id"]);
+            //int id = 2;
             //string text = Request["pinglunkuang"];
             //int  goodsid = Convert.ToInt32(Request["commentid"]);
 
