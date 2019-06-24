@@ -142,7 +142,8 @@ namespace 精致的衣橱.Controllers
             note.Img = "../Noteimg/" + imgpath;
             note.UserID =Convert.ToInt32(Session["User_id"]);
             notes.AddNote(note);
-            return View();
+            //return View();
+            return Content("<script>alert('发表成功');window.location.href='../YiChuShow/Index';</script>");
         }
 
         ////给笔记点赞
