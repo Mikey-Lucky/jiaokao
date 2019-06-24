@@ -19,7 +19,7 @@ namespace 精致的衣橱.Controllers
         GoodsManager goodsmanager = new GoodsManager();
         //根据购物车中的东西推荐
         //根据订单明细中的东西推荐
-        /[Login]
+        [Login]
         public ActionResult RecomGoods()
         {
             //int userid =6;
