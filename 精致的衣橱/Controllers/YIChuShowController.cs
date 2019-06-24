@@ -289,6 +289,13 @@ namespace 精致的衣橱.Controllers
             ycsv.Userabout = users.GetUserById(userid);
             return View(ycsv);
         }
+        //查看个人信息
+        public ActionResult userabout()
+        {
+            int userid =Convert.ToInt32(Session["User_id"]);
+            ycsv.Userabout = users.GetUserById(userid);
+            return View(ycsv);
+        }
         //删除视频
         public string delvideo(int videoid)
         {

@@ -1,0 +1,63 @@
+﻿@model 精致的衣橱.Models.YiChuShowViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutDaohang.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>userabout</title>
+    <style>
+        ul li {
+          list-style: none;
+        }
+        wai {
+             font-family: 'Roboto Mono', monospace;
+             font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div> 
+        @*<table>
+            <tr>
+                <th>地址</th>
+                <th>生日</th>
+                <th>邮件</th>
+                <th>头像</th>
+                <th>性别</th>
+                <th>电话</th>
+                <th>姓名</th>
+            </tr>
+            <tr>
+                <td>@Model.Userabout.Address</td>
+                <td>@Model.Userabout.Birthday</td>
+                <td>@Model.Userabout.Email</td>
+                <td>@Model.Userabout.HeadImage</td>
+                <td>@Model.Userabout.Sex</td>
+                <td>@Model.Userabout.Tel</td>
+                <td>@Model.Userabout.UserName</td>
+            </tr>
+            
+        </table>*@
+        <div class="wai">
+            <ul>
+                <li>头像:<img src="~/Images/HeadImages/@Model.Userabout.HeadImage" style="height:100px;width:100px;" /></li>
+                <li>生日:@Model.Userabout.Birthday</li>
+                <li>邮件:@Model.Userabout.Email</li>
+
+                <li>性别:@Model.Userabout.Sex</li>
+                <li>电话:@Model.Userabout.Tel</li>
+                <li>姓名:@Model.Userabout.UserName</li>
+            </ul>
+        </div>
+        
+        
+       
+        
+        
+    </div>
+</body>
+</html>

@@ -771,6 +771,7 @@
     <Content Include="Views\Recommend\todaygoods.cshtml" />
     <Content Include="Views\Recommend\RecomGoods1.cshtml" />
     <Content Include="Views\Mall\Reply.cshtml" />
+    <Content Include="Views\YIChuShow\userabout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
