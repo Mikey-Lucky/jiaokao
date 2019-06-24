@@ -17,12 +17,12 @@
                 </div>
                 <div class="haowu-title-span2">
                     <p style="margin:0;height:18px;line-height:18px;color:#222222;font-size:18px;font-weight:bold;">
-                        <a href="#">商品名称</a>
+                        <a href="@Url.Action("GoodsDetails","Mall",new {id=@item.GoodsID })">商品名称</a>
                     </p>
                     <p style="margin:0;margin-top:10px;margin-bottom:20px;height:14px;line-height:14px;color:#999999;font-size:14px;font-weight:200;">中通顺丰包邮</p>
                     <div class="trick-line"></div>
-                    <div class="haowu-price">单价</div>
-                    <a href="#" target="_blank" class="button-buy">立即购买</a>
+                    <div class="haowu-price">￥@item.Unitprice</div>
+                    <a href="@Url.Action("GoodsDetails","Mall",new {id=@item.GoodsID })" target="_blank" class="button-buy">立即购买</a>
                     <p class="haowu-desc">小编暂未设置推荐语～</p>
                 </div>
             </div>
