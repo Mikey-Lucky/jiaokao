@@ -42,7 +42,7 @@ namespace 精致的衣橱.Controllers
                 db.SaveChanges();
                 return View(goods1);
             }
-            else
+            else 
             {
                 var s1 = from c in db.Cart
 
@@ -62,7 +62,8 @@ namespace 精致的衣橱.Controllers
 
 
                 }
-                return View();
+                var goods2 = goodsmanager.GetNewGoods(20);
+                return View(goods2);
 
             }
 
