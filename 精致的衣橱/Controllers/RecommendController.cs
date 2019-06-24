@@ -19,10 +19,11 @@ namespace 精致的衣橱.Controllers
         GoodsManager goodsmanager = new GoodsManager();
         //根据购物车中的东西推荐
         //根据订单明细中的东西推荐
-        //[Login]
+        [Login]
         public ActionResult RecomGoods()
         {
-            int userid =6;
+            //int userid =6;
+            int userid = Convert.ToInt32(Session["User_id"]);
             var cart = db.Cart.Where(u => u.UserID == userid).FirstOrDefault();
             var orderdetails = db.OrderDetails.Where(u => u.UserID == userid).FirstOrDefault();
             if (cart != null)
