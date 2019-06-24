@@ -299,7 +299,7 @@
     font-size: 10px;
 }
  .vw_more {
-    display: inline-block!important;
+    display: inline-block;
     *display: inline;
     *zoom: 1;
     vertical-align: middle;
@@ -533,7 +533,7 @@
                 </span>
                 </div>
             </div> 
-            <div class="vw_more ziji" style="display: inline-block">
+            <div class="vw_more ziji1" style="display: none">
                 <a href="@Url.Action("userabout","YiChuShow")" class="vw_send_message"><i></i>
                  <i></i> <i></i>
                 </a> <!---->
@@ -598,6 +598,7 @@
         else if(data=="进入个人中心")
         {
             $(".ziji").css('display','block');
+            $(".ziji1").css('display','inline-block');
             //alert(data);
            
         }
